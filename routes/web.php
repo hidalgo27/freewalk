@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Admin
+Route::get('/admin/home', 'Admin\HomepageController@index')->name('home');
+
+//Page
+Route::get('/', [
+    'uses' => 'Page\HomepageController@index',
+    'as' => 'home_path',
+]);

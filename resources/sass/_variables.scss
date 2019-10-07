@@ -17,3 +17,32 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+//fontawesome
+$fa-font-path:        "../webfonts";
+
+$carousel-control-color: #333333;
+$g-green:    #7F8429 !default;
+$g-yellow:   #f9a825 !default;
+$g-dark:   #333333 !default;
+$g-dark-light: #969696 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    "g-green": $g-green,
+    "g-yellow": $g-yellow,
+    "g-dark": $g-dark,
+    "g-dark-light": $g-dark-light,
+), $theme-colors);
+
+$headings-line-height:        1.2 !default;
+$display5-size:               2.5rem !default;
+
+$display5-weight:             300 !default;
+$display-line-height:         $headings-line-height !default;
+
+.display-5 {
+    font-size: $display5-size;
+    font-weight: $display5-weight;
+    line-height: $display-line-height;
+}
