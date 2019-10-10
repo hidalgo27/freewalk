@@ -19,122 +19,9 @@
 <div id="app">
 
     <div class="menu-container">
-        <div class="container mt-3">
+        <div class="container mt-3 position-relative">
             <div class="row justify-content-between align-items-center">
                 <div class="col-3">
-                    <div class="form-group m-0 has-search">
-                        <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control form-control-search shadow-none border-0 text-white" placeholder="BUSCAR">
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <a href="{{route('home_path')}}"><img src="{{asset('images/logo-andes-h.png')}}" width="250" alt="logo andesviagens" class="img-fluid"></a>
-                </div>
-                <div class="col-3 text-right">
-                    <a href="" class="btn btn-inquire float-right ml-3 font-weight-bold px-4 text-white rounded-0">COTIZAR VIAJE</a>
-                </div>
-            </div>
-        </div>
-        <div class="menu mt-4">
-            <ul class="nav justify-content-center">
-                <li class="nav-item"><a href="#">PERU PASSEIOS</a></li>
-                <li><a href="http://marioloncarek.com">PACOTES DE VIAGENS</a>
-                    <ul>
-                        <li><a href="http://marioloncarek.com">School</a>
-                            <ul>
-                                <li><a href="http://marioloncarek.com">Lidership</a></li>
-                                <li><a href="#">History</a></li>
-                                <li><a href="#">Locations</a></li>
-                                <li><a href="#">Careers</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Study</a>
-                            <ul>
-                                <li><a href="#">Undergraduate</a></li>
-                                <li><a href="#">Masters</a></li>
-                                <li><a href="#">International</a></li>
-                                <li><a href="#">Online</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Research</a>
-                            <ul>
-                                <li><a href="#">Undergraduate research</a></li>
-                                <li><a href="#">Masters research</a></li>
-                                <li><a href="#">Funding</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Something</a>
-                            <ul>
-                                <li><a href="#">Sub something</a></li>
-                                <li><a href="#">Sub something</a></li>
-                                <li><a href="#">Sub something</a></li>
-                                <li><a href="#">Sub something</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="http://marioloncarek.com">DESTINOS</a>
-                    <ul>
-                        <li><a href="http://marioloncarek.com">Today</a></li>
-                        <li><a href="#">Calendar</a></li>
-                        <li><a href="#">Sport</a></li>
-                    </ul>
-                </li>
-                <li><a href="http://marioloncarek.com">SOBRE NÓS</a>
-                    <ul>
-                        <li><a href="#">School</a>
-                            <ul>
-                                <li><a href="#">Lidership</a></li>
-                                <li><a href="#">History</a></li>
-                                <li><a href="#">Locations</a></li>
-                                <li><a href="#">Careers</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Study</a>
-                            <ul>
-                                <li><a href="#">Undergraduate</a></li>
-                                <li><a href="#">Masters</a></li>
-                                <li><a href="#">International</a></li>
-                                <li><a href="#">Online</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Study</a>
-                            <ul>
-                                <li><a href="#">Undergraduate</a></li>
-                                <li><a href="#">Masters</a></li>
-                                <li><a href="#">International</a></li>
-                                <li><a href="#">Online</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Empty sub</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-
-    <header>
-        <div class="overlay"></div>
-        {{--            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">--}}
-        {{--                <source src="{{asset('media/Secuencia 06.mp4')}}" type="video/mp4">--}}
-        {{--            </video>--}}
-        <div class="homepage-video">
-            {{--                <iframe title="GotoPeru background video" src="https://player.vimeo.com/video/361847703?background=1" width="100%" height="100" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>--}}
-            <iframe src="https://player.vimeo.com/video/361847703?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
-        </div>
-        <div class="container h-100">
-            <div class="row d-flex h-100 text-center align-items-center">
-                <div class="col w-100 text-white mt-5">
-                    <h1 class="font-weight-lighter mt-5">Top en Recomendaciones y Testimonios, sede central en Cusco</h1>
-                    <a href="#Inquire" class="btn btn-outline-g-yellow btn-lg h2 font-weight-normal mt-3">Diseña tu Viaje</a>
-                    {{--                        <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>--}}
-                </div>
-            </div>
-        </div>
-        <div class="position-absolute-bottom p-2">
-            <div class="row justify-content-center">
-                <div class="col-auto text-center">
                     <a href="" class="mx-2">
                         <i data-feather="facebook" class="text-white" stroke-width="1"></i>
                     </a>
@@ -147,29 +34,133 @@
                     <a href="" class="mx-2">
                         <i data-feather="instagram" class="text-white" stroke-width="1"></i>
                     </a>
+{{--                    <div class="form-group m-0 has-search">--}}
+{{--                        <span class="fa fa-search form-control-feedback"></span>--}}
+{{--                        <input type="text" class="form-control form-control-search shadow-none border-0 text-white" placeholder="BUSCAR">--}}
+{{--                    </div>--}}
+                </div>
+                <div class="col-auto">
+                    <a href="{{route('home_path')}}"><img src="{{asset('images/logo-freewalks-white.png')}}" width="120" alt="logo andesviagens" class="img-fluid"></a>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="" class="btn btn-inquire  ml-3 font-weight-bold px-4 text-white rounded-0">CONTACTO</a>
+                    <a href=""><img src="{{asset('images/flag/en.png')}}" alt=""></a>
+{{--                    <a href=""><img src="{{asset('images/flag/es.png')}}" alt=""></a>--}}
                 </div>
             </div>
         </div>
+        <div class="menu mt-3 sticky-top">
+            <ul class="nav justify-content-center">
+                <li><a href="#">LIMA</a>
+                    <ul>
+                        <li><a href="">Free Tour Lima 10am</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MIRAFLORES</a></li>
+                <li><a href="#">BARRANCO</a></li>
+                <li><a href="">AREQUIPA</a>
+                    <ul>
+                        <li><a href="#">Free Tour Arequipa 9am</a></li>
+                    </ul>
+                </li>
+                <li><a href="">CUSCO</a>
+                    <ul>
+                        <li><a href="#">Free Tour <Cusco></Cusco> 9am</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">BLOG</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <header>
+        <div class="overlay"></div>
+        {{--            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">--}}
+        {{--                <source src="{{asset('media/Secuencia 06.mp4')}}" type="video/mp4">--}}
+        {{--            </video>--}}
+        <div class="homepage-video">
+            {{--                <iframe title="GotoPeru background video" src="https://player.vimeo.com/video/361847703?background=1" width="100%" height="100" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>--}}
+{{--            <iframe src="https://player.vimeo.com/video/361847703?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>--}}
+            <img src="{{asset('images/free-walking-tours-peru.jpg')}}" alt="" class="w-100">
+        </div>
+{{--        <div class="container h-100">--}}
+{{--            <div class="row d-flex h-100 text-center align-items-center">--}}
+{{--                <div class="col w-100 text-white mt-5">--}}
+{{--                    <h1 class="font-weight-lighter mt-5">Top en Recomendaciones y Testimonios, sede central en Cusco</h1>--}}
+{{--                    <a href="#Inquire" class="btn btn-outline-g-yellow btn-lg h2 font-weight-normal mt-3">Diseña tu Viaje</a>--}}
+{{--                    --}}{{--                        <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="position-absolute-bottom p-2">--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="col-auto text-center">--}}
+{{--                    <a href="" class="mx-2">--}}
+{{--                        <i data-feather="facebook" class="text-white" stroke-width="1"></i>--}}
+{{--                    </a>--}}
+{{--                    <a href="" class="mx-2">--}}
+{{--                        <i data-feather="twitter" class="text-white" stroke-width="1"></i>--}}
+{{--                    </a>--}}
+{{--                    <a href="" class="mx-2">--}}
+{{--                        <i data-feather="youtube" class="text-white" stroke-width="1"></i>--}}
+{{--                    </a>--}}
+{{--                    <a href="" class="mx-2">--}}
+{{--                        <i data-feather="instagram" class="text-white" stroke-width="1"></i>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </header>
 
 
     <section class="my-5">
         <div class="container">
             <div class="row align-items-center">
-                {{--                    <div class="col d-none d-md-inline">--}}
-                {{--                        <img src="{{asset('images/about.jpg')}}" alt="" class="w-100 rounded img-lazy">--}}
-                {{--                    </div>--}}
-                <div class="col text-center">
-                    <h1 class="font-weight-bold display-4 text-g-yellow">Paquetes de <strong class="text-g-green">viajes en Perú</strong></h1>
-                    <p class="lead font-weight-normal text-muted">Somos <b>ANDESVIAGENS</b>, especialistas em viagens locais! Nossos guias, motoristas e representantes locais terão o prazer em compartilhar o melhor do nosso país em nossos mais de 12 anos de experiência criando viagens inesquecíveis para a terra dos Incas! Temos uma grande reputação, incluindo parceiros globais como Expedia, Travelocity e Tripadvisor, que também reconheceram nossos esforços citando-nos como os melhores especialistas locais.</p>
-                    <div class="row align-items-center">
-                        <div class="col-12 text-center">
-                            <h6 class="text-secondary">
-                                <img src="{{asset('images/logo-andes-bc.png')}}" alt="" width="120">
-                                <span class="mt-1">é a divisão de</span>
-                                <img src="{{asset('images/logo-gotoperu.png')}}" alt="" width="100">
-                            </h6>
+                <div class="col">
+                    <h1 class="font-weight-bold text-dark text-center">Free Tours en Perú Full Español, Visitas Guiadas y Excursiones en Perú</h1>
+                    <p class="font-weight-normal text-muted">Tenga un cálida bienvenida a Free Walking Tours Perú Full Español, operado por Guías Indígenas, una compañía Local con Guías Calificados & Autorizados por el Estado Peruano, con Carnet de Guía | Ofrecemos los mejores free tours, excursiones turísticas y visitas guiadas con Guías 100% Locales. Nuestras actividades engloban las ciudades de Cusco, Lima y Arequipa(con extensiones en Barranco y Miraflores); Visitamos los centros históricos y alrededores de dichas ciudades a pie y en Bus. Somos Los Campeones en actividades a pie y son Libres de pago Inicial, sino más bien al final del tour Tu puedes dejar tu donación, no nos crees pues te invitamos a ver este sistema creado por Christopher Sandman; También contamos con las mejores excursiones pagadas!</p>
+                    <div class="alert alert-primary">
+                        Nota: Asegúrate de llegar al Punto de Encuentro Correcto para cada ciudad y ten un Guía Calificado, evita confundirte con personas ajenas a nuestra compañía quienes falsamente aducen formar de la misma compañía, muchos de ellos incluso usando los mismo colores de nuestro uniforme!
+                    </div>
+                </div>
+                <div class="col d-none d-md-inline">
+                    <img src="{{asset('images/banners/chaleco.jpg')}}" alt="" class="w-100 rounded">
+                </div>
+            </div>
+        </div>
+    </section>
 
+
+    <section>
+        <div class="container">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <img src="https://www.freewalkingtoursperu.com/es/img/free-tours-caminando-en-lima-espanol.jpg" alt="" class="w-100 rounded">
+                        </div>
+                        <div class="col">
+                            <h3 class="font-weight-bold">Free Tours Caminando en Lima | en Español</h3>
+                            <hr>
+                            <p>Reviva la historia de Lima vía free walking tours, los tours más modernos y populares en todo el Mundo! Conoce la capital del Perú caminando por los lugares más emblemáticos del centro histórico donde comentaremos la historia precolombino y virreinal de Lima, haremos un enfoque a la historia por eso te prometemos no llevarte a visitar Bares | Lima es una ciudad milenaria, también fue la capital para el Virreinato del Perú durante la época colonial | En nuestros tours caminado en Lima hacemos un enfoque a la cultura e historia, por eso no te llevaremos a visitar Bares! Si amas un walking tour puro y original con Guía Autorizado, somos tu mejor decisión! mira nuestro Video!</p>
+                            <a href="" class="btn btn-primary font-weight-bold text-right">Estoy interesado!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <img src="https://www.freewalkingtoursperu.com/es/img/free-tours-caminando-en-cusco-espanol.jpg" alt="" class="w-100 rounded">
+                        </div>
+                        <div class="col">
+                            <h3 class="font-weight-bold">Free Tours a pie en Cusco | en Español</h3>
+                            <hr>
+                            <p>Cusco s Magia, Cusco es cultura, Cusco es diversión, ¿por qué no unirlo todo? ¡Descubre las distintas caras de la ciudad capital del imperio de los Inkas mientras pasas un rato divertido y lleno de historias y curiosidades con FreeWalkingToursPeru y con nuestros simpáticos y profesionales guías 100% Peruanos y profesionales para realizar el mejor free walking tour Cusco en español | Juntos exploraremos las diferentes caras de Cusco durante casi 3 horas a pie, caminando por las calle viejas de Cusco | Te esperamos en nuestro free tour Cusco en castellano!</p>
+                            <a href="" class="btn btn-primary font-weight-bold text-right">Estoy interesado!</a>
                         </div>
                     </div>
                 </div>
@@ -177,15 +168,14 @@
         </div>
     </section>
 
-    <search-package></search-package>
 
     <section class="position-relative my-5">
         <div class="offer py-5">
             <div class="container">
                 <div class="col text-center">
-                    <h2 class="h1 font-weight-bold text-white">Porque escoger Gotoperu</h2>
+                    <h2 class="h1 font-weight-bold text-white">Porque escoger Free Walkin Tours</h2>
                 </div>
-                <div class="row mt-5">
+                <div class="row justify-content-center mt-5">
                     <div class="col-6 mb-3 col-sm-4 mb-md-0 col-md-2 text-center">
                         <i data-feather="users" class="text-white d-block mx-auto" width="45" height="45" stroke-width="1"></i>
                         <span class="text-white small mt-3 d-block">Grupos pequeños y personalizados.</span>
@@ -195,10 +185,6 @@
                         <span class="text-white small mt-3 d-block">Nosotros vivimos aquí, somos locales 100%.</span>
                     </div>
                     <div class="col-6 mb-3 col-sm-4 mb-md-0 col-md-2 text-center">
-                        <i data-feather="pen-tool" class="text-white d-block mx-auto" width="45" height="45" stroke-width="1"></i>
-                        <span class="text-white small mt-3 d-block">Reserve ahora o Diseña tu Viaje!</span>
-                    </div>
-                    <div class="col-6 mb-3 col-sm-4 mb-md-0 col-md-2 text-center">
                         <i data-feather="map-pin" class="text-white d-block mx-auto" width="45" height="45" stroke-width="1"></i>
                         <span class="text-white small mt-3 d-block">Sin intermediarios, sede en Perú.</span>
                     </div>
@@ -206,26 +192,17 @@
                         <i data-feather="thumbs-up" class="text-white d-block mx-auto" width="45" height="45" stroke-width="1"></i>
                         <span class="text-white small mt-3 d-block">Estamos orgullosos de nuestros recomendaciones!</span>
                     </div>
-                    <div class="col-6 mb-3 col-sm-4 mb-md-0 col-md-2 text-center">
-                        <i data-feather="calendar" class="text-white d-block mx-auto" width="45" height="45" stroke-width="1"></i>
-                        <span class="text-white small mt-3 d-block">Nos adaptamos a cualquier hora de llegada.</span>
-                    </div>
                 </div>
                 <div class="row mt-5">
                     <div class="col text-white text-white text-center">
-                        <p class="font-weight-light">Desde 2009</p>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col text-white text-white text-center">
-                        <a href="#" class="btn btn-lg btn-g-yellow font-weight-bold text-white">Consulte ahora</a>
+                        <a href="#" class="btn btn-lg btn-g-yellow font-weight-bold text-white">Reserve ahora</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pb-4">
+    <section class="pb-4 d-none">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
@@ -280,7 +257,7 @@
         </div>
     </section>
 
-    <section class="position-relative mt-5">
+    <section class="position-relative mt-5 d-none">
         <div class="offer-banner">
             <div class="container">
                 <div class="row align-items-center">
@@ -308,7 +285,7 @@
         </div>
     </section>
 
-    <section class="py-5 bg-white">
+    <section class="py-5 bg-white d-none">
         <div class="container">
             <div class="row py-4">
                 <div class="col text-center">
@@ -437,7 +414,7 @@
         </div>
     </section>
 
-    <section class="my-5">
+    <section class="my-5 d-none">
         <div class="container">
             <div class="row pb-4">
                 <div class="col text-center">
@@ -510,7 +487,7 @@
         <div class="container">
             <div class="row pb-4">
                 <div class="col text-center">
-                    <h2 class="font-weight-bold">Destinos recomendados</h2>
+                    <h2 class="font-weight-bold">Destinos</h2>
                 </div>
             </div>
             <div class="row">
@@ -521,8 +498,8 @@
                                 <img src="{{asset('images/destinations/machu-picchu.jpg')}}" alt="" class="w-100">
                             </a>
                             <figcaption>
-                                <small class="d-block">Cusco</small>
-                                Machu Picchu
+{{--                                <small class="d-block">Lima</small>--}}
+                                Lima
                             </figcaption>
                         </figure>
                     </div>
@@ -534,8 +511,8 @@
                                 <img src="{{asset('images/destinations/titicaca.jpg')}}" alt="" class="w-100">
                             </a>
                             <figcaption>
-                                <small class="d-block">Puno</small>
-                                Lago titicaca
+{{--                                <small class="d-block">Arequipa</small>--}}
+                                Arequipa
                             </figcaption>
                         </figure>
                     </div>
@@ -547,8 +524,8 @@
                                 <img src="{{asset('images/destinations/colca.jpg')}}" alt="" class="w-100">
                             </a>
                             <figcaption>
-                                <small class="d-block">Arequipa</small>
-                                Cañon del colca
+{{--                                <small class="d-block">Arequipa</small>--}}
+                                CUSCO
                             </figcaption>
                         </figure>
                     </div>
@@ -564,24 +541,38 @@
         </div>
     </section>
 
-    <section>
-        <div class="container-fluid">
-            <div class="row justify-content-center my-4">
-                <div class="col-2">
-                    <img src="{{asset('images/logo-andes-y.png')}}" alt="" class="w-100">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img src="{{asset('images/brands/directur.png')}}" alt="" class="w-100 px-5">
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-7">
-                    <h5 class="font-weight-bold text-center">CONSULTA DE VIAJES</h5>
-                    <form-inquire></form-inquire>
+                <div class="col">
+                    <img src="{{asset('images/brands/marca-peru.png')}}" alt="" class="w-100 px-5">
+                </div>
+                <div class="col">
+                    <img src="{{asset('images/brands/mincetur.png')}}" alt="" class="w-100 px-5">
+                </div>
+                <div class="col">
+                    <img src="{{asset('images/brands/paypal.png')}}" alt="" class="w-100 px-5">
+                </div>
+                <div class="col">
+                    <img src="{{asset('images/brands/promperu.png')}}" alt="" class="w-100 px-5">
+                </div>
+                <div class="col">
+                    <img src="{{asset('images/brands/westernunion.png')}}" alt="" class="w-100 px-5">
                 </div>
             </div>
         </div>
-    </section>
-
-    <footer>
-        <img src="{{asset('images/footer.jpg')}}" alt="" class="w-100">
+        <div class="row bg-dark py-4 mt-5">
+            <div class="col text-center">
+                <a href="" class="btn btn-link text-white font-weight-bold">Reservación</a>
+                <a href="" class="btn btn-link text-white font-weight-bold">Términos</a>
+                <a href="" class="btn btn-link text-white font-weight-bold">Contáctenos</a>
+                <a href="" class="btn btn-link text-white font-weight-bold">Amigos</a>
+                <a href="" class="btn btn-link text-white font-weight-bold">Trabajo</a>
+            </div>
+        </div>
     </footer>
 
 </div>
@@ -590,52 +581,55 @@
 <script src="{{ asset('js/plugins.js') }}"></script>
 {{--<script src="https://player.vimeo.com/api/player.js"></script>--}}
 <script>
-
+    feather.replace();
     $(document).ready(function(){
         $('.venobox').venobox();
     });
 </script>
-{{--    <script>--}}
-{{--        /*global $ */--}}
-{{--        $(document).ready(function() {--}}
+    <script>
+        /*global jQuery */
+        jQuery(document).ready(function () {
 
-{{--            "use strict";--}}
+            "use strict";
 
-{{--            $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');--}}
-{{--            //Checks if li has sub (ul) and adds class for toggle icon - just an UI--}}
+            jQuery('.menu-container-v-tac .menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
+            //Checks if li has sub (ul) and adds class for toggle icon - just an UI
 
-{{--            $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');--}}
-{{--            //Checks if drodown menu's li elements have anothere level (ul), if not the dropdown is shown as regular dropdown, not a mega menu (thanks Luka Kladaric)--}}
 
-{{--            $(".menu > ul").before("<a href=\"#\" class=\"menu-mobile\">Navigation</a>");--}}
+            jQuery('.menu-container-v-tac .menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
+            //Checks if drodown menu's li elements have anothere level (ul), if not the dropdown is shown as regular dropdown, not a mega menu (thanks Luka Kladaric)
 
-{{--            //Adds menu-mobile class (for mobile toggle menu) before the normal menu--}}
-{{--            //Mobile menu is hidden if width is more then 959px, but normal menu is displayed--}}
-{{--            //Normal menu is hidden if width is below 959px, and jquery adds mobile menu--}}
-{{--            //Done this way so it can be used with wordpress without any trouble--}}
+            jQuery(".menu-container-v-tac .menu > ul").before("<a href=\"#\" class=\"menu-mobile\">Navigation</a>");
 
-{{--            $(".menu > ul > li").hover(function(e) {--}}
-{{--                if ($(window).width() > 943) {--}}
-{{--                    $(this).children("ul").stop(true, false).fadeToggle(150);--}}
-{{--                    e.preventDefault();--}}
-{{--                }--}}
-{{--            });--}}
-{{--            //If width is more than 943px dropdowns are displayed on hover--}}
+            //Adds menu-mobile class (for mobile toggle menu) before the normal menu
+            //Mobile menu is hidden if width is more then 959px, but normal menu is displayed
+            //Normal menu is hidden if width is below 959px, and jquery adds mobile menu
+            //Done this way so it can be used with wordpress without any trouble
 
-{{--            $(".menu > ul > li").click(function() {--}}
-{{--                if ($(window).width() <= 943) {--}}
-{{--                    $(this).children("ul").fadeToggle(150);--}}
-{{--                }--}}
-{{--            });--}}
-{{--            //If width is less or equal to 943px dropdowns are displayed on click (thanks Aman Jain from stackoverflow)--}}
+            jQuery(".menu-container-v-tac .menu > ul > li").children("ul").parent().addClass("show-on-desk-arrow")
 
-{{--            $(".menu-mobile").click(function(e) {--}}
-{{--                $(".menu > ul").toggleClass('show-on-mobile');--}}
-{{--                e.preventDefault();--}}
-{{--            });--}}
-{{--            //when clicked on mobile-menu, normal menu is shown as a list, classic rwd menu story (thanks mwl from stackoverflow)--}}
+            jQuery(".menu-container-v-tac .menu > ul > li").hover(function (e) {
+                if (jQuery(window).width() > 943) {
+                    jQuery(this).children("ul").stop(true, false).fadeToggle(150);
+                    e.preventDefault();
+                }
+            });
+            //If width is more than 943px dropdowns are displayed on hover
 
-{{--        });--}}
-{{--    </script>--}}
+            jQuery(".menu-container-v-tac .menu > ul > li").click(function () {
+                if (jQuery(window).width() <= 943) {
+                    jQuery(this).children("ul").fadeToggle(150);
+                }
+            });
+            //If width is less or equal to 943px dropdowns are displayed on click (thanks Aman Jain from stackoverflow)
+
+            jQuery(".menu-mobile").click(function (e) {
+                jQuery(".menu-container-v-tac .menu > ul").toggleClass('show-on-mobile');
+                e.preventDefault();
+            });
+            //when clicked on mobile-menu, normal menu is shown as a list, classic rwd menu story (thanks mwl from stackoverflow)
+
+        });
+    </script>
 </body>
 </html>
