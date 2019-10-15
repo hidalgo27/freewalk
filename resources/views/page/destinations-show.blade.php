@@ -2,8 +2,8 @@
     @section('content')
         <section>
             <picture>
-                <source media="(max-width: 550px)" srcset="../img/miraflores/free-walking-tour-miraflores-portrait-mobile.jpg">
-                <img src="../img/miraflores/free-walking-tour-miraflores-portrait.jpg" class="w-100" alt="free walking tour miraflores">
+                <source media="(max-width: 550px)" srcset="{{asset('images/miraflores/free-walking-tour-miraflores-portrait-mobile.jpg')}}">
+                <img src="{{asset('images/miraflores/free-walking-tour-miraflores-portrait.jpg')}}" class="w-100" alt="free walking tour miraflores">
             </picture>
         </section>
 
