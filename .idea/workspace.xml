@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2058fc1-4719-4d89-afe9-00195738e4fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/sass/_page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/page/destination.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/destination.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="b2058fc1-4719-4d89-afe9-00195738e4fc" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +160,7 @@
       <workItem from="1570718719261" duration="74000" />
       <workItem from="1570736937973" duration="7797000" />
       <workItem from="1570812191992" duration="375000" />
-      <workItem from="1571144142064" duration="5881000" />
+      <workItem from="1571144142064" duration="6128000" />
     </task>
     <servers />
   </component>

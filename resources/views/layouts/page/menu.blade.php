@@ -1,7 +1,7 @@
 
-			<ul class="navbar-nav ml-auto">		    	
+			<ul class="navbar-nav ml-auto">
 	             <li><a href='/'>Home</a></li>
-	             <li><a href='/lima/'>Lima</a>
+	             <li class="has-sub"><a href='/lima/'>Lima</a>
 					<ul class='lista-submenu-nav'>
 						<li><a href='/lima/'><strong>Details of Free Tour Lima here!</strong></a></li>
 						<li><a href='/lima/free-walking-tour-lima-leaves-from-miraflores'>Free Tour Lima at 10am(Pick-Up)</a></li>
@@ -19,7 +19,7 @@
 	             </li>
 	             <li><a href='/barranco/'>Barranco</a>
 				 </li>
-	             <li><a href='/arequipa/'>Arequipa</a>
+	             <li class="has-sub"><a href='/arequipa/'>Arequipa</a>
 					<ul class='lista-submenu-nav'>
 					<li><a href="/arequipa/"><strong>Details of Free Tour Aqp here!</strong></a></li>
 					<li><a href='/arequipa/free-walking-tour-arequipa-in-the-morning'>Free Tour Aqp at 10am</a></li>
@@ -27,7 +27,7 @@
 					<li><a href='/arequipa-private-tours-and-walks/'>Arequipa Private Tours & Walks</a></li>
 				   </ul>
 	             </li>
-	             <li><a href='/cusco/'>Cusco</a>
+	             <li class="has-sub"><a href='/cusco/'>Cusco</a>
 					<ul class='lista-submenu-nav'>
 					<li><a href="/cusco/"><strong>Details of Free Tour Cusco here!</strong></a></li>
 					<li><a href='/cusco/free-walking-tour-cusco-in-the-morning'>Free Tour Cusco at 10am</a></li>
