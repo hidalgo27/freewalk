@@ -10,4 +10,7 @@ class HomepageController extends Controller
     public function index(){
         return view('page.home');
     }
+    public function destination(){
+        return view('page.destination');
+    }
 }

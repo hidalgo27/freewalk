@@ -1,7 +1,7 @@
 
 			<ul class="navbar-nav ml-auto">
 	             <li><a href='/'>Home</a></li>
-	             <li class="has-sub"><a href='/lima/'>Lima</a>
+	             <li class="has-sub"><a href='{{route('destination_path')}}'>Lima</a>
 					<ul class='lista-submenu-nav'>
 						<li><a href='/lima/'><strong>Details of Free Tour Lima here!</strong></a></li>
 						<li><a href='/lima/free-walking-tour-lima-leaves-from-miraflores'>Free Tour Lima at 10am(Pick-Up)</a></li>

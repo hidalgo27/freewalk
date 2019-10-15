@@ -20,7 +20,9 @@ mix.scripts([
     // 'node_modules/swiper/dist/js/swiper.min.js',
     // 'node_modules/vanilla-lazyload/dist/lazyload.min.js',
     // 'resources/js/vendor/megamenu.js',
+    // 'resources/js/vendor/owl.carousel.min.js',
     // 'node_modules/feather-icons/dist/feather.js',
+    'node_modules/owl.carousel/dist/owl.carousel.js',
 ], 'public/js/plugins.js');
 
 //---js web

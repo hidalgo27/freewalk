@@ -25,3 +25,8 @@ Route::get('/', [
     'uses' => 'Page\HomepageController@index',
     'as' => 'home_path',
 ]);
+
+Route::get('/destination', [
+    'uses' => 'Page\HomepageController@destination',
+    'as' => 'destination_path',
+]);
