@@ -30,3 +30,7 @@ Route::get('/destination', [
     'uses' => 'Page\HomepageController@destination',
     'as' => 'destination_path',
 ]);
+Route::get('/destination-show', [
+    'uses' => 'Page\HomepageController@destination_show',
+    'as' => 'destination_show_path',
+]);
