@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2058fc1-4719-4d89-afe9-00195738e4fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/page/app2.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/page/menu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/page/destination.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/page/home3.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +119,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts/page" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admin-universe" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -160,7 +170,9 @@
       <workItem from="1570571829058" duration="614000" />
       <workItem from="1570634746598" duration="5122000" />
       <workItem from="1570718719261" duration="74000" />
-      <workItem from="1570736937973" duration="7248000" />
+      <workItem from="1570736937973" duration="7797000" />
+      <workItem from="1570812191992" duration="375000" />
+      <workItem from="1571144142064" duration="5652000" />
     </task>
     <servers />
   </component>
