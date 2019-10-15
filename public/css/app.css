@@ -17490,6 +17490,7 @@ li {
 }
 
 .section02 {
+  background: url(/images/bg-free.jpg?0b22494cf4ed49c78df4f3a5ed313b46);
   background-position: top;
 }
 
@@ -17511,6 +17512,10 @@ li {
   color: #fff;
 }
 
+.fondx {
+  background: url(/images/texture.png?cce5917b77685b26fdbbb420126cf38b);
+}
+
 .fonc {
   background-color: #e2e2e2;
 }
@@ -17520,6 +17525,7 @@ li {
 }
 
 .section04 {
+  background: url(/images/bg-slider.jpg?7ae93d3a4bc822aa6387357c5d5f5486);
   background-position: top;
 }
 
