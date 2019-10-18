@@ -63,7 +63,30 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
-
+        'destino_inicio' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/destino_inicio'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'destino_grupo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/destino_grupo'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'tours' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/tours'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'lugar_recojo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/lugar_recojo'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
     ],
 
 ];

@@ -1,7 +1,16 @@
-@extends('layouts.admin.app')
-
+@extends('layouts.admin.app-menu')
+@section('script')
+<script type="text/javascript">
+//my code here
+$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+});
+</script>
+@endsection
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -19,5 +28,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

@@ -25,6 +25,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "sweetalert2": "^8.18.3",
+        "toastr": "^2.1.4",
         "feather-icons": "^4.24.1",
         "jquery-ui": "^1.12.1",
         "owl-carousel": "^1.0.0",
