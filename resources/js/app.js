@@ -7,7 +7,12 @@
 require('./bootstrap');
 window.Vue = require('vue');
 
+import $ from 'jquery';
+window.$ = window.jQuery = $;
 
+import 'jquery-ui/ui/widgets/datepicker.js';
+
+// import 'owl-carousel/owl-carousel/owl.carousel'
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,4 +35,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-})
+});
+
+// $('#datepicker').datepicker();

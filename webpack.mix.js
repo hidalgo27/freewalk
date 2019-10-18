@@ -20,11 +20,13 @@ mix.scripts([
     'node_modules/toastr/toastr.js',
     // 'node_modules/sweetalert2/src/sweetalert2.js',
     // 'node_modules/vanilla-lazyload/dist/lazyload.min.js',
-    // 'resources/js/vendor/megamenu.js'
+    // 'resources/js/vendor/megamenu.js',
+    // 'resources/js/vendor/owl.carousel.min.js',
     // 'node_modules/feather-icons/dist/feather.js',
 ], 'public/js/plugins-admin.js');
 mix.scripts([
     'node_modules/venobox/venobox/venobox.min.js',
+    'node_modules/owl.carousel/dist/owl.carousel.js',
 ], 'public/js/plugins.js');
 //---js web
 
