@@ -6,3 +6,17 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+//fontaweson
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+//toastr
+@import "~toastr/toastr";
+
+//sweetalert2
+@import "~sweetalert2/src/sweetalert2";
+// Admin
+@import 'admin';

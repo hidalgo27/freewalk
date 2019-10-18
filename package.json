@@ -25,6 +25,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "sweetalert2": "^8.18.3",
+        "toastr": "^2.1.4",
         "venobox": "^1.8.6"
     }
 }

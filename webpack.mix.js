@@ -16,13 +16,16 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/admin.scss', 'public/css/admin');
 
 mix.scripts([
-    'node_modules/venobox/venobox/venobox.min.js',
-    // 'node_modules/swiper/dist/js/swiper.min.js',
+    'resources/js/funciones.js',
+    'node_modules/toastr/toastr.js',
+    // 'node_modules/sweetalert2/src/sweetalert2.js',
     // 'node_modules/vanilla-lazyload/dist/lazyload.min.js',
     // 'resources/js/vendor/megamenu.js'
     // 'node_modules/feather-icons/dist/feather.js',
+], 'public/js/plugins-admin.js');
+mix.scripts([
+    'node_modules/venobox/venobox/venobox.min.js',
 ], 'public/js/plugins.js');
-
 //---js web
 
 if (mix.config.inProduction) {
