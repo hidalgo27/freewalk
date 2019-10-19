@@ -28,8 +28,9 @@ $(document).ready(function () {
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma" onchange="mostrar_destinos($(this).val(),'editar')">
                         <option value="0">Escoja una opcion</option>
-                        <option value="es" @if ($oLugar_recojo->idioma=='es') selected @endif>Español</option>
-                        <option value="en" @if ($oLugar_recojo->idioma=='en') selected @endif>Ingles</option>
+                        @foreach ($idiomas as $item)
+                            <option value="{{ $item->codigo }}" @if ($oLugar_recojo->idioma==$item->codigo) selected @endif>{{ $item->nombre }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-6">

@@ -12,14 +12,14 @@ $(document).ready(function () {
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('admin.home.path')}}">Inicio</a></li>
 <li class="breadcrumb-item"><a href="{{ route('admin.destino-inicio.index.path') }}">Destinos grupo</a></li>
-<li class="breadcrumb-item active" aria-current="page">Atractivos</li>
+<li class="breadcrumb-item active" aria-current="page">Lugares a visitar</li>
 @endsection
 @section('content')
-<form action="{{ route('admin.destino-grupo.atractivo.store.path') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.destino-grupo.lugares-visitar.store.path') }}" method="post" enctype="multipart/form-data">
     <div class="card">
         <div class="card-header">
             <h4 class="text-uppercase">
-                Atractivos
+                lugares a visitar
             </h4>
         </div>
         <div class="card-body">
@@ -44,7 +44,7 @@ $(document).ready(function () {
 <div class="card mt-2">
         <div class="card-header">
             <h4 class="text-uppercase">
-                    Lista de Atractivos
+                    Lista de lugares a visitar
             </h4>
         </div>
         <div class="card-body">
@@ -54,7 +54,7 @@ $(document).ready(function () {
                         <span>{{ $foto->titulo }}</span>
                         <img src="{{ route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="figure-img rounded w-100 mb-0" alt="{{ $foto->imagen}}">
                         <figcaption class="figure-caption text-right mt-0">
-                            <form id="form_borrar_{{ $foto->id }}" action="{{ route('admin.destino-grupo.atractivo.destroy.path',$foto->id) }}" method="get">
+                            <form id="form_borrar_{{ $foto->id }}" action="{{ route('admin.destino-grupo.lugares-visitar.destroy.path',$foto->id) }}" method="get">
                                 @csrf
                                 <button class="btn btn-danger btn-block" type="button" onclick="borrarDestino_inicio('{{ $foto->id }}','{{ $foto->titulo }}')">
                                     <i class="fas fa-trash-alt"></i>

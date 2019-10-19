@@ -15,6 +15,7 @@ class CreateToursTable extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('url')->comment('Url amigable del tour');
             $table->string('titulo')->comment('Titulo del tour');
             $table->longText('descripcion')->comment('Descripcion del tour');
             $table->longText('itinerario')->comment('Itinerario del tour');

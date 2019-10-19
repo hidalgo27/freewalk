@@ -23,20 +23,14 @@ $(document).ready(function () {
             </h4>
         </div>
         <div class="card-body">
-            {{-- @if (Session::has('success'))
-                <div class="alert alert-success">
-                    <ul>
-                        <li>{!! Session::get('success') !!}</li>
-                    </ul>
-                </div>
-            @endif --}}
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma" onchange="mostrar_destinos($(this).val(),'editar')">
                         <option value="0">Escoja una opcion</option>
-                        <option value="es" @if ($oDestino_inicio->idioma=='es') selected @endif>Español</option>
-                        <option value="en" @if ($oDestino_inicio->idioma=='en') selected @endif>Ingles</option>
+                        @foreach ($idiomas as $item)
+                            <option value="{{ $item->codigo }}" @if ($oDestino_inicio->idioma==$item->codigo) selected @endif>{{ $item->nombre }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-6">
@@ -94,7 +88,7 @@ $(document).ready(function () {
     @elseif (Session::has('error'))
         toastr.error('{!! Session::get('error') !!}','MENSAJE DEL SISTEMA',{"progressBar":true,"closeButton":true})
     @endif
-    
+
     tinymce.init({
         selector: 'textarea',  // change this value according to your HTML
         plugin: 'a_tinymce_plugin',

@@ -11,45 +11,36 @@ $(document).ready(function () {
 @endsection
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('admin.home.path')}}">Inicio</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.destino-inicio.index.path') }}">Destinos inicio</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.destino-grupo.index.path') }}">Destinos grupo</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.destino-grupo.atractivos.index.path',$destino_grupo->id) }}">Lista de atractivos</a></li>
 <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
 @endsection
 @section('content')
-<form action="{{ route('admin.destino-inicio.store.path') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.destino-grupo.atractivos.store.path',$destino_grupo->id) }}" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-primary"><b class="text-dark">Titulo:</b> {{ $destino_grupo->titulo }} <b class="text-dark">| Idioma:</b>{{ $destino_grupo->idioma }} <b class="text-dark">| Destino:</b>{{ $destino_grupo->destino->nombre }}</h4>
+        </div>
+    </div>
     <div class="card">
         <div class="card-header">
             <h4 class="text-uppercase">
-                Nuevo destino inicio
+                Nuevo atractivo
             </h4>
         </div>
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col-6">
-                    <label for="idioma">Idioma</label>
-                    <select  class="form-control" id="idioma" name="idioma" onchange="mostrar_destinos($(this).val(),'nuevo')">
-                        <option value="0">Escoja una opcion</option>
-                        @foreach ($idiomas as $item)
-                            <option value="{{ $item->codigo }}" @if (old('idioma')==$item->codigo) selected @endif>{{ $item->nombre }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-6">
-                    <label for="destino">Destino</label>
-                    <select  class="form-control" id="destino" name="destino" >
-                        <option value="0">Escoja una opcion</option>
-                    </select>
-                </div>
                 <div class="form-group col-12">
                     <label for="titulo">Titulo</label>
-                    <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Nombre del titulo" value="{{ old('titulo') }}" required>
+                    <input type="text" class="form-control" id="atractivo_titulo" name="atractivo_titulo" placeholder="Nombre del titulo" value="{{ old('atractivo_titulo') }}" required>
                 </div>
                 <div class="form-group col-12">
-                    <label for="detalle">Detalle</label>
-                    <textarea class="form-control" id="detalle" name="detalle" placeholder="Nombre del detalle" cols="30" rows="10">{!! old('detalle') !!}</textarea>
+                    <label for="descripcion">Descripcion</label>
+                    <textarea class="form-control" id="atractivo_descripcion" name="atractivo_descripcion" placeholder="Nombre del descripcion" cols="30" rows="10">{!! old('atractivo_descripcion') !!}</textarea>
                 </div>
                 <div class="form-group col-12">
                     <label for="imagen">Imagen <span class="text-danger">(468x400)px</span></label>
-                    <input type="file" class="form-control" id="imagen" name="imagen" placeholder="Nombre del imagen" >
+                    <input type="file" class="form-control" id="atractivo_imagen" name="atractivo_imagen" placeholder="Nombre del imagen" >
                 </div>
             </div>
         </div>

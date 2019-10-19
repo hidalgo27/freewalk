@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Destino;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Idioma;
 use App\LugarRecojo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -32,8 +33,8 @@ class LugarRecojoController extends Controller
     public function create()
     {
         //
-
-        return view('admin.lugar_recojo.create');
+        $idiomas=Idioma::get();
+        return view('admin.lugar_recojo.create',compact('idiomas'));
     }
 
     /**
@@ -111,7 +112,8 @@ class LugarRecojoController extends Controller
 
         $oLugar_recojo=LugarRecojo::findOrFail($id);
         $oDestinos=Destino::where('idioma',$oLugar_recojo->idioma)->get();
-        return view('admin.lugar_recojo.edit',compact('oDestinos','oLugar_recojo'));
+        $idiomas=Idioma::get();
+        return view('admin.lugar_recojo.edit',compact('oDestinos','oLugar_recojo','idiomas'));
     }
 
     /**
@@ -195,5 +197,14 @@ class LugarRecojoController extends Controller
     public function get_imagen($filename){
         $file = Storage::disk('lugar_recojo')->get($filename);
         return response($file, 200);
+    }
+    public function mostrar_lugar_recojo(Request $request){
+        $idioma=$request->idioma;
+        $destino=$request->destino;
+        if($request->ajax()){
+            $lugar_recojo =LugarRecojo::where('idioma',$idioma)->where('destino_id',$destino)->get();
+            $data = view('admin.lugar_recojo.mostrar-lugar-recojo-ajax',compact('lugar_recojo'))->render();
+            return \Response::json(['options'=>$data]);
+        }
     }
 }

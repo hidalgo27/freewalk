@@ -6,6 +6,7 @@ use App\Destino;
 use App\DestinoInicio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Idioma;
 
 class DestinoController extends Controller
 {
@@ -29,8 +30,8 @@ class DestinoController extends Controller
     public function create()
     {
         //
-
-        return view('admin.destino.create');
+        $idiomas=Idioma::get();
+        return view('admin.destino.create',compact('idiomas'));
     }
 
     /**
@@ -79,7 +80,8 @@ class DestinoController extends Controller
     {
         //
         $oDestino=Destino::findOrFail($id);
-        return view('admin.destino.edit',compact('oDestino'));
+        $idiomas=Idioma::get();
+        return view('admin.destino.edit',compact('oDestino','idiomas'));
     }
 
     /**

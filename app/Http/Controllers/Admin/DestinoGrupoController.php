@@ -7,6 +7,7 @@ use App\DestinoGrupo;
 use App\DestinoGrupoImagen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Idioma;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -21,7 +22,8 @@ class DestinoGrupoController extends Controller
     {
         //
         $destinos_grupo = DestinoGrupo::get();
-        return view('admin.destino_grupo.index',compact('destinos_grupo'));
+        $idiomas=Idioma::get();
+        return view('admin.destino_grupo.index',compact('destinos_grupo','idiomas'));
     }
 
     /**
@@ -32,8 +34,8 @@ class DestinoGrupoController extends Controller
     public function create()
     {
         //
-
-        return view('admin.destino_grupo.create');
+        $idiomas=Idioma::get();
+        return view('admin.destino_grupo.create',compact('idiomas'));
     }
 
     /**
@@ -129,7 +131,8 @@ class DestinoGrupoController extends Controller
         //
         $oDestino_grupo=DestinoGrupo::findOrFail($id);
         $oDestinos=Destino::where('idioma',$oDestino_grupo->idioma)->get();
-        return view('admin.destino_grupo.edit',compact('oDestinos','oDestino_grupo'));
+        $idiomas=Idioma::get();
+        return view('admin.destino_grupo.edit',compact('oDestinos','oDestino_grupo','idiomas'));
     }
 
     /**
@@ -264,7 +267,7 @@ class DestinoGrupoController extends Controller
         $file = Storage::disk('destino_grupo')->get($filename);
         return response($file, 200);
     }
-    public function atractivos($id)
+    public function lugares_visitar($id)
     {
         //
         $oAtractivos=DestinoGrupoImagen::where('destinos_grupo_id',$id)->where('estado','1')->get();
@@ -273,7 +276,7 @@ class DestinoGrupoController extends Controller
         $oDestino_grupo_id=$id;
         return view('admin.destino_grupo.atractivos',compact('oAtractivos','oDestino_grupo_id'));
     }
-    public function atractivo_store(Request $request)
+    public function lugares_visitar_store(Request $request)
     {
         //
         $titulo=$request->input('titulo');
@@ -288,9 +291,107 @@ class DestinoGrupoController extends Controller
         $imagen->destinos_grupo_id=$id;
         $imagen->save();
         Storage::disk('destino_grupo')->put($filename,  File::get($atractivo_imagen));
-        return redirect()->route('admin.destino-grupo.atractivos.path',$id)->with(['success'=>'Datos guardados correctamente.']);
+        return redirect()->route('admin.destino-grupo.lugares-visitar.path',$id)->with(['success'=>'Datos guardados correctamente.']);
     }
-    public function atractivo_destroy($id)
+    public function lugares_visitar_destroy($id)
+    {
+        //
+        $oDestinoGrupoImagen=DestinoGrupoImagen::findOrFail($id);
+        $rpt=$oDestinoGrupoImagen->delete();
+        if($rpt==1){
+            return response()->json([
+                'codigo' => '1',
+                'mensaje' => 'Datos borrados correctamente.'
+            ]);
+        }else{
+            return response()->json([
+                'codigo' => '0',
+                'mensaje' => 'Error al borrar los datos.'
+            ]);
+        }
+    }
+    public function atractivos_index($id)
+    {
+        //
+        $destino_grupo=DestinoGrupo::findOrFail($id);
+        $destinos_grupo_imagen =DestinoGrupoImagen::where('destinos_grupo_id',$id)->where('estado',3)->get();
+        $idiomas=Idioma::get();
+        return view('admin.destino_grupo.atractivos-index',compact('destinos_grupo_imagen','idiomas','destino_grupo'));
+    }
+    public function atractivos_create($id)
+    {
+        //
+        $destino_grupo=DestinoGrupo::findOrFail($id);
+        $idiomas=Idioma::get();
+        return view('admin.destino_grupo.atractivos-create',compact('idiomas','destino_grupo'));
+    }
+
+    public function atractivos_store(Request $request, $id)
+    {
+        $atractivo_titulo=$request->input('atractivo_titulo');
+        $atractivo_descripcion=$request->input('atractivo_descripcion');
+        $atractivo_imagen=$request->file('atractivo_imagen');
+
+        if(strlen(trim($atractivo_titulo))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un titulo.']);
+        if(strlen(trim($atractivo_descripcion))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
+            $destino_grupo_imagen=new DestinoGrupoImagen();
+            $destino_grupo_imagen->titulo=$atractivo_titulo;
+            $destino_grupo_imagen->descripcion=$atractivo_descripcion;
+            $destino_grupo_imagen->imagen='';
+            $destino_grupo_imagen->destinos_grupo_id=$id;
+            $destino_grupo_imagen->estado=3;
+            $destino_grupo_imagen->save();
+
+            if(!empty($atractivo_imagen)){
+                    $filename ='imagen-atra-'.$destino_grupo_imagen->id.'.'.$atractivo_imagen->getClientOriginalExtension();
+                    $destino_grupo_imagen->imagen=$filename;
+                    $destino_grupo_imagen->save();
+                    Storage::disk('destino_grupo')->put($filename,  File::get($atractivo_imagen));
+            }
+            return redirect()->back()->with(['success'=>'Datos guardados correctamente.']);
+    }
+    public function atractivos_edit($destino_grupo_id,$id)
+    {
+        //
+        $destino_grupo=DestinoGrupo::findOrFail($destino_grupo_id);
+        $destino_grupo_imagen=DestinoGrupoImagen::findOrFail($id);
+        return view('admin.destino_grupo.atractivos-edit',compact('destino_grupo','destino_grupo_imagen'));
+    }
+    public function atractivos_update(Request $request, $destino_grupo_id, $id)
+    {
+        $atractivo_titulo=$request->input('atractivo_titulo');
+        $atractivo_descripcion=$request->input('atractivo_descripcion');
+        $atractivo_imagen=$request->file('atractivo_imagen');
+        $atractivo_imagen_=$request->input('atractivo_imagen_');
+
+        if(strlen(trim($atractivo_titulo))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un titulo.']);
+        if(strlen(trim($atractivo_descripcion))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
+
+        $destino_grupo_imagen= DestinoGrupoImagen::findOrFail($id);
+        $destino_grupo_imagen->titulo=$atractivo_titulo;
+        $destino_grupo_imagen->descripcion=$atractivo_descripcion;
+        $destino_grupo_imagen->save();
+
+        // borramos de la db la foto de portada que han sido eliminadas por el usuario
+        if(!isset($atractivo_imagen_)){
+            $destino_grupo_imagen->imagen='';
+            $destino_grupo_imagen->save();
+        }
+        if(!empty($atractivo_imagen)){
+            $filename ='imagen-atra-'.$destino_grupo_imagen->id.'.'.$atractivo_imagen->getClientOriginalExtension();
+            $destino_grupo_imagen->imagen=$filename;
+            $destino_grupo_imagen->save();
+            Storage::disk('destino_grupo')->put($filename,  File::get($atractivo_imagen));
+        }
+
+            return redirect()->route('admin.destino-grupo.atractivos.index.path',$destino_grupo_id)->with(['success'=>'Datos editados correctamente.']);
+    }
+
+    public function atractivos_destroy($destino_grupo_id,$id)
     {
         //
         $oDestinoGrupoImagen=DestinoGrupoImagen::findOrFail($id);

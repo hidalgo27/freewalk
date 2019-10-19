@@ -35,8 +35,9 @@ $(document).ready(function () {
                 <div class="form-group col-6">
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma">
-                        <option value="es" @if (old('idioma')=='es') selected @endif>Español</option>
-                        <option value="en" @if (old('idioma')=='en') selected @endif>Ingles</option>
+                        @foreach ($idiomas as $item)
+                            <option value="{{ $item->codigo }}" @if (old('idioma')==$item->codigo) selected @endif>{{ $item->nombre }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-6">

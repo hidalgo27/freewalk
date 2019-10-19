@@ -11,15 +11,23 @@ $(document).ready(function () {
 @endsection
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('admin.home.path')}}">Inicio</a></li>
-<li class="breadcrumb-item active" aria-current="page">Destinos Grupo</li>
+<li class="breadcrumb-item"><a href="{{ route('admin.destino-grupo.index.path') }}">Destinos Grupo</a></li>
+<li class="breadcrumb-item active" aria-current="page">Lista de atractivos</li>
 @endsection
 @section('content')
     <div class="card">
         <div class="card-header">
+            <h4 class="text-primary"><b class="text-dark">Titulo:</b> {{ $destino_grupo->titulo }} <b class="text-dark">| Idioma:</b>{{ $destino_grupo->idioma }} <b class="text-dark">| Destino:</b>{{ $destino_grupo->destino->nombre }}</h4>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
             <div class="row">
-                <div class="col-8"><h4 class="text-uppercase">lista de destinos por grupo</h4></div>
+                <div class="col-8">
+                    <h4 class="text-uppercase">lista de atractivos por destino grupo</h4>
+                </div>
                 <div class="col-4 text-right">
-                    <a href="{{route('admin.destino-grupo.create.path')}}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</a>
+                    <a href="{{route('admin.destino-grupo.atractivos.create.path',$destino_grupo->id)}}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar</a>
                 </div>
             </div>
         </div>
@@ -29,8 +37,6 @@ $(document).ready(function () {
                     <tr>
                         <th>#</th>
                         <th>Titulo</th>
-                        <th>Idioma</th>
-                        {{-- <th>Estado</th> --}}
                         <th>Operaciones</th>
                     </tr>
                 </thead>
@@ -38,27 +44,17 @@ $(document).ready(function () {
                     @php
                         $i=0;
                     @endphp
-                    @foreach ($destinos_grupo->sortBy('titulo')->sortBy('idioma') as $item)
+                    @foreach ($destinos_grupo_imagen->sortBy('titulo') as $item)
                     @php
                         $i++;
                     @endphp
                     <tr id="lista_{{ $item->id }}">
                         <td>{{ $i }}</td>
                         <td>{{ $item->titulo }}</td>
-                        <td>{{ $item->idioma }}</td>
-                        {{-- <td>
-                            @if ($item->estado==0)
-                                <button class="btn btn-dark"><i class="fas fa-times-circle"></i></button>
-                            @else
-                                <button class="btn btn-success"><i class="fas fa-check-circle"></i></button>
-                            @endif
-                        <td> --}}
                         <td>
                             <div class="btn btn-group">
-                                <a class="btn btn-primary" href="{{ route('admin.destino-grupo.lugares-visitar.path',$item->id) }}"><i class="fas fa-plus"></i> Lugares a visitar</a>
-                                <a class="btn btn-info" href="{{ route('admin.destino-grupo.atractivos.index.path',$item->id) }}"><i class="fas fa-plus"></i> Atractivos</a>
-                                <a class="btn btn-warning" href="{{ route('admin.destino-grupo.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a>
-                                <form id="form_borrar_{{ $item->id }}" action="{{ route('admin.destino-grupo.destroy.path',$item->id) }}" method="get">
+                                <a class="btn btn-warning" href="{{ route('admin.destino-grupo.atractivos.edit.path',[$destino_grupo->id,$item->id]) }}"><i class="fas fa-edit"></i></a>
+                                <form id="form_borrar_{{ $item->id }}" action="{{ route('admin.destino-grupo.atractivos.destroy.path',[$destino_grupo->id,$item->id]) }}" method="get">
                                     @csrf
                                     <button class="btn btn-danger" type="button" onclick="borrarDestino_inicio('{{ $item->id }}','{{ $item->titulo }}')">
                                         <i class="fas fa-trash-alt"></i>

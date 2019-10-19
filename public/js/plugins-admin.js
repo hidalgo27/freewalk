@@ -121,6 +121,37 @@ function borrarDestino_inicio(destino_id,destino){
       })
 }
 
+function mostrar_destinos_lugar_recojo(idioma,destino,origen){
+    // alert('hola:'+departamento_id);
+    console.log('idioma:'+idioma);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        if(origen=='nuevo'){
+            $.ajax({
+                type:'POST',
+                url:'../destinos-inicio/mostrar-lugar-recojo',
+                data:{idioma:idioma,destino:destino},
+                success:function(data){
+                    $("select[name='lugar_recojo'").html('');
+                    $("select[name='lugar_recojo'").html(data.options);
+                }
+            });
+        }
+        else if(origen=='editar'){
+            $.ajax({
+                type:'POST',
+                url:'../../destinos-inicio/mostrar-lugar-recojo',
+                data:{idioma:idioma,destino:destino},
+                success:function(data){
+                    $("select[name='lugar_recojo'").html('');
+                    $("select[name='lugar_recojo'").html(data.options);
+                }
+            });
+        }
+}
 
 /*
  * Toastr

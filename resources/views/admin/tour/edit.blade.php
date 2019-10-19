@@ -24,22 +24,36 @@ $(document).ready(function () {
         </div>
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-3">
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma" onchange="mostrar_destinos($(this).val(),'editar')">
                         <option value="0">Escoja una opcion</option>
-                        <option value="es" @if ($oTour->idioma=='es') selected @endif>Español</option>
-                        <option value="en" @if ($oTour->idioma=='en') selected @endif>Ingles</option>
+                        @foreach ($idiomas as $item)
+                            <option value="{{ $item->codigo }}" @if ($oTour->idioma==$item->codigo) selected @endif>{{ $item->nombre }}</option>
+                        @endforeach
                     </select>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-3">
                     <label for="destino">Destino</label>
-                    <select  class="form-control" id="destino" name="destino">
+                    <select  class="form-control" id="destino" name="destino" onchange="mostrar_destinos_lugar_recojo($('#idioma').val(),$(this).val(),'editar')">
                         <option value="0">Escoja una opcion</option>
                         @foreach ($oDestinos->sortBy('nombre') as $destino)
                             <option value="{{ $destino->id }}" @if ($oTour->destino_id==$destino->id) selected @endif>{{ $destino->nombre }}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group col-6">
+                    <label for="lugar_recojo">Lugar de recojo</label>
+                    <select  class="form-control" id="lugar_recojo" name="lugar_recojo">
+                        <option value="0">Escoja una opcion</option>
+                        @foreach ($oLugaresRecojo->sortBy('titulo') as $lugar_recojo)
+                            <option value="{{ $lugar_recojo->id }}" @if ($oTour->lugar_recojo_id==$lugar_recojo->id) selected @endif>{{ $lugar_recojo->titulo }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label for="url">Url</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Nombre del url" value="{{ $oTour->url }}" required>
                 </div>
                 <div class="form-group col-12">
                     <label for="titulo">Titulo</label>

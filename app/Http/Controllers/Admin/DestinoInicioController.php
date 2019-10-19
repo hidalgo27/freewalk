@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Idioma;
 
 class DestinoInicioController extends Controller
 {
@@ -32,7 +33,8 @@ class DestinoInicioController extends Controller
     public function create()
     {
         //
-        return view('admin.destino_inicio.create');
+        $idiomas=Idioma::get();
+        return view('admin.destino_inicio.create',compact('idiomas'));
     }
 
     /**
@@ -96,7 +98,8 @@ class DestinoInicioController extends Controller
 
         $oDestino_inicio=DestinoInicio::findOrFail($id);
         $oDestinos=Destino::where('idioma',$oDestino_inicio->idioma)->get();
-        return view('admin.destino_inicio.edit',compact('oDestinos','oDestino_inicio'));
+        $idiomas=Idioma::get();
+        return view('admin.destino_inicio.edit',compact('oDestinos','oDestino_inicio','idiomas'));
     }
 
     /**

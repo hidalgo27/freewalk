@@ -31,19 +31,31 @@ $(document).ready(function () {
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-3">
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma" onchange="mostrar_destinos($(this).val(),'nuevo')">
                         <option value="0">Escoja una opcion</option>
-                        <option value="es">Español</option>
-                        <option value="en">Ingles</option>
+                        @foreach ($idiomas as $item)
+                            <option value="{{ $item->codigo }}" @if (old('idioma')==$item->codigo) selected @endif>{{ $item->nombre }}</option>
+                        @endforeach
                     </select>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-3">
                     <label for="destino">Destino</label>
-                    <select  class="form-control" id="destino" name="destino" >
+                    <select  class="form-control" id="destino" name="destino" onchange="mostrar_destinos_lugar_recojo($('#idioma').val(),$(this).val(),'nuevo')">
                         <option value="0">Escoja una opcion</option>
                     </select>
+                </div>
+
+                <div class="form-group col-6">
+                    <label for="lugar_recojo">Lugar de recojo</label>
+                    <select  class="form-control" id="lugar_recojo" name="lugar_recojo" >
+                        <option value="0">Escoja una opcion</option>
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label for="url">Url</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Nombre del url" value="{{ old('url') }}" required>
                 </div>
                 <div class="form-group col-12">
                     <label for="titulo">Titulo</label>

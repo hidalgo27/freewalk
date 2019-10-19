@@ -17,7 +17,7 @@
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
         "lodash": "^4.17.13",
-        "popper.js": "^1.12",
+        "popper.js": "^1.16.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
@@ -25,12 +25,12 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "sweetalert2": "^8.18.3",
-        "toastr": "^2.1.4",
         "feather-icons": "^4.24.1",
         "jquery-ui": "^1.12.1",
         "owl-carousel": "^1.0.0",
         "owl.carousel": "^2.3.4",
+        "sweetalert2": "^8.18.5",
+        "toastr": "^2.1.4",
         "venobox": "^1.8.6"
     }
 }

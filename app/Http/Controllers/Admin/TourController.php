@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Destino;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Idioma;
+use App\LugarRecojo;
 use App\Tour;
 use App\TourImagen;
 use Illuminate\Support\Facades\Storage;
@@ -32,8 +34,8 @@ class TourController extends Controller
     public function create()
     {
         //
-
-        return view('admin.tour.create');
+        $idiomas=Idioma::get();
+        return view('admin.tour.create',compact('idiomas'));
     }
 
     /**
@@ -46,7 +48,9 @@ class TourController extends Controller
     {
         //
         $destino_id=$request->input('destino');
+        $lugar_recojo_id=$request->input('lugar_recojo');
         $idioma=$request->input('idioma');
+        $url=$request->input('url');
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
         $itinerario=$request->input('itinerario');
@@ -58,6 +62,9 @@ class TourController extends Controller
         if($destino_id=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
 
+        if($lugar_recojo_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un lugar de recojo.']);
+
         if(strlen(trim($descripcion))=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
 
@@ -65,10 +72,12 @@ class TourController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un itinerario.']);
 
         $tour=new Tour();
+        $tour->url=$url;
         $tour->titulo=$titulo;
         $tour->descripcion=$descripcion;
         $tour->itinerario=$itinerario;
         $tour->destino_id=$destino_id;
+        $tour->lugar_recojo_id=$lugar_recojo_id;
         $tour->idioma=$idioma;
         $tour->estado=1;
         $tour->save();
@@ -111,7 +120,9 @@ class TourController extends Controller
         //
         $oTour=Tour::findOrFail($id);
         $oDestinos=Destino::where('idioma',$oTour->idioma)->get();
-        return view('admin.tour.edit',compact('oDestinos','oTour'));
+        $idiomas=Idioma::get();
+        $oLugaresRecojo=LugarRecojo::where('idioma',$oTour->idioma)->get();
+        return view('admin.tour.edit',compact('oDestinos','oTour','idiomas','oLugaresRecojo'));
     }
 
     /**
@@ -125,7 +136,9 @@ class TourController extends Controller
     {
         //
         $destino_id=$request->input('destino');
+        $lugar_recojo_id=$request->input('lugar_recojo');
         $idioma=$request->input('idioma');
+        $url=$request->input('url');
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
         $itinerario=$request->input('itinerario');
@@ -138,6 +151,9 @@ class TourController extends Controller
         if($destino_id=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
 
+        if($lugar_recojo_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un lugar de recojo.']);
+
         if(strlen(trim($descripcion))=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
 
@@ -145,11 +161,13 @@ class TourController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un itinerario.']);
 
         $tour=Tour::findOrFail($id);
+        $tour->url=$url;
         $tour->titulo=$titulo;
         $tour->descripcion=$descripcion;
         $tour->itinerario=$itinerario;
         $tour->idioma=$idioma;
         $tour->destino_id=$destino_id;
+        $tour->lugar_recojo_id=$lugar_recojo_id;
         $tour->estado=1;
         $tour->save();
         // borramos de la db las imagenes banner que han sido eliminadas por el usuario
