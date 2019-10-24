@@ -12,4 +12,8 @@ class DestinoInicio extends Model
     {
         return $this->belongsTo(Destino::class, 'destino_id');
     }
+    public function traducciones()
+    {
+        return $this->hasMany(DestinoInicioIdioma::class, 'destino_inicio_padre_id');
+    }
 }

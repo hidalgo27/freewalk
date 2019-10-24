@@ -18,7 +18,7 @@ class CreateDestinosGrupoPreguntasTable extends Migration
             $table->string('pregunta');
             $table->string('respuesta');
             $table->integer('estado');
-            $table->string('idioma')->comment('Idioma del contenido');
+            // $table->string('idioma')->comment('Idioma del contenido');
             $table->integer('destinos_grupo_id')->comment('id del destino al que pertenece');
             $table->timestamps();
         });

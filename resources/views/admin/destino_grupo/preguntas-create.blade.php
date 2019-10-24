@@ -13,36 +13,35 @@ $(document).ready(function () {
 <li class="breadcrumb-item"><a href="{{ route('admin.home.path')}}">Inicio</a></li>
 <li class="breadcrumb-item"><a href="{{ route('admin.destino-grupo.index.path') }}">Destinos grupo</a></li>
 <li class="breadcrumb-item"><a href="{{ route('admin.destino-grupo.preguntas.index.path',$destino_grupo->id) }}">Lista de preguntas</a></li>
-<li class="breadcrumb-item active" aria-current="page">Edit</li>
+<li class="breadcrumb-item active" aria-current="page">Nuevo</li>
 @endsection
 @section('content')
-<form action="{{ route('admin.destino-grupo.preguntas.update.path',[$destino_grupo->id,$destino_grupo_pregunta->id]) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.destino-grupo.preguntas.store.path',$destino_grupo->id) }}" method="post" enctype="multipart/form-data">
     <div class="card">
         <div class="card-header">
-            <h4 class="text-primary"><b class="text-dark">Titulo:</b> {{ $destino_grupo->titulo }} <b class="text-dark">| Idioma:</b>{{ $destino_grupo->idioma }} <b class="text-dark">| Destino:</b>{{ $destino_grupo->destino->nombre }}</h4>
+            <h4 class="text-primary"><b class="text-dark">pregunta:</b> {{ $destino_grupo->titulo }} <b class="text-dark">| Idioma:</b>{{ $destino_grupo->idioma }} <b class="text-dark">| Destino:</b>{{ $destino_grupo->destino->nombre }}</h4>
         </div>
     </div>
     <div class="card">
         <div class="card-header">
             <h4 class="text-uppercase">
-                Editar preguntas
+                Nuevo atractivo
             </h4>
         </div>
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="pregunta">Pregunta</label>
-                    <input type="text" class="form-control" id="pregunta" name="pregunta" placeholder="Ingrese la pregunta" value="{{ $destino_grupo_pregunta->pregunta }}" required>
+                    <input type="text" class="form-control" id="pregunta" name="pregunta" placeholder="Nombre del pregunta" value="{{ old('pregunta') }}" required>
                 </div>
                 <div class="form-group col-12">
                     <label for="respuesta">Respuesta</label>
-                    <textarea class="form-control" id="respuesta" name="respuesta" placeholder="Ingrese la respuesta" cols="30" rows="10">{!! $destino_grupo_pregunta->respuesta !!}</textarea>
+                    <textarea class="form-control" id="respuesta" name="respuesta" placeholder="Nombre del repuesta" cols="30" rows="10">{!! old('respuesta') !!}</textarea>
                 </div>
             </div>
         </div>
         <div class="card-footer text-right">
             @csrf
-            @method('patch')
             <button type="submit" class="btn btn-primary text-center">Guardar</button>
         </div>
     </div>

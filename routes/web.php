@@ -28,6 +28,14 @@ Route::get('/admin/destinos/{id}/edit',['uses'=>'Admin\DestinoController@edit','
 Route::patch('/admin/destinos/{id}/update',['uses'=>'Admin\DestinoController@update','as'=>'admin.destino.update.path']);
 Route::get('/admin/destinos/{id}/destroy',['uses'=>'Admin\DestinoController@destroy','as'=>'admin.destino.destroy.path']);
 
+// idiomas
+Route::get('/admin/idioma/index',['uses'=>'Admin\IdiomaController@index','as'=>'admin.idioma.index.path']);
+Route::get('/admin/idioma/create',['uses'=>'Admin\IdiomaController@create','as'=>'admin.idioma.create.path']);
+Route::post('/admin/idioma/store',['uses'=>'Admin\IdiomaController@store','as'=>'admin.idioma.store.path']);
+Route::get('/admin/idioma/{id}/edit',['uses'=>'Admin\IdiomaController@edit','as'=>'admin.idioma.edit.path']);
+Route::patch('/admin/idioma/{id}/update',['uses'=>'Admin\IdiomaController@update','as'=>'admin.idioma.update.path']);
+Route::get('/admin/idioma/{id}/destroy',['uses'=>'Admin\IdiomaController@destroy','as'=>'admin.idioma.destroy.path']);
+
 // destinos inicio
 Route::get('/admin/destinos-inicio/index',['uses'=>'Admin\DestinoInicioController@index','as'=>'admin.destino-inicio.index.path']);
 Route::get('/admin/destinos-inicio/create',['uses'=>'Admin\DestinoInicioController@create','as'=>'admin.destino-inicio.create.path']);
@@ -37,6 +45,11 @@ Route::patch('/admin/destinos-inicio/{id}/update',['uses'=>'Admin\DestinoInicioC
 Route::get('/admin/destinos-inicio/{id}/destroy',['uses'=>'Admin\DestinoInicioController@destroy','as'=>'admin.destino-inicio.destroy.path']);
 Route::post('/admin/destinos-inicio/mostrar-destinos',['uses'=>'Admin\DestinoController@mostrar_destinos','as'=>'admin.destino.mostrar_destinos.path']);
 Route::get('/admin/destinos-inicio/imagen/{filename}', ['uses' => 'Admin\DestinoInicioController@get_imagen','as' => 'admin.destino_inicio.get_imagen.path']);
+
+Route::get('/admin/destinos-inicio/{id}/{idioma}/{arreglo}/create',['uses'=>'Admin\DestinoInicioController@index_idioma_create','as'=>'admin.destinos-inicio.index.idioma.create.path']);
+Route::post('/admin/destinos-inicio/{id}/{idioma}/{arreglo}/store',['uses'=>'Admin\DestinoInicioController@index_idioma_store','as'=>'admin.destinos-inicio.index.idioma.store.path']);
+Route::get('/admin/destinos-inicio/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\DestinoInicioController@index_idioma_edit','as'=>'admin.destinos-inicio.index.idioma.edit.path']);
+Route::patch('/admin/destinos-inicio/{id}/{idioma}/{arreglo}/update',['uses'=>'Admin\DestinoInicioController@index_idioma_update','as'=>'admin.destinos-inicio.index.idioma.update.path']);
 
 // destinos grupo
 Route::get('/admin/destinos-grupo/index',['uses'=>'Admin\DestinoGrupoController@index','as'=>'admin.destino-grupo.index.path']);
@@ -58,6 +71,16 @@ Route::get('/admin/destinos-grupo/{destino_grupo_id}/atractivos/{id}/edit',['use
 Route::patch('/admin/destinos-grupo/{destino_grupo_id}/atractivos/{id}/update',['uses'=>'Admin\DestinoGrupoController@atractivos_update','as'=>'admin.destino-grupo.atractivos.update.path']);
 Route::get('/admin/destinos-grupo/{id}/atractivos/imagen/{filename}', ['uses' => 'Admin\DestinoGrupoController@atractivos_get_imagen','as' => 'admin.destino_grupo.atractivos.get_imagen.path']);
 Route::get('/admin/destinos-grupo/{destino_grupo_id}/atractivos/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@atractivos_destroy','as'=>'admin.destino-grupo.atractivos.destroy.path']);
+
+// preguntas
+Route::get('/admin/destinos-grupo/{id}/preguntas/index',['uses'=>'Admin\DestinoGrupoController@preguntas_index','as'=>'admin.destino-grupo.preguntas.index.path']);
+Route::get('/admin/destinos-grupo/{id}/preguntas/create',['uses'=>'Admin\DestinoGrupoController@preguntas_create','as'=>'admin.destino-grupo.preguntas.create.path']);
+Route::post('/admin/destinos-grupo/{id}/preguntas/store',['uses'=>'Admin\DestinoGrupoController@preguntas_store','as'=>'admin.destino-grupo.preguntas.store.path']);
+Route::get('/admin/destinos-grupo/{destino_grupo_id}/preguntas/{id}/edit',['uses'=>'Admin\DestinoGrupoController@preguntas_edit','as'=>'admin.destino-grupo.preguntas.edit.path']);
+Route::patch('/admin/destinos-grupo/{destino_grupo_id}/preguntas/{id}/update',['uses'=>'Admin\DestinoGrupoController@preguntas_update','as'=>'admin.destino-grupo.preguntas.update.path']);
+Route::get('/admin/destinos-grupo/{id}/preguntas/imagen/{filename}', ['uses' => 'Admin\DestinoGrupoController@preguntas_get_imagen','as' => 'admin.destino_grupo.preguntas.get_imagen.path']);
+Route::get('/admin/destinos-grupo/{destino_grupo_id}/preguntas/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@preguntas_destroy','as'=>'admin.destino-grupo.preguntas.destroy.path']);
+
 // destinos tours
 Route::get('/admin/tour/index',['uses'=>'Admin\TourController@index','as'=>'admin.tour.index.path']);
 Route::get('/admin/tour/create',['uses'=>'Admin\TourController@create','as'=>'admin.tour.create.path']);
@@ -71,6 +94,10 @@ Route::get('/admin/tour/imagen/{filename}', ['uses' => 'Admin\TourController@get
 Route::post('/admin/tour/galeria/store',['uses'=>'Admin\TourController@galeria_store','as'=>'admin.tour.galeria.store.path']);
 Route::get('/admin/tour/galeria/{id}/destroy',['uses'=>'Admin\TourController@galeria_destroy','as'=>'admin.tour.galeria.destroy.path']);
 Route::post('/admin/destinos-inicio/mostrar-lugar-recojo',['uses'=>'Admin\LugarRecojoController@mostrar_lugar_recojo','as'=>'admin.destino.mostrar_lugar_recojo.path']);
+Route::get('/admin/tour/{id}/{idioma}/{arreglo}/create',['uses'=>'Admin\TourController@index_idioma_create','as'=>'admin.tour.index.idioma.create.path']);
+Route::post('/admin/tour/{id}/{idioma}/{arreglo}/store',['uses'=>'Admin\TourController@index_idioma_store','as'=>'admin.tour.index.idioma.store.path']);
+Route::get('/admin/tour/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\TourController@index_idioma_edit','as'=>'admin.tour.index.idioma.edit.path']);
+Route::patch('/admin/tour/{id}/{idioma}/{arreglo}/update',['uses'=>'Admin\TourController@index_idioma_update','as'=>'admin.tour.index.idioma.update.path']);
 
 // destinos lugar recojo
 Route::get('/admin/lugar-recojo/index',['uses'=>'Admin\LugarRecojoController@index','as'=>'admin.lugar_recojo.index.path']);

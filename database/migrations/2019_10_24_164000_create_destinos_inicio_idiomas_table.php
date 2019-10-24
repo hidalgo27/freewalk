@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIdiomasTable extends Migration
+class CreateDestinosInicioIdiomasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateIdiomasTable extends Migration
      */
     public function up()
     {
-        Schema::create('idiomas', function (Blueprint $table) {
+        Schema::create('destinos_inicio_idiomas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('codigo');
-            $table->string('nombre');
-            $table->integer('estado')->comment('0:por defecto, 1:es el idioma por le cual se creara el primer toury luego se crearan con los demas');
+            $table->integer('destino_inicio_padre_id');
+            $table->integer('destino_inicio_relacion_id');
+            $table->string('idioma');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateIdiomasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('idiomas');
+        Schema::dropIfExists('destinos_inicio_idiomas');
     }
 }

@@ -89,6 +89,9 @@
                             <a href="#base_datos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Base de datos</a>
                             <ul class="collapse list-unstyled show" id="base_datos">
                                 <li class="active">
+                                    <a href="{{route('admin.idioma.index.path')}}">Idiomas</a>
+                                </li>
+                                <li class="active">
                                     <a href="{{route('admin.destino.index.path')}}">Destinos</a>
                                 </li>
                             </ul>

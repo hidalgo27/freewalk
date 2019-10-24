@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Destino;
 use App\DestinoGrupo;
 use App\DestinoGrupoImagen;
+use App\DestinoGrupoPregunta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Idioma;
@@ -325,7 +326,6 @@ class DestinoGrupoController extends Controller
         $idiomas=Idioma::get();
         return view('admin.destino_grupo.atractivos-create',compact('idiomas','destino_grupo'));
     }
-
     public function atractivos_store(Request $request, $id)
     {
         $atractivo_titulo=$request->input('atractivo_titulo');
@@ -390,12 +390,86 @@ class DestinoGrupoController extends Controller
 
             return redirect()->route('admin.destino-grupo.atractivos.index.path',$destino_grupo_id)->with(['success'=>'Datos editados correctamente.']);
     }
-
     public function atractivos_destroy($destino_grupo_id,$id)
     {
         //
         $oDestinoGrupoImagen=DestinoGrupoImagen::findOrFail($id);
         $rpt=$oDestinoGrupoImagen->delete();
+        if($rpt==1){
+            return response()->json([
+                'codigo' => '1',
+                'mensaje' => 'Datos borrados correctamente.'
+            ]);
+        }else{
+            return response()->json([
+                'codigo' => '0',
+                'mensaje' => 'Error al borrar los datos.'
+            ]);
+        }
+    }
+
+    // preguntas
+    public function preguntas_index($id)
+    {
+        //
+        $destino_grupo=DestinoGrupo::findOrFail($id);
+        $destinos_grupo_pregunta =DestinoGrupoPregunta::where('destinos_grupo_id',$id)->get();
+        $idiomas=Idioma::get();
+        return view('admin.destino_grupo.preguntas-index',compact('destinos_grupo_pregunta','idiomas','destino_grupo'));
+    }
+    public function preguntas_create($id)
+    {
+        //
+        $destino_grupo=DestinoGrupo::findOrFail($id);
+        $idiomas=Idioma::get();
+        return view('admin.destino_grupo.preguntas-create',compact('idiomas','destino_grupo'));
+    }
+
+    public function preguntas_store(Request $request, $id)
+    {
+        $atractivo_pregunta=$request->input('pregunta');
+        $atractivo_respuesta=$request->input('respuesta');
+
+        if(strlen(trim($atractivo_pregunta))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una pregunta.']);
+        if(strlen(trim($atractivo_respuesta))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una respuesta.']);
+            $destino_grupo_imagen=new DestinoGrupoPregunta();
+            $destino_grupo_imagen->pregunta=$atractivo_pregunta;
+            $destino_grupo_imagen->respuesta=$atractivo_respuesta;
+            $destino_grupo_imagen->destinos_grupo_id=$id;
+            $destino_grupo_imagen->estado=1;
+            $destino_grupo_imagen->save();
+            return redirect()->back()->with(['success'=>'Datos guardados correctamente.']);
+    }
+    public function preguntas_edit($destino_grupo_id,$id)
+    {
+        //
+        $destino_grupo=DestinoGrupo::findOrFail($destino_grupo_id);
+        $destino_grupo_pregunta=DestinoGrupoPregunta::findOrFail($id);
+        return view('admin.destino_grupo.atractivos-edit',compact('destino_grupo','destino_grupo_pregunta'));
+    }
+    public function preguntas_update(Request $request, $destino_grupo_id, $id)
+    {
+        $atractivo_pregunta=$request->input('pregunta');
+        $atractivo_respuesta=$request->input('respuesta');
+        if(strlen(trim($atractivo_pregunta))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una respuesta.']);
+        if(strlen(trim($atractivo_respuesta))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una respuesta.']);
+
+        $destino_grupo_pregunta= DestinoGrupoPregunta::findOrFail($id);
+        $destino_grupo_pregunta->pregunta=$atractivo_pregunta;
+        $destino_grupo_pregunta->respuesta=$atractivo_respuesta;
+        $destino_grupo_pregunta->save();
+        return redirect()->route('admin.destino-grupo.preguntas.index.path',$destino_grupo_id)->with(['success'=>'Datos editados correctamente.']);
+    }
+
+    public function preguntas_destroy($destino_grupo_id,$id)
+    {
+        //
+        $oDestinoGrupoPregunta=DestinoGrupoPregunta::findOrFail($id);
+        $rpt=$oDestinoGrupoPregunta->delete();
         if($rpt==1){
             return response()->json([
                 'codigo' => '1',

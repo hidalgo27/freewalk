@@ -9,6 +9,7 @@ use App\Idioma;
 use App\LugarRecojo;
 use App\Tour;
 use App\TourImagen;
+use App\TourRelacionado;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -22,10 +23,11 @@ class TourController extends Controller
     public function index()
     {
         //
-        $tours = Tour::get();
-        return view('admin.tour.index',compact('tours'));
+        $idiomas=Idioma::all();
+        $idioma_principal=Idioma::where('estado','1')->first();
+        $tours = Tour::where('idioma',$idioma_principal->codigo)->get();
+        return view('admin.tour.index',compact('tours','idiomas'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -34,7 +36,7 @@ class TourController extends Controller
     public function create()
     {
         //
-        $idiomas=Idioma::get();
+        $idiomas=Idioma::where('estado','1')->get();
         return view('admin.tour.create',compact('idiomas'));
     }
 
@@ -82,6 +84,12 @@ class TourController extends Controller
         $tour->estado=1;
         $tour->save();
 
+        $tour_relacion=new TourRelacionado();
+        $tour_relacion->tours_padre_id=$tour->id;
+        $tour_relacion->tours_relacion_id=$tour->id;
+        $tour_relacion->idioma=$idioma;
+        $tour_relacion->save();
+
         if(!empty($banner_imagen)){
             foreach($banner_imagen as $banner_imagen_){
                 $filename ='foto-b-'.$tour->id.'.'.$banner_imagen_->getClientOriginalExtension();
@@ -120,7 +128,7 @@ class TourController extends Controller
         //
         $oTour=Tour::findOrFail($id);
         $oDestinos=Destino::where('idioma',$oTour->idioma)->get();
-        $idiomas=Idioma::get();
+        $idiomas=Idioma::where('estado','1')->get();
         $oLugaresRecojo=LugarRecojo::where('idioma',$oTour->idioma)->get();
         return view('admin.tour.edit',compact('oDestinos','oTour','idiomas','oLugaresRecojo'));
     }
@@ -209,6 +217,13 @@ class TourController extends Controller
     public function destroy($id)
     {
         //
+        $tours_relacionados=TourRelacionado::where('tours_padre_id',$id)->where('tours_relacion_id','!=',$id)->get();
+        foreach($tours_relacionados as $tours_relacionado){
+            $oTourTemp=Tour::findOrFail($tours_relacionado->tours_relacion_id);
+            $oTourTemp->delete();
+            TourImagen::where('tours_id',$tours_relacionado->tours_relacion_id)->delete();
+        }
+        TourRelacionado::where('tours_padre_id',$id)->delete();
         $oTour=Tour::findOrFail($id);
         $rpt=$oTour->delete();
         if($rpt==1){
@@ -269,5 +284,174 @@ class TourController extends Controller
                 'mensaje' => 'Error al borrar los datos.'
             ]);
         }
+    }
+
+    public function index_idioma_create($id,$idioma,$arreglo)
+    {
+        // //
+        // $idiomas=Idioma::all();
+        // $idioma_principal=Idioma::where('estado','1')->first();
+        $tour = Tour::findOrFail($id);
+        // return view('admin.tour.index',compact('tours','idiomas'));
+
+
+        $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
+        $destino=Destino::findOrFail($tour->destino_id);
+        $lugar_recojo=LugarRecojo::findOrFail($tour->lugar_recojo_id);
+        $idioma_=Idioma::where('codigo',$idioma)->get()->first();
+        // dd($idioma_);
+        return view('admin.tour.create-idioma',compact('idiomas','idioma','idioma_','destino','lugar_recojo','arreglo','tour'));
+    }
+    public function index_idioma_store(Request $request,$id,$idioma,$arreglo)
+    {
+        $destino_id=$request->input('destino');
+        $lugar_recojo_id=$request->input('lugar_recojo');
+        $idioma=$request->input('idioma');
+
+        $url=$request->input('url');
+        $titulo=$request->input('titulo');
+        $descripcion=$request->input('descripcion');
+        $itinerario=$request->input('itinerario');
+        $banner_imagen=$request->file('banner_imagen');
+
+        if($idioma=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
+
+        if($destino_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
+
+        if($lugar_recojo_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un lugar de recojo.']);
+
+        if(strlen(trim($descripcion))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
+
+        if(strlen(trim($itinerario))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un itinerario.']);
+
+        $tour=new Tour();
+        $tour->url=$url;
+        $tour->titulo=$titulo;
+        $tour->descripcion=$descripcion;
+        $tour->itinerario=$itinerario;
+        $tour->destino_id=$destino_id;
+        $tour->lugar_recojo_id=$lugar_recojo_id;
+        $tour->idioma=$idioma;
+        $tour->estado=1;
+        $tour->save();
+        $arreglo_=explode('-',$arreglo);
+        foreach($arreglo_ as $arre){
+            if(trim($arre)!=''){
+                $a_=explode('_',$arre);
+                // $tour_relacion=new TourRelacionado();
+                // $tour_relacion->tours_padre_id=$tour->id;
+                // $tour_relacion->tours_relacion_id=$a_[0];
+                // $tour_relacion->idioma=$a_[1];
+                // $tour_relacion->save();
+
+
+                $tour_relacion=new TourRelacionado();
+                $tour_relacion->tours_padre_id=$a_[0];
+                $tour_relacion->tours_relacion_id=$tour->id;
+                $tour_relacion->idioma=$tour->idioma;
+                $tour_relacion->save();
+            }
+        }
+        if(!empty($banner_imagen)){
+            foreach($banner_imagen as $banner_imagen_){
+                $filename ='foto-b-'.$tour->id.'.'.$banner_imagen_->getClientOriginalExtension();
+                $imagen=new TourImagen();
+                $imagen->titulo='';
+                $imagen->imagen=$filename;
+                $imagen->estado=0; //-- numero para banner
+                $imagen->tours_id=$tour->id;
+                $imagen->save();
+                Storage::disk('tours')->put($filename,  File::get($banner_imagen_));
+            }
+        }
+        return redirect()->route('admin.tour.index.path')->with(['success'=>'Datos guardados correctamente.']);
+    }
+    public function index_idioma_edit($id,$idioma,$arreglo)
+    {
+        // //
+        // $idiomas=Idioma::all();
+        // $idioma_principal=Idioma::where('estado','1')->first();
+        $tour = Tour::findOrFail($id);
+        // return view('admin.tour.index',compact('tours','idiomas'));
+
+
+        $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
+        $destino=Destino::findOrFail($tour->destino_id);
+        $lugar_recojo=LugarRecojo::findOrFail($tour->lugar_recojo_id);
+        $idioma_=Idioma::where('codigo',$tour->idioma)->get()->first();
+        // dd($idioma_);
+        return view('admin.tour.edit-idioma',compact('idiomas','idioma','idioma_','destino','lugar_recojo','arreglo','tour'));
+    }
+    public function index_idioma_update(Request $request,$id,$idioma,$arreglo)
+    {
+        //
+        $destino_id=$request->input('destino');
+        $lugar_recojo_id=$request->input('lugar_recojo');
+        $idioma=$request->input('idioma');
+        $url=$request->input('url');
+        $titulo=$request->input('titulo');
+        $descripcion=$request->input('descripcion');
+        $itinerario=$request->input('itinerario');
+        $banner_imagen=$request->file('banner_imagen');
+        $banner_imagen_=$request->input('banner_imagen_');
+        // dd($banner_imagen_);
+        if($idioma=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
+
+        if($destino_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
+
+        if($lugar_recojo_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un lugar de recojo.']);
+
+        if(strlen(trim($descripcion))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
+
+        if(strlen(trim($itinerario))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un itinerario.']);
+
+        $tour=Tour::findOrFail($id);
+        $tour->url=$url;
+        $tour->titulo=$titulo;
+        $tour->descripcion=$descripcion;
+        $tour->itinerario=$itinerario;
+        $tour->idioma=$idioma;
+        $tour->destino_id=$destino_id;
+        $tour->lugar_recojo_id=$lugar_recojo_id;
+        $tour->estado=1;
+        $tour->save();
+        // borramos de la db las imagenes banner que han sido eliminadas por el usuario
+        if(count((array)$banner_imagen_)>0){
+            $fotos_existentes=TourImagen::where('tours_id',$tour->id)->where('estado','0')->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if(!in_array($value->id,$banner_imagen_)){
+                    TourImagen::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            TourImagen::where('tours_id',$tour->id)->where('estado','0')->delete();
+         }
+        if(!empty($banner_imagen)){
+            foreach($banner_imagen as $banner_image){
+                $imagen = new TourImagen();
+                $imagen->titulo='';
+                $imagen->imagen='';
+                $imagen->estado=0; //-- numero para banner
+                $imagen->tours_id=$tour->id;
+                $imagen->save();
+                $filename ='foto-b-'.$imagen->id.'.'.$banner_image->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('tours')->put($filename,  File::get($banner_image));
+            }
+        }
+        return redirect()->route('admin.tour.index.path')->with(['success'=>'Datos editados correctamente.']);
     }
 }
