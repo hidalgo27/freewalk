@@ -16,4 +16,8 @@ class DestinoGrupo extends Model
     {
         return $this->hasMany(DestinoGrupoImagen::class, 'destinos_grupo_id');
     }
+    public function preguntas()
+    {
+        return $this->hasMany(DestinoGrupoPregunta::class, 'destinos_grupo_id');
+    }
 }

@@ -20,4 +20,8 @@ class Tour extends Model
     {
         return $this->belongsTo(LugarRecogo::class, 'lugar_recojo_id');
     }
+    public function tours_relacionados()
+    {
+        return $this->hasMany(TourRelacionado::class, 'tours_padre_id');
+    }
 }

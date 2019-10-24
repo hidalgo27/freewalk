@@ -57,6 +57,7 @@ $(document).ready(function () {
                             <div class="btn btn-group">
                                 <a class="btn btn-primary" href="{{ route('admin.destino-grupo.lugares-visitar.path',$item->id) }}"><i class="fas fa-plus"></i> Lugares a visitar</a>
                                 <a class="btn btn-info" href="{{ route('admin.destino-grupo.atractivos.index.path',$item->id) }}"><i class="fas fa-plus"></i> Atractivos</a>
+                                <a class="btn btn-success" href="{{ route('admin.destino-grupo.preguntas.index.path',$item->id) }}"><i class="fas fa-plus"></i> Preguntas</a>
                                 <a class="btn btn-warning" href="{{ route('admin.destino-grupo.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a>
                                 <form id="form_borrar_{{ $item->id }}" action="{{ route('admin.destino-grupo.destroy.path',$item->id) }}" method="get">
                                     @csrf
