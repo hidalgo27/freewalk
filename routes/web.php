@@ -86,16 +86,59 @@ Route::post('/admin/lugar-recojo/galeria/store',['uses'=>'Admin\LugarRecojoContr
 Route::get('/admin/lugar-recojo/galeria/{id}/destroy',['uses'=>'Admin\LugarRecojoController@galeria_destroy','as'=>'admin.lugar_recojo.galeria.destroy.path']);
 
 //Page
-Route::get('/', [
-    'uses' => 'Page\HomepageController@index',
-    'as' => 'home_path',
-]);
+//if (App::isLocale('en')){
+    Route::get('/', [
+        'uses' => 'Page\HomepageController@index',
+        'as' => 'home_path',
+    ]);
 
-Route::get('/destination', [
-    'uses' => 'Page\HomepageController@destination',
-    'as' => 'destination_path',
-]);
+    Route::get('destination/{title}', [
+        'uses' => 'Page\HomepageController@destination',
+        'as' => 'destination_path',
+    ]);
+
+    Route::get('/lang/{idioma}', [
+        'uses' => 'Page\HomepageController@index2',
+        'as' => 'home2_path',
+    ]);
+
+
+
+
 Route::get('/destination-show', [
     'uses' => 'Page\HomepageController@destination_show',
     'as' => 'destination_show_path',
+]);
+
+
+//middleware
+
+
+//Route::group(['middleware' => ['web']], function () {
+//
+//    Route::get('/', [
+//        'uses' => 'Page\HomepageController@index',
+//        'as' => 'home_path',
+//    ]);
+//
+////    Route::get('lang/{lang}', function ($lang) {
+////        session(['lang' => $lang]);
+////        return \Redirect::back();
+////    })->where([
+////        'lang' => 'en|es'
+////    ]);
+//
+//    Route::get('lang/{lang}', function ($locale){
+//        Session::put('lang', $locale);
+//        return redirect()->back();
+//    });
+//
+//});
+//Route::get('locale/{locale}', function ($locale){
+//    Session::put('locale', $locale);
+////    return redirect()->back();
+//});
+Route::get('/idioma/{locale}', [
+    'uses' => 'Page\HomepageController@lang',
+    'as' => 'lang_path',
 ]);

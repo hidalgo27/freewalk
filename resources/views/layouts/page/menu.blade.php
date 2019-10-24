@@ -1,9 +1,9 @@
 
 			<ul class="navbar-nav ml-auto">
 	             <li><a href='/'>Home</a></li>
-	             <li class="has-sub"><a href='{{route('destination_path')}}'>Lima</a>
+	             <li class="has-sub"><a href='{{route('destination_path', 1)}}'>Lima</a>
 					<ul class='lista-submenu-nav'>
-						<li><a href='{{route('destination_path')}}'><strong>Details of Free Tour Lima here!</strong></a></li>
+						<li><a href='{{route('destination_path', 1)}}'><strong>Details of Free Tour Lima here!</strong></a></li>
 						<li><a href='{{route('destination_show_path')}}'>Free Tour Lima at 10am(Pick-Up)</a></li>
 						<li><a href='{{route('destination_show_path')}}'>Free Tour Lima at 11am</a></li>
 						<li><a href='{{route('destination_show_path')}}'>Free Tour Lima at 3pm</a></li>
@@ -19,17 +19,17 @@
 	             </li>
 	             <li><a href='{{route('destination_show_path')}}'>Barranco</a>
 				 </li>
-	             <li class="has-sub"><a href='{{route('destination_path')}}'>Arequipa</a>
+	             <li class="has-sub"><a href='{{route('destination_path', 1)}}'>Arequipa</a>
 					<ul class='lista-submenu-nav'>
-					<li><a href="{{route('destination_path')}}"><strong>Details of Free Tour Aqp here!</strong></a></li>
+					<li><a href="{{route('destination_path', 1)}}"><strong>Details of Free Tour Aqp here!</strong></a></li>
 					<li><a href='{{route('destination_show_path')}}'>Free Tour Aqp at 10am</a></li>
 					<li><a href='{{route('destination_show_path')}}'>Free Tour Aqp at 3pm</a></li>
 					<li><a href='{{route('destination_show_path')}}'>Arequipa Private Tours & Walks</a></li>
 				   </ul>
 	             </li>
-	             <li class="has-sub"><a href='{{route('destination_path')}}'>Cusco</a>
+	             <li class="has-sub"><a href='{{route('destination_path', 1)}}'>Cusco</a>
 					<ul class='lista-submenu-nav'>
-					<li><a href="{{route('destination_path')}}"><strong>Details of Free Tour Cusco here!</strong></a></li>
+					<li><a href="{{route('destination_path', 1)}}"><strong>Details of Free Tour Cusco here!</strong></a></li>
 					<li><a href='{{route('destination_show_path')}}'>Free Tour Cusco at 10am</a></li>
 					<li><a href='{{route('destination_show_path')}}'>Free Tour Cusco at 1pm</a></li>
 					<li><a href='{{route('destination_show_path')}}'>Free Tour Cusco at 3:30pm</a></li>

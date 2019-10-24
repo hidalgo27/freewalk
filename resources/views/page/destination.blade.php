@@ -1,11 +1,19 @@
 @extends('layouts.page.app')
     @section('content')
-        <section>
-            <picture>
-                <source media="(max-width: 550px)" srcset="{{asset('images/lima/free-walking-tours-lima-central-mobile.jpg')}}">
-                <img src="{{asset('images/lima/free-walking-tours-lima-central.jpg')}}" class="w-100" alt="free walking tour lima, full english">
-            </picture>
-        </section>
+
+        @foreach($destino_grupo as $destino_grupos)
+            @foreach ($destino_grupos->imagenes->where('estado','0') as $foto)
+                @if (Storage::disk('destino_grupo')->has($foto->imagen))
+                    <section>
+                        <picture>
+                            <source media="(max-width: 550px)" srcset="{{asset('images/lima/free-walking-tours-lima-central-mobile.jpg')}}">
+                            <img src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tour lima, full english">
+                        </picture>
+                    </section>
+
+                @endif
+            @endforeach
+
 
         <!-- end slider -->
 
@@ -19,9 +27,9 @@
 
                         <div class="main pt-4 pb-3">
                             <article class="text-justify border shadow p-3 mb-3 bg-white rounded" >
-                                <h1 class="text-center">Free Walking Tour Lima | Indigenous Free Tour of Lima in the Historic Centre</h1>
+                                <h1 class="text-center">{{$destino_grupos->titulo}}</h1>
                                 <div class="row">
-                                    <div class="col-sm-8"><p>Join our Original Historic <strong>Free Walking Tour Lima</strong> run by a pioneering Indigenous Company. We are 100% Licensed Guides. In Peru, tour guides are required to take part in Tourism & Hospitality Career studies. After they finish the studies, the government gives them a license to be a guide. There are a few phony guides in Lima Centre who are Not allowed to guide legally. We assure you that your tour leader will be a Licensed Guides making your tour one of top quality. Your free walking tour will be an excellent one focused on history. You will visit must-see attractions such as the Old Train Station, the House of Peruvian Literature, Rimac River, Colonial Streets, and more. | <span class="text-success text-center mb-1 d-blok">Please Note:</span> The Tour Itinerary may change if there are strikes or festivities. </p></div>
+                                    <div class="col-sm-8">@php echo $destino_grupos->descripcion; @endphp</div>
                                     <div class="col-sm-4">
                                         <div class="bg-white shadow my-2 rounded">
                                             <h6 class="text-center pt-2">
@@ -50,30 +58,31 @@
                             </article>
 
                             <article class="text-justify border shadow p-3 mb-3 bg-white rounded inline">
-                                <h2 class="text-center" style="font-size: 1.5em;">Details about our Free Free Walking Tour Lima</h2>
-                                <p class="text-success text-center mb-1 d-blok">We have three free tour Lima meet up times and two meeting places for the same outing! Please read each one of them, so you do not get lost!</p>
+{{--                                <h2 class="text-center" style="font-size: 1.5em;">Details about our Free Free Walking Tour Lima</h2>--}}
+{{--                                <p class="text-success text-center mb-1 d-blok">We have three free tour Lima meet up times and two meeting places for the same outing! Please read each one of them, so you do not get lost!</p>--}}
 
-                                <div class="my-2"><h3 class="d-inline ">Times & Meeting Places: </h3> <p class="d-inline"> Mon thru Sat | <a href="https://www.freewalkingtoursperu.com/lima/sunday-walks-in-lima" target="_blank"> You MUST click here</a>	<ins datetime="2019-08-21">for Sunday free tour in Lima.</ins></p></div>
-                                <ul>
-                                    <li><b>10 am Meeting Place(Pickup):</b> Meet us in <a href="https://www.google.com/maps/place/Calle+Schell+178,+Miraflores+15074/@-12.1226709,-77.0307918,21z/data=!4m5!3m4!1s0x9105c818e2e9d1dd:0xdd4b052cbe084319!8m2!3d-12.1226729!4d-77.0306609?authuser=1" target="_blank">Calle Schell N° 178  outside Oechsle Mall</a>. You can only join us here if you are very close to Calle Schell or Kennedy park. (max 10min away by foot). Please bring 2.50 soles pp for a local bus ticket. Seriously a Bus? Yes, we do not tour in Miraflores, this is only a pickup place. | <span class="text-success">If you are not close to this spot or you don´t like to travel via a crowded local bus, go on your own to the 11 am or 3 pm Meeting Place (starting point).</span></li>
-                                    <li><b>11 am Meeting Place:</b> Join us <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">in front of La Merced Church on the Jirón de La Union Street</a> (Lima center) | <span class="text-success">This is where the tour starts!</span></li>
-                                    <li><b>3 pm Meeting Place:</b> For our Lima Free Walking Tour in the afternoon, you must also come to <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">La Merced Church</a> from all over Lima! We do not pick up anyone from Miraflores.</li>
-                                    <li><b>If you stay in Barranco:</b> Then click <a href="/lima/free-walking-tour-lima-barranco" target="_blank">here.</a></li>
-                                    <li><b>If you are cruising in Callao Port, </b> please go to <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">La Merced Church</a> at 11 am or 3 pm.</li>
-                                    <li><b>If you do not know where to go,</b> please come to <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">La Merced Church</a> at 11 am or 3 pm.</li>
+{{--                                <div class="my-2"><h3 class="d-inline ">Times & Meeting Places: </h3> <p class="d-inline"> Mon thru Sat | <a href="https://www.freewalkingtoursperu.com/lima/sunday-walks-in-lima" target="_blank"> You MUST click here</a>	<ins datetime="2019-08-21">for Sunday free tour in Lima.</ins></p></div>--}}
+{{--                                <ul>--}}
+{{--                                    <li><b>10 am Meeting Place(Pickup):</b> Meet us in <a href="https://www.google.com/maps/place/Calle+Schell+178,+Miraflores+15074/@-12.1226709,-77.0307918,21z/data=!4m5!3m4!1s0x9105c818e2e9d1dd:0xdd4b052cbe084319!8m2!3d-12.1226729!4d-77.0306609?authuser=1" target="_blank">Calle Schell N° 178  outside Oechsle Mall</a>. You can only join us here if you are very close to Calle Schell or Kennedy park. (max 10min away by foot). Please bring 2.50 soles pp for a local bus ticket. Seriously a Bus? Yes, we do not tour in Miraflores, this is only a pickup place. | <span class="text-success">If you are not close to this spot or you don´t like to travel via a crowded local bus, go on your own to the 11 am or 3 pm Meeting Place (starting point).</span></li>--}}
+{{--                                    <li><b>11 am Meeting Place:</b> Join us <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">in front of La Merced Church on the Jirón de La Union Street</a> (Lima center) | <span class="text-success">This is where the tour starts!</span></li>--}}
+{{--                                    <li><b>3 pm Meeting Place:</b> For our Lima Free Walking Tour in the afternoon, you must also come to <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">La Merced Church</a> from all over Lima! We do not pick up anyone from Miraflores.</li>--}}
+{{--                                    <li><b>If you stay in Barranco:</b> Then click <a href="/lima/free-walking-tour-lima-barranco" target="_blank">here.</a></li>--}}
+{{--                                    <li><b>If you are cruising in Callao Port, </b> please go to <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">La Merced Church</a> at 11 am or 3 pm.</li>--}}
+{{--                                    <li><b>If you do not know where to go,</b> please come to <a href="https://www.google.com/maps/place/Iglesia+de+La+Merced/@-12.0481554,-77.0333688,19z/data=!4m12!1m6!3m5!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!2sIglesia+de+La+Merced!8m2!3d-12.048218!4d-77.0328404!3m4!1s0x9105c8b624bb8ded:0xd81ebfed4d7031cb!8m2!3d-12.048218!4d-77.0328404" target="_blank">La Merced Church</a> at 11 am or 3 pm.</li>--}}
 
-                                </ul>
+{{--                                </ul>--}}
 
-                                <div class="my-2"><h3 class="d-inline ">How to Identify Your Tour Guide? </h3> <p class="d-inline">Look for your Official Operator at the correct meeting place; <span style="background-color:  #fc0">We wear the Inkan Milky Way Logo-Sign!</span></p></div>
-                                <div class="my-2"><h3 class="d-inline ">Duration: </h3> <p class="d-inline">If you start your walk in Lima center, the tour lasts for 2.5 hours. | If you begin the trip at Miraflores, the tour lasts 3.5 hours! </p></div>
-                                <div class="my-2"><h3 class="d-inline ">Price: </h3> <p class="d-inline">Free – Based on your donation | Neither our tour guides or team members have set salaries!</p></div>
-                                <div class="my-2"><h3 class="d-inline ">Language: </h3> <p class="d-inline">English & Spanish | Separate Groups, based on language | We have 2 Tour Guides! For more info about <a  href="https://www.freewalkingtoursperu.com/es/lima/" target="_blank" rel="alternate" hreflang="es">spanish free tour in Lima click here!</a> </p></div>
-                                <div class="my-2"><h3 class="d-inline ">Tour Type: </h3> <p class="d-inline">It´s a free group tour, it is not private, | sometimes groups can be sizable; therefore, our guides use speakers!</p></div>
-                                <div class="my-2"><h3 class="d-inline ">Please Bring: </h3> <p class="d-inline">If you join us at 10 am, bring 2.50 soles pp or 5 soles per couple for the bus ticket.</p></div>
-                                <div class="my-2"><h3 class="d-inline ">Tour Ending Place: </h3> <p class="d-inline">Near the Main Square. | We will not take the group to bars for commissions; <span class="text-success">we do focus on history!</span></p></div>
-                                <div class="my-2"><h3 class="d-inline ">Reviews: </h3> <p class="d-inline">50+ trusted testimonials at: <a  href="https://www.facebook.com/limafreewalkingtour/" target="_blank">Facebook!</a> Also, <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294316-d14918493-Reviews-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">800+ reviews for Free Walking Tour Lima on TripAdvisor</a>, See Google Maps <a  href="https://goo.gl/maps/Vm1kGXKJARpRULXA7" target="_blank">Lima free tour reviews</a>! <a  href="https://youtu.be/HdYcNrUxnXA" target="_blank">Watch our Video</a>!</p></div>
-                                <div class="my-2"><h3 class="d-inline ">Itinerary: </h3> <p class="d-inline">Walking Historic Center tour, please scroll down and click on tour! | The route can always change if there are strikes, festivities or holidays!</p></div>
+{{--                                <div class="my-2"><h3 class="d-inline ">How to Identify Your Tour Guide? </h3> <p class="d-inline">Look for your Official Operator at the correct meeting place; <span style="background-color:  #fc0">We wear the Inkan Milky Way Logo-Sign!</span></p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Duration: </h3> <p class="d-inline">If you start your walk in Lima center, the tour lasts for 2.5 hours. | If you begin the trip at Miraflores, the tour lasts 3.5 hours! </p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Price: </h3> <p class="d-inline">Free – Based on your donation | Neither our tour guides or team members have set salaries!</p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Language: </h3> <p class="d-inline">English & Spanish | Separate Groups, based on language | We have 2 Tour Guides! For more info about <a  href="https://www.freewalkingtoursperu.com/es/lima/" target="_blank" rel="alternate" hreflang="es">spanish free tour in Lima click here!</a> </p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Tour Type: </h3> <p class="d-inline">It´s a free group tour, it is not private, | sometimes groups can be sizable; therefore, our guides use speakers!</p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Please Bring: </h3> <p class="d-inline">If you join us at 10 am, bring 2.50 soles pp or 5 soles per couple for the bus ticket.</p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Tour Ending Place: </h3> <p class="d-inline">Near the Main Square. | We will not take the group to bars for commissions; <span class="text-success">we do focus on history!</span></p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Reviews: </h3> <p class="d-inline">50+ trusted testimonials at: <a  href="https://www.facebook.com/limafreewalkingtour/" target="_blank">Facebook!</a> Also, <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294316-d14918493-Reviews-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">800+ reviews for Free Walking Tour Lima on TripAdvisor</a>, See Google Maps <a  href="https://goo.gl/maps/Vm1kGXKJARpRULXA7" target="_blank">Lima free tour reviews</a>! <a  href="https://youtu.be/HdYcNrUxnXA" target="_blank">Watch our Video</a>!</p></div>--}}
+{{--                                <div class="my-2"><h3 class="d-inline ">Itinerary: </h3> <p class="d-inline">Walking Historic Center tour, please scroll down and click on tour! | The route can always change if there are strikes, festivities or holidays!</p></div>--}}
 
+                                @php echo $destino_grupos->detalle; @endphp
                                 <div class="text-center telf my-4">
 
 
@@ -268,19 +277,19 @@
                             </div>
 
                         </div>
+                        @foreach ($destino_grupos->destino->lugares_recojo as $lugares_recojos)
+{{--                            @foreach($destino->lugares_recojo as $lugares_recojos)--}}
+{{--                                {{$lugares_recojo}}--}}
                         <div class="col-sm-4">
                             <div class="box-green text-center">
                                 <div class="bg-success p-1 text-center text-white"><span class="">10am | Pick Up - Meeting Place in Miraflores district is at Calle Schell 178!</span></div>
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7801.692421398545!2d-77.030661!3d-12.122673!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c818e2e9d1dd%3A0xdd4b052cbe084319!2sCalle+Schell+178%2C+Miraflores+15074!5e0!3m2!1ses!2spe!4v1560033129564!5m2!1ses!2spe" width="100%" height="330" frameborder="0" style="border:0" allowfullscreen></iframe>
+{{--                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7801.692421398545!2d-77.030661!3d-12.122673!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c818e2e9d1dd%3A0xdd4b052cbe084319!2sCalle+Schell+178%2C+Miraflores+15074!5e0!3m2!1ses!2spe!4v1560033129564!5m2!1ses!2spe" width="100%" height="330" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
+                                    @php echo $lugares_recojos->iframe;@endphp
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="box-green text-center">
-                                <div class="bg-success p-1 text-center text-white"><span class="">11am and 3pm | In Lima center, our Meeting Place is in front of La Merced Church on the Jiron de La Union Street</span></div>
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7803.863467964251!2d-77.03284000000001!3d-12.048218!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd81ebfed4d7031cb!2sChurch+of+La+Merced!5e0!3m2!1sen!2spe!4v1560033197485!5m2!1sen!2spe" width="100%" height="330" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            </div>
+{{--                            @endforeach--}}
+                        @endforeach
 
-                        </div>
                     </div>
                 </div>
             </article>
@@ -494,13 +503,14 @@
                             <div class="bg-white p-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h2 class="text-center" style="font-size: 1.2em;" >What is a free walking tour in Lima?</h2>
-                                        <p align="justify">Many tourists traveling in Lima wonder whether the free walking tours are really free of charge? The answer is the same all over the world: except for bus fares, it is without cost to take; however, at the end of the excursion, tips are very much appreciated. However, you may wonder how much to tip? Reward your excellent tour guide in direct proportion to the tour quality; you can tip in the local currency, USA dollars or Euros! | Some tourists also ask whether our free tours in Lima are as good as the paid ones? We think our tours are first-rate because our guide does their best to earn your appreciation and gratitude. Therefore, free tours are the most popularatours all over the world. </p>
+{{--                                        <h2 class="text-center" style="font-size: 1.2em;" >What is a free walking tour in Lima?</h2>--}}
+{{--                                        <p align="justify">Many tourists traveling in Lima wonder whether the free walking tours are really free of charge? The answer is the same all over the world: except for bus fares, it is without cost to take; however, at the end of the excursion, tips are very much appreciated. However, you may wonder how much to tip? Reward your excellent tour guide in direct proportion to the tour quality; you can tip in the local currency, USA dollars or Euros! | Some tourists also ask whether our free tours in Lima are as good as the paid ones? We think our tours are first-rate because our guide does their best to earn your appreciation and gratitude. Therefore, free tours are the most popularatours all over the world. </p>--}}
+                                        @php echo $destino_grupos->que_porque; @endphp
                                     </div>
-                                    <div class="col-12">
-                                        <h2 class="text-center" style="font-size: 1.2em;">Why free walking tours in Lima?</h2>
-                                        <p align="justify">Back in 2014, we decided to open the first alternative way of touring: Free walking tours! Since then, we have done well. This experience started in Cusco city. We are not the owners of the Free Tour Concept. That recognition goes to Christopher Sandman, who was the person to open The Free Walking tour Concept in Berlin, Germany, back in 2003. Since then, this idea has raced nonstop all around the world. | We are Peruvians who worked abroad because of the crisis in our country at the beginning of the 21st century; this means we have been to many parts of Europe and America working and traveling. Luckily we joined Free Walking Tours in many countries. One day, back in 2014, we decided to settle down in Cusco and introduce this tour idea. | Back in 2017, because of customer demands, we decided to extend this excellent tip based free tour idea in Lima city. So far, so good! Please help us to increase the history and the prestige of these innovative tours by joining us!</p>
-                                    </div>
+{{--                                    <div class="col-12">--}}
+{{--                                        <h2 class="text-center" style="font-size: 1.2em;">Why free walking tours in Lima?</h2>--}}
+{{--                                        <p align="justify">Back in 2014, we decided to open the first alternative way of touring: Free walking tours! Since then, we have done well. This experience started in Cusco city. We are not the owners of the Free Tour Concept. That recognition goes to Christopher Sandman, who was the person to open The Free Walking tour Concept in Berlin, Germany, back in 2003. Since then, this idea has raced nonstop all around the world. | We are Peruvians who worked abroad because of the crisis in our country at the beginning of the 21st century; this means we have been to many parts of Europe and America working and traveling. Luckily we joined Free Walking Tours in many countries. One day, back in 2014, we decided to settle down in Cusco and introduce this tour idea. | Back in 2017, because of customer demands, we decided to extend this excellent tip based free tour idea in Lima city. So far, so good! Please help us to increase the history and the prestige of these innovative tours by joining us!</p>--}}
+{{--                                    </div>--}}
 
                                 </div>
                             </div>
@@ -513,17 +523,27 @@
                                         <div class="" id="slider">
                                             <div id="myCarousel" class="carousel slide">
                                                 <!-- main slider carousel items -->
+
                                                 <div class="carousel-inner">
-                                                    <div class="active carousel-item" data-slide-number="0">
-                                                        <div class="carrusell px-2">
-                                                            <img  src="{{asset('images/lima/customers-and-tour-guides-from-free-tour-lima-on-action.jpg')}}" class="img-fluid rounded" alt="Customers and tour Guides from free walking tour lima on action">
-                                                        </div>
-                                                    </div>
-                                                    <div class="carousel-item" data-slide-number="1">
-                                                        <div class="carrusell px-2">
-                                                            <img  src="{{asset('images/lima/customers-and-tour-guides-from-free-walking-tour-lima-on-action-in-the-city-center.jpg')}}" class="img-fluid rounded" alt="Customers and tour Guides from free tour lima city on action">
-                                                        </div>
-                                                    </div>
+                                                    @php $active_c = 0;  @endphp
+                                                    @foreach ($destino_grupos->imagenes->where('estado','2') as $foto)
+                                                        @if (Storage::disk('destino_grupo')->has($foto->imagen))
+
+                                                            <div class="carousel-item {{ $active_c === 0 ? "active" : " " }}" data-slide-number="{{$active_c}}">
+                                                                <div class="carrusell px-2">
+                                                                    <img  src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="img-fluid rounded" alt="Customers and tour Guides from free walking tour lima on action">
+                                                                </div>
+                                                            </div>
+                                                            @php $active_c++;  @endphp
+                                                        @endif
+                                                    @endforeach
+
+
+{{--                                                    <div class="carousel-item" data-slide-number="1">--}}
+{{--                                                        <div class="carrusell px-2">--}}
+{{--                                                            <img  src="{{asset('images/lima/customers-and-tour-guides-from-free-walking-tour-lima-on-action-in-the-city-center.jpg')}}" class="img-fluid rounded" alt="Customers and tour Guides from free tour lima city on action">--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
 
                                                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -537,16 +557,19 @@
                                                 </div>
                                                 <!-- main slider carousel nav controls -->
                                                 <ul class="carousel-indicators list-inline mx-auto  mb-0 px-2">
-                                                    <li class="list-inline-item active">
-                                                        <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
-                                                            <img src="{{asset('images/lima/customers-and-tour-guides-from-free-tour-lima-on-action.jpg')}}" alt="Customers and tour Guides from free tour lima on action" class="img-fluid rounded">
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
-                                                            <img src="{{asset('images/lima/customers-and-tour-guides-from-free-walking-tour-lima-on-action-in-the-city-center.jpg')}}" alt="Customers and tour Guides from free tour walking lima on action" class="img-fluid rounded">
-                                                        </a>
-                                                    </li>
+                                                    @php $active_s = 0;  @endphp
+                                                    @foreach ($destino_grupos->imagenes->where('estado','2') as $foto)
+                                                        @if (Storage::disk('destino_grupo')->has($foto->imagen))
+
+                                                            <li class="list-inline-item {{ $active_s === 0 ? "active" : " " }}">
+                                                                <a id="carousel-selector-0" class="selected" data-slide-to="{{$active_s}}" data-target="#myCarousel">
+                                                                    <img src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" alt="Customers and tour Guides from free tour lima on action" class="img-fluid rounded">
+                                                                </a>
+                                                            </li>
+
+                                                            @php $active_s++;  @endphp
+                                                        @endif
+                                                    @endforeach
 
 
                                                 </ul>
@@ -577,7 +600,6 @@
                 </div>
             </article>
         </section>
-
 
         <section class="bg-dark1 py-2 py-sm-4" id="faqs">
             <div class="container maxw3">
@@ -684,7 +706,7 @@
                 </div>
             </article>
         </section>
-
+    @endforeach
     @endsection
 
 @push('scripts')
