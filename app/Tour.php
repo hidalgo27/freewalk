@@ -18,7 +18,7 @@ class Tour extends Model
     }
     public function lugar_recojo()
     {
-        return $this->belongsTo(LugarRecogo::class, 'lugar_recojo_id');
+        return $this->belongsTo(LugarRecojo::class, 'lugar_recojo_id');
     }
     public function tours_relacionados()
     {

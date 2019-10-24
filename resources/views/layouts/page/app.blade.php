@@ -72,9 +72,13 @@
 {{--                @if ($locale == 'pt')--}}
 {{--                    <li><a class="flag" href="{{ route('lang_path', 'pt') }}"><img src="{{asset('favicon.ico')}}" alt="flag spanish"></a></li>--}}
 {{--                @endif--}}
+
             </ul>
         </div>
     </nav>
+
+
+
 
 </section>
 

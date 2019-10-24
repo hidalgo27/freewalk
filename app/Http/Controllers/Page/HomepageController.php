@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Page;
 
+use App\Destino;
 use App\DestinoGrupo;
 use App\DestinoInicio;
+use App\LugarRecojo;
+use App\Tour;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -51,16 +54,19 @@ class HomepageController extends Controller
 //        SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
 
 
-
         $locale = App::getLocale();
         $destinos_inicio = DestinoInicio::where('idioma', $locale)->get();
+
+        $destino = Destino::all();
+//        dd($destino);
 //        if (App::isLocale('en')) {
 //            //
 //        }
         return view('page.home',
             compact(
                 'destinos_inicio',
-                'locale'
+                'locale',
+                'destino'
             ));
     }
     public function index2($idioma){
@@ -69,20 +75,36 @@ class HomepageController extends Controller
 //        if (App::isLocale('en')) {
 //            //
 //        }
+        $destino = Destino::all();
+        dd($destino);
         return view('page.home',
             compact(
                 'destinos_inicio',
-                'locale'
+                'locale',
+                'destino'
             ));
     }
     public function destination($titile){
+
         $locale = App::getLocale();
         $destino_grupo = DestinoGrupo::with('destino','destino.lugares_recojo')->where('id', $titile)->get();
-        return view('page.destination', compact('locale', 'destino_grupo'));
+        $destino = Destino::all();
+        return view('page.destination', compact('locale', 'destino_grupo', 'destino'));
     }
     public function destination_show(){
-        return view('page.destinations-show');
+        $locale = App::getLocale();
+        return view('page.destinations-show', compact('locale'));
     }
+
+    public function destination_tour($destino, $title){
+        $locale = App::getLocale();
+        $url = str_replace('-', ' ', $title);
+        $tour = Tour::with('lugar_recojo')->where('url', $url)->get();
+        $destino = Destino::all();
+        return view('page.destination-tours', compact('locale', 'tour','destino'));
+    }
+
+
 
     public function lang($locale){
         Session::put('locale', $locale);

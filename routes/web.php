@@ -138,6 +138,12 @@ Route::get('/destination-show', [
 ]);
 
 
+Route::get('/tours/{destino}/{title}', [
+    'uses' => 'Page\HomepageController@destination_tour',
+    'as' => 'destination_tour_path',
+]);
+
+
 //middleware
 
 
