@@ -131,16 +131,65 @@ Route::get('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\Lu
 Route::patch('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/update',['uses'=>'Admin\LugarRecojoController@index_idioma_update','as'=>'admin.lugar-recojo.index.idioma.update.path']);
 
 //Page
-Route::get('/', [
-    'uses' => 'Page\HomepageController@index',
-    'as' => 'home_path',
-]);
+//if (App::isLocale('en')){
+    Route::get('/', [
+        'uses' => 'Page\HomepageController@index',
+        'as' => 'home_path',
+    ]);
 
-Route::get('/destination', [
-    'uses' => 'Page\HomepageController@destination',
-    'as' => 'destination_path',
-]);
+    Route::get('destination/{title}', [
+        'uses' => 'Page\HomepageController@destination',
+        'as' => 'destination_path',
+    ]);
+
+    Route::get('/lang/{idioma}', [
+        'uses' => 'Page\HomepageController@index2',
+        'as' => 'home2_path',
+    ]);
+
+
+
+
 Route::get('/destination-show', [
     'uses' => 'Page\HomepageController@destination_show',
     'as' => 'destination_show_path',
+]);
+
+
+Route::get('/tours/{destino}/{title}', [
+    'uses' => 'Page\HomepageController@destination_tour',
+    'as' => 'destination_tour_path',
+]);
+
+
+//middleware
+
+
+//Route::group(['middleware' => ['web']], function () {
+//
+//    Route::get('/', [
+//        'uses' => 'Page\HomepageController@index',
+//        'as' => 'home_path',
+//    ]);
+//
+////    Route::get('lang/{lang}', function ($lang) {
+////        session(['lang' => $lang]);
+////        return \Redirect::back();
+////    })->where([
+////        'lang' => 'en|es'
+////    ]);
+//
+//    Route::get('lang/{lang}', function ($locale){
+//        Session::put('lang', $locale);
+//        return redirect()->back();
+//    });
+//
+//});
+//Route::get('locale/{locale}', function ($locale){
+//    Session::put('locale', $locale);
+////    return redirect()->back();
+//});
+Route::get('/idioma/{locale}', [
+    'uses' => 'Page\HomepageController@lang',
+    'as' => 'lang_path',
 ]);

@@ -1,15 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>🥇Free Walking Tour Peru | Lima | Cusco| Arequipa | Miraflores </title>
-    <meta content="Get your Original Free Walking Tour in Lima, Cusco and Arequipa, more than 3000 reviews on TripAdvisor, Best Free Tours in Peru" name="description" />
+{{--    <title>🥇Free Walking Tour Peru | Lima | Cusco| Arequipa | Miraflores </title>--}}
+{{--    <meta content="Get your Original Free Walking Tour in Lima, Cusco and Arequipa, more than 3000 reviews on TripAdvisor, Best Free Tours in Peru" name="description" />--}}
     <!--     <meta content="Free Walking Tour Lima, Arequipa, Cusco, Miraflores, Barranco, free tour, historical centre tours" name="keywords" /> -->
-
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+{{--    {!! Twitter::generate() !!}--}}
+{{--    {!! JsonLd::generate() !!}--}}
+    <!-- OR -->
+{{--    {!! SEO::generate() !!}--}}
 
     <link rel="alternate" hreflang="es" href="https://www.freewalkingtoursperu.com/es/" />
     <link rel="alternate" hreflang="en" href="https://www.freewalkingtoursperu.com">
@@ -52,10 +57,28 @@
                 @include('layouts.page.menu')
             </div>
             <ul class="navbar-nav p-2">
-                <li><a class="flag" href="/es/"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+                @if ($locale == 'en')
+                    <li><a class="flag" href="{{ route('lang_path', 'es') }}"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+{{--                    <li><a class="flag" href="{{ route('lang_path', 'pt') }}"><img src="{{asset('images/logo-freewalkss.png')}}" alt="flag spanish"></a></li>--}}
+                @endif
+                @if ($locale == 'es')
+                    <li><a class="flag" href="{{ route('lang_path', 'en') }}"><img src="{{asset('images/en.png')}}" alt="flag spanish"></a></li>
+{{--                    <li><a class="flag" href="{{ route('lang_path', 'pt') }}"><img src="{{asset('images/logo-freewalkss.png')}}" alt="flag spanish"></a></li>--}}
+                @endif
+{{--                @if ($locale == 'pt')--}}
+{{--                    <li><a class="flag" href="{{ route('lang_path', 'en') }}"><img src="{{asset('images/en.png')}}" alt="flag spanish"></a></li>--}}
+{{--                    <li><a class="flag" href="{{ route('lang_path', 'es') }}"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>--}}
+{{--                @endif--}}
+{{--                @if ($locale == 'pt')--}}
+{{--                    <li><a class="flag" href="{{ route('lang_path', 'pt') }}"><img src="{{asset('favicon.ico')}}" alt="flag spanish"></a></li>--}}
+{{--                @endif--}}
+
             </ul>
         </div>
     </nav>
+
+
+
 
 </section>
 

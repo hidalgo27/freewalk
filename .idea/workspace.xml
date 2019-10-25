@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2058fc1-4719-4d89-afe9-00195738e4fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/page/destination-tours.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tour.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tour.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/destination.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/destination.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,14 +112,20 @@
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/aewebsolutions/laravel-translator" />
+      <path value="$PROJECT_DIR$/vendor/artesaos/seotools" />
     </include_path>
   </component>
   <component name="ProjectId" id="1RtGlgxC1n22ms8rfHVYCNIaPBl" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admin-universe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gotoperu-mexico" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -122,11 +135,12 @@
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/layouts/page" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/layouts/admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/lang/es" />
+      <recent name="$PROJECT_DIR$/resources/views/layouts/page" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -168,6 +182,11 @@
       <workItem from="1571144142064" duration="15207000" />
       <workItem from="1571242630066" duration="553000" />
       <workItem from="1571244593410" duration="280000" />
+      <workItem from="1571669364441" duration="4612000" />
+      <workItem from="1571677428593" duration="8968000" />
+      <workItem from="1571848382107" duration="1156000" />
+      <workItem from="1571852827543" duration="5591000" />
+      <workItem from="1571933053789" duration="12708000" />
     </task>
     <servers />
   </component>
@@ -186,5 +205,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
