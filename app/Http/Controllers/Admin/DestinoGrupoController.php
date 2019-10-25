@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Destino;
 use App\DestinoGrupo;
+use App\DestinoGrupoIdioma;
 use App\DestinoGrupoImagen;
 use App\DestinoGrupoPregunta;
+use App\DestinoIdioma;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Idioma;
@@ -22,8 +24,10 @@ class DestinoGrupoController extends Controller
     public function index()
     {
         //
-        $destinos_grupo = DestinoGrupo::get();
-        $idiomas=Idioma::get();
+        $idioma_principal=Idioma::where('estado','1')->first();
+        $destinos_grupo = DestinoGrupo::where('idioma',$idioma_principal->codigo)->get();
+
+        $idiomas=Idioma::all();
         return view('admin.destino_grupo.index',compact('destinos_grupo','idiomas'));
     }
 
@@ -35,7 +39,7 @@ class DestinoGrupoController extends Controller
     public function create()
     {
         //
-        $idiomas=Idioma::get();
+        $idiomas=Idioma::where('estado','1')->get();
         return view('admin.destino_grupo.create',compact('idiomas'));
     }
 
@@ -69,7 +73,8 @@ class DestinoGrupoController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un detalle.']);
 
         if(strlen(trim($que_porque))=='0')
-            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
+            $que_porque='';
+        //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
 
         $destino_grupo=new DestinoGrupo();
         $destino_grupo->titulo=$titulo;
@@ -81,6 +86,11 @@ class DestinoGrupoController extends Controller
         $destino_grupo->estado=1;
         $destino_grupo->save();
 
+        $destino_grupo_relacion=new DestinoGrupoIdioma();
+        $destino_grupo_relacion->destino_grupo_padre_id=$destino_grupo->id;
+        $destino_grupo_relacion->destino_grupo_relacion_id=$destino_grupo->id;
+        $destino_grupo_relacion->idioma=$idioma;
+        $destino_grupo_relacion->save();
         if(!empty($banner_imagen)){
             foreach($banner_imagen as $banner_imagen_){
                 $filename ='imagen-b-'.$destino_grupo->id.'.'.$banner_imagen_->getClientOriginalExtension();
@@ -170,7 +180,8 @@ class DestinoGrupoController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un detalle.']);
 
         if(strlen(trim($que_porque))=='0')
-            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
+            $que_porque='';
+        //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
 
         $destino_grupo=DestinoGrupo::findOrFail($id);
         $destino_grupo->titulo=$titulo;
@@ -249,6 +260,14 @@ class DestinoGrupoController extends Controller
     public function destroy($id)
     {
         //
+
+        $traducciones=DestinoGrupoIdioma::where('destino_grupo_padre_id',$id)->where('destino_grupo_relacion_id','!=',$id)->get();
+        foreach($traducciones as $traduccion){
+            $oTourTemp=DestinoGrupo::findOrFail($traduccion->destino_grupo_relacion_id);
+            $oTourTemp->delete();
+        }
+        DestinoGrupoIdioma::where('destino_grupo_padre_id',$id)->delete();
+
         $oDestino=DestinoGrupo::findOrFail($id);
         $rpt=$oDestino->delete();
         if($rpt==1){
@@ -481,5 +500,201 @@ class DestinoGrupoController extends Controller
                 'mensaje' => 'Error al borrar los datos.'
             ]);
         }
+    }
+
+    public function index_idioma_create($id,$idioma,$arreglo)
+    {
+        //
+        $destino_grupo = DestinoGrupo::findOrFail($id);
+        $destino_id=$destino_grupo->destino_id;
+        $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
+        // dd($destino_id.'_'.$idioma);
+        $destino_idioma=DestinoIdioma::where('destino_padre_id',$destino_id)->where('idioma',$idioma)->get()->first();
+        if(!$destino_idioma){
+            return redirect()->route('admin.destino-grupo.index.path')->with(['warning'=>'No tenemos el destino para el idioma:"'.$idioma.'".']);
+        }
+        $destino=Destino::findOrFail($destino_idioma->destino_relacion_id);
+        $idioma_=Idioma::where('codigo',$idioma)->get()->first();
+        return view('admin.destino_grupo.create-idioma',compact('idiomas','idioma','idioma_','destino','arreglo','destino_grupo'));
+    }
+    public function index_idioma_store(Request $request,$id,$idioma,$arreglo)
+    {
+        $destino_id=$request->input('destino');
+        $idioma=$request->input('idioma');
+        $titulo=$request->input('titulo');
+        $descripcion=$request->input('descripcion');
+        $detalle=$request->input('detalle');
+        $banner_imagen=$request->file('banner_imagen');
+        $que_porque=$request->input('que_porque');
+        $que_porque_imagen=$request->file('que_porque_imagen');
+        if($idioma=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
+
+        if($destino_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
+
+        if(strlen(trim($descripcion))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
+
+        if(strlen(trim($detalle))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un detalle.']);
+
+        if(strlen(trim($que_porque))=='0')
+            $que_porque='';
+        //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
+
+        $destino_grupo=new DestinoGrupo();
+        $destino_grupo->titulo=$titulo;
+        $destino_grupo->descripcion=$descripcion;
+        $destino_grupo->detalle=$detalle;
+        $destino_grupo->que_porque=$que_porque;
+        $destino_grupo->destino_id=$destino_id;
+        $destino_grupo->idioma=$idioma;
+        $destino_grupo->estado=1;
+        $destino_grupo->save();
+        $arreglo_=explode('-',$arreglo);
+        foreach($arreglo_ as $arre){
+            if(trim($arre)!=''){
+                $a_=explode('_',$arre);
+                $traduccion=new DestinoGrupoIdioma();
+                $traduccion->destino_grupo_padre_id=$a_[0];
+                $traduccion->destino_grupo_relacion_id=$destino_grupo->id;
+                $traduccion->idioma=$destino_grupo->idioma;
+                $traduccion->save();
+            }
+        }
+        if(!empty($banner_imagen)){
+            foreach($banner_imagen as $banner_imagen_){
+                $filename ='imagen-b-'.$destino_grupo->id.'.'.$banner_imagen_->getClientOriginalExtension();
+                $imagen=new DestinoGrupoImagen();
+                $imagen->titulo='';
+                $imagen->descripcion='';
+                $imagen->imagen=$filename;
+                $imagen->estado=0; //-- numero para banner
+                $imagen->destinos_grupo_id=$destino_grupo->id;
+                $imagen->save();
+                Storage::disk('destino_grupo')->put($filename,  File::get($banner_imagen_));
+            }
+        }
+        if(!empty($que_porque_imagen)){
+            foreach($que_porque_imagen as $banner_imagen_qp){
+                $filename ='imagen-qp-'.$destino_grupo->id.'.'.$banner_imagen_qp->getClientOriginalExtension();
+                $imagen=new DestinoGrupoImagen();
+                $imagen->titulo='';
+                $imagen->descripcion='';
+                $imagen->imagen=$filename;
+                $imagen->estado=2; //-- numero para banner
+                $imagen->destinos_grupo_id=$destino_grupo->id;
+                $imagen->save();
+                Storage::disk('destino_grupo')->put($filename,  File::get($banner_imagen_qp));
+            }
+        }
+        return redirect()->route('admin.destino-grupo.index.path')->with(['success'=>'Datos guardados correctamente.']);
+    }
+    public function index_idioma_edit($id,$idioma,$arreglo)
+    {
+        //
+        $oDestino_grupo = DestinoGrupo::findOrFail($id);
+        $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
+        $destino=Destino::findOrFail($oDestino_grupo->destino_id);
+        $idioma_=Idioma::where('codigo',$idioma)->get()->first();
+        // dd($idioma_);
+        return view('admin.destino_grupo.edit-idioma',compact('idiomas','idioma','idioma_','destino','arreglo','oDestino_grupo'));
+    }
+    public function index_idioma_update(Request $request,$id,$idioma,$arreglo)
+    {
+        $destino_id=$request->input('destino');
+        $idioma=$request->input('idioma');
+        $titulo=$request->input('titulo');
+        $descripcion=$request->input('descripcion');
+        $detalle=$request->input('detalle');
+        $banner_imagen=$request->file('banner_imagen');
+        $banner_imagen_=$request->input('banner_imagen_');
+        $que_porque=$request->input('que_porque');
+        $que_porque_imagen=$request->file('que_porque_imagen');
+        $que_porque_imagen_=$request->input('que_porque_imagen_');
+        // dd($banner_imagen_);
+        if($idioma=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
+
+        if($destino_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
+
+        if(strlen(trim($descripcion))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
+
+        if(strlen(trim($detalle))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un detalle.']);
+
+        if(strlen(trim($que_porque))=='0')
+            $que_porque='';
+        //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
+
+        $destino_grupo=DestinoGrupo::findOrFail($id);
+        $destino_grupo->titulo=$titulo;
+        $destino_grupo->descripcion=$descripcion;
+        $destino_grupo->detalle=$detalle;
+        $destino_grupo->que_porque=$que_porque;
+        $destino_grupo->idioma=$idioma;
+        $destino_grupo->estado=1;
+        $destino_grupo->save();
+        // borramos de la db las imagenes banner que han sido eliminadas por el usuario
+        if(count((array)$banner_imagen_)>0){
+            $fotos_existentes=DestinoGrupoImagen::where('destinos_grupo_id',$destino_grupo->id)->where('estado','0')->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if(!in_array($value->id,$banner_imagen_)){
+                    DestinoGrupoImagen::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            DestinoGrupoImagen::where('destinos_grupo_id',$destino_grupo->id)->where('estado','0')->delete();
+         }
+        if(!empty($banner_imagen)){
+            foreach($banner_imagen as $banner_image){
+                $imagen = new DestinoGrupoImagen();
+                $imagen->titulo='';
+                $imagen->descripcion='';
+                $imagen->estado=0; //-- numero para banner
+                $imagen->imagen='';
+                $imagen->destinos_grupo_id=$destino_grupo->id;
+                $imagen->save();
+
+                $filename ='foto-b-'.$imagen->id.'.'.$banner_image->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('destino_grupo')->put($filename,  File::get($banner_image));
+            }
+        }
+        // borramos de la db las imagenes banner que han sido eliminadas por el usuario
+        if(count((array)$que_porque_imagen_)>0){
+            $fotos_existentesqp=DestinoGrupoImagen::where('destinos_grupo_id',$destino_grupo->id)->where('estado','2')->get();
+            foreach ($fotos_existentesqp as $value) {
+                # code...
+                if(!in_array($value->id,$que_porque_imagen_)){
+                    DestinoGrupoImagen::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            DestinoGrupoImagen::where('destinos_grupo_id',$destino_grupo->id)->where('estado','2')->delete();
+         }
+        if(!empty($que_porque_imagen)){
+            foreach($que_porque_imagen as $que_porque_imagen1){
+                $imagen = new DestinoGrupoImagen();
+                $imagen->titulo='';
+                $imagen->descripcion='';
+                $imagen->estado=2; //-- numero para banner
+                $imagen->imagen='';
+                $imagen->destinos_grupo_id=$destino_grupo->id;
+                $imagen->save();
+                $filename ='foto-qp-'.$imagen->id.'.'.$que_porque_imagen1->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('destino_grupo')->put($filename,  File::get($que_porque_imagen1));
+            }
+        }
+        return redirect()->route('admin.destino-grupo.index.path')->with(['success'=>'Datos editados correctamente.']);
     }
 }

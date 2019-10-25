@@ -28,6 +28,11 @@ Route::get('/admin/destinos/{id}/edit',['uses'=>'Admin\DestinoController@edit','
 Route::patch('/admin/destinos/{id}/update',['uses'=>'Admin\DestinoController@update','as'=>'admin.destino.update.path']);
 Route::get('/admin/destinos/{id}/destroy',['uses'=>'Admin\DestinoController@destroy','as'=>'admin.destino.destroy.path']);
 
+Route::get('/admin/destinos/{id}/{idioma}/{arreglo}/create',['uses'=>'Admin\DestinoController@index_idioma_create','as'=>'admin.destinos.index.idioma.create.path']);
+Route::post('/admin/destinos/{id}/{idioma}/{arreglo}/store',['uses'=>'Admin\DestinoController@index_idioma_store','as'=>'admin.destinos.index.idioma.store.path']);
+Route::get('/admin/destinos/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\DestinoController@index_idioma_edit','as'=>'admin.destinos.index.idioma.edit.path']);
+Route::patch('/admin/destinos/{id}/{idioma}/{arreglo}/update',['uses'=>'Admin\DestinoController@index_idioma_update','as'=>'admin.destinos.index.idioma.update.path']);
+
 // idiomas
 Route::get('/admin/idioma/index',['uses'=>'Admin\IdiomaController@index','as'=>'admin.idioma.index.path']);
 Route::get('/admin/idioma/create',['uses'=>'Admin\IdiomaController@create','as'=>'admin.idioma.create.path']);
@@ -61,8 +66,15 @@ Route::patch('/admin/destinos-grupo/{id}/update',['uses'=>'Admin\DestinoGrupoCon
 Route::get('/admin/destinos-grupo/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@destroy','as'=>'admin.destino-grupo.destroy.path']);
 Route::post('/admin/destinos-grupo/mostrar-destinos',['uses'=>'Admin\DestinoController@mostrar_destinos','as'=>'admin.destino.mostrar_destinos.path']);
 Route::get('/admin/destinos-grupo/imagen/{filename}', ['uses' => 'Admin\DestinoGrupoController@get_imagen','as' => 'admin.destino_grupo.get_imagen.path']);
+
+Route::get('/admin/destinos-grupo/{id}/{idioma}/{arreglo}/create',['uses'=>'Admin\DestinoGrupoController@index_idioma_create','as'=>'admin.destinos-grupo.index.idioma.create.path']);
+Route::post('/admin/destinos-grupo/{id}/{idioma}/{arreglo}/store',['uses'=>'Admin\DestinoGrupoController@index_idioma_store','as'=>'admin.destinos-grupo.index.idioma.store.path']);
+Route::get('/admin/destinos-grupo/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\DestinoGrupoController@index_idioma_edit','as'=>'admin.destinos-grupo.index.idioma.edit.path']);
+Route::patch('/admin/destinos-grupo/{id}/{idioma}/{arreglo}/update',['uses'=>'Admin\DestinoGrupoController@index_idioma_update','as'=>'admin.destinos-grupo.index.idioma.update.path']);
+
 Route::post('/admin/destinos-grupo-lugares-visitar/store',['uses'=>'Admin\DestinoGrupoController@lugares_visitar_store','as'=>'admin.destino-grupo.lugares-visitar.store.path']);
 Route::get('/admin/destinos-grupo-lugares-visitar/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@lugares_visitar_destroy','as'=>'admin.destino-grupo.lugares-visitar.destroy.path']);
+
 
 Route::get('/admin/destinos-grupo/{id}/atractivos/index',['uses'=>'Admin\DestinoGrupoController@atractivos_index','as'=>'admin.destino-grupo.atractivos.index.path']);
 Route::get('/admin/destinos-grupo/{id}/atractivos/create',['uses'=>'Admin\DestinoGrupoController@atractivos_create','as'=>'admin.destino-grupo.atractivos.create.path']);
@@ -111,6 +123,12 @@ Route::post('/admin/lugar-recojo/mostrar-destinos',['uses'=>'Admin\DestinoContro
 Route::get('/admin/lugar-recojo/imagen/{filename}', ['uses' => 'Admin\LugarRecojoController@get_imagen','as' => 'admin.lugar_recojo.get_imagen.path']);
 Route::post('/admin/lugar-recojo/galeria/store',['uses'=>'Admin\LugarRecojoController@galeria_store','as'=>'admin.lugar_recojo.galeria.store.path']);
 Route::get('/admin/lugar-recojo/galeria/{id}/destroy',['uses'=>'Admin\LugarRecojoController@galeria_destroy','as'=>'admin.lugar_recojo.galeria.destroy.path']);
+
+
+Route::get('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/create',['uses'=>'Admin\LugarRecojoController@index_idioma_create','as'=>'admin.lugar-recojo.index.idioma.create.path']);
+Route::post('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/store',['uses'=>'Admin\LugarRecojoController@index_idioma_store','as'=>'admin.lugar-recojo.index.idioma.store.path']);
+Route::get('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\LugarRecojoController@index_idioma_edit','as'=>'admin.lugar-recojo.index.idioma.edit.path']);
+Route::patch('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/update',['uses'=>'Admin\LugarRecojoController@index_idioma_update','as'=>'admin.lugar-recojo.index.idioma.update.path']);
 
 //Page
 Route::get('/', [

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Destino;
+use App\DestinoIdioma;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Idioma;
 use App\LugarRecojo;
+use App\LugarRecojoIdioma;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -21,8 +23,10 @@ class LugarRecojoController extends Controller
     {
         //
         $destinos=Destino::get();
-        $lugar_recojo = LugarRecojo::get();
-        return view('admin.lugar_recojo.index',compact('lugar_recojo','destinos'));
+        $idioma_principal=Idioma::where('estado','1')->first();
+        $lugar_recojo = LugarRecojo::where('idioma',$idioma_principal->codigo)->get();
+        $idiomas=Idioma::all();
+        return view('admin.lugar_recojo.index',compact('lugar_recojo','destinos','idiomas'));
     }
 
     /**
@@ -33,7 +37,7 @@ class LugarRecojoController extends Controller
     public function create()
     {
         //
-        $idiomas=Idioma::get();
+        $idiomas=Idioma::where('estado','1')->get();
         return view('admin.lugar_recojo.create',compact('idiomas'));
     }
 
@@ -78,6 +82,11 @@ class LugarRecojoController extends Controller
         $lugar_recojo->estado=1;
         $lugar_recojo->save();
 
+        $lugar_recojo_idioma=new LugarRecojoIdioma();
+        $lugar_recojo_idioma->lugar_recojo_padre_id=$lugar_recojo->id;
+        $lugar_recojo_idioma->lugar_recojo_relacion_id=$lugar_recojo->id;
+        $lugar_recojo_idioma->idioma=$idioma;
+        $lugar_recojo_idioma->save();
         if(!empty($imagen)){
                 $filename ='imagen-'.$lugar_recojo->id.'.'.$imagen->getClientOriginalExtension();
                 $lugar_recojo->referencia_imagen=$filename;
@@ -180,6 +189,14 @@ class LugarRecojoController extends Controller
     public function destroy($id)
     {
         //
+
+        $traducciones= LugarRecojoIdioma::where('lugar_recojo_padre_id',$id)->where('lugar_recojo_relacion_id','!=',$id)->get();
+        foreach($traducciones as $traduccion){
+            $oTourTemp=LugarRecojo::findOrFail($traduccion->lugar_recojo_relacion_id);
+            $oTourTemp->delete();
+        }
+        LugarRecojoIdioma::where('lugar_recojo_padre_id',$id)->delete();
+
         $oDestino=LugarRecojo::findOrFail($id);
         $rpt=$oDestino->delete();
         if($rpt==1){
@@ -206,5 +223,129 @@ class LugarRecojoController extends Controller
             $data = view('admin.lugar_recojo.mostrar-lugar-recojo-ajax',compact('lugar_recojo'))->render();
             return \Response::json(['options'=>$data]);
         }
+    }
+    public function index_idioma_create($id,$idioma,$arreglo)
+    {
+        //
+
+        $lugar_recojo = LugarRecojo::findOrFail($id);
+        $destino_id=$lugar_recojo->destino_id;
+        $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
+        $destino_idioma=DestinoIdioma::where('destino_padre_id',$destino_id)->where('idioma',$idioma)->get()->first();
+        if(!$destino_idioma){
+            return redirect()->route('admin.lugar_recojo.index.path')->with(['warning'=>'No tenemos el destino para el idioma:"'.$idioma.'".']);
+        }
+        $destino=Destino::findOrFail($destino_idioma->destino_relacion_id);
+        $idioma_=Idioma::where('codigo',$idioma)->get()->first();
+        return view('admin.lugar_recojo.create-idioma',compact('idiomas','idioma','idioma_','destino','arreglo','lugar_recojo'));
+    }
+    public function index_idioma_store(Request $request,$id,$idioma,$arreglo)
+    {
+        $destino_id=$request->input('destino');
+        $idioma=$request->input('idioma');
+        $titulo=$request->input('titulo');
+        $frame=$request->input('frame');
+        $referencia=$request->input('referencia');
+        $imagen=$request->file('referencia_imagen');
+
+        if($idioma=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
+
+        if($destino_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
+
+        if(strlen(trim($frame))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese el frame de GoogleMaps.']);
+
+        if(strlen(trim($referencia))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese la referencia.']);
+
+        $lugar_recojo=new LugarRecojo();
+        $lugar_recojo->titulo=$titulo;
+        $lugar_recojo->idioma=$idioma;
+        $lugar_recojo->iframe=$frame;
+        $lugar_recojo->referencia=$referencia;
+        $lugar_recojo->referencia_imagen='';
+        $lugar_recojo->imagen='';
+        $lugar_recojo->lat='';
+        $lugar_recojo->lon='';
+        $lugar_recojo->destino_id=$destino_id;
+        $lugar_recojo->estado=1;
+        $lugar_recojo->save();
+
+        $arreglo_=explode('-',$arreglo);
+        foreach($arreglo_ as $arre){
+            if(trim($arre)!=''){
+                $a_=explode('_',$arre);
+                $traduccion=new LugarRecojoIdioma();
+                $traduccion->lugar_recojo_padre_id=$a_[0];
+                $traduccion->lugar_recojo_relacion_id=$lugar_recojo->id;
+                $traduccion->idioma=$lugar_recojo->idioma;
+                $traduccion->save();
+            }
+        }
+        if(!empty($imagen)){
+                $filename ='imagen-'.$lugar_recojo->id.'.'.$imagen->getClientOriginalExtension();
+                $lugar_recojo->referencia_imagen=$filename;
+                $lugar_recojo->save();
+                Storage::disk('lugar_recojo')->put($filename,  File::get($imagen));
+        }
+        return redirect()->route('admin.lugar_recojo.index.path')->with(['success'=>'Datos guardados correctamente.']);
+    }
+    public function index_idioma_edit($id,$idioma,$arreglo)
+    {
+        //
+        $oLugar_recojo = LugarRecojo::findOrFail($id);
+        $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
+        $destino=Destino::findOrFail($oLugar_recojo->destino_id);
+        $idioma_=Idioma::where('codigo',$idioma)->get()->first();
+        // dd($idioma_);
+        return view('admin.lugar_recojo.edit-idioma',compact('idiomas','idioma','idioma_','destino','arreglo','oLugar_recojo'));
+    }
+    public function index_idioma_update(Request $request,$id,$idioma,$arreglo)
+    {
+        //
+        $destino_id=$request->input('destino');
+        $idioma=$request->input('idioma');
+        $titulo=$request->input('titulo');
+        $frame=$request->input('frame');
+        $referencia=$request->input('referencia');
+        $imagen=$request->file('referencia_imagen');
+        $imagen_=$request->input('referencia_imagen_');
+
+        if($idioma=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
+
+        if($destino_id=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
+
+        if(strlen(trim($frame))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese el frame de GoogleMaps.']);
+
+        if(strlen(trim($referencia))=='0')
+            return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese la referencia.']);
+
+        $lugar_recojo= LugarRecojo::findOrFail($id);
+        $lugar_recojo->titulo=$titulo;
+        $lugar_recojo->idioma=$idioma;
+        $lugar_recojo->iframe=$frame;
+        $lugar_recojo->referencia=$referencia;
+        $lugar_recojo->destino_id=$destino_id;
+        $lugar_recojo->estado=1;
+        $lugar_recojo->save();
+
+
+        // borramos de la db la foto de portada que han sido eliminadas por el usuario
+        if(!isset($imagen_)){
+            $lugar_recojo->referencia_imagen='';
+            $lugar_recojo->save();
+        }
+        if(!empty($imagen)){
+            $filename ='imagen-'.$lugar_recojo->id.'.'.$imagen->getClientOriginalExtension();
+            $lugar_recojo->referencia_imagen=$filename;
+            $lugar_recojo->save();
+            Storage::disk('lugar_recojo')->put($filename,  File::get($imagen));
+        }
+        return redirect()->route('admin.lugar_recojo.index.path')->with(['success'=>'Datos editados correctamente.']);
     }
 }

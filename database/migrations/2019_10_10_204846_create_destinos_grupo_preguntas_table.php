@@ -16,7 +16,7 @@ class CreateDestinosGrupoPreguntasTable extends Migration
         Schema::create('destinos_grupo_preguntas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('pregunta');
-            $table->string('respuesta');
+            $table->longText('respuesta');
             $table->integer('estado');
             // $table->string('idioma')->comment('Idioma del contenido');
             $table->integer('destinos_grupo_id')->comment('id del destino al que pertenece');

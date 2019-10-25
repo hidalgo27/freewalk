@@ -15,7 +15,7 @@ $(document).ready(function () {
 <li class="breadcrumb-item active" aria-current="page">Editar</li>
 @endsection
 @section('content')
-<form action="{{ route('admin.destino-grupo.update.path',$oDestino_grupo->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.destinos-grupo.index.idioma.update.path',[$oDestino_grupo->id,$idioma_->codigo,$arreglo]) }}" method="post" enctype="multipart/form-data">
     <div class="card">
         <div class="card-header">
             <h4 class="text-uppercase">
@@ -23,13 +23,6 @@ $(document).ready(function () {
             </h4>
         </div>
         <div class="card-body">
-            {{-- @if (Session::has('success'))
-                <div class="alert alert-success">
-                    <ul>
-                        <li>{!! Session::get('success') !!}</li>
-                    </ul>
-                </div>
-            @endif --}}
             <div class="form-row">
                 <div class="form-group col-12">
                     <div class="card bg-dark text-white">
@@ -42,18 +35,14 @@ $(document).ready(function () {
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma" onchange="mostrar_destinos($(this).val(),'editar')">
                         <option value="0">Escoja una opcion</option>
-                        @foreach ($idiomas as $item)
-                            <option value="{{ $item->codigo }}" @if ($oDestino_grupo->idioma==$item->codigo) selected @endif>{{ $item->nombre }}</option>
-                        @endforeach
+                        <option value="{{ $oDestino_grupo->idioma }}" selected >{{ $oDestino_grupo->idioma }}</option>
                     </select>
                 </div>
                 <div class="form-group col-6">
                     <label for="destino">Destino</label>
                     <select  class="form-control" id="destino" name="destino">
                         <option value="0">Escoja una opcion</option>
-                        @foreach ($oDestinos->sortBy('nombre') as $destino)
-                            <option value="{{ $destino->id }}" @if ($oDestino_grupo->destino_id==$destino->id) selected @endif>{{ $destino->nombre }}</option>
-                        @endforeach
+                        <option value="{{ $destino->id }}" selected >{{ $destino->nombre }}</option>
                     </select>
                 </div>
                 <div class="form-group col-12">

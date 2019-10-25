@@ -16,7 +16,7 @@ class CreateDestinosGrupoImagenTable extends Migration
         Schema::create('destinos_grupo_imagen', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('titulo');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->string('imagen');
             $table->integer('estado')->comment('0:banner, 1:atractivo, 2:que_porque');
             $table->integer('destinos_grupo_id')->comment('id del destino al que pertenece');

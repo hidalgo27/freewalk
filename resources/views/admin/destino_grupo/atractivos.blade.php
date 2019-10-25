@@ -11,7 +11,7 @@ $(document).ready(function () {
 @endsection
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('admin.home.path')}}">Inicio</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.destino-inicio.index.path') }}">Destinos grupo</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.destino-grupo.index.path') }}">Destinos grupo</a></li>
 <li class="breadcrumb-item active" aria-current="page">Lugares a visitar</li>
 @endsection
 @section('content')

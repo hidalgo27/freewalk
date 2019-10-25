@@ -42,11 +42,18 @@ $(document).ready(function () {
                     @foreach ($destinos->sortBy('nombre')->sortBy('idioma') as $item)
                     @php
                         $i++;
+                        $arreglo=$item->id.'_'.$item->idioma.'-';
                     @endphp
                     <tr id="lista_{{ $item->id }}">
                         <td>{{ $i }}</td>
                         <td>{{ $item->nombre }}</td>
-                        <td>{{ $item->idioma }}</td>
+                        <td>
+                            <div class="btn-group">
+                                @foreach ($idiomas as $idioma_)
+                                    <a href="@if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->traducciones->where('idioma',$idioma_->codigo)->count()>0)) {{ route('admin.destinos.index.idioma.edit.path',[$item->traducciones->where('idioma',$idioma_->codigo)->first()->destino_relacion_id,$idioma_->codigo,$arreglo]) }} @else {{ route('admin.destinos.index.idioma.create.path',[$item->id,$idioma_->codigo,$arreglo]) }} @endif" class="btn @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->traducciones->where('idioma',$idioma_->codigo)->count()>0)) btn-primary @else btn-danger @endif"><i class="fas @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->traducciones->where('idioma',$idioma_->codigo)->count()>0))) fa-edit @else fa-plus-circle @endif "></i>{{ $idioma_->codigo }}</a>
+                                @endforeach
+                            </div>
+                        </td>
                         {{-- <td>
                             @if ($item->estado==0)
                                 <button class="btn btn-dark"><i class="fas fa-times-circle"></i></button>
@@ -56,7 +63,7 @@ $(document).ready(function () {
                         </td> --}}
                         <td>
                             <div class="btn btn-group">
-                                <a class="btn btn-warning" href="{{ route('admin.destino.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a>
+                                {{-- <a class="btn btn-warning" href="{{ route('admin.destino.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a> --}}
                                 <form id="form_borrar_{{ $item->id }}" action="{{ route('admin.destino.destroy.path',$item->id) }}" method="get">
                                     @csrf
                                     {{-- @method('delete') --}}
