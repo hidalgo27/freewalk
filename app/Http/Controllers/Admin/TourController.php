@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Destino;
+use App\DestinoIdioma;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Idioma;
@@ -288,15 +289,15 @@ class TourController extends Controller
 
     public function index_idioma_create($id,$idioma,$arreglo)
     {
-        // //
-        // $idiomas=Idioma::all();
-        // $idioma_principal=Idioma::where('estado','1')->first();
+        //
         $tour = Tour::findOrFail($id);
-        // return view('admin.tour.index',compact('tours','idiomas'));
-
-
+        $destino_id=$tour->destino_id;
         $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
-        $destino=Destino::findOrFail($tour->destino_id);
+        $destino_idioma=DestinoIdioma::where('destino_padre_id',$destino_id)->where('idioma',$idioma)->get()->first();
+        if(!$destino_idioma){
+            return redirect()->route('admin.tour.index.path')->with(['warning'=>'No tenemos el destino para el idioma:"'.$idioma.'".']);
+        }
+        $destino=Destino::findOrFail($destino_idioma->destino_relacion_id);
         $lugar_recojo=LugarRecojo::findOrFail($tour->lugar_recojo_id);
         $idioma_=Idioma::where('codigo',$idioma)->get()->first();
         // dd($idioma_);

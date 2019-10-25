@@ -20,4 +20,8 @@ class DestinoGrupo extends Model
     {
         return $this->hasMany(DestinoGrupoPregunta::class, 'destinos_grupo_id');
     }
+    public function traducciones()
+    {
+        return $this->hasMany(DestinoGrupoIdioma::class, 'destino_grupo_padre_id');
+    }
 }

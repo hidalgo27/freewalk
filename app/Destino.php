@@ -24,4 +24,8 @@ class Destino extends Model
     {
         return $this->hasMany(LugarRecojo::class, 'destino_id');
     }
+    public function traducciones()
+    {
+        return $this->hasMany(DestinoIdioma::class, 'destino_padre_id');
+    }
 }

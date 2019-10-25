@@ -41,15 +41,22 @@ $(document).ready(function () {
                     @foreach ($lugar_recojo->sortBy('titulo')->sortBy('idioma') as $item)
                     @php
                         $i++;
+                        $arreglo=$item->id.'_'.$item->idioma.'-';
                     @endphp
                     <tr id="lista_{{ $item->id }}">
                         <td>{{ $i }}</td>
                         <td>{{ $item->titulo }}</td>
                         <td>{{ $destinos->where('id',$item->destino_id)->first()->nombre }}</td>
-                        <td>{{ $item->idioma }}</td>
+                        <td>
+                            <div class="btn-group">
+                                @foreach ($idiomas as $idioma_)
+                                    <a href="@if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->traducciones->where('idioma',$idioma_->codigo)->count()>0)) {{ route('admin.lugar-recojo.index.idioma.edit.path',[$item->traducciones->where('idioma',$idioma_->codigo)->first()->lugar_recojo_relacion_id,$idioma_->codigo,$arreglo]) }} @else {{ route('admin.lugar-recojo.index.idioma.create.path',[$item->id,$idioma_->codigo,$arreglo]) }} @endif" class="btn @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->traducciones->where('idioma',$idioma_->codigo)->count()>0)) btn-primary @else btn-danger @endif"><i class="fas @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->traducciones->where('idioma',$idioma_->codigo)->count()>0))) fa-edit @else fa-plus-circle @endif "></i>{{ $idioma_->codigo }}</a>
+                                @endforeach
+                            </div>
+                        </td>
                         <td>
                             <div class="btn btn-group">
-                                <a class="btn btn-warning" href="{{ route('admin.lugar_recojo.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a>
+                                {{-- <a class="btn btn-warning" href="{{ route('admin.lugar_recojo.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a> --}}
                                 <form id="form_borrar_{{ $item->id }}" action="{{ route('admin.lugar_recojo.destroy.path',$item->id) }}" method="get">
                                     @csrf
                                     <button class="btn btn-danger" type="button" onclick="borrarDestino_inicio('{{ $item->id }}','{{ $item->titulo }}')">

@@ -16,4 +16,8 @@ class LugarRecojo extends Model
     {
         return $this->belongsTo(LugarRecojo::class, 'destino_id');
     }
+    public function traducciones()
+    {
+        return $this->hasMany(LugarRecojoIdioma::class, 'lugar_recojo_padre_id');
+    }
 }

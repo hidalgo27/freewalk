@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Destino;
+use App\DestinoIdioma;
 use App\DestinoInicio;
 use App\DestinoInicioIdioma;
 use Illuminate\Support\Facades\Storage;
@@ -193,8 +194,13 @@ class DestinoInicioController extends Controller
     {
         //
         $destino_inicio = DestinoInicio::findOrFail($id);
+        $destino_id=$destino_inicio->destino_id;
         $idiomas=Idioma::where('estado','!=','1')->where('codigo',$idioma)->get();
-        $destino=Destino::findOrFail($destino_inicio->destino_id);
+        $destino_idioma=DestinoIdioma::where('destino_padre_id',$destino_id)->where('idioma',$idioma)->get()->first();
+        if(!$destino_idioma){
+            return redirect()->route('admin.destino-inicio.index.path')->with(['warning'=>'No tenemos el destino para el idioma:"'.$idioma.'".']);
+        }
+        $destino=Destino::findOrFail($destino_idioma->destino_relacion_id);
         $idioma_=Idioma::where('codigo',$idioma)->get()->first();
         return view('admin.destino_inicio.create-idioma',compact('idiomas','idioma','idioma_','destino','arreglo','destino_inicio'));
     }
@@ -284,5 +290,5 @@ class DestinoInicioController extends Controller
             Storage::disk('destino_inicio')->put($filename,  File::get($imagen));
         }
         return redirect()->route('admin.destino-inicio.index.path')->with(['success'=>'Datos editados correctamente.']);
-        }
+    }
 }
