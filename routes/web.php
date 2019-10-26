@@ -19,6 +19,23 @@ Auth::routes();
 
 //Admin
 // Route::get('/admin/home', 'Admin\HomepageController@index')->name('home');
+
+Route::get('/admin/home',['uses'=>'Admin\HomepageController@index','as'=>'admin.home.path']);
+// Inicio
+Route::get('/admin/inicio/index',['uses'=>'Admin\InicioController@index','as'=>'admin.inicio.index.path']);
+Route::get('/admin/inicio/create',['uses'=>'Admin\InicioController@create','as'=>'admin.inicio.create.path']);
+Route::post('/admin/inicio/store',['uses'=>'Admin\InicioController@store','as'=>'admin.inicio.store.path']);
+Route::get('/admin/inicio/{id}/edit',['uses'=>'Admin\InicioController@edit','as'=>'admin.inicio.edit.path']);
+Route::patch('/admin/inicio/{id}/update',['uses'=>'Admin\InicioController@update','as'=>'admin.inicio.update.path']);
+Route::get('/admin/inicioss/aaa/imagen/{filename}', ['uses' => 'Admin\InicioController@get_imagen','as' => 'admin.inicio.get_imagen.path']);
+Route::get('/admin/inicio/{id}/destroy',['uses'=>'Admin\InicioController@destroy','as'=>'admin.inicio.destroy.path']);
+
+Route::get('/admin/inicio/{id}/{idioma}/{arreglo}/create',['uses'=>'Admin\InicioController@index_idioma_create','as'=>'admin.inicio.index.idioma.create.path']);
+Route::post('/admin/inicio/{id}/{idioma}/{arreglo}/store',['uses'=>'Admin\InicioController@index_idioma_store','as'=>'admin.inicio.index.idioma.store.path']);
+Route::get('/admin/inicio/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\InicioController@index_idioma_edit','as'=>'admin.inicio.index.idioma.edit.path']);
+Route::patch('/admin/inicio/{id}/{idioma}/{arreglo}/update',['uses'=>'Admin\InicioController@index_idioma_update','as'=>'admin.inicio.index.idioma.update.path']);
+
+// destino
 Route::get('/admin/home',['uses'=>'Admin\HomepageController@index','as'=>'admin.home.path']);
 
 Route::get('/admin/destinos/index',['uses'=>'Admin\DestinoController@index','as'=>'admin.destino.index.path']);

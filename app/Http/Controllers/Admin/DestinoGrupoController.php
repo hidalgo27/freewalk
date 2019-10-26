@@ -562,6 +562,11 @@ class DestinoGrupoController extends Controller
         foreach($arreglo_ as $arre){
             if(trim($arre)!=''){
                 $a_=explode('_',$arre);
+                // $tour_relacion=new DestinoGrupoIdioma();
+                // $tour_relacion->destino_grupo_padre_id=$tour->id;
+                // $tour_relacion->destino_grupo_relacion_id=$a_[0];
+                // $tour_relacion->idioma=$a_[1];
+                // $tour_relacion->save();
                 $traduccion=new DestinoGrupoIdioma();
                 $traduccion->destino_grupo_padre_id=$a_[0];
                 $traduccion->destino_grupo_relacion_id=$destino_grupo->id;

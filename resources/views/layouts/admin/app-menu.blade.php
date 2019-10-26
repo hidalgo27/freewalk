@@ -97,6 +97,9 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="{{route('admin.inicio.index.path')}}">Inicio</a>
+                        </li>
+                        <li>
                             <a href="{{route('admin.destino-inicio.index.path')}}">Destinos Inicio</a>
                         </li>
                         <li>
