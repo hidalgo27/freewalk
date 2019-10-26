@@ -32,7 +32,7 @@ $(document).ready(function () {
                 </div>
             @endif --}}
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-2">
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma">
                         @foreach ($idiomas as $item)
@@ -41,6 +41,10 @@ $(document).ready(function () {
                     </select>
                 </div>
                 <div class="form-group col-6">
+                    <label for="url">Url <span class="text-small">(<span>http://midominio.com/<span><span class="text-primary">mi-url</span>) <span class="text-danger">No caracteres especiales, ni MAYUSCULAS</span></span></label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese la url" value="{{ $destino->url }}" required>
+                </div>
+                <div class="form-group col-4">
                     <label for="destino">Destino</label>
                     <input type="text" class="form-control" id="destino" name="destino" placeholder="Nombre del destino" value="{{ $oDestino->nombre }}">
                 </div>

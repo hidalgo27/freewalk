@@ -25,13 +25,17 @@ $(document).ready(function () {
         </div>
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-2">
                     <label for="idioma">Idioma</label>
                     <select  class="form-control" id="idioma" name="idioma">
                         <option value="{{ $idioma_->codigo }}" selected >{{ $idioma_->nombre }}</option>
                     </select>
                 </div>
                 <div class="form-group col-6">
+                    <label for="url">Url <span class="text-small">(<span>http://midominio.com/<span><span class="text-primary">mi-url</span>) <span class="text-danger">No caracteres especiales, ni MAYUSCULAS</span></span></label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese la url" value="{{ old('url') }}" required>
+                </div>
+                <div class="form-group col-4">
                     <label for="destino">Destino</label>
                     <input type="text" class="form-control" id="destino" name="destino" placeholder="Nombre del destino" value="{{ $destino->nombre }}" required>
                 </div>

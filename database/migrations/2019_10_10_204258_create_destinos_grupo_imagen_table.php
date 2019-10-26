@@ -18,7 +18,7 @@ class CreateDestinosGrupoImagenTable extends Migration
             $table->string('titulo');
             $table->longText('descripcion');
             $table->string('imagen');
-            $table->integer('estado')->comment('0:banner, 1:atractivo, 2:que_porque');
+            $table->integer('estado')->comment('0:banner, 1:lugares a visitar, 2:que_porque,3:atractivo,4: imagen seo',);
             $table->integer('destinos_grupo_id')->comment('id del destino al que pertenece');
             $table->timestamps();
         });

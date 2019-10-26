@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateToursImagenTable extends Migration
+class CreateInicioIdiomasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateToursImagenTable extends Migration
      */
     public function up()
     {
-        Schema::create('tours_imagen', function (Blueprint $table) {
+        Schema::create('inicio_idiomas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo');
-            $table->string('imagen');
-            $table->integer('estado')->comment('0:banner, 1:galeria, 2:imagen seo');
-            $table->integer('tours_id')->comment('id del destino al que pertenece');
+            $table->integer('inicio_padre_id');
+            $table->integer('inicio_relacion_id');
+            $table->string('idioma');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateToursImagenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tours_imagen');
+        Schema::dropIfExists('inicio_idiomas');
     }
 }

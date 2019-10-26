@@ -55,11 +55,13 @@ class DestinoController extends Controller
     {
         //
         $destino_nombre=$request->input('destino');
+        $destino_url=$request->input('url');
         $destino_idioma=$request->input('idioma');
         $eDestino=Destino::where('nombre',$destino_nombre)->where('idioma',$destino_idioma)->get();
         if($eDestino->count()==0){
             $oDestino=new Destino();
             $oDestino->nombre=strtoupper($destino_nombre);
+            $oDestino->url=$destino_url;
             $oDestino->idioma=$destino_idioma;
             $oDestino->estado=1;
             $oDestino->save();
@@ -113,10 +115,12 @@ class DestinoController extends Controller
         //
         $destino_id=$request->input('id');
         $destino_nombre=$request->input('destino');
+        $destino_url=$request->input('url');
         $destino_idioma=$request->input('idioma');
         $oDestino=Destino::findOrFail($destino_id);
         $oDestino->nombre=strtoupper($destino_nombre);
         $oDestino->idioma=$destino_idioma;
+        $oDestino->url=$destino_url;
         $oDestino->estado=1;
         $oDestino->save();
         return redirect()->back()->with(['success'=>'Datos guardados correctamente.']);
@@ -205,12 +209,14 @@ class DestinoController extends Controller
     public function index_idioma_store(Request $request,$id,$idioma,$arreglo)
     {
         $destino_nombre=$request->input('destino');
+        $destino_url=$request->input('url');
         $destino_idioma=$request->input('idioma');
         $eDestino=Destino::where('nombre',$destino_nombre)->where('idioma',$destino_idioma)->get();
         if($eDestino->count()==0){
             $oDestino=new Destino();
             $oDestino->nombre=strtoupper($destino_nombre);
             $oDestino->idioma=$destino_idioma;
+            $oDestino->url=$destino_url;
             $oDestino->estado=1;
             $oDestino->save();
 
@@ -253,10 +259,12 @@ class DestinoController extends Controller
 
         $destino_id=$request->input('id');
         $destino_nombre=$request->input('destino');
+        $destino_url=$request->input('url');
         $destino_idioma=$request->input('idioma');
         $oDestino=Destino::findOrFail($destino_id);
         $oDestino->nombre=strtoupper($destino_nombre);
         $oDestino->idioma=$destino_idioma;
+        $oDestino->url=$destino_url;
         $oDestino->estado=1;
         $oDestino->save();
         return redirect()->route('admin.destino.index.path')->with(['success'=>'Datos editados correctamente.']);

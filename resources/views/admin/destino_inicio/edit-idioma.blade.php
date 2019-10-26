@@ -38,7 +38,11 @@ $(document).ready(function () {
                         <option value="{{ $destino->id }}" selected >{{ $destino->nombre }}</option>
                     </select>
                 </div>
-                <div class="form-group col-12">
+                <div class="form-group col-6">
+                    <label for="url">Url <span class="text-small">(<span>http://midominio.com/<span><span class="text-primary">mi-url</span>) <span class="text-danger">No caracteres especiales, ni MAYUSCULAS</span></span></label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese la url" value="{{ $oDestino_inicio->url }}" required>
+                </div>
+                <div class="form-group col-6">
                     <label for="titulo">Titulo</label>
                     <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Nombre del titulo" value="{{ $oDestino_inicio->titulo }}" required>
                 </div>

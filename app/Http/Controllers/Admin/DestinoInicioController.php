@@ -52,6 +52,7 @@ class DestinoInicioController extends Controller
         //
         $destino_id=$request->input('destino');
         $idioma=$request->input('idioma');
+        $url=$request->input('url');
         $titulo=$request->input('titulo');
         $detalle=$request->input('detalle');
         $imagen=$request->file('imagen');
@@ -63,6 +64,7 @@ class DestinoInicioController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
 
         $destino_inicio=new DestinoInicio();
+        $destino_inicio->url=$url;
         $destino_inicio->titulo=$titulo;
         $destino_inicio->idioma=$idioma;
         $destino_inicio->detalle=$detalle;
@@ -122,6 +124,7 @@ class DestinoInicioController extends Controller
     {
         //
         $destino_id=$request->input('destino');
+        $url=$request->input('url');
         $idioma=$request->input('idioma');
         $titulo=$request->input('titulo');
         $detalle=$request->input('detalle');
@@ -134,6 +137,7 @@ class DestinoInicioController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
 
         $destino_inicio= DestinoInicio::findOrFail($id);
+        $destino_inicio->url=$url;
         $destino_inicio->titulo=$titulo;
         $destino_inicio->idioma=$idioma;
         $destino_inicio->detalle=$detalle;
@@ -207,6 +211,7 @@ class DestinoInicioController extends Controller
     public function index_idioma_store(Request $request,$id,$idioma,$arreglo)
     {
         $destino_id=$request->input('destino');
+        $url=$request->input('url');
         $idioma=$request->input('idioma');
         $titulo=$request->input('titulo');
         $detalle=$request->input('detalle');
@@ -219,6 +224,7 @@ class DestinoInicioController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
 
         $destino_inicio=new DestinoInicio();
+        $destino_inicio->url=$url;
         $destino_inicio->titulo=$titulo;
         $destino_inicio->idioma=$idioma;
         $destino_inicio->detalle=$detalle;
@@ -260,6 +266,7 @@ class DestinoInicioController extends Controller
         //
         $destino_id=$request->input('destino');
         $idioma=$request->input('idioma');
+        $url=$request->input('url');
         $titulo=$request->input('titulo');
         $detalle=$request->input('detalle');
         $imagen=$request->file('imagen');
@@ -271,6 +278,7 @@ class DestinoInicioController extends Controller
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un destino.']);
 
         $destino_inicio= DestinoInicio::findOrFail($id);
+        $destino_inicio->url=$url;
         $destino_inicio->titulo=$titulo;
         $destino_inicio->idioma=$idioma;
         $destino_inicio->detalle=$detalle;

@@ -28,6 +28,7 @@ $(document).ready(function () {
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Url</th>
                         <th>Titulo</th>
                         <th>Idioma</th>
                         <th>Operaciones</th>
@@ -50,6 +51,7 @@ $(document).ready(function () {
                     {{-- @endforeach --}}
                     <tr id="lista_{{ $item->id }}">
                         <td>{{ $i }}</td>
+                        <td>{{ $item->url }}</td>
                         <td>{{ $item->titulo }}</td>
                         <td>
                             <div class="btn-group">

@@ -30,6 +30,7 @@ $(document).ready(function () {
                     <tr>
                         <th>#</th>
                         <th>Destino</th>
+                        <th>Url</th>
                         <th>Idioma</th>
                         {{-- <th>Estado</th> --}}
                         <th>Operaciones</th>
@@ -47,6 +48,7 @@ $(document).ready(function () {
                     <tr id="lista_{{ $item->id }}">
                         <td>{{ $i }}</td>
                         <td>{{ $item->nombre }}</td>
+                        <td>{{ $item->url }}</td>
                         <td>
                             <div class="btn-group">
                                 @foreach ($idiomas as $idioma_)

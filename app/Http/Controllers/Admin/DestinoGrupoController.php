@@ -54,6 +54,7 @@ class DestinoGrupoController extends Controller
         //
         $destino_id=$request->input('destino');
         $idioma=$request->input('idioma');
+        $url=$request->input('url');
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
         $detalle=$request->input('detalle');
@@ -77,6 +78,7 @@ class DestinoGrupoController extends Controller
         //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
 
         $destino_grupo=new DestinoGrupo();
+        $destino_grupo->url=$url;
         $destino_grupo->titulo=$titulo;
         $destino_grupo->descripcion=$descripcion;
         $destino_grupo->detalle=$detalle;
@@ -157,6 +159,7 @@ class DestinoGrupoController extends Controller
     {
         //
         $destino_id=$request->input('destino');
+        $url=$request->input('url');
         $idioma=$request->input('idioma');
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
@@ -184,6 +187,7 @@ class DestinoGrupoController extends Controller
         //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
 
         $destino_grupo=DestinoGrupo::findOrFail($id);
+        $destino_grupo->url=$url;
         $destino_grupo->titulo=$titulo;
         $destino_grupo->descripcion=$descripcion;
         $destino_grupo->detalle=$detalle;
@@ -520,6 +524,7 @@ class DestinoGrupoController extends Controller
     public function index_idioma_store(Request $request,$id,$idioma,$arreglo)
     {
         $destino_id=$request->input('destino');
+        $url=$request->input('url');
         $idioma=$request->input('idioma');
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
@@ -544,6 +549,7 @@ class DestinoGrupoController extends Controller
         //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
 
         $destino_grupo=new DestinoGrupo();
+        $destino_grupo->url=$url;
         $destino_grupo->titulo=$titulo;
         $destino_grupo->descripcion=$descripcion;
         $destino_grupo->detalle=$detalle;
@@ -604,6 +610,7 @@ class DestinoGrupoController extends Controller
     public function index_idioma_update(Request $request,$id,$idioma,$arreglo)
     {
         $destino_id=$request->input('destino');
+        $url=$request->input('url');
         $idioma=$request->input('idioma');
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
@@ -631,6 +638,7 @@ class DestinoGrupoController extends Controller
         //     return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un contenido para que_porque.']);
 
         $destino_grupo=DestinoGrupo::findOrFail($id);
+        $destino_grupo->url=$url;
         $destino_grupo->titulo=$titulo;
         $destino_grupo->descripcion=$descripcion;
         $destino_grupo->detalle=$detalle;

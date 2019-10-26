@@ -106,8 +106,9 @@ class HomepageController extends Controller
 
 
 
-    public function lang($locale){
+    public function lang($locale,$origen){
         Session::put('locale', $locale);
+        Session::put('origen', $origen);
         if ($locale=='en') {
             return redirect()->route('home_path');
         }else{
