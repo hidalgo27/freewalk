@@ -1,6 +1,6 @@
 @extends('layouts.page.app')
     @section('content')
-
+@include('layouts.page.nav-home')
         <section>
             <picture>
                 <source media="(max-width: 550px)" srcset="{{asset('images/free-walking-tours-peru-mobile.png')}}">
@@ -22,7 +22,10 @@
         <section class="section02 py-4">
             <div class="container maxw">
                 <div class="row">
+                    {{$locale}}
                     @foreach($destinos_inicio as $destinos_inicios)
+{{--{{$destinos_inicios}}--}}
+
                         <div class="col-12 my-2">
                             <div class="box-torus">
                                 <div class="row">
@@ -41,6 +44,7 @@
                                 </div>
                             </div>
                         </div>
+
                     @endforeach
                 </div>
             </div>

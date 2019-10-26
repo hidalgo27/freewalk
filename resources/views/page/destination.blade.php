@@ -2,6 +2,9 @@
     @section('content')
 
         @foreach($destino_grupo as $destino_grupos)
+
+            @include('layouts.page.nav-home-agrupados')
+
             @foreach ($destino_grupos->imagenes->where('estado','0') as $foto)
                 @if (Storage::disk('destino_grupo')->has($foto->imagen))
                     <section>
@@ -14,7 +17,7 @@
                 @endif
             @endforeach
 
-
+{{$locale}}
         <!-- end slider -->
 
         <!-- contenido -->
@@ -572,6 +575,23 @@
     @endsection
 
 @push('scripts')
+    <script>
+        function change_idioma($id, $idioma) {
+
+            var datos = {
+                "id" : $id,
+                "idioma" : $idioma,
+            };
+            $.ajax({
+                data:  datos,
+{{--                url:   "{{route('lang_agrupados_path')}}",--}}
+                type:  'get',
+                success:  function (response) {
+                    location.reload();
+                }
+            });
+        }
+    </script>
     <script>
         $(document).ready(function()
         {
