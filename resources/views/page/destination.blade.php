@@ -17,7 +17,6 @@
                 @endif
             @endforeach
 
-{{$locale}}
         <!-- end slider -->
 
         <!-- contenido -->
