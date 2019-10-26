@@ -193,3 +193,8 @@ Route::get('/idioma/{locale}/{origen}', [
     'uses' => 'Page\HomepageController@lang',
     'as' => 'lang_path',
 ]);
+
+Route::get('/idioma/lang_agrupados/{id}/{idioma}', [
+    'uses' => 'Page\HomepageController@lang_agrupados',
+    'as' => 'lang_agrupados_path',
+]);

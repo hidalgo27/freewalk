@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Page;
 
 use App\Destino;
 use App\DestinoGrupo;
+use App\DestinoGrupoIdioma;
 use App\DestinoInicio;
+use App\DestinoInicioIdioma;
 use App\LugarRecojo;
 use App\Tour;
 use Artesaos\SEOTools\Facades\JsonLd;
@@ -24,35 +26,15 @@ class HomepageController extends Controller
         SEOMeta::setTitle('Home');
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        OpenGraph::addImage('https://codecasts.com.br/lesson');
 //        SEOMeta::addAlternateLanguage('es', 'español.com');
-//        $alternateLanguages[] = ['lang' => 'es', 'url' => '.xom'];
+        $alternateLanguages[] = ['lang' => 'es', 'url' => '.pe'];
+        $alternateLanguages[] = ['lang' => 'en', 'url' => '.com'];
 
-//        SEOMeta::addAlternateLanguages($alternateLanguages);
+        SEOMeta::addAlternateLanguages($alternateLanguages);
 
         OpenGraph::setDescription('This is my page description');
-        OpenGraph::setTitle('Home');
-        OpenGraph::setUrl('http://current.url.com');
-//        OpenGraph::addProperty('type', 'articles');
-//        OpenGraph::addProperty('locale', 'pt-br');
-//        OpenGraph::addProperty('locale:alternate', ['pt-pt', 'en-us']);
-
-//        TwitterCard::setTitle('Homepage');
-//        TwitterCard::setSite('@LuizVinicius73');
-//
-//        JsonLd::setTitle('Homepage');
-//        JsonLd::setDescription('This is my page description');
-//        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
-
-        // OR
-
-//        SEOTools::setTitle('Home');
-//        SEOTools::setDescription('This is my page description');
-//        SEOTools::opengraph()->setUrl('http://current.url.com');
-//        SEOTools::setCanonical('https://codecasts.com.br/lesson');
-//        SEOTools::opengraph()->addProperty('type', 'articles');
-//        SEOTools::twitter()->setSite('@LuizVinicius73');
-//        SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
-
+        OpenGraph::setTitle('Home 3');
 
         $locale = App::getLocale();
         $destinos_inicio = DestinoInicio::where('idioma', $locale)->get();
@@ -71,12 +53,13 @@ class HomepageController extends Controller
     }
     public function index2($idioma){
         $locale = App::getLocale();
-        $destinos_inicio = DestinoInicio::where('idioma', $locale)->get();
-//        if (App::isLocale('en')) {
-//            //
-//        }
+//        $destinos_inicio = DestinoInicio::with(['traducciones'=>function ($query) use  ($locale) { $query->where('idioma', $locale);}])->get();
+        $destino_inicio_tr = DestinoInicioIdioma::where('idioma', $locale)->pluck('destino_inicio_relacion_id')->toArray();
+
+//        dd($destino_inicio_tr);
+        $destinos_inicio = DestinoInicio::whereIn('id', $destino_inicio_tr)->get();
         $destino = Destino::all();
-        dd($destino);
+//        dd($destinos_inicio);
         return view('page.home',
             compact(
                 'destinos_inicio',
@@ -116,4 +99,28 @@ class HomepageController extends Controller
         }
 
     }
+
+    public function lang_agrupados($id, $idioma){
+
+        Session::put('locale', $idioma);
+
+        $id_sesion_get = session()->get('id_'.$id);
+
+        if (empty($id_sesion_get)){
+            Session::put('id_'.$id, $id);
+        }
+
+        $id_sesion_get_2 = session()->get('id_'.$id);
+
+        $destino_grupo_idiomas = DestinoGrupoIdioma::where('destino_grupo_padre_id', $id_sesion_get_2)->where('idioma', $idioma)->first();
+
+        if ($idioma=='en') {
+            return redirect()->route('destination_path', $destino_grupo_idiomas->destino_grupo_relacion_id);
+
+        }else{
+            return redirect()->route('destination_path', $destino_grupo_idiomas->destino_grupo_relacion_id);
+        }
+
+    }
+
 }
