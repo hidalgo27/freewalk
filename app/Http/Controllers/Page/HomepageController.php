@@ -23,6 +23,7 @@ class HomepageController extends Controller
 {
     public function index($idioma = NULL){
 
+
         SEOMeta::setTitle('Home');
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
@@ -39,11 +40,16 @@ class HomepageController extends Controller
         $locale = App::getLocale();
         $destinos_inicio = DestinoInicio::where('idioma', $locale)->get();
 
+        foreach ( $destinos_inicio as $destinos_inicio2) {
+            Session::put('id_'.$destinos_inicio2->id, $destinos_inicio2->id);
+        }
+
         $destino = Destino::all();
 //        dd($destino);
 //        if (App::isLocale('en')) {
 //            //
 //        }
+
         return view('page.home',
             compact(
                 'destinos_inicio',
@@ -59,6 +65,9 @@ class HomepageController extends Controller
 //        dd($destino_inicio_tr);
         $destinos_inicio = DestinoInicio::whereIn('id', $destino_inicio_tr)->get();
         $destino = Destino::all();
+        foreach ( $destinos_inicio as $destinos_inicio2) {
+            Session::put('id_'.$destinos_inicio2->id, $destinos_inicio2->id);
+        }
 //        dd($destinos_inicio);
         return view('page.home',
             compact(
@@ -89,9 +98,8 @@ class HomepageController extends Controller
 
 
 
-    public function lang($locale,$origen){
+    public function lang($locale){
         Session::put('locale', $locale);
-        Session::put('origen', $origen);
         if ($locale=='en') {
             return redirect()->route('home_path');
         }else{
@@ -106,13 +114,17 @@ class HomepageController extends Controller
 
         $id_sesion_get = session()->get('id_'.$id);
 
-        if (empty($id_sesion_get)){
-            Session::put('id_'.$id, $id);
-        }
+//        if (empty($id_sesion_get)){
+//            Session::put('id_'.$id, $id);
+//        }
 
-        $id_sesion_get_2 = session()->get('id_'.$id);
+//        if ($id_sesion_get){
+//
+//        }
 
-        $destino_grupo_idiomas = DestinoGrupoIdioma::where('destino_grupo_padre_id', $id_sesion_get_2)->where('idioma', $idioma)->first();
+//        $id_sesion_get_2 = session()->get('id_'.$id);
+
+        $destino_grupo_idiomas = DestinoGrupoIdioma::where('destino_grupo_padre_id', $id_sesion_get)->where('idioma', $idioma)->first();
 
         if ($idioma=='en') {
             return redirect()->route('destination_path', $destino_grupo_idiomas->destino_grupo_relacion_id);

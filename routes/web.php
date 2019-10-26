@@ -189,7 +189,7 @@ Route::get('/tours/{destino}/{title}', [
 //    Session::put('locale', $locale);
 ////    return redirect()->back();
 //});
-Route::get('/idioma/{locale}/{origen}', [
+Route::get('/idioma/{locale}/', [
     'uses' => 'Page\HomepageController@lang',
     'as' => 'lang_path',
 ]);

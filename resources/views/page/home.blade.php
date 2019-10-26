@@ -22,7 +22,7 @@
         <section class="section02 py-4">
             <div class="container maxw">
                 <div class="row">
-                    {{$locale}}
+
                     @foreach($destinos_inicio as $destinos_inicios)
 {{--{{$destinos_inicios}}--}}
 
@@ -35,7 +35,7 @@
                                     <div class="col-sm-8">
                                         <div class="box-text p-3 bg-white">
                                             <h2 class="h3 text-center" style="font-size: 1.5em">{{$destinos_inicios->titulo}}</h2>
-                                            <p class="text-justify">@php echo $destinos_inicios->detalle; @endphp</p>
+                                            <p class="text-justify">{!! $destinos_inicios->detalle !!}</p>
                                             <span class="text-right d-block">
                                                 <a class="btn btn-warning btn-free btn-lg" href="{{ route('destination_path', $destinos_inicios->id) }}"  target="_blank" role="button">I´m interested!</a>
                                             </span>
