@@ -6,11 +6,11 @@
         </div>
         <ul class="navbar-nav p-2">
             @if ($locale == 'en')
-                <li><a class="flag" href="{{route('lang_agrupados_path', [session('id'.$destino_grupos->id), 'es'])}}"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+                <li><a class="flag" href="{{route('lang_agrupados_path', [session('id_'.$destino_grupos->id), 'es'])}}"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
                 {{--                    <li><a class="flag" href="{{ route('lang_path', 'pt') }}"><img src="{{asset('images/logo-freewalkss.png')}}" alt="flag spanish"></a></li>--}}
             @endif
             @if ($locale == 'es')
-                <li><a class="flag" href="{{route('lang_agrupados_path', [session('id'.$destino_grupos->id), 'en'])}}"><img src="{{asset('images/en.png')}}" alt="flag spanish"></a></li>
+                <li><a class="flag" href="{{route('lang_agrupados_path', [session('id_'.$destino_grupos->id), 'en'])}}"><img src="{{asset('images/en.png')}}" alt="flag spanish"></a></li>
                 {{--                    <li><a class="flag" href="{{ route('lang_path', 'pt') }}"><img src="{{asset('images/logo-freewalkss.png')}}" alt="flag spanish"></a></li>--}}
             @endif
             {{--                @if ($locale == 'pt')--}}
