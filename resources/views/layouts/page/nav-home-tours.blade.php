@@ -9,7 +9,7 @@
             @foreach($tour_tr as $tours_tr)
 
                 {{--                {{$destino_grupo_idiomas->id}} - {{$destino_grupo_idiomas->idioma}}--}}
-                <li><a class="flag" href="{{route('lang_tours_path', [$tours_tr->url, $tours_tr->idioma, $destino_url])}}"><img src="{{asset('images/'.$tours_tr->idioma.'.png')}}" alt="flag spanish"></a></li>
+                <li><a class="flag" href="{{route('lang_tours_path', [$tours_tr->url, $tours_tr->idioma, $destino_url])}}"><img src="{{asset('images/'.strtolower($tours_tr->idioma).'.png')}}" alt="flag spanish"></a></li>
 
                 {{--                @if ($destino_grupo_idiomas->idioma == 'en')--}}
                 {{--                    <li><a class="flag" href="{{route('lang_agrupados_path', ['2', 'es', 'en'])}}"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>--}}

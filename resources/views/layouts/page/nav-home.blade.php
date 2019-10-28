@@ -6,7 +6,7 @@
         </div>
         <ul class="navbar-nav p-2">
             @foreach($destino_inicio_idiomas as $destinos_inicio_idiomas)
-                <li><a class="flag" href="{{ route('lang_path', $destinos_inicio_idiomas->idioma) }}"><img src="{{asset('images/'.$destinos_inicio_idiomas->idioma.'.png')}}" alt="flag spanish"></a></li>
+                <li><a class="flag" href="{{ route('lang_path', $destinos_inicio_idiomas->idioma) }}"><img src="{{asset('images/'.strtolower($destinos_inicio_idiomas->idioma).'.png')}}" alt="flag spanish"></a></li>
             @endforeach
 {{--            @if ($locale == 'en')--}}
 {{--                <li><a class="flag" href="{{ route('lang_path', 'es') }}"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>--}}
