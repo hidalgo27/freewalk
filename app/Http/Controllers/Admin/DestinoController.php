@@ -224,11 +224,11 @@ class DestinoController extends Controller
             foreach($arreglo_ as $arre){
                 if(trim($arre)!=''){
                     $a_=explode('_',$arre);
-                    // $tour_relacion=new DestinoIdioma();
-                    // $tour_relacion->destino_padre_id=$tour->id;
-                    // $tour_relacion->destino_relacion_id=$a_[0];
-                    // $tour_relacion->idioma=$a_[1];
-                    // $tour_relacion->save();
+                    $tour_relacion=new DestinoIdioma();
+                    $tour_relacion->destino_padre_id=$oDestino->id;
+                    $tour_relacion->destino_relacion_id=$a_[0];
+                    $tour_relacion->idioma=$a_[1];
+                    $tour_relacion->save();
                     $traduccion=new DestinoIdioma();
                     $traduccion->destino_padre_id=$a_[0];
                     $traduccion->destino_relacion_id=$oDestino->id;
