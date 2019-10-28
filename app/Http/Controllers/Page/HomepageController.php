@@ -9,6 +9,7 @@ use App\DestinoInicio;
 use App\DestinoInicioIdioma;
 use App\LugarRecojo;
 use App\Tour;
+use App\TourRelacionado;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -40,62 +41,76 @@ class HomepageController extends Controller
         $locale = App::getLocale();
         $destinos_inicio = DestinoInicio::where('idioma', $locale)->get();
 
-        foreach ( $destinos_inicio as $destinos_inicio2) {
-            Session::put('id_'.$destinos_inicio2->id, $destinos_inicio2->id);
-        }
+        $destino_inicio_idiomas = DestinoInicioIdioma::all();
 
         $destino = Destino::all();
-//        dd($destino);
-//        if (App::isLocale('en')) {
-//            //
-//        }
 
         return view('page.home',
             compact(
                 'destinos_inicio',
                 'locale',
-                'destino'
+                'destino',
+                'destino_inicio_idiomas'
             ));
     }
     public function index2($idioma){
         $locale = App::getLocale();
-//        $destinos_inicio = DestinoInicio::with(['traducciones'=>function ($query) use  ($locale) { $query->where('idioma', $locale);}])->get();
+
         $destino_inicio_tr = DestinoInicioIdioma::where('idioma', $locale)->pluck('destino_inicio_relacion_id')->toArray();
 
-//        dd($destino_inicio_tr);
         $destinos_inicio = DestinoInicio::whereIn('id', $destino_inicio_tr)->get();
         $destino = Destino::all();
-        foreach ( $destinos_inicio as $destinos_inicio2) {
-            Session::put('id_'.$destinos_inicio2->id, $destinos_inicio2->id);
-        }
-//        dd($destinos_inicio);
+
+        $destino_inicio_idiomas = DestinoInicioIdioma::all();
+
         return view('page.home',
             compact(
                 'destinos_inicio',
                 'locale',
-                'destino'
+                'destino',
+                'destino_inicio_idiomas'
             ));
     }
     public function destination($titile){
-
         $locale = App::getLocale();
-        $destino_grupo = DestinoGrupo::with('destino','destino.lugares_recojo')->where('id', $titile)->get();
+
+        $destino_grupo_idioma_t = DestinoGrupoIdioma::where('destino_grupo_relacion_id', $titile)->where('idioma', $locale)->first();
+        $destino_grupo_idioma = DestinoGrupoIdioma::where('destino_grupo_padre_id', $destino_grupo_idioma_t->destino_grupo_padre_id)->get();
+
+        $destino_grupo = DestinoGrupo::with('traducciones','destino','destino.lugares_recojo')->where('id', $titile)->get();
+
         $destino = Destino::all();
-        return view('page.destination', compact('locale', 'destino_grupo', 'destino'));
+        return view('page.destination', compact('locale', 'destino_grupo', 'destino','destino_grupo_idioma'));
     }
     public function destination_show(){
         $locale = App::getLocale();
         return view('page.destinations-show', compact('locale'));
     }
 
-    public function destination_tour($destino, $title){
+    public function destination_tour($destino_url, $title){
         $locale = App::getLocale();
         $url = str_replace('-', ' ', $title);
-        $tour = Tour::with('lugar_recojo')->where('url', $url)->get();
-        $destino = Destino::all();
-        return view('page.destination-tours', compact('locale', 'tour','destino'));
-    }
+        $tour = Tour::with('lugar_recojo')->where('url', $url)->first();
 
+//        dd($tour);
+
+        $tour_relacionados_t = TourRelacionado::where('tours_relacion_id', $tour->id)->first();
+
+//        dd($tour->id);
+        $tour_relacionados_tr = TourRelacionado::where('tours_padre_id', $tour_relacionados_t->tours_padre_id)->pluck('tours_relacion_id')->toArray();
+
+        $tour_tr = Tour::whereIn('id', $tour_relacionados_tr)->get();
+
+//        foreach ($tour_relacionados_tr as $tours_relacionados_tr){
+//            $tour_relacionados[] = Tour::find($tours_relacionados_tr->tours_relacion_id);
+//        }
+
+//        dd($tour_relacionados);
+
+
+        $destino = Destino::all();
+        return view('page.destination-tours', compact('locale', 'tour','destino', 'destino_url', 'tour_tr'));
+    }
 
 
     public function lang($locale){
@@ -111,27 +126,15 @@ class HomepageController extends Controller
     public function lang_agrupados($id, $idioma){
 
         Session::put('locale', $idioma);
+        return redirect()->route('destination_path', $id);
 
-        $id_sesion_get = session()->get('id_'.$id);
+    }
 
-//        if (empty($id_sesion_get)){
-//            Session::put('id_'.$id, $id);
-//        }
+    public function lang_tours($url, $idioma, $destino_url){
 
-//        if ($id_sesion_get){
-//
-//        }
+        Session::put('locale', $idioma);
 
-//        $id_sesion_get_2 = session()->get('id_'.$id);
-
-        $destino_grupo_idiomas = DestinoGrupoIdioma::where('destino_grupo_padre_id', $id_sesion_get)->where('idioma', $idioma)->first();
-
-        if ($idioma=='en') {
-            return redirect()->route('destination_path', $destino_grupo_idiomas->destino_grupo_relacion_id);
-
-        }else{
-            return redirect()->route('destination_path', $destino_grupo_idiomas->destino_grupo_relacion_id);
-        }
+        return redirect()->route('destination_tour_path', [$destino_url, $url]);
 
     }
 

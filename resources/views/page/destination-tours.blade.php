@@ -1,13 +1,15 @@
 @extends('layouts.page.app')
 @section('content')
 
-@foreach($tour as $tours)
+{{--@foreach($tour as $tours)--}}
+
+    @include('layouts.page.nav-home-tours')
 
 <section>
     <!-- 	<img src="../img/free-walking-tours-lima-home.jpg" alt="slider" class="img-fluid"> -->
 
     <picture>
-        @foreach ($tours->imagenes->where('estado','0') as $foto)
+        @foreach ($tour->imagenes->where('estado','0') as $foto)
             @if (Storage::disk('tours')->has($foto->imagen))
                 <source media="(max-width: 550px)" srcset="../img/lima/free-walkings-lima-portrait-mobile.jpg">
                 <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="lima sightseeing tour on foot from miraflores">
@@ -30,11 +32,11 @@
 
                 <div class="main pt-4 pb-3">
                     <article class="text-justify border shadow p-3 mb-3 bg-white rounded" >
-                        <h1 class="text-center">{{$tours->titulo}}</h1>
+                        <h1 class="text-center">{{$tour->titulo}}</h1>
                         <div class="row">
                             <div class="col">
 
-                                @php echo $tours->descripcion; @endphp
+                                @php echo $tour->descripcion; @endphp
 
                             </div>
 
@@ -59,7 +61,7 @@
                     </article>
 
                     <article class="text-justify border shadow p-3 mb-3 bg-white rounded inline">
-                        @php echo $tours->itinerario; @endphp
+                        @php echo $tour->itinerario; @endphp
 
 
                     </article>
@@ -203,8 +205,8 @@
 
                     <div class="col-sm-8">
                         <div class="box-green text-center">
-                            <div class="bg-success p-1 text-center text-white"><span class="">{{$tours->lugar_recojo->titulo}}</span></div>
-                            @php echo $tours->lugar_recojo->iframe @endphp
+                            <div class="bg-success p-1 text-center text-white"><span class="">{{$tour->lugar_recojo->titulo}}</span></div>
+                            @php echo $tour->lugar_recojo->iframe @endphp
                         </div>
                     </div>
 
@@ -221,8 +223,8 @@
             <div class="row py-4">
                 <div class="col-sm-5 d-flex">
                     <div class="box-map mb-2">
-                        @if (Storage::disk('lugar_recojo')->has($tours->lugar_recojo->referencia_imagen))
-                            <img src="{{ route('admin.lugar_recojo.get_imagen.path',$tours->lugar_recojo->referencia_imagen) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
+                        @if (Storage::disk('lugar_recojo')->has($tour->lugar_recojo->referencia_imagen))
+                            <img src="{{ route('admin.lugar_recojo.get_imagen.path',$tour->lugar_recojo->referencia_imagen) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
                         @endif
                     </div>
                 </div>
@@ -232,7 +234,7 @@
 
                         <ul class="pl-2 pl-sm-4 ml-2 ml-sm-0">
 
-                            @foreach($tours->destino->destinos_grupo as $destino_grupo)
+                            @foreach($tour->destino->destinos_grupo as $destino_grupo)
                                 @foreach($destino_grupo->preguntas as $preguntas)
                                     <li>{{$preguntas->pregunta}}(<a href="#" class="alternar-respuesta">View</a>)</li>
                                     <p class="respuesta" style="display:none">
@@ -266,6 +268,6 @@
     </article>
 </section>
 
-    @endforeach
+{{--    @endforeach--}}
 
 @endsection
