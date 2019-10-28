@@ -65,7 +65,7 @@ class HomepageController extends Controller
         $destinos_inicio = DestinoInicio::whereIn('id', $destino_inicio_tr)->get();
         $destino = Destino::all();
 
-        $destino_inicio_idiomas = DestinoInicioIdioma::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
 
         $inicio = Inicio::where('idioma', $locale)->first();
 
