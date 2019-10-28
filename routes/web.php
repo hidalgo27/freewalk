@@ -159,7 +159,7 @@ Route::patch('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/update',['uses'=>'Admi
         'as' => 'destination_path',
     ]);
 
-    Route::get('/lang/{idioma}', [
+    Route::get('/{idioma}', [
         'uses' => 'Page\HomepageController@index2',
         'as' => 'home2_path',
     ]);
@@ -214,4 +214,9 @@ Route::get('/idioma/{locale}/', [
 Route::get('/idioma/lang_agrupados/{id}/{idioma}', [
     'uses' => 'Page\HomepageController@lang_agrupados',
     'as' => 'lang_agrupados_path',
+]);
+
+Route::get('/idioma/lang_tours/{id}/{idioma}/{destino}', [
+    'uses' => 'Page\HomepageController@lang_tours',
+    'as' => 'lang_tours_path',
 ]);

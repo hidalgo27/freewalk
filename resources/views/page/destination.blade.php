@@ -3,6 +3,12 @@
 
         @foreach($destino_grupo as $destino_grupos)
 
+{{--            @if (App::isLocale('en'))--}}
+{{--                --}}
+{{--            @endif--}}
+
+
+
             @include('layouts.page.nav-home-agrupados')
 
             @foreach ($destino_grupos->imagenes->where('estado','0') as $foto)

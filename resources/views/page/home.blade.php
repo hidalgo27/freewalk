@@ -24,7 +24,6 @@
                 <div class="row">
 
                     @foreach($destinos_inicio as $destinos_inicios)
-{{--{{$destinos_inicios}}--}}
 
                         <div class="col-12 my-2">
                             <div class="box-torus">
