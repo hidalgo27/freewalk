@@ -87,6 +87,12 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'inicio' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/inicio'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
     ],
 
 ];

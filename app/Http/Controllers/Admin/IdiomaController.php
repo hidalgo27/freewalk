@@ -105,7 +105,6 @@ class IdiomaController extends Controller
     public function update(Request $request, $id)
     {
         //
-
         $codigo=$request->input('codigo');
         $nombre=$request->input('nombre');
         $principal=$request->input('principal');
