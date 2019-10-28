@@ -344,11 +344,11 @@ class TourController extends Controller
         foreach($arreglo_ as $arre){
             if(trim($arre)!=''){
                 $a_=explode('_',$arre);
-                $tour_relacion=new TourRelacionado();
-                $tour_relacion->tours_padre_id=$tour->id;
-                $tour_relacion->tours_relacion_id=$a_[0];
-                $tour_relacion->idioma=$a_[1];
-                $tour_relacion->save();
+                // $tour_relacion=new TourRelacionado();
+                // $tour_relacion->tours_padre_id=$tour->id;
+                // $tour_relacion->tours_relacion_id=$a_[0];
+                // $tour_relacion->idioma=$a_[1];
+                // $tour_relacion->save();
 
 
                 $tour_relacion=new TourRelacionado();
