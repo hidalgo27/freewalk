@@ -42,7 +42,7 @@ class HomepageController extends Controller
         $locale = App::getLocale();
         $destinos_inicio = DestinoInicio::where('idioma', $locale)->get();
 
-        $destino_inicio_idiomas = DestinoInicioIdioma::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
 
         $destino = Destino::all();
 
