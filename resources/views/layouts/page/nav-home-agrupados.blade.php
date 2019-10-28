@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light pb-0 bg-free">
     <div class="container">
-        <a class="navbar-brand" href="/{{$locale}}"><img src="{{asset('images/logo-freewalks.png')}}" alt="peru"></a>
+        <a class="navbar-brand" href="/{{strtolower($locale)}}"><img src="{{asset('images/logo-freewalks.png')}}" alt="peru"></a>
         <div class="collapse navbar-collapse" id="cssmenu">
             @include('layouts.page.menu')
         </div>

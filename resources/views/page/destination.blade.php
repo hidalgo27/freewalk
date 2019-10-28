@@ -172,7 +172,7 @@
                         @foreach ($destino_grupos->destino->tours as $tours)
                         <div class="col-sm-4 mb-3 mb-sm-0">
                             <div class="box-tours my-sm-2 my-1">
-                                <a href="{{route('destination_tour_path', [strtolower(str_replace(' ','-', $destino_grupos->destino->nombre )), strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank">
+                                <a href="{{route('destination_tour_path', [strtolower($locale), $destino_grupos->destino->url, strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank">
                                     @foreach ($tours->imagenes->where('estado','0') as $foto)
                                         @if (Storage::disk('tours')->has($foto->imagen))
                                             <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="img-fluid rounded-lg" alt="free walking tour lima, leaves from miraflores">
@@ -186,8 +186,7 @@
                                     <i class="fa fa-bullhorn fa-2x mx-1" aria-hidden="true"></i>
                                     <span class="flag-icon flag-icon-es"></span>
                                     <span class="flag-icon flag-icon-gb mx-1"></span>
-                                    <a target="_blank" href="{{route('destination_tour_path', [strtolower(str_replace(' ','-', $destino_grupos->destino->nombre )), strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank" class="btn btn-free">Info & Booking</a>
-
+                                    <a target="_blank" href="{{route('destination_tour_path', [strtolower($locale), $destino_grupos->destino->url, strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank" class="btn btn-free">Info & Booking</a>
                                 </div>
                             </div>
                         </div>

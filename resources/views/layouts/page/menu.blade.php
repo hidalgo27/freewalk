@@ -1,14 +1,14 @@
 
 			<ul class="navbar-nav ml-auto">
-	             <li><a href='/{{$locale}}'>Home</a></li>
+	             <li><a href='/{{strtolower($locale)}}'>Home</a></li>
                 @foreach($destino as $destinos)
                     @if ($destinos->tours->count() > 0)
                         @if($destinos->idioma == $locale)
-                        <li class="has-sub"><a href='{{route('destination_path', $destinos->id)}}'>{{ucwords(strtolower($destinos->nombre))}}</a>
+                        <li class="has-sub"><a href='{{route('destination_path', [strtolower($locale), $destinos->id])}}'>{{ucwords(strtolower($destinos->nombre))}}</a>
                             <ul class='lista-submenu-nav'>
-                                <li><a href='{{route('destination_path', $destinos->id)}}'><strong>Details of Free Tour {{ucwords(strtolower($destinos->nombre))}} here!</strong></a></li>
+                                <li><a href='{{route('destination_path', [strtolower($locale), $destinos->id])}}'><strong>Details of Free Tour {{ucwords(strtolower($destinos->nombre))}} here!</strong></a></li>
                                 @foreach($destinos->tours as $tours)
-                                    <li><a href='{{route('destination_tour_path', [strtolower(str_replace(' ','-', $destinos->nombre )), strtolower(str_replace(' ','-', $tours->url ))])}}'>{{$tours->titulo}}</a></li>
+                                    <li><a href='{{route('destination_tour_path', [strtolower($locale), $destinos->url, strtolower(str_replace(' ','-', $tours->url ))])}}'>{{$tours->titulo}}</a></li>
                                 @endforeach
                             </ul>
                         </li>

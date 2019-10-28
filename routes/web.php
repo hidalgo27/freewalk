@@ -153,16 +153,16 @@ Route::patch('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/update',['uses'=>'Admi
         'uses' => 'Page\HomepageController@index',
         'as' => 'home_path',
     ]);
-
-    Route::get('destination/{title}', [
-        'uses' => 'Page\HomepageController@destination',
-        'as' => 'destination_path',
-    ]);
-
     Route::get('/{idioma}', [
         'uses' => 'Page\HomepageController@index2',
         'as' => 'home2_path',
     ]);
+    Route::get('/{locale}/{title}', [
+        'uses' => 'Page\HomepageController@destination',
+        'as' => 'destination_path',
+    ]);
+
+
 
 
 
@@ -173,40 +173,13 @@ Route::get('/destination-show', [
 ]);
 
 
-Route::get('/tours/{destino}/{title}', [
+Route::get('/{lang}/{destino}/{title}', [
     'uses' => 'Page\HomepageController@destination_tour',
     'as' => 'destination_tour_path',
 ]);
 
 
-//middleware
-
-
-//Route::group(['middleware' => ['web']], function () {
-//
-//    Route::get('/', [
-//        'uses' => 'Page\HomepageController@index',
-//        'as' => 'home_path',
-//    ]);
-//
-////    Route::get('lang/{lang}', function ($lang) {
-////        session(['lang' => $lang]);
-////        return \Redirect::back();
-////    })->where([
-////        'lang' => 'en|es'
-////    ]);
-//
-//    Route::get('lang/{lang}', function ($locale){
-//        Session::put('lang', $locale);
-//        return redirect()->back();
-//    });
-//
-//});
-//Route::get('locale/{locale}', function ($locale){
-//    Session::put('locale', $locale);
-////    return redirect()->back();
-//});
-Route::get('/idioma/{locale}/', [
+Route::get('/idioma/home/in/{locale}/', [
     'uses' => 'Page\HomepageController@lang',
     'as' => 'lang_path',
 ]);
