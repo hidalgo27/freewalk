@@ -1,7 +1,7 @@
 @extends('layouts.page.app')
     @section('content')
 
-        @foreach($destino_grupo as $destino_grupos)
+
 
 {{--            @if (App::isLocale('en'))--}}
 {{--                --}}
@@ -575,7 +575,7 @@
                 </div>
             </article>
         </section>
-    @endforeach
+
     @endsection
 
 @push('scripts')
