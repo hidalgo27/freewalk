@@ -538,6 +538,68 @@
                 </div>
             </article>
         </section>
+@php $count_images = 0  @endphp
+@foreach($destino_grupos->imagenes->where('estado', 3) as $imagenes)
+    @php $count_images++  @endphp
+@endforeach
+
+@if ($count_images == 0 )
+
+
+    <div class="bg-white">
+        <div class="container">
+            <h4 class="text-center h6 bg-title text-white py-2 mb-0">Places we will explore</h4>
+            <div class="carrousel container pb-4">
+                <div class="row testimonial">
+                    <div class="col owl-carousel owl-theme">
+                        @foreach($destino_grupos->imagenes->where('estado', 1) as $imagenes1)
+{{--                            @if ($imagenes1->id > 0)--}}
+{{--                                <img src="{{asset('images/lima/logo-lima.jpg')}}" alt="">--}}
+{{--                            @endif--}}
+                            @if (Storage::disk('destino_grupo')->has($imagenes1->imagen) )
+                                <div class="item rounded pb-0 bg-white pt-0">
+                                    <div class="tit-carrusel2" align="center">
+                                        <p class="mb-1">{{$imagenes1->titulo}}</p>
+                                    </div>
+                                    <img src="{{ route('admin.destino_grupo.get_imagen.path',$imagenes1->imagen) }}" alt="free walking tour barranco, plaza de armas of barranco">
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+
+@else
+    <section class="mp-3 section01 pt-3">
+        <article class="maxw3">
+            <h5 class="text-center h5 bg-white p-2 shadow mb-0 mx-1" style="font-size: 1.2em;">A Detailed Description of Attractions to Be Seen on the Tour!</h5>
+            <div class="container">
+                <div class="row">
+
+                    @foreach($destino_grupos->imagenes->where('estado', 3) as $imagenes)
+                        @if (Storage::disk('destino_grupo')->has($imagenes->imagen))
+                            <div class="col-sm-6 my-1 px-1">
+                                <div class="box-foot p-3  bg-white shadow-sm">
+                                    <h6 class="text-center h6">{{$imagenes->titulo}}</h6>
+                                    <img src="{{ route('admin.destino_grupo.get_imagen.path',$imagenes->imagen) }}" class="img-fluid rounded" alt="jiron de la union colonial street lima peru by free tour lima">
+                                    {{--                        <div class="p-2 text-justify"><p>If there is something that genuinely stands out in the historic center of Lima, that is the Jirón de la Unión, a street of the Damero de Pizarro (Damero means checkerboard-like designed city). This street already existed in the colonial era called Calle de Los Mercaderes (The Merchant Street) and was an extremely commercial place but at the beginning of the Republican era it was renamed  as Jiron de La Unión because it joins the old colonial city with the Republican City —whatever was built after 1821—and remains very commercial although lost its aristocratic feature. <br>--}}
+                                    {{--                                Jirón de la Unión is a broad street, where there is much to see, this starts from the Rimac River ( Puente Piedra or Puente Trujillo), while in the second block, there is the Government Palace of Peru on the western side, but on the eastern side you will find the Post Office of Lima. The Flag Park is also located nearby. There are the Plaza Mayor of Lima and the Municipal and Union Palaces in the third block. In the fourth and fifth block, you can find the exclusive pedestrian path along with shops selling clothes and shoes, and in the sixth, you will see the Church and Convent of La Merced. This street ends at San Martin Plaza.</p>--}}
+                                    {{--                        </div>--}}
+                                    {!! $imagenes->descripcion !!}
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+
+                </div>
+            </div>
+        </article>
+    </section>
+@endif
+
 
         <section class="bg-dark1 py-2 py-sm-4" id="faqs">
             <div class="container maxw3">
