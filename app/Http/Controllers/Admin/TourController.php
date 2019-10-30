@@ -58,6 +58,7 @@ class TourController extends Controller
         $descripcion=$request->input('descripcion');
         $itinerario=$request->input('itinerario');
         $banner_imagen=$request->file('banner_imagen');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -93,14 +94,31 @@ class TourController extends Controller
 
         if(!empty($banner_imagen)){
             foreach($banner_imagen as $banner_imagen_){
-                $filename ='foto-b-'.$tour->id.'.'.$banner_imagen_->getClientOriginalExtension();
                 $imagen=new TourImagen();
                 $imagen->titulo='';
-                $imagen->imagen=$filename;
+                $imagen->imagen='';
                 $imagen->estado=0; //-- numero para banner
                 $imagen->tours_id=$tour->id;
                 $imagen->save();
+                $filename ='foto-b-'.$tour->id.'.'.$banner_imagen_->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
                 Storage::disk('tours')->put($filename,  File::get($banner_imagen_));
+            }
+        }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_imagen_mobile_){
+                $imagen=new TourImagen();
+                $imagen->titulo='';
+                $imagen->imagen='';
+                $imagen->estado=5; //-- numero para banner
+                $imagen->tours_id=$tour->id;
+                $imagen->save();
+
+                $filename ='foto-bm-'.$imagen->id.'.'.$banner_imagen_mobile_->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('tours')->put($filename,  File::get($banner_imagen_mobile_));
             }
         }
         return redirect()->back()->with(['success'=>'Datos guardados correctamente.']);
@@ -314,7 +332,7 @@ class TourController extends Controller
         $descripcion=$request->input('descripcion');
         $itinerario=$request->input('itinerario');
         $banner_imagen=$request->file('banner_imagen');
-
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
 
@@ -360,14 +378,30 @@ class TourController extends Controller
         }
         if(!empty($banner_imagen)){
             foreach($banner_imagen as $banner_imagen_){
-                $filename ='foto-b-'.$tour->id.'.'.$banner_imagen_->getClientOriginalExtension();
                 $imagen=new TourImagen();
                 $imagen->titulo='';
-                $imagen->imagen=$filename;
+                $imagen->imagen='';
                 $imagen->estado=0; //-- numero para banner
                 $imagen->tours_id=$tour->id;
                 $imagen->save();
+                $filename ='foto-b-'.$imagen->id.'.'.$banner_imagen_->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
                 Storage::disk('tours')->put($filename,  File::get($banner_imagen_));
+            }
+        }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_imagen_mobile_){
+                $imagen=new TourImagen();
+                $imagen->titulo='';
+                $imagen->imagen='';
+                $imagen->estado=5; //-- numero para banner(mobile
+                $imagen->tours_id=$tour->id;
+                $imagen->save();
+                $filename ='foto-bm-'.$imagen->id.'.'.$banner_imagen_mobile_->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('tours')->put($filename,  File::get($banner_imagen_mobile_));
             }
         }
         return redirect()->route('admin.tour.index.path')->with(['success'=>'Datos guardados correctamente.']);
@@ -400,6 +434,8 @@ class TourController extends Controller
         $itinerario=$request->input('itinerario');
         $banner_imagen=$request->file('banner_imagen');
         $banner_imagen_=$request->input('banner_imagen_');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
+        $banner_imagen_mobile_=$request->input('banner_imagen_mobile_');
         // dd($banner_imagen_);
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -448,6 +484,33 @@ class TourController extends Controller
                 $imagen->tours_id=$tour->id;
                 $imagen->save();
                 $filename ='foto-b-'.$imagen->id.'.'.$banner_image->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('tours')->put($filename,  File::get($banner_image));
+            }
+        }
+        // borramos de la db las imagenes banner(mobile) que han sido eliminadas por el usuario
+        if(count((array)$banner_imagen_mobile_)>0){
+            $fotos_existentes=TourImagen::where('tours_id',$tour->id)->where('estado','5')->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if(!in_array($value->id,$banner_imagen_mobile_)){
+                    TourImagen::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            TourImagen::where('tours_id',$tour->id)->where('estado','5')->delete();
+         }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_image){
+                $imagen = new TourImagen();
+                $imagen->titulo='';
+                $imagen->imagen='';
+                $imagen->estado=5; //-- numero para banner
+                $imagen->tours_id=$tour->id;
+                $imagen->save();
+                $filename ='foto-bm-'.$imagen->id.'.'.$banner_image->getClientOriginalExtension();
                 $imagen->imagen=$filename;
                 $imagen->save();
                 Storage::disk('tours')->put($filename,  File::get($banner_image));

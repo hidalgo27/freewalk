@@ -44,7 +44,8 @@ Route::post('/admin/destinos/store',['uses'=>'Admin\DestinoController@store','as
 Route::get('/admin/destinos/{id}/edit',['uses'=>'Admin\DestinoController@edit','as'=>'admin.destino.edit.path']);
 Route::patch('/admin/destinos/{id}/update',['uses'=>'Admin\DestinoController@update','as'=>'admin.destino.update.path']);
 Route::get('/admin/destinos/{id}/destroy',['uses'=>'Admin\DestinoController@destroy','as'=>'admin.destino.destroy.path']);
-
+Route::post('/admin/destinos/cambiar-estado',['uses'=>'Admin\DestinoController@cambiar_estado','as'=>'admin.destino.cambiar_estado.path']);
+Route::post('/admin/destinos/ordenar',['uses'=>'Admin\DestinoController@ordenar','as'=>'admin.destino.ordenar.path']);
 Route::get('/admin/destinos/{id}/{idioma}/{arreglo}/create',['uses'=>'Admin\DestinoController@index_idioma_create','as'=>'admin.destinos.index.idioma.create.path']);
 Route::post('/admin/destinos/{id}/{idioma}/{arreglo}/store',['uses'=>'Admin\DestinoController@index_idioma_store','as'=>'admin.destinos.index.idioma.store.path']);
 Route::get('/admin/destinos/{id}/{idioma}/{arreglo}/edit',['uses'=>'Admin\DestinoController@index_idioma_edit','as'=>'admin.destinos.index.idioma.edit.path']);
@@ -96,19 +97,19 @@ Route::get('/admin/destinos-grupo-lugares-visitar/{id}/destroy',['uses'=>'Admin\
 Route::get('/admin/destinos-grupo/{id}/atractivos/index',['uses'=>'Admin\DestinoGrupoController@atractivos_index','as'=>'admin.destino-grupo.atractivos.index.path']);
 Route::get('/admin/destinos-grupo/{id}/atractivos/create',['uses'=>'Admin\DestinoGrupoController@atractivos_create','as'=>'admin.destino-grupo.atractivos.create.path']);
 Route::post('/admin/destinos-grupo/{id}/atractivos/store',['uses'=>'Admin\DestinoGrupoController@atractivos_store','as'=>'admin.destino-grupo.atractivos.store.path']);
-Route::get('/admin/destinos-grupo/{destino_grupo_id}/atractivos/{id}/edit',['uses'=>'Admin\DestinoGrupoController@atractivos_edit','as'=>'admin.destino-grupo.atractivos.edit.path']);
-Route::patch('/admin/destinos-grupo/{destino_grupo_id}/atractivos/{id}/update',['uses'=>'Admin\DestinoGrupoController@atractivos_update','as'=>'admin.destino-grupo.atractivos.update.path']);
+Route::get('/admin/destinos-grupo/{destino_grupo_id}/atractivos/ope/{id}/editar',['uses'=>'Admin\DestinoGrupoController@atractivos_edit','as'=>'admin.destino-grupo.atractivos.edit.path']);
+Route::patch('/admin/destinos-grupo/{destino_grupo_id}/atractivos/ope/{id}/update',['uses'=>'Admin\DestinoGrupoController@atractivos_update','as'=>'admin.destino-grupo.atractivos.update.path']);
 Route::get('/admin/destinos-grupo/{id}/atractivos/imagen/{filename}', ['uses' => 'Admin\DestinoGrupoController@atractivos_get_imagen','as' => 'admin.destino_grupo.atractivos.get_imagen.path']);
-Route::get('/admin/destinos-grupo/{destino_grupo_id}/atractivos/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@atractivos_destroy','as'=>'admin.destino-grupo.atractivos.destroy.path']);
+Route::get('/admin/destinos-grupo/{destino_grupo_id}/atractivos/ope/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@atractivos_destroy','as'=>'admin.destino-grupo.atractivos.destroy.path']);
 
 // preguntas
 Route::get('/admin/destinos-grupo/{id}/preguntas/index',['uses'=>'Admin\DestinoGrupoController@preguntas_index','as'=>'admin.destino-grupo.preguntas.index.path']);
 Route::get('/admin/destinos-grupo/{id}/preguntas/create',['uses'=>'Admin\DestinoGrupoController@preguntas_create','as'=>'admin.destino-grupo.preguntas.create.path']);
 Route::post('/admin/destinos-grupo/{id}/preguntas/store',['uses'=>'Admin\DestinoGrupoController@preguntas_store','as'=>'admin.destino-grupo.preguntas.store.path']);
-Route::get('/admin/destinos-grupo/{destino_grupo_id}/preguntas/{id}/edit',['uses'=>'Admin\DestinoGrupoController@preguntas_edit','as'=>'admin.destino-grupo.preguntas.edit.path']);
-Route::patch('/admin/destinos-grupo/{destino_grupo_id}/preguntas/{id}/update',['uses'=>'Admin\DestinoGrupoController@preguntas_update','as'=>'admin.destino-grupo.preguntas.update.path']);
+Route::get('/admin/destinos-grupo/{destino_grupo_id}/preguntas/ope/{id}/edit',['uses'=>'Admin\DestinoGrupoController@preguntas_edit','as'=>'admin.destino-grupo.preguntas.edit.path']);
+Route::patch('/admin/destinos-grupo/{destino_grupo_id}/preguntas/ope/{id}/update',['uses'=>'Admin\DestinoGrupoController@preguntas_update','as'=>'admin.destino-grupo.preguntas.update.path']);
 Route::get('/admin/destinos-grupo/{id}/preguntas/imagen/{filename}', ['uses' => 'Admin\DestinoGrupoController@preguntas_get_imagen','as' => 'admin.destino_grupo.preguntas.get_imagen.path']);
-Route::get('/admin/destinos-grupo/{destino_grupo_id}/preguntas/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@preguntas_destroy','as'=>'admin.destino-grupo.preguntas.destroy.path']);
+Route::get('/admin/destinos-grupo/{destino_grupo_id}/preguntas/ope/{id}/destroy',['uses'=>'Admin\DestinoGrupoController@preguntas_destroy','as'=>'admin.destino-grupo.preguntas.destroy.path']);
 
 // destinos tours
 Route::get('/admin/tour/index',['uses'=>'Admin\TourController@index','as'=>'admin.tour.index.path']);

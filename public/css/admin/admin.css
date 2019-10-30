@@ -17421,7 +17421,6 @@ button.toast-close-button {
   min-width: 1.5em;
   height: 1.5em;
   margin: 0 0.625em;
-  zoom: normal;
   border-radius: 50%;
   background-color: #f27474;
   color: #fff;
@@ -17437,7 +17436,6 @@ button.toast-close-button {
   width: 5em;
   height: 5em;
   margin: 1.25em auto 1.875em;
-  zoom: normal;
   border: 0.25em solid transparent;
   border-radius: 50%;
   font-family: inherit;

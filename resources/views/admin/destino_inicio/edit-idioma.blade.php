@@ -54,7 +54,7 @@ $(document).ready(function () {
                     <p><b>Imagen</b></p>
                     @if (Storage::disk('destino_inicio')->has($oDestino_inicio->imagen))
                         <figure class="figure m-3" id="destino_inicio_imagen_{{ $oDestino_inicio->id }}">
-                            <img src="{{ route('admin.destino_inicio.get_imagen.path',$oDestino_inicio->imagen) }}" class="figure-img rounded" alt="{{ $oDestino_inicio->imagen}}" width="468px" height="400px">
+                            <img src="{{ route('admin.destino_inicio.get_imagen.path',$oDestino_inicio->imagen) }}" class="figure-img rounded" alt="{{ $oDestino_inicio->imagen}}" width="370px" height="316px">
                             <figcaption class="figure-caption text-right mt-0">
                                 <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_imagen_destino_inicio('destino_inicio_imagen_{{ $oDestino_inicio->id}}')">
                                     <i class="fas fa-trash-alt"></i>
@@ -65,8 +65,26 @@ $(document).ready(function () {
                     @endif
                 </div>
                 <div class="form-group col-12">
-                    <label for="imagen">Imagen <span class="text-danger">(468x400)px</span></label>
+                    <label for="imagen">Imagen <span class="text-danger">(370x316)px</span></label>
                     <input type="file" class="form-control" id="imagen" name="imagen" placeholder="Nombre del imagen" >
+                </div>
+                <div class="form-group col-12 text-left">
+                    <p><b>Imagen(Mobile)</b></p>
+                    @if (Storage::disk('destino_inicio')->has($oDestino_inicio->imagen_mobile))
+                        <figure class="figure m-3" id="destino_inicio_imagen_m_{{ $oDestino_inicio->id }}">
+                            <img src="{{ route('admin.destino_inicio.get_imagen.path',$oDestino_inicio->imagen_mobile) }}" class="figure-img rounded" alt="{{ $oDestino_inicio->imagen_mobile}}" width="468px" height="400px">
+                            <figcaption class="figure-caption text-right mt-0">
+                                <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_imagen_destino_inicio('destino_inicio_imagen_m_{{ $oDestino_inicio->id}}')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </figcaption>
+                            <input type="hidden" name="imagen_mobile_" value="{{ $oDestino_inicio->imagen_mobile }}">
+                        </figure>
+                    @endif
+                </div>
+                <div class="form-group col-12">
+                    <label for="imagen">Imagen(Mobile) <span class="text-danger">(468x400)px</span></label>
+                    <input type="file" class="form-control" id="imagen_mobile" name="imagen_mobile">
                 </div>
             </div>
         </div>

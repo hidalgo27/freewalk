@@ -152,3 +152,29 @@ function mostrar_destinos_lugar_recojo(idioma,destino,origen){
             });
         }
 }
+
+function activar_evento(id){
+    var estado=0;
+    if( $('#customSwitch_'+id).prop('checked') ) {
+        console.log('Seleccionado');
+        estado=1;
+    }
+    else{
+        console.log('No seleccionado');
+    }
+    console.log('estado:'+estado);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type:'POST',
+        url:'../destinos/cambiar-estado',
+        data:{id:id,estado:estado},
+        success:function(data){
+            $("select[name='lugar_recojo'").html('');
+            $("select[name='lugar_recojo'").html(data.options);
+        }
+    });
+}

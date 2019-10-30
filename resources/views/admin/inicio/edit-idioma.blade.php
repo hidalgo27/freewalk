@@ -30,11 +30,11 @@ $(document).ready(function () {
                         <option value="{{ $inicio->idioma }}" selected >{{ $inicio->idioma }}</option>
                     </select>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-6 d-none">
                     <label for="url">Url <span class="text-small">(<span>http://midominio.com/<span><span class="text-primary">mi-url</span>) <span class="text-danger">No caracteres especiales, ni MAYUSCULAS</span></span></label>
                     <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese la url" value="{{ $inicio->url }}" required>
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-10">
                     <label for="titulo">Titulo</label>
                     <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Nombre del titulo" value="{{ $inicio->titulo }}">
                 </div>
@@ -61,6 +61,26 @@ $(document).ready(function () {
                 <div class="form-group col-12">
                     <label for="imagen">Galeria de banners <span class="text-danger">(1903x652)px</span></label>
                     <input type="file" class="form-control" id="banner_imagen" name="banner_imagen[]" placeholder="Nombre del imagen" multiple>
+                </div>
+                <div class="form-group col-12 text-left">
+                    <p><b>Banner(Mobile)</b></p>
+                    @foreach ($inicio->imagenes->where('estado','2') as $foto)
+                        @if (Storage::disk('inicio')->has($foto->imagen))
+                            <figure class="figure m-3" id="inicio_banner_imagen_{{ $foto->id }}">
+                                <img src="{{ route('admin.inicio.get_imagen.path',$foto->imagen) }}" class="figure-img rounded w-100" alt="{{ $foto->imagen}}">
+                                <figcaption class="figure-caption text-right mt-0">
+                                    <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_imagen_destino_inicio('inicio_banner_imagen_{{ $foto->id}}')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </figcaption>
+                                <input type="hidden" name="banner_imagen_mobile_[]" value="{{ $foto->id }}">
+                            </figure>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="form-group col-12">
+                    <label for="imagen">Galeria de banners(Mobile) <span class="text-danger">(526x450)px</span></label>
+                    <input type="file" class="form-control" id="banner_imagen_mobile" name="banner_imagen_mobile[]" placeholder="Nombre del imagen" multiple>
                 </div>
             </div>
         </div>

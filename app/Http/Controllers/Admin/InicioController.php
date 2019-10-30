@@ -53,6 +53,7 @@ class InicioController extends Controller
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
         $banner_imagen=$request->file('banner_imagen');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -81,6 +82,18 @@ class InicioController extends Controller
                 $imagen->titulo='';
                 $imagen->imagen=$filename;
                 $imagen->estado=0; //-- numero para banner
+                $imagen->inicio_id=$inicio->id;
+                $imagen->save();
+                Storage::disk('inicio')->put($filename,  File::get($banner_imagen_));
+            }
+        }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_imagen_){
+                $filename ='foto-b-'.$inicio->id.'.'.$banner_imagen_->getClientOriginalExtension();
+                $imagen=new InicioImagen();
+                $imagen->titulo='';
+                $imagen->imagen=$filename;
+                $imagen->estado=2; //-- numero para banner mobile
                 $imagen->inicio_id=$inicio->id;
                 $imagen->save();
                 Storage::disk('inicio')->put($filename,  File::get($banner_imagen_));
@@ -175,6 +188,7 @@ class InicioController extends Controller
         $titulo=$request->input('titulo');
         $descripcion=$request->input('descripcion');
         $banner_imagen=$request->file('banner_imagen');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -218,6 +232,19 @@ class InicioController extends Controller
                 Storage::disk('inicio')->put($filename,  File::get($banner_imagen_));
             }
         }
+        // banner mobile
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_imagen_){
+                $filename ='foto-b-'.$inicio->id.'.'.$banner_imagen_->getClientOriginalExtension();
+                $imagen=new InicioImagen();
+                $imagen->titulo='';
+                $imagen->imagen=$filename;
+                $imagen->estado=2; //-- numero para banner
+                $imagen->inicio_id=$inicio->id;
+                $imagen->save();
+                Storage::disk('inicio')->put($filename,  File::get($banner_imagen_));
+            }
+        }
         return redirect()->route('admin.inicio.index.path')->with(['success'=>'Datos guardados correctamente.']);
     }
     public function index_idioma_edit($id,$idioma,$arreglo)
@@ -238,6 +265,8 @@ class InicioController extends Controller
         $descripcion=$request->input('descripcion');
         $banner_imagen=$request->file('banner_imagen');
         $banner_imagen_=$request->input('banner_imagen_');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
+        $banner_imagen_mobile_=$request->input('banner_imagen_mobile_');
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
 
@@ -287,6 +316,33 @@ class InicioController extends Controller
                 $imagen->titulo='';
                 $imagen->imagen='';
                 $imagen->estado=0; //-- numero para banner
+                $imagen->inicio_id=$inicio->id;
+                $imagen->save();
+                $filename ='foto-b-'.$imagen->id.'.'.$banner_image->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('inicio')->put($filename,  File::get($banner_image));
+            }
+        }
+        // borramos de la db las imagenes banner(Mobile que han sido eliminadas por el usuario
+        if(count((array)$banner_imagen_mobile_)>0){
+            $fotos_existentes=InicioImagen::where('inicio_id',$inicio->id)->where('estado','2')->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if(!in_array($value->id,$banner_imagen_mobile_)){
+                    InicioImagen::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            InicioImagen::where('inicio_id',$inicio->id)->where('estado','2')->delete();
+         }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_image){
+                $imagen = new InicioImagen();
+                $imagen->titulo='';
+                $imagen->imagen='';
+                $imagen->estado=2; //-- numero para banner mobile
                 $imagen->inicio_id=$inicio->id;
                 $imagen->save();
                 $filename ='foto-b-'.$imagen->id.'.'.$banner_image->getClientOriginalExtension();

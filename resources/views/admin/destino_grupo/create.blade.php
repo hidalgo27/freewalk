@@ -74,6 +74,10 @@ $(document).ready(function () {
                     <input type="file" class="form-control" id="banner_imagen" name="banner_imagen[]" placeholder="Nombre del imagen" multiple>
                 </div>
                 <div class="form-group col-12">
+                    <label for="imagen">Galeria de banners(Mobile) <span class="text-danger">(505x432)px</span></label>
+                    <input type="file" class="form-control" id="banner_imagen_mobile" name="banner_imagen_mobile[]" placeholder="Nombre del imagen" multiple>
+                </div>
+                <div class="form-group col-12">
                     <div class="card bg-dark text-white">
                         <div class="card-header">
                             <h4 class="text-uppercase">2: Que y Porque</h4>
