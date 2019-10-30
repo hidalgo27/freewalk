@@ -237,9 +237,9 @@
                             @foreach($tour->destino->destinos_grupo as $destino_grupo)
                                 @foreach($destino_grupo->preguntas as $preguntas)
                                     <li>{{$preguntas->pregunta}}(<a href="#" class="alternar-respuesta">View</a>)</li>
-                                    <p class="respuesta" style="display:none">
+                                    <div class="respuesta" style="display:none">
                                         @php echo $preguntas->respuesta @endphp
-                                    </p>
+                                    </div>
                                 @endforeach
                             @endforeach
 
