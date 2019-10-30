@@ -1,7 +1,7 @@
 
 			<ul class="navbar-nav ml-auto">
 	             <li><a href='/{{strtolower($locale)}}'>Home</a></li>
-                @foreach($destino as $destinos)
+                @foreach($destino->where('estado', 1)->sortBy('orden') as $destinos)
                     @foreach($destinos->destinos_inicio as $destinos_inicios)
                     @if ($destinos->tours->count() > 0)
                         @if(strtolower($destinos->idioma) == strtolower($locale))
