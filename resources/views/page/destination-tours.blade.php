@@ -5,19 +5,34 @@
 
     @include('layouts.page.nav-home-tours')
 
-<section>
-    <!-- 	<img src="../img/free-walking-tours-lima-home.jpg" alt="slider" class="img-fluid"> -->
+{{--<section>--}}
+{{--    <!-- 	<img src="../img/free-walking-tours-lima-home.jpg" alt="slider" class="img-fluid"> -->--}}
 
+{{--    <picture>--}}
+{{--        @foreach ($tour->imagenes->where('estado','0') as $foto)--}}
+{{--            @if (Storage::disk('tours')->has($foto->imagen))--}}
+{{--                <source media="(max-width: 550px)" srcset="../img/lima/free-walkings-lima-portrait-mobile.jpg">--}}
+{{--                <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="lima sightseeing tour on foot from miraflores">--}}
+{{--            @endif--}}
+{{--        @endforeach--}}
+
+{{--    </picture>--}}
+
+{{--</section>--}}
+
+<section>
     <picture>
-        @foreach ($tour->imagenes->where('estado','0') as $foto)
-            @if (Storage::disk('tours')->has($foto->imagen))
-                <source media="(max-width: 550px)" srcset="../img/lima/free-walkings-lima-portrait-mobile.jpg">
-                <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="lima sightseeing tour on foot from miraflores">
+        @foreach ($tour->imagenes->where('estado','5') as $foto2)
+            @if (Storage::disk('tours')->has($foto2->imagen))
+                <source media="(max-width: 550px)" srcset="{{ route('admin.tour.get_imagen.path', $foto2->imagen) }}">
             @endif
         @endforeach
-
+            @foreach ($tour->imagenes->where('estado','0') as $foto)
+            @if (Storage::disk('tours')->has($foto->imagen))
+                <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tours in peru">
+            @endif
+        @endforeach
     </picture>
-
 </section>
 
 <!-- end slider -->
@@ -77,7 +92,7 @@
                 <aside class="py-3 px-1 d-sm-block d-none">
 
 <!--                    --><?php //include ('../includes/booking-aside-lima.blade.php') ?>
-                        @include('layouts.page.booking-aside-lima')
+{{--                        @include('layouts.page.booking-aside-lima')--}}
                 </aside>
             </div>
         </div>

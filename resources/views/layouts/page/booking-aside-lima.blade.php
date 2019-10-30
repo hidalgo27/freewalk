@@ -6,7 +6,7 @@
         <form method="post" id="reg-form" class="px-0 m-3 ">
             @csrf
             <div id="datepicker"></div>
-            <input type="text" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
+            <input type="hidden" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
             <div class="form-group">
                 <p>Dates: <input class="form-control form-control-sm" type="text" id="datepicker2" name="txt_date"></p>
             </div>

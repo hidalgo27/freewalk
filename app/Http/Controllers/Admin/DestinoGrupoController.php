@@ -732,7 +732,7 @@ class DestinoGrupoController extends Controller
                 $imagen = new DestinoGrupoImagen();
                 $imagen->titulo='';
                 $imagen->descripcion='';
-                $imagen->estado=0; //-- numero para banner
+                $imagen->estado=5; //-- numero para banner
                 $imagen->imagen='';
                 $imagen->destinos_grupo_id=$destino_grupo->id;
                 $imagen->save();

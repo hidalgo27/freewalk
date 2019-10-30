@@ -2,7 +2,7 @@
 			<ul class="navbar-nav ml-auto">
 	             <li><a href='/{{strtolower($locale)}}'>Home</a></li>
                 @foreach($destino->where('estado', 1)->sortBy('orden') as $destinos)
-                    @foreach($destinos->destinos_inicio as $destinos_inicios)
+                    @foreach($destinos->destinos_grupo as $destinos_inicios)
                     @if ($destinos->tours->count() > 0)
                         @if(strtolower($destinos->idioma) == strtolower($locale))
                         <li class="has-sub"><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'>{{ucwords(strtolower($destinos->nombre))}}</a>

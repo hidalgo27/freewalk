@@ -3,8 +3,19 @@
 @include('layouts.page.nav-home')
         <section>
             <picture>
-                <source media="(max-width: 550px)" srcset="{{asset('images/free-walking-tours-peru-mobile.png')}}">
-                <img src="{{asset('images/free-walking-tours-peru.jpg')}}" class="w-100" alt="free walking tours in peru">
+                @foreach ($inicio->imagenes->where('estado', 2) as $foto2)
+
+                    @if (Storage::disk('inicio')->has($foto2->imagen))
+                        <source media="(max-width: 550px)" srcset="{{ route('admin.inicio.get_imagen.path',$foto2->imagen) }}">
+                    @endif
+                @endforeach
+                @foreach ($inicio->imagenes->where('estado', 0) as $foto)
+                    @if (Storage::disk('inicio')->has($foto->imagen))
+                            <img src="{{ route('admin.inicio.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tours in peru">
+
+                    @endif
+                @endforeach
+
             </picture>
         </section>
 
@@ -24,6 +35,8 @@
 
                     @foreach($destinos_inicio as $destinos_inicios)
 
+                        @foreach($destinos_inicios->destino->destinos_grupo as $destino_grupo)
+
                         <div class="col-12 my-2">
                             <div class="box-torus">
                                 <div class="row">
@@ -36,14 +49,14 @@
                                             <p class="text-justify">{!! $destinos_inicios->detalle !!}</p>
                                             <span class="text-right d-block">
                                                 @php $locale = strtolower($locale) @endphp
-                                                <a class="btn btn-warning btn-free btn-lg" href="{{ route('destination_path', [$locale, $destinos_inicios->url]) }}" role="button">I´m interested!</a>
+                                                <a class="btn btn-warning btn-free btn-lg" href="{{ route('destination_path', [$locale, $destino_grupo->url]) }}" role="button">I´m interested!</a>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        @endforeach
                     @endforeach
                 </div>
             </div>

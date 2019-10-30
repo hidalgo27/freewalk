@@ -82,7 +82,7 @@ class HomepageController extends Controller
     public function destination($locale, $titile){
         $locale = App::getLocale();
 
-        $destino_inicio = DestinoInicio::where('url', $titile)->where('idioma', $locale)->first();
+        $destino_inicio = DestinoGrupo::where('url', $titile)->where('idioma', $locale)->first();
 
 //        dd();
 

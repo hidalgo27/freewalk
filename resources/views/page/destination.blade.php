@@ -11,17 +11,32 @@
 
             @include('layouts.page.nav-home-agrupados')
 
-            @foreach ($destino_grupos->imagenes->where('estado','0') as $foto)
-                @if (Storage::disk('destino_grupo')->has($foto->imagen))
-                    <section>
-                        <picture>
-                            <source media="(max-width: 550px)" srcset="{{asset('images/lima/free-walking-tours-lima-central-mobile.jpg')}}">
-                            <img src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tour lima, full english">
-                        </picture>
-                    </section>
+{{--            @foreach ($destino_grupos->imagenes->where('estado','0') as $foto)--}}
+{{--                @if (Storage::disk('destino_grupo')->has($foto->imagen))--}}
+{{--                    <section>--}}
+{{--                        <picture>--}}
+{{--                            <source media="(max-width: 550px)" srcset="{{asset('images/lima/free-walking-tours-lima-central-mobile.jpg')}}">--}}
+{{--                            <img src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tour lima, full english">--}}
+{{--                        </picture>--}}
+{{--                    </section>--}}
 
-                @endif
-            @endforeach
+{{--                @endif--}}
+{{--            @endforeach--}}
+
+<section>
+    <picture>
+        @foreach ($destino_grupos->imagenes->where('estado', 5)->take(1) as $foto2)
+            @if (Storage::disk('destino_grupo')->has($foto2->imagen))
+                <source media="(max-width: 550px)" srcset="{{ route('admin.destino_grupo.get_imagen.path', $foto2->imagen) }}">
+            @endif
+        @endforeach
+        @foreach ($destino_grupos->imagenes->where('estado', 0)->take(1) as $foto)
+            @if (Storage::disk('destino_grupo')->has($foto->imagen))
+                <img src="{{ route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tours in peru">
+            @endif
+        @endforeach
+    </picture>
+</section>
 
         <!-- end slider -->
 
