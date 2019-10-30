@@ -608,9 +608,9 @@
 
                             @foreach($destino_grupos->preguntas as $preguntas)
                                 <li>{{$preguntas->pregunta}}(<a href="#" class="alternar-respuesta">View</a>)</li>
-                                <p class="respuesta" style="display:none">
+                                <div class="respuesta" style="display:none">
                                     @php echo $preguntas->respuesta @endphp
-                                </p>
+                                </div>
                             @endforeach
 
                         </ul>
