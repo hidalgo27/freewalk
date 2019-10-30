@@ -12,9 +12,8 @@
             <div class="container">
                 <div class="main pt-5 pb-3">
                     <article class="text-justify border shadow p-3 mb-5 bg-light rounded" >
-                        <h1 class="text-center">@lang('home.h1')</h1>
-                        <p>@lang('home.p')</p>
-                        <p>@lang('home.note')</p>
+                        <h1 class="text-center">{{$inicio->titulo}}</h1>
+                        {!! $inicio->descripcion !!}
                     </article>
                 </div>
             </div>
@@ -36,7 +35,8 @@
                                             <h2 class="h3 text-center" style="font-size: 1.5em">{{$destinos_inicios->titulo}}</h2>
                                             <p class="text-justify">{!! $destinos_inicios->detalle !!}</p>
                                             <span class="text-right d-block">
-                                                <a class="btn btn-warning btn-free btn-lg" href="{{ route('destination_path', $destinos_inicios->id) }}"  target="_blank" role="button">I´m interested!</a>
+                                                @php $locale = strtolower($locale) @endphp
+                                                <a class="btn btn-warning btn-free btn-lg" href="{{ route('destination_path', [$locale, $destinos_inicios->url]) }}" role="button">I´m interested!</a>
                                             </span>
                                         </div>
                                     </div>

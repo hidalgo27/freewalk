@@ -1,7 +1,7 @@
 @extends('layouts.page.app')
     @section('content')
 
-        @foreach($destino_grupo as $destino_grupos)
+
 
 {{--            @if (App::isLocale('en'))--}}
 {{--                --}}
@@ -162,421 +162,483 @@
             </div>
             </div>
         </section>
-        <section class="section03 maxw2" id="title-tour">
-            <article>
-                <div class="container py-4">
-                    <h2 class="text-center" style="font-size: 1.5em;">Read Detailed Itinerary of each tour:</h2>
-                    <p class="text-success text-center">(btw you can only book one, the routes are similar for all of them)</p>
-                    <div class="row">
 
-                        @foreach ($destino_grupos->destino->tours as $tours)
-                        <div class="col-sm-4 mb-3 mb-sm-0">
-                            <div class="box-tours my-sm-2 my-1">
-                                <a href="{{route('destination_tour_path', [strtolower(str_replace(' ','-', $destino_grupos->destino->nombre )), strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank">
-                                    @foreach ($tours->imagenes->where('estado','0') as $foto)
-                                        @if (Storage::disk('tours')->has($foto->imagen))
-                                            <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="img-fluid rounded-lg" alt="free walking tour lima, leaves from miraflores">
-                                        @endif
-                                    @endforeach
-                                    <div class="tour_title"><span>{{$tours->titulo}}</span></div>
-                                </a>
-                            </div>
-                            <div class="float-right">
-                                <div class="book-tour d-flex align-items-center">
-                                    <i class="fa fa-bullhorn fa-2x mx-1" aria-hidden="true"></i>
-                                    <span class="flag-icon flag-icon-es"></span>
-                                    <span class="flag-icon flag-icon-gb mx-1"></span>
-                                    <a target="_blank" href="{{route('destination_tour_path', [strtolower(str_replace(' ','-', $destino_grupos->destino->nombre )), strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank" class="btn btn-free">Info & Booking</a>
 
+@php $count_images = 0  @endphp
+@foreach($destino_grupos->imagenes->where('estado', 3) as $imagenes)
+    @php $count_images++  @endphp
+@endforeach
+
+@if ($count_images == 0 )
+
+
+    <div class="bg-white">
+        <div class="container">
+            <h4 class="text-center h6 bg-title text-white py-2 mb-0">Places we will explore</h4>
+            <div class="carrousel container pb-4">
+                <div class="row testimonial">
+                    <div class="col owl-carousel owl-theme">
+                        @foreach($destino_grupos->imagenes->where('estado', 1) as $imagenes1)
+{{--                            @if ($imagenes1->id > 0)--}}
+{{--                                <img src="{{asset('images/lima/logo-lima.jpg')}}" alt="">--}}
+{{--                            @endif--}}
+                            @if (Storage::disk('destino_grupo')->has($imagenes1->imagen) )
+                                <div class="item rounded pb-0 bg-white pt-0">
+                                    <div class="tit-carrusel2" align="center">
+                                        <p class="mb-1">{{$imagenes1->titulo}}</p>
+                                    </div>
+                                    <img src="{{ route('admin.destino_grupo.get_imagen.path',$imagenes1->imagen) }}" alt="free walking tour barranco, plaza de armas of barranco">
                                 </div>
-                            </div>
-                        </div>
+                            @endif
                         @endforeach
-
                     </div>
-                </div>
-            </article>
-        </section>
-
-        <section class="col" id="title-aside">
-            <div class="d-sm-none d-block">
-<!--                --><?php //include ('../includes/booking-aside-lima-sm.php') ?>
-                @include('layouts.page.booking-aside-lima-sm')
             </div>
+        </div>
+    </div>
 
-        </section>
-        <section class="section01 py-4">
-            <article>
-                <div class="container maxw2 p-3">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="box-green text-center">
-                                <div class="bg-success p-1 text-center text-white"><span class="">Look for our Operator Logo</span></div>
-                                <img src="{{asset('images/lima/logo-lima.jpg')}}" class="img-fluid" alt="free walking tour lima logo uniform">
-                            </div>
 
-                        </div>
-                        @foreach ($destino_grupos->destino->lugares_recojo as $lugares_recojos)
-{{--                            @foreach($destino->lugares_recojo as $lugares_recojos)--}}
-{{--                                {{$lugares_recojo}}--}}
-                        <div class="col-sm-4">
-                            <div class="box-green text-center">
-                                <div class="bg-success p-1 text-center text-white"><span class="">10am | Pick Up - Meeting Place in Miraflores district is at Calle Schell 178!</span></div>
-{{--                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7801.692421398545!2d-77.030661!3d-12.122673!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c818e2e9d1dd%3A0xdd4b052cbe084319!2sCalle+Schell+178%2C+Miraflores+15074!5e0!3m2!1ses!2spe!4v1560033129564!5m2!1ses!2spe" width="100%" height="330" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
-                                    @php echo $lugares_recojos->iframe;@endphp
-                            </div>
-                        </div>
-{{--                            @endforeach--}}
-                        @endforeach
 
-                    </div>
-                </div>
-            </article>
-        </section>
+@else
+            <section class="section03 maxw2" id="title-tour">
+                <article>
+                    <div class="container py-4">
+                        <h2 class="text-center" style="font-size: 1.5em;">Read Detailed Itinerary of each tour:</h2>
+                        <p class="text-success text-center">(btw you can only book one, the routes are similar for all of them)</p>
+                        <div class="row">
 
-        <section class="section04">
-            <article>
-                <div class="container">
-                    <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">Check our 100% Real Reviews for our Lima Free Tours</h3>
-                    <div class="row">
-                        <section class="carrousel container pb-4">
-                            <div class="row testimonial">
-                                <div class="owl-carousel owl-theme">
-
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great way to spend a morning!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/tripadvisor-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">Gooner </p>
-                                                            <p class="mb-1">England</p>
-                                                            <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>Pepe Lucho was well informed and hilarious. He knew how to keep the crowd's attention. The tour covers the historical city centre (Lima downtown) and even visits one of the Churches and shows the changing of guard. Thoroughly recommended.May be easier to get an uber downtown from Baranco/Miraflores - shouldn't be more than S/20.Pepe Lucho usually ends with a recommendation for lunch, which is fantastic value for money. Would strongly recommend the tour.</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
+                            @foreach ($destino_grupos->destino->tours as $tours)
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <div class="box-tours my-sm-2 my-1">
+                                        <a href="{{route('destination_tour_path', [strtolower($locale), $destino_grupos->destino->url, strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank">
+                                            @foreach ($tours->imagenes->where('estado','0') as $foto)
+                                                @if (Storage::disk('tours')->has($foto->imagen))
+                                                    <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="img-fluid rounded-lg" alt="free walking tour lima, leaves from miraflores">
+                                                @endif
+                                            @endforeach
+                                            <div class="tour_title"><span>{{$tours->titulo}}</span></div>
+                                        </a>
                                     </div>
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Do it - choose Pepe Luchaas guide, if you can!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/tripadvisor-review-2-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">Christina </p>
-                                                            <p class="mb-1">United States</p>
-                                                            <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>A very wel organized tour, with the most important sights covered, Pepe Lucha is a funny, up-beat and super-nice guide who knows a lot, is akways fun and happy and still knows how to keep a big group in thisustling city together. An ansolute recommandation: the restaurant he recommended at the end of the tour to have lunch. Many locals, very good price abd excellent quality - try the ceviche! Ps: at the restaurant he made personally sure, every guest that was with him had wifi access and got the password. HIGHLY RECOMMENDED! Try to book with Pepe Lucha!</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Amazing way to see and learn about Lima!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/tripadvisor-review-3-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">Traveeline </p>
-                                                            <p class="mb-1">Australia</p>
-                                                            <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>We only have one day to see Lima and this is the best way to do it. We met our guide, Pepe Lucho at Miraflores and he guided us with the local bus ride to the city centre. It was a good local experience (try it if you can!). Pepe is a funny guy and knows the history and facts about the city really well. He also guided us to what to eat for lunch after the tour. Really enjoyed and recommend the tour!</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank">Perfect tour with nice guide in Lima!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/facebook-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from facebook" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">David Nath </p>
-                                                            <p class="mb-1">Germany</p>
-                                                            <p class="mb-1">On <a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>Perfect tour with nice guide! Great and interesting tour with Richard, who could speak fluently English and Spanish as well! He explained every place and the history of Lima in a good way :)) I was happy with him and recommend his tour to anyone who wants to explore the city! Cheers!</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great free tour in Lima!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/tripadvisor-review-4-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">Granadindia </p>
-                                                            <p class="mb-1">India</p>
-                                                            <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>Had Elvis as our tour guide and had a speaker with easy to understand English. He gave an excellent overview of Lima city center along with historical and political context. He gave us recommendations on what to see next. Remember that this is not a private or paid tour, so you won’t see specifics but for what it is, it’s a great overview! If you are looking for something more customized this may not be the tour for you!</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Explore Lima with a great guide!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/tripadvisor-review-5-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">Stussycdn </p>
-                                                            <p class="mb-1">Canada</p>
-                                                            <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>Today we chose to do the free walking tour of Lima. We met our guide (Elvis) in Miraflores near our hotel, he showed us how to use the public bus system and he then showed us the historic part of Lima. Lots of interesting background information. And he finished the tour by showing us a great (and very cheap - S 12) lunch spot (Cordon Blue). A great way to get a quick introduction to Lima and Peru!</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Free walking tour- Lima!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/tripadvisor-review-6-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">Sheneka H </p>
-                                                            <p class="mb-1">New Zeland</p>
-                                                            <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>I stumbled on to this walking tour through a google search. It was well organized. Elvis, the tour guide was knowledgeable and funny. He gave us an extensive city tour with so many historical points. The tour was well paced with short breaks. Couldn’t have found a tour that would have been better than this!</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                        <div class="block-test pb-1">
-                                            <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Easy way to see the city!</a></h4>
-                                            <div class="row">
-                                                <div class="col-3 pr-1">
-                                                    <div class="mt-4">
-                                                        <img src="{{asset('images/lima/tripadvisor-review-7-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                        <div class="p-2">
-                                                            <p class="mb-1">Monet R </p>
-                                                            <p class="mb-1">Sweden</p>
-                                                            <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9">
-                                                    <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
-                                                    <p>Our guide Pepe Lucho was fantastic! Elvis helped us get from Miraflores on the Metropolitan Bus (super efficient and cheap) to the centre where we met Pepe Lucho, who took the English tour. He was very knowledgeable and answered all tricky questions. He made the tour fun and interesting, and dropped us off at a decent, cheap restaurant at the end. He gave us instructions on how to get back to Miraflores on our own. Very good way to see the centre and learn a bit about the history of Lima and Peru!</p>
-                                                </div>
-                                            </div>
+                                    <div class="float-right">
+                                        <div class="book-tour d-flex align-items-center">
+                                            <i class="fa fa-bullhorn fa-2x mx-1" aria-hidden="true"></i>
+                                            <span class="flag-icon flag-icon-es"></span>
+                                            <span class="flag-icon flag-icon-gb mx-1"></span>
+                                            <a target="_blank" href="{{route('destination_tour_path', [strtolower($locale), $destino_grupos->destino->url, strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank" class="btn btn-free">Info & Booking</a>
                                         </div>
                                     </div>
-
-
                                 </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </article>
-        </section>
-        <section class="section01">
-            <article>
-                <div class="container p-4">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="bg-white p-4">
-                                <div class="row">
-                                    <div class="col-12">
-{{--                                        <h2 class="text-center" style="font-size: 1.2em;" >What is a free walking tour in Lima?</h2>--}}
-{{--                                        <p align="justify">Many tourists traveling in Lima wonder whether the free walking tours are really free of charge? The answer is the same all over the world: except for bus fares, it is without cost to take; however, at the end of the excursion, tips are very much appreciated. However, you may wonder how much to tip? Reward your excellent tour guide in direct proportion to the tour quality; you can tip in the local currency, USA dollars or Euros! | Some tourists also ask whether our free tours in Lima are as good as the paid ones? We think our tours are first-rate because our guide does their best to earn your appreciation and gratitude. Therefore, free tours are the most popularatours all over the world. </p>--}}
-                                        @php echo $destino_grupos->que_porque; @endphp
-                                    </div>
-{{--                                    <div class="col-12">--}}
-{{--                                        <h2 class="text-center" style="font-size: 1.2em;">Why free walking tours in Lima?</h2>--}}
-{{--                                        <p align="justify">Back in 2014, we decided to open the first alternative way of touring: Free walking tours! Since then, we have done well. This experience started in Cusco city. We are not the owners of the Free Tour Concept. That recognition goes to Christopher Sandman, who was the person to open The Free Walking tour Concept in Berlin, Germany, back in 2003. Since then, this idea has raced nonstop all around the world. | We are Peruvians who worked abroad because of the crisis in our country at the beginning of the 21st century; this means we have been to many parts of Europe and America working and traveling. Luckily we joined Free Walking Tours in many countries. One day, back in 2014, we decided to settle down in Cusco and introduce this tour idea. | Back in 2017, because of customer demands, we decided to extend this excellent tip based free tour idea in Lima city. So far, so good! Please help us to increase the history and the prestige of these innovative tours by joining us!</p>--}}
-{{--                                    </div>--}}
+                            @endforeach
 
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="boxtext bg-white">
-                                <div class="container pt-2">
-                                    <h5 class="text-center" style="font-size: 1.2em;">Pictures of our Walkers & Guides on Action!</h5>
-                                    <div class="row">
-                                        <div class="" id="slider">
-                                            <div id="myCarousel" class="carousel slide">
-                                                <!-- main slider carousel items -->
+                    </div>
+                </article>
+            </section>
 
-                                                <div class="carousel-inner">
-                                                    @php $active_c = 0;  @endphp
-                                                    @foreach ($destino_grupos->imagenes->where('estado','2') as $foto)
-                                                        @if (Storage::disk('destino_grupo')->has($foto->imagen))
+            {{--        <section class="col" id="title-aside">--}}
+            {{--            <div class="d-sm-none d-block">--}}
+            {{--                @include('layouts.page.booking-aside-lima-sm')--}}
+            {{--            </div>--}}
+            {{--        </section>--}}
+            <section class="section01 py-4">
+                <article>
+                    <div class="container maxw2 p-3">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="box-green text-center">
+                                    <div class="bg-success p-1 text-center text-white"><span class="">Look for our Operator Logo</span></div>
+                                    <img src="{{asset('images/lima/logo-lima.jpg')}}" class="img-fluid" alt="free walking tour lima logo uniform">
+                                </div>
 
-                                                            <div class="carousel-item {{ $active_c === 0 ? "active" : " " }}" data-slide-number="{{$active_c}}">
-                                                                <div class="carrusell px-2">
-                                                                    <img  src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="img-fluid rounded" alt="Customers and tour Guides from free walking tour lima on action">
-                                                                </div>
+                            </div>
+                            @foreach ($destino_grupos->destino->lugares_recojo as $lugares_recojos)
+                                {{--                            @foreach($destino->lugares_recojo as $lugares_recojos)--}}
+                                {{--                                {{$lugares_recojo}}--}}
+                                <div class="col-sm-4">
+                                    <div class="box-green text-center">
+                                        <div class="bg-success p-1 text-center text-white"><span class="">10am | Pick Up - Meeting Place in Miraflores district is at Calle Schell 178!</span></div>
+                                        {{--                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7801.692421398545!2d-77.030661!3d-12.122673!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c818e2e9d1dd%3A0xdd4b052cbe084319!2sCalle+Schell+178%2C+Miraflores+15074!5e0!3m2!1ses!2spe!4v1560033129564!5m2!1ses!2spe" width="100%" height="330" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
+                                        @php echo $lugares_recojos->iframe;@endphp
+                                    </div>
+                                </div>
+                                {{--                            @endforeach--}}
+                            @endforeach
+
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section04">
+                <article>
+                    <div class="container">
+                        <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">Check our 100% Real Reviews for our Lima Free Tours</h3>
+                        <div class="row">
+                            <section class="carrousel container pb-4">
+                                <div class="row testimonial">
+                                    <div class="owl-carousel owl-theme">
+
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great way to spend a morning!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/tripadvisor-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">Gooner </p>
+                                                                <p class="mb-1">England</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
                                                             </div>
-                                                            @php $active_c++;  @endphp
-                                                        @endif
-                                                    @endforeach
-
-
-{{--                                                    <div class="carousel-item" data-slide-number="1">--}}
-{{--                                                        <div class="carrusell px-2">--}}
-{{--                                                            <img  src="{{asset('images/lima/customers-and-tour-guides-from-free-walking-tour-lima-on-action-in-the-city-center.jpg')}}" class="img-fluid rounded" alt="Customers and tour Guides from free tour lima city on action">--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-
-                                                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Previous</span>
-                                                    </a>
-                                                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Next</span>
-                                                    </a>
-
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>Pepe Lucho was well informed and hilarious. He knew how to keep the crowd's attention. The tour covers the historical city centre (Lima downtown) and even visits one of the Churches and shows the changing of guard. Thoroughly recommended.May be easier to get an uber downtown from Baranco/Miraflores - shouldn't be more than S/20.Pepe Lucho usually ends with a recommendation for lunch, which is fantastic value for money. Would strongly recommend the tour.</p>
+                                                    </div>
                                                 </div>
-                                                <!-- main slider carousel nav controls -->
-                                                <ul class="carousel-indicators list-inline mx-auto  mb-0 px-2">
-                                                    @php $active_s = 0;  @endphp
-                                                    @foreach ($destino_grupos->imagenes->where('estado','2') as $foto)
-                                                        @if (Storage::disk('destino_grupo')->has($foto->imagen))
 
-                                                            <li class="list-inline-item {{ $active_s === 0 ? "active" : " " }}">
-                                                                <a id="carousel-selector-0" class="selected" data-slide-to="{{$active_s}}" data-target="#myCarousel">
-                                                                    <img src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" alt="Customers and tour Guides from free tour lima on action" class="img-fluid rounded">
-                                                                </a>
-                                                            </li>
+                                            </div>
 
-                                                            @php $active_s++;  @endphp
-                                                        @endif
-                                                    @endforeach
+                                        </div>
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Do it - choose Pepe Luchaas guide, if you can!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/tripadvisor-review-2-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">Christina </p>
+                                                                <p class="mb-1">United States</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>A very wel organized tour, with the most important sights covered, Pepe Lucha is a funny, up-beat and super-nice guide who knows a lot, is akways fun and happy and still knows how to keep a big group in thisustling city together. An ansolute recommandation: the restaurant he recommended at the end of the tour to have lunch. Many locals, very good price abd excellent quality - try the ceviche! Ps: at the restaurant he made personally sure, every guest that was with him had wifi access and got the password. HIGHLY RECOMMENDED! Try to book with Pepe Lucha!</p>
+                                                    </div>
+                                                </div>
 
+                                            </div>
 
-                                                </ul>
+                                        </div>
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Amazing way to see and learn about Lima!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/tripadvisor-review-3-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">Traveeline </p>
+                                                                <p class="mb-1">Australia</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>We only have one day to see Lima and this is the best way to do it. We met our guide, Pepe Lucho at Miraflores and he guided us with the local bus ride to the city centre. It was a good local experience (try it if you can!). Pepe is a funny guy and knows the history and facts about the city really well. He also guided us to what to eat for lunch after the tour. Really enjoyed and recommend the tour!</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank">Perfect tour with nice guide in Lima!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/facebook-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from facebook" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">David Nath </p>
+                                                                <p class="mb-1">Germany</p>
+                                                                <p class="mb-1">On <a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>Perfect tour with nice guide! Great and interesting tour with Richard, who could speak fluently English and Spanish as well! He explained every place and the history of Lima in a good way :)) I was happy with him and recommend his tour to anyone who wants to explore the city! Cheers!</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great free tour in Lima!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/tripadvisor-review-4-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">Granadindia </p>
+                                                                <p class="mb-1">India</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>Had Elvis as our tour guide and had a speaker with easy to understand English. He gave an excellent overview of Lima city center along with historical and political context. He gave us recommendations on what to see next. Remember that this is not a private or paid tour, so you won’t see specifics but for what it is, it’s a great overview! If you are looking for something more customized this may not be the tour for you!</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Explore Lima with a great guide!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/tripadvisor-review-5-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">Stussycdn </p>
+                                                                <p class="mb-1">Canada</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>Today we chose to do the free walking tour of Lima. We met our guide (Elvis) in Miraflores near our hotel, he showed us how to use the public bus system and he then showed us the historic part of Lima. Lots of interesting background information. And he finished the tour by showing us a great (and very cheap - S 12) lunch spot (Cordon Blue). A great way to get a quick introduction to Lima and Peru!</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Free walking tour- Lima!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/tripadvisor-review-6-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">Sheneka H </p>
+                                                                <p class="mb-1">New Zeland</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>I stumbled on to this walking tour through a google search. It was well organized. Elvis, the tour guide was knowledgeable and funny. He gave us an extensive city tour with so many historical points. The tour was well paced with short breaks. Couldn’t have found a tour that would have been better than this!</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                            <div class="block-test pb-1">
+                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Easy way to see the city!</a></h4>
+                                                <div class="row">
+                                                    <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/lima/tripadvisor-review-7-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                            <div class="p-2">
+                                                                <p class="mb-1">Monet R </p>
+                                                                <p class="mb-1">Sweden</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <p>Our guide Pepe Lucho was fantastic! Elvis helped us get from Miraflores on the Metropolitan Bus (super efficient and cheap) to the centre where we met Pepe Lucho, who took the English tour. He was very knowledgeable and answered all tricky questions. He made the tour fun and interesting, and dropped us off at a decent, cheap restaurant at the end. He gave us instructions on how to get back to Miraflores on our own. Very good way to see the centre and learn a bit about the history of Lima and Peru!</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
+
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section class="section01">
+                <article>
+                    <div class="container p-4">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="bg-white p-4">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            {{--                                        <h2 class="text-center" style="font-size: 1.2em;" >What is a free walking tour in Lima?</h2>--}}
+                                            {{--                                        <p align="justify">Many tourists traveling in Lima wonder whether the free walking tours are really free of charge? The answer is the same all over the world: except for bus fares, it is without cost to take; however, at the end of the excursion, tips are very much appreciated. However, you may wonder how much to tip? Reward your excellent tour guide in direct proportion to the tour quality; you can tip in the local currency, USA dollars or Euros! | Some tourists also ask whether our free tours in Lima are as good as the paid ones? We think our tours are first-rate because our guide does their best to earn your appreciation and gratitude. Therefore, free tours are the most popularatours all over the world. </p>--}}
+                                            @php echo $destino_grupos->que_porque; @endphp
+                                        </div>
+                                        {{--                                    <div class="col-12">--}}
+                                        {{--                                        <h2 class="text-center" style="font-size: 1.2em;">Why free walking tours in Lima?</h2>--}}
+                                        {{--                                        <p align="justify">Back in 2014, we decided to open the first alternative way of touring: Free walking tours! Since then, we have done well. This experience started in Cusco city. We are not the owners of the Free Tour Concept. That recognition goes to Christopher Sandman, who was the person to open The Free Walking tour Concept in Berlin, Germany, back in 2003. Since then, this idea has raced nonstop all around the world. | We are Peruvians who worked abroad because of the crisis in our country at the beginning of the 21st century; this means we have been to many parts of Europe and America working and traveling. Luckily we joined Free Walking Tours in many countries. One day, back in 2014, we decided to settle down in Cusco and introduce this tour idea. | Back in 2017, because of customer demands, we decided to extend this excellent tip based free tour idea in Lima city. So far, so good! Please help us to increase the history and the prestige of these innovative tours by joining us!</p>--}}
+                                        {{--                                    </div>--}}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="boxtext bg-white">
+                                    <div class="container pt-2">
+                                        <h5 class="text-center" style="font-size: 1.2em;">Pictures of our Walkers & Guides on Action!</h5>
+                                        <div class="row">
+                                            <div class="" id="slider">
+                                                <div id="myCarousel" class="carousel slide">
+                                                    <!-- main slider carousel items -->
+
+                                                    <div class="carousel-inner">
+                                                        @php $active_c = 0;  @endphp
+                                                        @foreach ($destino_grupos->imagenes->where('estado','2') as $foto)
+                                                            @if (Storage::disk('destino_grupo')->has($foto->imagen))
+
+                                                                <div class="carousel-item {{ $active_c === 0 ? "active" : " " }}" data-slide-number="{{$active_c}}">
+                                                                    <div class="carrusell px-2">
+                                                                        <img  src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="img-fluid rounded" alt="Customers and tour Guides from free walking tour lima on action">
+                                                                    </div>
+                                                                </div>
+                                                                @php $active_c++;  @endphp
+                                                            @endif
+                                                        @endforeach
+
+
+                                                        {{--                                                    <div class="carousel-item" data-slide-number="1">--}}
+                                                        {{--                                                        <div class="carrusell px-2">--}}
+                                                        {{--                                                            <img  src="{{asset('images/lima/customers-and-tour-guides-from-free-walking-tour-lima-on-action-in-the-city-center.jpg')}}" class="img-fluid rounded" alt="Customers and tour Guides from free tour lima city on action">--}}
+                                                        {{--                                                        </div>--}}
+                                                        {{--                                                    </div>--}}
+
+                                                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+
+                                                    </div>
+                                                    <!-- main slider carousel nav controls -->
+                                                    <ul class="carousel-indicators list-inline mx-auto  mb-0 px-2">
+                                                        @php $active_s = 0;  @endphp
+                                                        @foreach ($destino_grupos->imagenes->where('estado','2') as $foto)
+                                                            @if (Storage::disk('destino_grupo')->has($foto->imagen))
+
+                                                                <li class="list-inline-item {{ $active_s === 0 ? "active" : " " }}">
+                                                                    <a id="carousel-selector-0" class="selected" data-slide-to="{{$active_s}}" data-target="#myCarousel">
+                                                                        <img src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" alt="Customers and tour Guides from free tour lima on action" class="img-fluid rounded">
+                                                                    </a>
+                                                                </li>
+
+                                                                @php $active_s++;  @endphp
+                                                            @endif
+                                                        @endforeach
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </article>
-        </section>
+                </article>
+            </section>
 
-        <section class="section01 py-3">
-            <article class="maxw3">
-                <div class="container px-1">
-                    <div class="bg-dark1">
-                        <div class="bot py-3 text-center  d-none d-sm-block">
-                            <a role="button" href="#book" class="btn btn-lg px-5">Book Now</a>
+            <section class="section01 py-3">
+                <article class="maxw3">
+                    <div class="container px-1">
+                        <div class="bg-dark1">
+                            <div class="bot py-3 text-center  d-none d-sm-block">
+                                <a role="button" href="#book" class="btn btn-lg px-5">Book Now</a>
+                            </div>
+                            <div class="bot py-3 text-center  d-sm-none d-block">
+                                <a role="button" href="#title-aside" class="btn btn-lg px-5">Book Now</a>
+                            </div>
                         </div>
-                        <div class="bot py-3 text-center  d-sm-none d-block">
-                            <a role="button" href="#title-aside" class="btn btn-lg px-5">Book Now</a>
-                        </div>
+
                     </div>
+                </article>
+            </section>
+    <section class="mp-3 section01 pt-3">
+        <article class="maxw3">
+            <h5 class="text-center h5 bg-white p-2 shadow mb-0 mx-1" style="font-size: 1.2em;">A Detailed Description of Attractions to Be Seen on the Tour!</h5>
+            <div class="container">
+                <div class="row">
+
+                    @foreach($destino_grupos->imagenes->where('estado', 3) as $imagenes)
+                        @if (Storage::disk('destino_grupo')->has($imagenes->imagen))
+                            <div class="col-sm-6 my-1 px-1">
+                                <div class="box-foot p-3  bg-white shadow-sm">
+                                    <h6 class="text-center h6">{{$imagenes->titulo}}</h6>
+                                    <img src="{{ route('admin.destino_grupo.get_imagen.path',$imagenes->imagen) }}" class="img-fluid rounded" alt="jiron de la union colonial street lima peru by free tour lima">
+                                    {{--                        <div class="p-2 text-justify"><p>If there is something that genuinely stands out in the historic center of Lima, that is the Jirón de la Unión, a street of the Damero de Pizarro (Damero means checkerboard-like designed city). This street already existed in the colonial era called Calle de Los Mercaderes (The Merchant Street) and was an extremely commercial place but at the beginning of the Republican era it was renamed  as Jiron de La Unión because it joins the old colonial city with the Republican City —whatever was built after 1821—and remains very commercial although lost its aristocratic feature. <br>--}}
+                                    {{--                                Jirón de la Unión is a broad street, where there is much to see, this starts from the Rimac River ( Puente Piedra or Puente Trujillo), while in the second block, there is the Government Palace of Peru on the western side, but on the eastern side you will find the Post Office of Lima. The Flag Park is also located nearby. There are the Plaza Mayor of Lima and the Municipal and Union Palaces in the third block. In the fourth and fifth block, you can find the exclusive pedestrian path along with shops selling clothes and shoes, and in the sixth, you will see the Church and Convent of La Merced. This street ends at San Martin Plaza.</p>--}}
+                                    {{--                        </div>--}}
+                                    {!! $imagenes->descripcion !!}
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
 
                 </div>
-            </article>
-        </section>
+            </div>
+        </article>
+    </section>
+            <section class="bg-dark1 py-2 py-sm-4" id="faqs">
+                <div class="container maxw3">
+                    <div class="box-faqs bg-white p-3">
+                        <h3 class="text-center h3" style="font-size: 1.5em;">Faqs</h3>
 
-        <section class="bg-dark1 py-2 py-sm-4" id="faqs">
-            <div class="container maxw3">
-                <div class="box-faqs bg-white p-3">
-                    <h3 class="text-center h3" style="font-size: 1.5em;">Faqs</h3>
-
-                    <ul class="list-unstyled pl-2 pl-sm-4 ml-2 ml-sm-0">
+                        <ul class="list-unstyled pl-2 pl-sm-4 ml-2 ml-sm-0">
 
 
                             @foreach($destino_grupos->preguntas as $preguntas)
                                 <li>{{$preguntas->pregunta}}(<a href="#" class="alternar-respuesta">View</a>)</li>
-                                <p class="respuesta" style="display:none">
+                                <div class="respuesta" style="display:none">
                                     @php echo $preguntas->respuesta @endphp
-                                </p>
+                                </div>
                             @endforeach
 
-                    </ul>
+                        </ul>
 
 
-                </div>
-            </div>
-        </section>
-        <section class="section01 py-3">
-            <article class="maxw3">
-                <div class="container px-1">
-                    <div class="bg-dark1">
-                        <div class="bot py-3 text-center  d-none d-sm-block">
-                            <a role="button" href="#book" class="btn btn-lg px-5">Book Now</a>
-                        </div>
-                        <div class="bot py-3 text-center  d-sm-none d-block">
-                            <a role="button" href="#title-aside" class="btn btn-lg px-5">Book Now</a>
-                        </div>
                     </div>
-
                 </div>
-            </article>
-        </section>
-    @endforeach
+            </section>
+            <section class="section01 py-3">
+                <article class="maxw3">
+                    <div class="container px-1">
+                        <div class="bg-dark1">
+                            <div class="bot py-3 text-center  d-none d-sm-block">
+                                <a role="button" href="#book" class="btn btn-lg px-5">Book Now</a>
+                            </div>
+                            <div class="bot py-3 text-center  d-sm-none d-block">
+                                <a role="button" href="#title-aside" class="btn btn-lg px-5">Book Now</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </article>
+            </section>
+@endif
+
+
+
+
     @endsection
 
 @push('scripts')

@@ -1,20 +1,25 @@
 
 			<ul class="navbar-nav ml-auto">
-	             <li><a href='/{{$locale}}'>Home</a></li>
+	             <li><a href='/{{strtolower($locale)}}'>Home</a></li>
                 @foreach($destino as $destinos)
+                    @foreach($destinos->destinos_inicio as $destinos_inicios)
                     @if ($destinos->tours->count() > 0)
-                        @if($destinos->idioma == $locale)
-                        <li class="has-sub"><a href='{{route('destination_path', $destinos->id)}}'>{{ucwords(strtolower($destinos->nombre))}}</a>
+                        @if(strtolower($destinos->idioma) == strtolower($locale))
+                        <li class="has-sub"><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'>{{ucwords(strtolower($destinos->nombre))}}</a>
                             <ul class='lista-submenu-nav'>
-                                <li><a href='{{route('destination_path', $destinos->id)}}'><strong>Details of Free Tour {{ucwords(strtolower($destinos->nombre))}} here!</strong></a></li>
+                                <li><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'><strong>Details of Free Tour {{ucwords(strtolower($destinos->nombre))}} here!</strong></a></li>
                                 @foreach($destinos->tours as $tours)
-                                    <li><a href='{{route('destination_tour_path', [strtolower(str_replace(' ','-', $destinos->nombre )), strtolower(str_replace(' ','-', $tours->url ))])}}'>{{$tours->titulo}}</a></li>
+                                    <li><a href='{{route('destination_tour_path', [strtolower($locale), $destinos_inicios->url, strtolower(str_replace(' ','-', $tours->url ))])}}'>{{$tours->titulo}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
-                            @endif
+                        @endif
+                    @else
+                        @if(strtolower($destinos->idioma) == strtolower($locale))
+                            <li><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'>{{ucwords(strtolower($destinos->nombre))}}</a></li>
+                        @endif
                     @endif
-
+                    @endforeach
                 @endforeach
 {{--	             <li><a href='{{route('destination_show_path')}}'>Miraflores</a>--}}
 {{--					<!-- <ul class='lista-submenu-nav'>--}}
