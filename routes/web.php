@@ -193,3 +193,11 @@ Route::get('/idioma/lang_tours/{id}/{idioma}/{destino}', [
     'uses' => 'Page\HomepageController@lang_tours',
     'as' => 'lang_tours_path',
 ]);
+
+
+Route::post('/send_email/', [
+    'uses' => 'Page\HomepageController@send_email',
+    'as' => 'send_email_path',
+]);
+
+

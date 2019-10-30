@@ -153,7 +153,7 @@
 
                                 </div>
                             </div>
-<!--                            --><?php //include ('../includes/booking-aside-lima.php') ?>
+<!--                            --><?php //include ('../includes/booking-aside-lima.blade.php') ?>
                             @include('layouts.page.booking-aside-lima')
 
                         </aside>
@@ -664,10 +664,16 @@
         {
             $(document).on('submit', '#reg-form', function()
             {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
                 var data = $(this).serialize();
                 $.ajax({
                     type : 'POST',
-                    url  : '../submitlima.php',
+                    url  : '{{route('send_email_path')}}',
                     data : data,
                     success :  function(data)
                     {

@@ -19,6 +19,7 @@ use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class HomepageController extends Controller
@@ -151,6 +152,68 @@ class HomepageController extends Controller
         Session::put('locale', $idioma);
 
         return redirect()->route('destination_tour_path', [strtolower($idioma), $destino_url, $url]);
+
+    }
+
+    public function send_email(Request $request){
+
+        $from = 'hidalgochpnce@gmail.com';
+
+        $text_grupo_title = $request->input('text_grupo_title');
+        $date = $request->input('txt_date');
+        $name = $request->input('txt_name');
+        $email = $request->input('txt_email');
+        $size = $request->input('slc_size');
+        $tour = $request->input('slc_tour');
+        $referencia = $request->input('slc_referencia');
+        $comment = $request->input('txta_comment');
+
+        try {
+//            Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $name], function ($messaje) use ($email, $name) {
+//                $messaje->to($email, $name)
+//                    ->subject('Free Walking Tours Peru')
+//                    /*->attach('ruta')*/
+//                    ->from('info@freewalkingtoursperu.com', 'Free Walking Tours Peru');
+//            });
+            Mail::send(['html' => 'notifications.page.destinations-form-client'], [
+                'text_grupo_title' => $text_grupo_title,
+                'name' => $name,
+                'email' => $email,
+                'date' => $date,
+                'size' => $size,
+                'tour' => $tour,
+                'referencia' => $referencia,
+                'comment' => $comment
+            ], function ($messaje) use ($email) {
+                $messaje->to($email, 'Free Walking Tours Perú')
+                    ->subject('Free Walking Tours Perú')
+//                    ->cc($from2, 'GotoPeru')
+                    /*->attach('ruta')*/
+                    ->from('info@freewalkingtoursperu.com', 'Free Walking Tours Perú');
+            });
+            Mail::send(['html' => 'notifications.page.destinations-form-admin'], [
+                'text_grupo_title' => $text_grupo_title,
+                'name' => $name,
+                'email' => $email,
+                'date' => $date,
+                'size' => $size,
+                'tour' => $tour,
+                'referencia' => $referencia,
+                'comment' => $comment
+            ], function ($messaje) use ($from) {
+                $messaje->to($from, 'Free Walking Tours Perú')
+                    ->subject('Free Walking Tours Perú')
+//                    ->cc($from2, 'GotoPeru')
+                    /*->attach('ruta')*/
+                    ->from('info@freewalkingtoursperu.com', 'Free Walking Tours Perú');
+            });
+            return 'Thanks a lot for booking via FreeWalkingToursPeru! Our Official Operator: Inkan Milky Way Tours Lima is looking forward to seeing you soon! plz check your Confirmation Details on your Inbox or Spam Box, so hat you get to the Correct Meeting Point | If no reply plz show up at the Proper Meeting Point, we already got you in our system!';
+        }
+        catch (Exception $e){
+            return $e;
+        }
+
+        return 'ok';
 
     }
 

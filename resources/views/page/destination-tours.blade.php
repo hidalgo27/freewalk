@@ -76,7 +76,7 @@
             <div class="col-sm-3">
                 <aside class="py-3 px-1 d-sm-block d-none">
 
-<!--                    --><?php //include ('../includes/booking-aside-lima.php') ?>
+<!--                    --><?php //include ('../includes/booking-aside-lima.blade.php') ?>
                         @include('layouts.page.booking-aside-lima')
                 </aside>
             </div>

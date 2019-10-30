@@ -4,22 +4,22 @@
     <div class="box-form border rounded shadow bg-white">
 
         <form method="post" id="reg-form" class="px-0 m-3 ">
-
+            @csrf
             <div id="datepicker"></div>
-
+            <input type="text" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
             <div class="form-group">
-                <p>Dates: <input class="form-control form-control-sm" type="text" id="datepicker2" name="date1"></p>
+                <p>Dates: <input class="form-control form-control-sm" type="text" id="datepicker2" name="txt_date"></p>
             </div>
 
             <div class="form-group">
-                <input class="form-control form-control-sm" name="fname1" type="text" placeholder="Your Name:" required data-error="Please enter your name">
+                <input class="form-control form-control-sm" name="txt_name" type="text" placeholder="Your Name:" required data-error="Please enter your name">
             </div>
             <div class="form-group">
-                <input class="form-control form-control-sm" name="email1" type="text" placeholder="write well your email" required data-error="Please enter your email">
+                <input class="form-control form-control-sm" name="txt_email" type="text" placeholder="write well your email" required data-error="Please enter your email">
             </div>
 
             <div class="form-group">
-                <select class="form-control form-control-sm" id="lname1" name="lname1">
+                <select class="form-control form-control-sm" id="lname1" name="slc_size">
                     <option value="" disabled selected>Size of Group</option>
                     <option>1</option>
                     <option>2</option>
@@ -34,15 +34,29 @@
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control form-control-sm" id="nombretour" name="nombretour1">
+                <select class="form-control form-control-sm" id="nombretour" name="slc_tour">
                     <option value="" disabled selected>Choose your free tour departure</option>
-                    <option value="lima-10am">Free Tour Lima Centre 10am(pick-up in Mrflres)</option>
-                    <option value="lima-11am">Free Tour Lima Centre 11am</option>
-                    <option value="lima-3pm">Free Tour Lima Centre 3pm</option>
+                    @foreach($destino as $destinos)
+                        @foreach($destinos->destinos_inicio as $destinos_inicios)
+                            @if ($destinos->tours->count() > 0)
+                                @if(strtolower($destinos->idioma) == strtolower($locale))
+
+                                            @foreach($destinos->tours as $tours)
+                                                <option value="{{$tours->titulo}}">{{$tours->titulo}}</option>
+                                            @endforeach
+                                @endif
+{{--                            @else--}}
+{{--                                @if(strtolower($destinos->idioma) == strtolower($locale))--}}
+{{--                                    <option value="lima-10am">Free Tour Lima Centre 10am(pick-up in Mrflres)</option>--}}
+{{--                                @endif--}}
+                            @endif
+                        @endforeach
+                    @endforeach
+
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control form-control-sm" id="nombretour" name="encontrar1">
+                <select class="form-control form-control-sm" id="nombretour" name="slc_referencia">
                     <option value="" disabled selected>How did you find out about us?</option>
                     <option value="google-organic">Google Organic Result</option>
                     <option value="google-ads">Google Ads</option>
@@ -57,7 +71,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea class="form-control form-control-sm" name="phno1" id="comment" rows="1" placeholder="Any message?"></textarea>
+                <textarea class="form-control form-control-sm" name="txta_comment" id="comment" rows="1" placeholder="Any message?"></textarea>
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-send btn-lg px-5 ">Book Now</button>

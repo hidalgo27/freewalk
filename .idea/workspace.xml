@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2058fc1-4719-4d89-afe9-00195738e4fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/page/mail/emai-destination-admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/page/mail/email-destination.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-client.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-lima.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-lima.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/destination-tours.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/destination-tours.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/page/destination.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/destination.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +198,7 @@
       <workItem from="1572019141970" duration="39161000" />
       <workItem from="1572275745739" duration="9505000" />
       <workItem from="1572351388846" duration="6184000" />
-      <workItem from="1572367603279" duration="4947000" />
+      <workItem from="1572367603279" duration="13631000" />
     </task>
     <servers />
   </component>
