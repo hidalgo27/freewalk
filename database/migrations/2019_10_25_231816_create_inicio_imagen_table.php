@@ -18,7 +18,7 @@ class CreateInicioImagenTable extends Migration
             $table->string('titulo')->nullable(true);
             $table->longText('descripcion')->nullable(true);
             $table->string('imagen');
-            $table->integer('estado')->comment('0:banner,1: imagen seo',);
+            $table->integer('estado')->comment('0:banner,1: imagen seo, 2:banner mobile');
             $table->integer('inicio_id')->comment('id del destino al que pertenece');
             $table->timestamps();
         });

@@ -39,11 +39,11 @@ $(document).ready(function () {
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-6 d-none">
                     <label for="url">Url <span class="text-small">(<span>http://midominio.com/<span><span class="text-primary">mi-url</span>) <span class="text-danger">No caracteres especiales, ni MAYUSCULAS</span></span></label>
-                    <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese la url" value="{{ old('url') }}" required>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese la url" value="-" required>
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-10">
                     <label for="titulo">Titulo</label>
                     <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Nombre del titulo" value="{{ old('titulo') }}" required>
                 </div>
@@ -54,6 +54,10 @@ $(document).ready(function () {
                 <div class="form-group col-12">
                     <label for="imagen">Galeria de banners <span class="text-danger">(1903x652)px</span></label>
                     <input type="file" class="form-control" id="banner_imagen" name="banner_imagen[]" placeholder="Nombre del imagen" multiple>
+                </div>
+                <div class="form-group col-12">
+                    <label for="imagen">Galeria de banners(Mobile) <span class="text-danger">(526x450)px</span></label>
+                    <input type="file" class="form-control" id="banner_imagen_mobile" name="banner_imagen_mobile[]" placeholder="Nombre del imagen" multiple>
                 </div>
                 {{-- <div class="form-group col-12">
                     <div class="card bg-dark text-white">

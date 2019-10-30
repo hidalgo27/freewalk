@@ -51,8 +51,12 @@ $(document).ready(function () {
                     <textarea class="form-control" id="detalle" name="detalle" placeholder="Nombre del detalle" cols="30" rows="10">{!! old('detalle') !!}</textarea>
                 </div>
                 <div class="form-group col-12">
-                    <label for="imagen">Imagen <span class="text-danger">(468x400)px</span></label>
+                    <label for="imagen">Imagen <span class="text-danger">(370x316)px</span></label>
                     <input type="file" class="form-control" id="imagen" name="imagen" placeholder="Nombre del imagen" >
+                </div>
+                <div class="form-group col-12">
+                    <label for="imagen">Imagen(Mobile) <span class="text-danger">(468x400)px</span></label>
+                    <input type="file" class="form-control" id="imagen_mobile" name="imagen_mobile" placeholder="Nombre del imagen" >
                 </div>
             </div>
         </div>

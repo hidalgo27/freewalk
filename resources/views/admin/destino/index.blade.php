@@ -21,6 +21,48 @@ $(document).ready(function () {
                 <div class="col-8"><h4 class="text-uppercase">lista de destinos</h4></div>
                 <div class="col-4 text-right">
                     <a href="{{route('admin.destino.create.path')}}" class="btn btn-success"><i class="fas fa-plus"></i> Agregar destinos</a>
+                    <a href="{{route('admin.destino.create.path')}}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sort-alpha-up"></i> Ordenar</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form action="{{ route('admin.destino.ordenar.path') }}" method="post">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ordernar destinos</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-striped table-bordered table-responsive">
+                                            <thead class="bg-dark text-white">
+                                                <tr>
+                                                    <th class="w-75 text-left">Destino</th>
+                                                    <th class="w-25">Orden</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($destinos->sortBy('orden')->sortBy('idioma') as $item)
+                                                <tr>
+                                                    <td class="w-75 text-left">{{ $item->nombre }}</td>
+                                                    <td class="w-25">
+                                                        <input type="hidden" class="form-control" name="orden_id[]" value="{{ $item->id }}">
+                                                        <input type="number" class="form-control" name="orden[]" value="{{ $item->orden }}" required>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        @csrf
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +74,7 @@ $(document).ready(function () {
                         <th>Destino</th>
                         <th>Url</th>
                         <th>Idioma</th>
-                        {{-- <th>Estado</th> --}}
+                        <th>Mostrar en menu</th>
                         <th>Operaciones</th>
                     </tr>
                 </thead>
@@ -40,7 +82,7 @@ $(document).ready(function () {
                     @php
                         $i=0;
                     @endphp
-                    @foreach ($destinos->sortBy('nombre')->sortBy('idioma') as $item)
+                    @foreach ($destinos->sortBy('orden')->sortBy('idioma') as $item)
                     @php
                         $i++;
                         $arreglo=$item->id.'_'.$item->idioma.'-';
@@ -63,6 +105,12 @@ $(document).ready(function () {
                                 <button class="btn btn-success"><i class="fas fa-check-circle"></i></button>
                             @endif
                         </td> --}}
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch_{{ $item->id }}" onclick="activar_evento('{{ $item->id }}')" value="{{ $item->id }}" @if($item->estado==1) checked @endif>
+                                <label class="custom-control-label" for="customSwitch_{{ $item->id }}"></label>
+                            </div>
+                        </td>
                         <td>
                             <div class="btn btn-group">
                                 {{-- <a class="btn btn-warning" href="{{ route('admin.destino.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a> --}}

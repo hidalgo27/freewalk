@@ -59,6 +59,7 @@ class DestinoGrupoController extends Controller
         $descripcion=$request->input('descripcion');
         $detalle=$request->input('detalle');
         $banner_imagen=$request->file('banner_imagen');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
         $que_porque=$request->input('que_porque');
         $que_porque_imagen=$request->file('que_porque_imagen');
         if($idioma=='0')
@@ -104,6 +105,19 @@ class DestinoGrupoController extends Controller
                 $imagen->destinos_grupo_id=$destino_grupo->id;
                 $imagen->save();
                 Storage::disk('destino_grupo')->put($filename,  File::get($banner_imagen_));
+            }
+        }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_imagen_mobile_){
+                $filename ='imagen-b-'.$destino_grupo->id.'.'.$banner_imagen_mobile_->getClientOriginalExtension();
+                $imagen=new DestinoGrupoImagen();
+                $imagen->titulo='';
+                $imagen->descripcion='';
+                $imagen->imagen=$filename;
+                $imagen->estado=5; //-- numero para banner mobile
+                $imagen->destinos_grupo_id=$destino_grupo->id;
+                $imagen->save();
+                Storage::disk('destino_grupo')->put($filename,  File::get($banner_imagen_mobile_));
             }
         }
         if(!empty($que_porque_imagen)){
@@ -306,13 +320,16 @@ class DestinoGrupoController extends Controller
         $titulo=$request->input('titulo');
         $atractivo_imagen=$request->file('atractivo_imagen');
         $id=$request->input('id');
-        $filename ='foto-at-'.$id.'.'.$atractivo_imagen->getClientOriginalExtension();
         $imagen = new DestinoGrupoImagen();
         $imagen->titulo=$titulo;
         $imagen->descripcion='';
         $imagen->estado=1; //-- numero para banner
-        $imagen->imagen=$filename;
+        $imagen->imagen='';
         $imagen->destinos_grupo_id=$id;
+        $imagen->save();
+
+        $filename ='foto-at-'.$imagen->id.'.'.$atractivo_imagen->getClientOriginalExtension();
+        $imagen->imagen=$filename;
         $imagen->save();
         Storage::disk('destino_grupo')->put($filename,  File::get($atractivo_imagen));
         return redirect()->route('admin.destino-grupo.lugares-visitar.path',$id)->with(['success'=>'Datos guardados correctamente.']);
@@ -378,6 +395,7 @@ class DestinoGrupoController extends Controller
     public function atractivos_edit($destino_grupo_id,$id)
     {
         //
+        // dd('hola');
         $destino_grupo=DestinoGrupo::findOrFail($destino_grupo_id);
         $destino_grupo_imagen=DestinoGrupoImagen::findOrFail($id);
         return view('admin.destino_grupo.atractivos-edit',compact('destino_grupo','destino_grupo_imagen'));
@@ -389,9 +407,9 @@ class DestinoGrupoController extends Controller
         $atractivo_imagen=$request->file('atractivo_imagen');
         $atractivo_imagen_=$request->input('atractivo_imagen_');
 
-        if(strlen(trim($atractivo_titulo))=='0')
+        if(strlen(trim($atractivo_titulo))==0)
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese un titulo.']);
-        if(strlen(trim($atractivo_descripcion))=='0')
+        if(strlen(trim($atractivo_descripcion))==0)
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Ingrese una descripcion.']);
 
         $destino_grupo_imagen= DestinoGrupoImagen::findOrFail($id);
@@ -470,7 +488,7 @@ class DestinoGrupoController extends Controller
         //
         $destino_grupo=DestinoGrupo::findOrFail($destino_grupo_id);
         $destino_grupo_pregunta=DestinoGrupoPregunta::findOrFail($id);
-        return view('admin.destino_grupo.atractivos-edit',compact('destino_grupo','destino_grupo_pregunta'));
+        return view('admin.destino_grupo.preguntas-edit',compact('destino_grupo','destino_grupo_pregunta'));
     }
     public function preguntas_update(Request $request, $destino_grupo_id, $id)
     {
@@ -530,6 +548,7 @@ class DestinoGrupoController extends Controller
         $descripcion=$request->input('descripcion');
         $detalle=$request->input('detalle');
         $banner_imagen=$request->file('banner_imagen');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
         $que_porque=$request->input('que_porque');
         $que_porque_imagen=$request->file('que_porque_imagen');
         if($idioma=='0')
@@ -587,6 +606,19 @@ class DestinoGrupoController extends Controller
                 Storage::disk('destino_grupo')->put($filename,  File::get($banner_imagen_));
             }
         }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_imagen_mobile_){
+                $filename ='imagen-b-'.$destino_grupo->id.'.'.$banner_imagen_mobile_->getClientOriginalExtension();
+                $imagen=new DestinoGrupoImagen();
+                $imagen->titulo='';
+                $imagen->descripcion='';
+                $imagen->imagen=$filename;
+                $imagen->estado=0; //-- numero para banner
+                $imagen->destinos_grupo_id=$destino_grupo->id;
+                $imagen->save();
+                Storage::disk('destino_grupo')->put($filename,  File::get($banner_imagen_mobile_));
+            }
+        }
         if(!empty($que_porque_imagen)){
             foreach($que_porque_imagen as $banner_imagen_qp){
                 $filename ='imagen-qp-'.$destino_grupo->id.'.'.$banner_imagen_qp->getClientOriginalExtension();
@@ -622,6 +654,8 @@ class DestinoGrupoController extends Controller
         $detalle=$request->input('detalle');
         $banner_imagen=$request->file('banner_imagen');
         $banner_imagen_=$request->input('banner_imagen_');
+        $banner_imagen_mobile=$request->file('banner_imagen_mobile');
+        $banner_imagen_mobile_=$request->input('banner_imagen_mobile_');
         $que_porque=$request->input('que_porque');
         $que_porque_imagen=$request->file('que_porque_imagen');
         $que_porque_imagen_=$request->input('que_porque_imagen_');
@@ -680,6 +714,36 @@ class DestinoGrupoController extends Controller
                 Storage::disk('destino_grupo')->put($filename,  File::get($banner_image));
             }
         }
+        // borramos de la db las imagenes banner(mobile) que han sido eliminadas por el usuario
+        if(count((array)$banner_imagen_mobile_)>0){
+            $fotos_existentes=DestinoGrupoImagen::where('destinos_grupo_id',$destino_grupo->id)->where('estado','5')->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if(!in_array($value->id,$banner_imagen_mobile_)){
+                    DestinoGrupoImagen::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            DestinoGrupoImagen::where('destinos_grupo_id',$destino_grupo->id)->where('estado','5')->delete();
+        }
+        if(!empty($banner_imagen_mobile)){
+            foreach($banner_imagen_mobile as $banner_image){
+                $imagen = new DestinoGrupoImagen();
+                $imagen->titulo='';
+                $imagen->descripcion='';
+                $imagen->estado=0; //-- numero para banner
+                $imagen->imagen='';
+                $imagen->destinos_grupo_id=$destino_grupo->id;
+                $imagen->save();
+
+                $filename ='foto-b-'.$imagen->id.'.'.$banner_image->getClientOriginalExtension();
+                $imagen->imagen=$filename;
+                $imagen->save();
+                Storage::disk('destino_grupo')->put($filename,  File::get($banner_image));
+            }
+        }
+
         // borramos de la db las imagenes banner que han sido eliminadas por el usuario
         if(count((array)$que_porque_imagen_)>0){
             $fotos_existentesqp=DestinoGrupoImagen::where('destinos_grupo_id',$destino_grupo->id)->where('estado','2')->get();

@@ -17,7 +17,7 @@ class CreateToursImagenTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo');
             $table->string('imagen');
-            $table->integer('estado')->comment('0:banner, 1:galeria, 2:imagen seo');
+            $table->integer('estado')->comment('0:banner, 1:galeria, 2:imagen seo, 3:banner mobile');
             $table->integer('tours_id')->comment('id del destino al que pertenece');
             $table->timestamps();
         });

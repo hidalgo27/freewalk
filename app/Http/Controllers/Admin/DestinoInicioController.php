@@ -56,6 +56,7 @@ class DestinoInicioController extends Controller
         $titulo=$request->input('titulo');
         $detalle=$request->input('detalle');
         $imagen=$request->file('imagen');
+        $imagen_mobile=$request->file('imagen_mobile');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -82,6 +83,12 @@ class DestinoInicioController extends Controller
                 $destino_inicio->imagen=$filename;
                 $destino_inicio->save();
                 Storage::disk('destino_inicio')->put($filename,  File::get($imagen));
+        }
+        if(!empty($imagen_mobile)){
+            $filename ='imagen-m-'.$destino_inicio->id.'.'.$imagen_mobile->getClientOriginalExtension();
+            $destino_inicio->imagen_mobile=$filename;
+            $destino_inicio->save();
+            Storage::disk('destino_inicio')->put($filename,  File::get($imagen_mobile));
         }
         return redirect()->back()->with(['success'=>'Datos guardados correctamente.']);
     }
@@ -216,6 +223,7 @@ class DestinoInicioController extends Controller
         $titulo=$request->input('titulo');
         $detalle=$request->input('detalle');
         $imagen=$request->file('imagen');
+        $imagen_mobile=$request->file('imagen_mobile');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -254,6 +262,12 @@ class DestinoInicioController extends Controller
                 $destino_inicio->save();
                 Storage::disk('destino_inicio')->put($filename,  File::get($imagen));
         }
+        if(!empty($imagen_mobile)){
+            $filename ='imagen-'.$destino_inicio->id.'.'.$imagen_mobile->getClientOriginalExtension();
+            $destino_inicio->imagen_mobile=$filename;
+            $destino_inicio->save();
+            Storage::disk('destino_inicio')->put($filename,  File::get($imagen_mobile));
+    }
         return redirect()->route('admin.destino-inicio.index.path')->with(['success'=>'Datos guardados correctamente.']);
     }
     public function index_idioma_edit($id,$idioma,$arreglo)
@@ -276,6 +290,8 @@ class DestinoInicioController extends Controller
         $detalle=$request->input('detalle');
         $imagen=$request->file('imagen');
         $imagen_=$request->input('imagen_');
+        $imagen_mobile=$request->file('imagen_mobile');
+        $imagen_mobile_=$request->input('imagen_mobile_');
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
 
@@ -301,6 +317,17 @@ class DestinoInicioController extends Controller
             $destino_inicio->imagen=$filename;
             $destino_inicio->save();
             Storage::disk('destino_inicio')->put($filename,  File::get($imagen));
+        }
+
+        if(!isset($imagen_mobile_)){
+            $destino_inicio->imagen_mobile=NULL;
+            $destino_inicio->save();
+        }
+        if(!empty($imagen_mobile)){
+            $filename ='imagen-'.$destino_inicio->id.'.'.$imagen_mobile->getClientOriginalExtension();
+            $destino_inicio->imagen_mobile=$filename;
+            $destino_inicio->save();
+            Storage::disk('destino_inicio')->put($filename,  File::get($imagen_mobile));
         }
         return redirect()->route('admin.destino-inicio.index.path')->with(['success'=>'Datos editados correctamente.']);
     }

@@ -60,6 +60,7 @@ class DestinoController extends Controller
         $eDestino=Destino::where('nombre',$destino_nombre)->where('idioma',$destino_idioma)->get();
         if($eDestino->count()==0){
             $oDestino=new Destino();
+            $oDestino->orden=1;
             $oDestino->nombre=strtoupper($destino_nombre);
             $oDestino->url=$destino_url;
             $oDestino->idioma=$destino_idioma;
@@ -189,6 +190,30 @@ class DestinoController extends Controller
             // return 0;
         }
     }
+    public function cambiar_estado(Request $request)
+    {
+
+        $id=$request->input('id');
+        $estado=$request->input('estado');
+        $temp=Destino::findOrFail($id);
+        $temp->estado=$estado;
+        $temp->save();
+    }
+
+    public function ordenar(Request $request)
+    {
+        $orden_id=$request->input('orden_id');
+        $orden=$request->input('orden');
+        if($orden_id){
+            foreach($orden_id as $key => $id){
+                $temp1=Destino::findOrFail($id);
+                $temp1->orden=$orden[$key];
+                $temp1->save();
+            }
+        }
+        return redirect()->route('admin.destino.index.path')->with(['success'=>'Datos guardados correctamente.']);
+    }
+
     public function mostrar_destinos(Request $request){
         $idioma=$request->idioma;
         if($request->ajax()){
@@ -214,6 +239,7 @@ class DestinoController extends Controller
         $eDestino=Destino::where('nombre',$destino_nombre)->where('idioma',$destino_idioma)->get();
         if($eDestino->count()==0){
             $oDestino=new Destino();
+            $oDestino->orden=1;
             $oDestino->nombre=strtoupper($destino_nombre);
             $oDestino->idioma=$destino_idioma;
             $oDestino->url=$destino_url;
