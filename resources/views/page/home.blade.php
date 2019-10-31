@@ -41,7 +41,9 @@
                             <div class="box-torus">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <img src="{{asset('images/free-walking-tour-lima.jpg')}}" class="img-fluid" alt="free walking tour lima">
+                                        @if (Storage::disk('destino_inicio')->has($destinos_inicios->imagen))
+                                        <img src="{{ route('admin.destino_inicio.get_imagen.path',$destinos_inicios->imagen) }}" class="img-fluid" alt="free walking tour lima">
+                                        @endif
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="box-text p-3 bg-white">
