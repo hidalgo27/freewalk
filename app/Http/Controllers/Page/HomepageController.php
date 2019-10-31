@@ -24,21 +24,7 @@ use Illuminate\Support\Facades\Session;
 
 class HomepageController extends Controller
 {
-    public function index($idioma = NULL){
-
-
-        SEOMeta::setTitle('Home');
-        SEOMeta::setDescription('This is my page description');
-        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
-        OpenGraph::addImage('https://codecasts.com.br/lesson');
-//        SEOMeta::addAlternateLanguage('es', 'español.com');
-        $alternateLanguages[] = ['lang' => 'es', 'url' => '.pe'];
-        $alternateLanguages[] = ['lang' => 'en', 'url' => '.com'];
-
-        SEOMeta::addAlternateLanguages($alternateLanguages);
-
-        OpenGraph::setDescription('This is my page description');
-        OpenGraph::setTitle('Home 3');
+    public function index(){
 
         $locale = App::getLocale();
         $destinos_inicio = DestinoInicio::where('idioma', $locale)->get();
@@ -48,6 +34,20 @@ class HomepageController extends Controller
         $destino = Destino::all();
 
         $inicio = Inicio::where('idioma', $locale)->first();
+
+        //SEO
+        SEOMeta::setTitle($inicio->seo_titulo);
+        SEOMeta::setDescription($inicio->seo_descripcion);
+        SEOMeta::setCanonical($inicio->seo_canonical);
+        OpenGraph::addImage('https://www.freewalkingtoursperu.com/img/free-walking-tours-peru.jpg');
+//        SEOMeta::addAlternateLanguage('es', 'español.com');
+//        $alternateLanguages[] = ['lang' => 'es', 'url' => '.pe'];
+//        $alternateLanguages[] = ['lang' => 'en', 'url' => '.com'];
+
+//        SEOMeta::addAlternateLanguages($alternateLanguages);
+
+        OpenGraph::setDescription($inicio->seo_descripcion);
+        OpenGraph::setTitle($inicio->seo_titulo);
 
         return view('page.home',
             compact(
@@ -69,6 +69,20 @@ class HomepageController extends Controller
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
 
         $inicio = Inicio::where('idioma', $locale)->first();
+
+        //SEO
+        SEOMeta::setTitle($inicio->seo_titulo);
+        SEOMeta::setDescription($inicio->seo_descripcion);
+        SEOMeta::setCanonical($inicio->seo_canonical);
+        OpenGraph::addImage('https://www.freewalkingtoursperu.com/img/free-walking-tours-peru.jpg');
+//        SEOMeta::addAlternateLanguage('es', 'español.com');
+//        $alternateLanguages[] = ['lang' => 'es', 'url' => '.pe'];
+//        $alternateLanguages[] = ['lang' => 'en', 'url' => '.com'];
+
+//        SEOMeta::addAlternateLanguages($alternateLanguages);
+
+        OpenGraph::setDescription($inicio->seo_descripcion);
+        OpenGraph::setTitle($inicio->seo_titulo);
 
         return view('page.home',
             compact(
