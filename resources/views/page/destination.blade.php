@@ -225,7 +225,7 @@
                                 <div class="col-sm-4 mb-3 mb-sm-0">
                                     <div class="box-tours my-sm-2 my-1">
                                         <a href="{{route('destination_tour_path', [strtolower($locale), $destino_grupos->destino->url, strtolower(str_replace(' ','-', $tours->url ))])}}" target="_blank">
-                                            @foreach ($tours->imagenes->where('estado','0') as $foto)
+                                            @foreach ($tours->imagenes->where('estado','5') as $foto)
                                                 @if (Storage::disk('tours')->has($foto->imagen))
                                                     <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="img-fluid rounded-lg" alt="free walking tour lima, leaves from miraflores">
                                                 @endif
