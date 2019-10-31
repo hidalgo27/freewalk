@@ -270,7 +270,7 @@
                                 {{--                                {{$lugares_recojo}}--}}
                                 <div class="col-sm-4">
                                     <div class="box-green text-center">
-                                        <div class="bg-success p-1 text-center text-white"><span class="">10am | Pick Up - Meeting Place in Miraflores district is at Calle Schell 178!</span></div>
+                                        <div class="bg-success p-1 text-center text-white"><span class="">{{$lugares_recojos->titulo}}</span></div>
                                         {{--                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7801.692421398545!2d-77.030661!3d-12.122673!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c818e2e9d1dd%3A0xdd4b052cbe084319!2sCalle+Schell+178%2C+Miraflores+15074!5e0!3m2!1ses!2spe!4v1560033129564!5m2!1ses!2spe" width="100%" height="330" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
                                         @php echo $lugares_recojos->iframe;@endphp
                                     </div>
