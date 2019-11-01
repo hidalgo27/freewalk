@@ -105,91 +105,19 @@
             <div class="row testimonial">
                 <div class="owl-carousel owl-theme">
 
+                    @foreach ($tour->imagenes->where('estado','1') as $foto)
+{{--                        @if (Storage::disk('tours')->has($foto->imagen))--}}
 
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Save 50 soles by using The Transportation System</p>
+                        <div class="item  pt-2 rounded pb-0 bg-white">
+{{--                            <div class="tit-carrusel" align="center">--}}
+{{--                                <p class="mb-1">{{$foto->titulo}}</p>--}}
+{{--                            </div>--}}
+                            <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" alt="Lima sightseeing tour on Local Transportation System, metropolitano">
                         </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-by-local-metropolitano-bus.jpg" alt="Lima sightseeing tour on Local Transportation System, metropolitano">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Experience the Change of Guard</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-change-of-guard.jpg" alt="Lima sightseeing tour at the Change of Guard of Lima city">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Municipality of Lima</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-city-hall.jpg" alt="Lima sightseeing tour at the municipality of Lima">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Exploring the Atrium of San Francisco Church</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-exploring-san-francisco-church.jpg" alt="lima sightseeing tour at san francisco church">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">House of Peruvian Literature</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-house-of-peruvian-literature.jpg" alt="lima sightseeing tour at the house of peruvian literature">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Local Experience</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-local-folkloric-experience.jpg" alt="lima sightseeing tour at local experience">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Meet other Travelers</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-meet-other-travellers.jpg" alt="lima sightseeing tour meeting other travelers">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Torre Tagle Palace</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-palace-of-torre-tagle.jpg" alt="lima sightseeing tour at torre tagle palace of Lima">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Plaza de Armas of Lima</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-plaza-de-armas.jpg" alt="lima sightseeing tour at plaza de armas of Lima">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Our Walkers at Lima Main Square</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-main-square-plaza-mayor.jpg" alt="lima sightseeing tour at the main square">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Presidential Palace of Peru</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-presidential-palace.jpg" alt="lima sightseeing tour at presidential palace of Lima">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Rimac River </p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-rimac-river.jpg" alt="lima sightseeing tour at Rimac River">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Unveil San Francisco Church</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-san-francisco-church.jpg" alt="lima sightseeing tour at san francisco church">
-                    </div>
-                    <div class="item  pt-2 rounded pb-0 bg-white">
-                        <div class="tit-carrusel" align="center">
-                            <p class="mb-1">Santo Domingo Church</p>
-                        </div>
-                        <img src="../img/lima/lima-sightseeing-tour-on-foot-from-miraflores-at-10am-santo-domingo-church.jpg" alt="lima sightseeing tour at santo domingo church">
-                    </div>
+
+{{--                        @endif--}}
+                    @endforeach
+
 
                 </div>
             </div>
@@ -286,3 +214,89 @@
 {{--    @endforeach--}}
 
 @endsection
+@push('scripts')
+    <script>
+        function change_idioma($id, $idioma) {
+
+            var datos = {
+                "id" : $id,
+                "idioma" : $idioma,
+            };
+            $.ajax({
+                data:  datos,
+                {{--                url:   "{{route('lang_agrupados_path')}}",--}}
+                type:  'get',
+                success:  function (response) {
+                    location.reload();
+                }
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function()
+        {
+            $(document).on('submit', '#reg-form', function()
+            {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                var data = $(this).serialize();
+                $.ajax({
+                    type : 'POST',
+                    url  : '{{route('send_email_path')}}',
+                    data : data,
+                    success :  function(data)
+                    {
+                        $("#reg-form").fadeOut(500).hide(function()
+                        {
+                            $(".result").fadeIn(500).show(function()
+                            {
+                                $(".result").html(data);
+                            });
+                        });
+
+                    }
+                });
+                return false;
+            });
+        });
+
+        $('#datepicker').datepicker({
+            onSelect: function(dateText) {
+                $('#datepicker2').datepicker("setDate", $(this).datepicker("getDate"));
+            }
+        });
+
+        $(document).ready(function() {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                items:4,
+                loop:true,
+                margin:10,
+                autoplay:true,
+                autoplayTimeout:3000,
+                autoplayHoverPause:true,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:false
+                    },
+                    1000:{
+                        items:3,
+                        nav:false,
+                        loop:true
+                    }
+                }
+            });
+
+        });
+    </script>
+@endpush

@@ -98,18 +98,28 @@ class HomepageController extends Controller
 
         $destino_inicio = DestinoGrupo::where('url', $titile)->where('idioma', $locale)->first();
 
-//        dd();
-
         $destino_grupo_t = DestinoGrupo::where('destino_id', $destino_inicio->destino_id)->first();
 
-//        dd($destino_grupo_t);
-
         $destino_grupos = DestinoGrupo::with('traducciones','destino','destino.lugares_recojo')->where('destino_id', $destino_inicio->destino_id)->first();
-//        dd($destino_grupo->id);
         $destino_grupo_idioma_t = DestinoGrupoIdioma::where('destino_grupo_relacion_id', $destino_grupos->id)->first();
         $destino_grupo_idioma = DestinoGrupoIdioma::where('destino_grupo_padre_id', $destino_grupo_idioma_t->destino_grupo_padre_id)->get();
 
         $destino = Destino::all();
+
+        //SEO
+        SEOMeta::setTitle($destino_grupos->seo_titulo);
+        SEOMeta::setDescription($destino_grupos->seo_descripcion);
+        SEOMeta::setCanonical($destino_grupos->seo_canonical);
+        OpenGraph::addImage('https://www.freewalkingtoursperu.com/img/free-walking-tours-peru.jpg');
+//        SEOMeta::addAlternateLanguage('es', 'español.com');
+//        $alternateLanguages[] = ['lang' => 'es', 'url' => '.pe'];
+//        $alternateLanguages[] = ['lang' => 'en', 'url' => '.com'];
+
+//        SEOMeta::addAlternateLanguages($alternateLanguages);
+
+        OpenGraph::setDescription($destino_grupos->seo_descripcion);
+        OpenGraph::setTitle($destino_grupos->seo_titulo);
+
         return view('page.destination', compact('locale', 'destino_grupos', 'destino','destino_grupo_idioma'));
     }
     public function destination_show(){
@@ -119,24 +129,31 @@ class HomepageController extends Controller
 
     public function destination_tour($lang, $destino_url, $url){
         $locale = App::getLocale();
-//        $url = str_replace('-', ' ', $title);
+
         $tour = Tour::with('lugar_recojo')->where('url', $url)->first();
 
         $tour_relacionados_t = TourRelacionado::where('tours_relacion_id', $tour->id)->first();
 
-//        dd($tour->id);
         $tour_relacionados_tr = TourRelacionado::where('tours_padre_id', $tour_relacionados_t->tours_padre_id)->pluck('tours_relacion_id')->toArray();
 
         $tour_tr = Tour::whereIn('id', $tour_relacionados_tr)->get();
 
-//        foreach ($tour_relacionados_tr as $tours_relacionados_tr){
-//            $tour_relacionados[] = Tour::find($tours_relacionados_tr->tours_relacion_id);
-//        }
-
-//        dd($tour_relacionados);
-
-
         $destino = Destino::all();
+
+        //SEO
+        SEOMeta::setTitle($tour->seo_titulo);
+        SEOMeta::setDescription($tour->seo_descripcion);
+        SEOMeta::setCanonical($tour->seo_canonical);
+        OpenGraph::addImage('https://www.freewalkingtoursperu.com/img/free-walking-tours-peru.jpg');
+//        SEOMeta::addAlternateLanguage('es', 'español.com');
+//        $alternateLanguages[] = ['lang' => 'es', 'url' => '.pe'];
+//        $alternateLanguages[] = ['lang' => 'en', 'url' => '.com'];
+
+//        SEOMeta::addAlternateLanguages($alternateLanguages);
+
+        OpenGraph::setDescription($tour->seo_descripcion);
+        OpenGraph::setTitle($tour->seo_titulo);
+
         return view('page.destination-tours', compact('locale', 'tour','destino', 'destino_url', 'tour_tr'));
     }
 
