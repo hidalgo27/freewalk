@@ -277,12 +277,14 @@ class TourController extends Controller
         $titulo=$request->input('titulo');
         $atractivo_imagen=$request->file('galeria_imagen');
         $id=$request->input('id');
-        $filename ='foto-g-'.$id.'.'.$atractivo_imagen->getClientOriginalExtension();
         $imagen = new TourImagen();
         $imagen->titulo=$titulo;
         $imagen->estado=1; //-- numero para banner
-        $imagen->imagen=$filename;
+        $imagen->imagen='';
         $imagen->tours_id=$id;
+        $imagen->save();
+        $filename ='foto-g-'.$imagen->id.'.'.$atractivo_imagen->getClientOriginalExtension();
+        $imagen->imagen=$filename;
         $imagen->save();
         Storage::disk('tours')->put($filename,  File::get($atractivo_imagen));
         return redirect()->route('admin.tour.galeria.index.path',$id)->with(['success'=>'Datos guardados correctamente.']);

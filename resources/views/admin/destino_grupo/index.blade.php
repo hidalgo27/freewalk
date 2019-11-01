@@ -24,6 +24,10 @@ $(document).ready(function () {
             </div>
         </div>
         <div class="card-body">
+                {{-- <button type="button" class="example-popover btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+                sagittis lacus vel augue laoreet rutrum faucibus.">
+                  Popover on bottom
+                </button> --}}
             <table class="table table-sm">
                 <thead>
                     <tr>
@@ -65,9 +69,9 @@ $(document).ready(function () {
                                                         $id_=$item->traducciones->where('idioma',$idioma_->codigo)->first()->destino_grupo_relacion_id;
                                                     @endphp
                                                 @endif
-                                                <a class="btn btn-secondary" href="@if($id_>0){{ route('admin.destino-grupo.lugares-visitar.path',$id_) }} @else  #! @endif"><i class="fas fa-map-marked-alt"></i></a>
-                                                <a class="btn btn-secondary" href="@if($id_>0){{ route('admin.destino-grupo.atractivos.index.path',$id_) }} @else  #! @endif"><i class="fas fa-images"></i></a>
-                                                <a class="btn btn-secondary" href="@if($id_>0){{ route('admin.destino-grupo.preguntas.index.path',$id_) }} @else  #! @endif"><i class="fas fa-question"></i></a>
+                                                <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Lugares a visitar" href="@if($id_>0){{ route('admin.destino-grupo.lugares-visitar.path',$id_) }} @else  #! @endif"><i class="fas fa-map-marked-alt"></i></a>
+                                                <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Atractivos" href="@if($id_>0){{ route('admin.destino-grupo.atractivos.index.path',$id_) }} @else  #! @endif"><i class="fas fa-images"></i></a>
+                                                <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Preguntas" href="@if($id_>0){{ route('admin.destino-grupo.preguntas.index.path',$id_) }} @else  #! @endif"><i class="fas fa-question"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -118,5 +122,14 @@ $(document).ready(function () {
         @elseif (Session::has('error'))
             toastr.error('{!! Session::get('error') !!}','MENSAJE DEL SISTEMA',{"progressBar":true,"closeButton":true})
         @endif
+        $(function () {
+            // $('.example-popover').popover({
+            //     container: 'body'
+            // })
+            // $('.example-popover').popover('toggle')
+            $('.example-popover').popover({
+                trigger: 'hover'
+            })
+        })
     </script>
 @endsection

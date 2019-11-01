@@ -263,7 +263,7 @@ class DestinoInicioController extends Controller
                 Storage::disk('destino_inicio')->put($filename,  File::get($imagen));
         }
         if(!empty($imagen_mobile)){
-            $filename ='imagen-'.$destino_inicio->id.'.'.$imagen_mobile->getClientOriginalExtension();
+            $filename ='imagen-m-'.$destino_inicio->id.'.'.$imagen_mobile->getClientOriginalExtension();
             $destino_inicio->imagen_mobile=$filename;
             $destino_inicio->save();
             Storage::disk('destino_inicio')->put($filename,  File::get($imagen_mobile));
@@ -309,7 +309,7 @@ class DestinoInicioController extends Controller
 
         // borramos de la db la foto de portada que han sido eliminadas por el usuario
         if(!isset($imagen_)){
-            $destino_inicio->imagen=NULL;
+            $destino_inicio->imagen='';
             $destino_inicio->save();
         }
         if(!empty($imagen)){
@@ -320,11 +320,11 @@ class DestinoInicioController extends Controller
         }
 
         if(!isset($imagen_mobile_)){
-            $destino_inicio->imagen_mobile=NULL;
+            $destino_inicio->imagen_mobile='';
             $destino_inicio->save();
         }
         if(!empty($imagen_mobile)){
-            $filename ='imagen-'.$destino_inicio->id.'.'.$imagen_mobile->getClientOriginalExtension();
+            $filename ='imagen-m-'.$destino_inicio->id.'.'.$imagen_mobile->getClientOriginalExtension();
             $destino_inicio->imagen_mobile=$filename;
             $destino_inicio->save();
             Storage::disk('destino_inicio')->put($filename,  File::get($imagen_mobile));
