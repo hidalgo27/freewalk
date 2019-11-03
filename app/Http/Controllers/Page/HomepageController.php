@@ -171,15 +171,10 @@ class HomepageController extends Controller
     public function lang_agrupados($id, $idioma){
 
         Session::put('locale', $idioma);
+        
+        $destinos_grupos = DestinoGrupo::where('id', $id)->first();
 
-
-        $destino_inicio = DestinoInicio::where('destino_id', $id)->first();
-
-        foreach ($destino_inicio->destino->destinos_grupo as $destino_grupos) {
-            return redirect()->route('destination_path', [strtolower($idioma), $destino_grupos->url]);
-        }
-
-//        dd($destino_inicio->url);
+        return redirect()->route('destination_path', [strtolower($idioma), $destinos_grupos->url]);
 
     }
 
