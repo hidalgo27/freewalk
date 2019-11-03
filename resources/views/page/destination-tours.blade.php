@@ -147,8 +147,8 @@
 
                     <div class="col-sm-8">
                         <div class="box-green text-center">
-                            <div class="bg-success p-1 text-center text-white"><span class="">{{$tour->lugar_recojo->titulo}}</span></div>
-                            @php echo $tour->lugar_recojo->iframe @endphp
+                            <div class="bg-success p-1 text-center text-white"><span class="">{{$l_recojo->titulo}}</span></div>
+                            @php echo $l_recojo->iframe @endphp
                         </div>
                     </div>
 

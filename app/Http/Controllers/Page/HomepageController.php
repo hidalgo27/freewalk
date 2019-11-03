@@ -131,6 +131,12 @@ class HomepageController extends Controller
         $locale = App::getLocale();
 
         $tour = Tour::with('lugar_recojo')->where('url', $url)->first();
+        $lugar_recojo = LugarRecojo::all();
+        foreach ($tour->lugar_recojo->traducciones->where('idioma', $locale) as $lugar_recojo_idioma) {
+            foreach ($lugar_recojo->where('id', $lugar_recojo_idioma->lugar_recojo_relacion_id) as $l_recojo) {
+                $l_recojo = $l_recojo;
+            }
+        }
 
         $tour_relacionados_t = TourRelacionado::where('tours_relacion_id', $tour->id)->first();
 
@@ -154,7 +160,7 @@ class HomepageController extends Controller
         OpenGraph::setDescription($tour->seo_descripcion);
         OpenGraph::setTitle($tour->seo_titulo);
 
-        return view('page.destination-tours', compact('locale', 'tour','destino', 'destino_url', 'tour_tr'));
+        return view('page.destination-tours', compact('locale', 'tour','destino', 'destino_url', 'tour_tr', 'l_recojo'));
     }
 
 
@@ -171,7 +177,7 @@ class HomepageController extends Controller
     public function lang_agrupados($id, $idioma){
 
         Session::put('locale', $idioma);
-        
+
         $destinos_grupos = DestinoGrupo::where('id', $id)->first();
 
         return redirect()->route('destination_path', [strtolower($idioma), $destinos_grupos->url]);
