@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2058fc1-4719-4d89-afe9-00195738e4fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-tours.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/seotools.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/seotools.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-lima.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-lima.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-admin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/page/destination-tours.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/destination-tours.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/destination.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/destination.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +126,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gotoperu-mexico" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts/page" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -134,12 +136,12 @@
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/layouts/page" />
+      <recent name="$PROJECT_DIR$/resources/lang/es" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/layouts/admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/lang/es" />
-      <recent name="$PROJECT_DIR$/resources/views/layouts/page" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -194,7 +196,7 @@
       <workItem from="1572351388846" duration="6184000" />
       <workItem from="1572367603279" duration="18951000" />
       <workItem from="1572532585234" duration="3748000" />
-      <workItem from="1572612651059" duration="3750000" />
+      <workItem from="1572612651059" duration="7121000" />
     </task>
     <servers />
   </component>

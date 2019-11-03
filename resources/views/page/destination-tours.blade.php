@@ -81,8 +81,6 @@
 
                     </article>
 
-
-
                 </div>
             </div>
 
@@ -92,7 +90,8 @@
                 <aside class="py-3 px-1 d-sm-block d-none">
 
 <!--                    --><?php //include ('../includes/booking-aside-lima.blade.php') ?>
-{{--                        @include('layouts.page.booking-aside-lima')--}}
+                        @include('layouts.page.booking-aside-tours')
+
                 </aside>
             </div>
         </div>
@@ -106,16 +105,16 @@
                 <div class="owl-carousel owl-theme">
 
                     @foreach ($tour->imagenes->where('estado','1') as $foto)
-{{--                        @if (Storage::disk('tours')->has($foto->imagen))--}}
+                        @if (Storage::disk('tours')->has($foto->imagen))
 
                         <div class="item  pt-2 rounded pb-0 bg-white">
-{{--                            <div class="tit-carrusel" align="center">--}}
-{{--                                <p class="mb-1">{{$foto->titulo}}</p>--}}
-{{--                            </div>--}}
+                            <div class="tit-carrusel" align="center">
+                                <p class="mb-1">{{$foto->titulo}}</p>
+                            </div>
                             <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" alt="Lima sightseeing tour on Local Transportation System, metropolitano">
                         </div>
 
-{{--                        @endif--}}
+                        @endif
                     @endforeach
 
 
@@ -129,7 +128,7 @@
 <section class="col">
     <div class="d-sm-none d-block" id="title-book">
 <!--        --><?php //include ('../includes/booking-aside-lima-sm.php') ?>
-            @include('layouts.page.booking-aside-lima-sm')
+        @include('layouts.page.booking-aside-tours')
     </div>
 
 </section>

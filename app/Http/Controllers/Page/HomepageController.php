@@ -172,9 +172,14 @@ class HomepageController extends Controller
 
         Session::put('locale', $idioma);
 
-        $destino_inicio = DestinoInicio::where('id', $id)->first();
 
-        return redirect()->route('destination_path', [strtolower($idioma), $destino_inicio->url]);
+        $destino_inicio = DestinoInicio::where('destino_id', $id)->first();
+
+        foreach ($destino_inicio->destino->destinos_grupo as $destino_grupos) {
+            return redirect()->route('destination_path', [strtolower($idioma), $destino_grupos->url]);
+        }
+
+//        dd($destino_inicio->url);
 
     }
 
