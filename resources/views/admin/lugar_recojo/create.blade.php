@@ -55,6 +55,10 @@ $(document).ready(function () {
                     <label for="imagen">Imagen de la referencia<span class="text-danger">(412x348)px</span></label>
                     <input type="file" class="form-control" id="referencia_imagen" name="referencia_imagen" placeholder="Nombre del imagen" >
                 </div>
+                <div class="form-group col-12">
+                    <label for="imagen_mapa">Imagen del mapa<span class="text-danger">(412x348)px</span></label>
+                    <input type="file" class="form-control" id="referencia_imagen_mapa" name="referencia_imagen_mapa" placeholder="Nombre del imagen_mapa" >
+                </div>
             </div>
         </div>
         <div class="card-footer text-right">

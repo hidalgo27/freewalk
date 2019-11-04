@@ -56,6 +56,7 @@ class LugarRecojoController extends Controller
         $frame=$request->input('frame');
         $referencia=$request->input('referencia');
         $imagen=$request->file('referencia_imagen');
+        $imagen_mapa=$request->file('referencia_imagen_mapa');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -93,6 +94,12 @@ class LugarRecojoController extends Controller
                 $lugar_recojo->save();
                 Storage::disk('lugar_recojo')->put($filename,  File::get($imagen));
         }
+        if(!empty($imagen_mapa)){
+            $filename ='imagen-mapa-'.$lugar_recojo->id.'.'.$imagen_mapa->getClientOriginalExtension();
+            $lugar_recojo->referencia_imagen_mapa=$filename;
+            $lugar_recojo->save();
+            Storage::disk('lugar_recojo')->put($filename,  File::get($imagen_mapa));
+    }
         return redirect()->back()->with(['success'=>'Datos guardados correctamente.']);
     }
 
@@ -247,6 +254,7 @@ class LugarRecojoController extends Controller
         $frame=$request->input('frame');
         $referencia=$request->input('referencia');
         $imagen=$request->file('referencia_imagen');
+        $imagen_mapa=$request->file('referencia_imagen_mapa');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -290,6 +298,12 @@ class LugarRecojoController extends Controller
                 $lugar_recojo->save();
                 Storage::disk('lugar_recojo')->put($filename,  File::get($imagen));
         }
+        if(!empty($imagen_mapa)){
+            $filename ='imagen-mapa-'.$lugar_recojo->id.'.'.$imagen_mapa->getClientOriginalExtension();
+            $lugar_recojo->referencia_imagen_mapa=$filename;
+            $lugar_recojo->save();
+            Storage::disk('lugar_recojo')->put($filename,  File::get($imagen_mapa));
+    }
         return redirect()->route('admin.lugar_recojo.index.path')->with(['success'=>'Datos guardados correctamente.']);
     }
     public function index_idioma_edit($id,$idioma,$arreglo)
@@ -312,6 +326,8 @@ class LugarRecojoController extends Controller
         $referencia=$request->input('referencia');
         $imagen=$request->file('referencia_imagen');
         $imagen_=$request->input('referencia_imagen_');
+        $imagen_mapa=$request->file('referencia_imagen_mapa');
+        $imagen_mapa_=$request->input('referencia_imagen_mapa_');
 
         if($idioma=='0')
             return redirect()->back()->withInput($request->all())->with(['warning'=>'Escoja un idioma.']);
@@ -345,6 +361,17 @@ class LugarRecojoController extends Controller
             $lugar_recojo->referencia_imagen=$filename;
             $lugar_recojo->save();
             Storage::disk('lugar_recojo')->put($filename,  File::get($imagen));
+        }
+        // borramos de la db la foto de portada que han sido eliminadas por el usuario
+        if(!isset($imagen_mapa_)){
+            $lugar_recojo->referencia_imagen_mapa='';
+            $lugar_recojo->save();
+        }
+        if(!empty($imagen_mapa)){
+            $filename ='imagen-mapa-'.$lugar_recojo->id.'.'.$imagen_mapa->getClientOriginalExtension();
+            $lugar_recojo->referencia_imagen_mapa=$filename;
+            $lugar_recojo->save();
+            Storage::disk('lugar_recojo')->put($filename,  File::get($imagen_mapa));
         }
         return redirect()->route('admin.lugar_recojo.index.path')->with(['success'=>'Datos editados correctamente.']);
     }

@@ -22,6 +22,7 @@ class CreateDestinosGrupoLugarRecojoTable extends Migration
             $table->string('lon');
             $table->string('referencia');
             $table->string('referencia_imagen');
+            $table->string('referencia_imagen_mapa');
             $table->integer('estado');
             $table->string('idioma')->comment('Idioma del contenido');
             $table->integer('destino_id')->comment('id del destino al que pertenece');

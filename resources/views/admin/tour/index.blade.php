@@ -54,15 +54,39 @@ $(document).ready(function () {
                         <td>{{ $item->url }}</td>
                         <td>{{ $item->titulo }}</td>
                         <td>
-                            <div class="btn-group">
+                            {{-- <div class="btn-group">
                                 @foreach ($idiomas as $idioma_)
-                                    <a href="@if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0)) {{ route('admin.tour.index.idioma.edit.path',[$item->tours_relacionados->where('idioma',$idioma_->codigo)->first()->tours_relacion_id,$idioma_->codigo,$arreglo]) }} @else {{ route('admin.tour.index.idioma.create.path',[$item->id,$idioma_->codigo,$arreglo]) }} @endif" class="btn @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0)) btn-primary @else btn-danger @endif"><i class="fas @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0))) fa-edit @else fa-plus-circle @endif "></i>{{ $idioma_->codigo }}</a>
+                                                <a href="@if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0)) {{ route('admin.tour.index.idioma.edit.path',[$item->tours_relacionados->where('idioma',$idioma_->codigo)->first()->tours_relacion_id,$idioma_->codigo,$arreglo]) }} @else {{ route('admin.tour.index.idioma.create.path',[$item->id,$idioma_->codigo,$arreglo]) }} @endif" class="btn @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0)) btn-primary @else btn-danger @endif"><i class="fas @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0))) fa-edit @else fa-plus-circle @endif "></i>{{ $idioma_->codigo }}</a>
+                                @endforeach
+                            </div> --}}
+                            <div class="row">
+                                @foreach ($idiomas as $idioma_)
+                                    <div class="col px-1">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <a href="@if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0)) {{ route('admin.tour.index.idioma.edit.path',[$item->tours_relacionados->where('idioma',$idioma_->codigo)->first()->tours_relacion_id,$idioma_->codigo,$arreglo]) }} @else {{ route('admin.tour.index.idioma.create.path',[$item->id,$idioma_->codigo,$arreglo]) }} @endif" class="btn-block btn @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0)) btn-primary @else btn-danger @endif"><i class="fas @if(strtoupper($item->idioma)==strtoupper($idioma_->codigo)||($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0))) fa-edit @else fa-plus-circle @endif "></i>{{ $idioma_->codigo }}</a>
+                                            </div>
+                                            <div class="col-12 btn-group">
+                                                @php
+                                                    $id_=0;
+                                                @endphp
+                                                @if ($item->tours_relacionados->where('idioma',$idioma_->codigo)->count()>0)
+                                                    @php
+                                                        $id_=$item->tours_relacionados->where('idioma',$idioma_->codigo)->first()->tours_relacion_id;
+                                                    @endphp
+                                                @endif
+                                                {{-- <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Lugares a visitar" href="@if($id_>0){{ route('admin.tour.galeria.index.path',$id_) }} @else  #! @endif"><i class="fas fa-map-marked-alt"></i></a> --}}
+                                                <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Galeria" href="@if($id_>0){{ route('admin.tour.galeria.index.path',$id_) }} @else  #! @endif"><i class="fas fa-images"></i></a>
+                                                {{-- <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Preguntas" href="@if($id_>0){{ route('admin.tour.galeria.index.path',$id_) }} @else  #! @endif"><i class="fas fa-question"></i></a> --}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </div>
                         </td>
                         <td>
                             <div class="btn btn-group">
-                                <a class="btn btn-primary" href="{{ route('admin.tour.galeria.index.path',$item->id) }}"><i class="fas fa-plus"></i> Galeria</a>
+                                {{-- <a class="btn btn-primary" href="{{ route('admin.tour.galeria.index.path',$item->id) }}"><i class="fas fa-plus"></i> Galeria</a> --}}
                                 {{-- <a class="btn btn-warning" href="{{ route('admin.tour.edit.path',$item->id) }}"><i class="fas fa-edit"></i></a> --}}
                                 <form id="form_borrar_{{ $item->id }}" action="{{ route('admin.tour.destroy.path',$item->id) }}" method="get">
                                     @csrf
@@ -88,5 +112,10 @@ $(document).ready(function () {
         @elseif (Session::has('error'))
             toastr.error('{!! Session::get('error') !!}','MENSAJE DEL SISTEMA',{"progressBar":true,"closeButton":true})
         @endif
+        $(function () {
+            $('.example-popover').popover({
+                trigger: 'hover'
+            })
+        })
     </script>
 @endsection
