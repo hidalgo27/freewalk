@@ -167,9 +167,6 @@
                 </div>
 
 
-
-
-
             </div>
 
         </div>
@@ -183,8 +180,9 @@
             <div class="row py-4">
                 <div class="col-sm-5 d-flex">
                     <div class="box-map mb-2">
-                        @if (Storage::disk('lugar_recojo')->has($tour->lugar_recojo->referencia_imagen))
-                            <img src="{{ route('admin.lugar_recojo.get_imagen.path',$tour->lugar_recojo->referencia_imagen) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
+
+                        @if (Storage::disk('lugar_recojo')->has($tour->lugar_recojo->referencia_imagen_mapa))
+                            <img src="{{ route('admin.lugar_recojo.get_imagen.path',$tour->lugar_recojo->referencia_imagen_mapa) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
                         @endif
                     </div>
                 </div>
