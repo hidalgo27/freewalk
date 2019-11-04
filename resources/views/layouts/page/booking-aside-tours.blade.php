@@ -6,7 +6,7 @@
         <form method="post" id="reg-form" class="px-0 m-3 ">
             @csrf
             <div id="datepicker"></div>
-            <input type="hidden" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
+            <input type="hidden" name="text_grupo_title" value="{{$tour->titulo}}">
             <div class="form-group">
                 <p>Dates: <input class="form-control form-control-sm" type="text" id="datepicker2" name="txt_date"></p>
             </div>
@@ -35,16 +35,16 @@
             </div>
 
 
-            @if ($destino_grupos->destino->tours->count() > 0)
-                <div class="form-group">
-                    <select class="form-control form-control-sm" id="nombretour" name="slc_tour">
-                        <option value="" disabled selected>Choose your free tour departure</option>
-                        @foreach($destino_grupos->destino->tours as $tours)
-                            <option value="{{$tours->titulo}}">{{$tours->titulo}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            @endif
+{{--            @if ($tour->count() > 0)--}}
+{{--                <div class="form-group">--}}
+{{--                    <select class="form-control form-control-sm" id="nombretour" name="slc_tour">--}}
+{{--                        <option value="" disabled selected>Choose your free tour departure</option>--}}
+{{--                        @foreach($tour as $tours)--}}
+{{--                            <option value="{{$tours->titulo}}">{{$tours->titulo}}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+{{--                </div>--}}
+{{--            @endif--}}
 
             <div class="form-group">
                 <select class="form-control form-control-sm" id="nombretour" name="slc_referencia">

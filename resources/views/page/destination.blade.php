@@ -249,11 +249,11 @@
                 </article>
             </section>
 
-            {{--        <section class="col" id="title-aside">--}}
-            {{--            <div class="d-sm-none d-block">--}}
-            {{--                @include('layouts.page.booking-aside-lima-sm')--}}
-            {{--            </div>--}}
-            {{--        </section>--}}
+                    <section class="col" id="title-aside">
+                        <div class="d-sm-none d-block">
+                            @include('layouts.page.booking-aside-lima')
+                        </div>
+                    </section>
             <section class="section01 py-4">
                 <article>
                     <div class="container maxw2 p-3">

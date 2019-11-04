@@ -8,7 +8,7 @@
     </tr>
     <tr>
         <td>Tour</td>
-        <td>{{$tour}}</td>
+        <td>{{$text_grupo_title}}</td>
     </tr>
     <tr>
         <td>Date</td>

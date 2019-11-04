@@ -35,6 +35,8 @@ class HomepageController extends Controller
 
         $inicio = Inicio::where('idioma', $locale)->first();
 
+
+
         //SEO
         SEOMeta::setTitle($inicio->seo_titulo);
         SEOMeta::setDescription($inicio->seo_descripcion);
@@ -131,6 +133,10 @@ class HomepageController extends Controller
         $locale = App::getLocale();
 
         $tour = Tour::with('lugar_recojo')->where('url', $url)->first();
+        $lugar_recojo = LugarRecojo::all();
+
+
+
 
         $tour_relacionados_t = TourRelacionado::where('tours_relacion_id', $tour->id)->first();
 
@@ -154,7 +160,7 @@ class HomepageController extends Controller
         OpenGraph::setDescription($tour->seo_descripcion);
         OpenGraph::setTitle($tour->seo_titulo);
 
-        return view('page.destination-tours', compact('locale', 'tour','destino', 'destino_url', 'tour_tr'));
+        return view('page.destination-tours', compact('locale', 'tour','destino', 'destino_url', 'tour_tr', 'lugar_recojo'));
     }
 
 
@@ -172,9 +178,9 @@ class HomepageController extends Controller
 
         Session::put('locale', $idioma);
 
-        $destino_inicio = DestinoInicio::where('id', $id)->first();
+        $destinos_grupos = DestinoGrupo::where('id', $id)->first();
 
-        return redirect()->route('destination_path', [strtolower($idioma), $destino_inicio->url]);
+        return redirect()->route('destination_path', [strtolower($idioma), $destinos_grupos->url]);
 
     }
 
