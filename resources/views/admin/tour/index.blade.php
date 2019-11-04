@@ -76,7 +76,7 @@ $(document).ready(function () {
                                                     @endphp
                                                 @endif
                                                 {{-- <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Lugares a visitar" href="@if($id_>0){{ route('admin.tour.galeria.index.path',$id_) }} @else  #! @endif"><i class="fas fa-map-marked-alt"></i></a> --}}
-                                                <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Atractivos" href="@if($id_>0){{ route('admin.tour.galeria.index.path',$id_) }} @else  #! @endif"><i class="fas fa-images"></i></a>
+                                                <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Galeria" href="@if($id_>0){{ route('admin.tour.galeria.index.path',$id_) }} @else  #! @endif"><i class="fas fa-images"></i></a>
                                                 {{-- <a class="btn btn-secondary example-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Preguntas" href="@if($id_>0){{ route('admin.tour.galeria.index.path',$id_) }} @else  #! @endif"><i class="fas fa-question"></i></a> --}}
                                             </div>
                                         </div>
