@@ -68,6 +68,24 @@ $(document).ready(function () {
                     <label for="imagen">Imagen <span class="text-danger">(412x348)px</span></label>
                     <input type="file" class="form-control" id="referencia_imagen" name="referencia_imagen" placeholder="Nombre del imagen" >
                 </div>
+                <div class="form-group col-12 text-left">
+                    <p><b> Imagen del mapa</b></p>
+                    @if (Storage::disk('lugar_recojo')->has($oLugar_recojo->referencia_imagen_mapa))
+                        <figure class="figure m-3" id="destino_inicio_imagen_mapa_{{ $oLugar_recojo->id }}">
+                            <img src="{{ route('admin.lugar_recojo.get_imagen.path',$oLugar_recojo->referencia_imagen_mapa) }}" class="figure-img rounded" alt="{{ $oLugar_recojo->referencia_imagen_mapa}}" width="468px" height="400px">
+                            <figcaption class="figure-caption text-right mt-0">
+                                <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_imagen_destino_inicio('destino_inicio_imagen_mapa_{{ $oLugar_recojo->id}}')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </figcaption>
+                            <input type="hidden" name="referencia_imagen_mapa_" value="{{ $oLugar_recojo->id }}">
+                        </figure>
+                    @endif
+                </div>
+                <div class="form-group col-12">
+                    <label for="imagen">Imagen del mapa <span class="text-danger">(412x348)px</span></label>
+                    <input type="file" class="form-control" id="referencia_imagen_mapa" name="referencia_imagen_mapa" placeholder="Nombre del imagen" >
+                </div>
             </div>
         </div>
         <div class="card-footer text-right">
