@@ -150,7 +150,7 @@
                             @foreach ($tour->lugar_recojo->traducciones->where('idioma', $locale) as $lugar_recojo_idioma)
                                 @foreach ($lugar_recojo->where('id', $lugar_recojo_idioma->lugar_recojo_relacion_id) as $l_recojo)
                                     <div class="bg-success p-1 text-center text-white"><span class="">{{$l_recojo->titulo}}</span></div>
-                                    {!! $l_recojo->iframe !!}
+                                    @php echo $l_recojo->iframe @endphp
                                 @endforeach
                             @endforeach
                         </div>
