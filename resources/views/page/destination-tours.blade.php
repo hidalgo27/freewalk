@@ -145,7 +145,7 @@
 
                 </div>
 
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         <div class="box-green text-center">
                             @foreach ($tour->lugar_recojo->traducciones->where('idioma', strtoupper($locale)) as $lugar_recojo_idioma)
                                 @foreach ($lugar_recojo->where('id', $lugar_recojo_idioma->lugar_recojo_relacion_id) as $l_recojo)
@@ -156,6 +156,17 @@
 
                         </div>
                     </div>
+
+                <div class="col-sm-4">
+                    <div class="box-green text-center">
+                        <div class="bg-success p-1 text-center text-white"><span class="">{{$l_recojo->referencia}}</span></div>
+                        @if (Storage::disk('lugar_recojo')->has($tour->lugar_recojo->referencia_imagen))
+                            <img src="{{ route('admin.lugar_recojo.get_imagen.path',$tour->lugar_recojo->referencia_imagen) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
+                        @endif
+                    </div>
+                </div>
+
+
 
 
 
