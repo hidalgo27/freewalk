@@ -164,6 +164,40 @@ class HomepageController extends Controller
     }
 
 
+    public function booking($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.booking', compact('locale','destino','destino_inicio_idiomas'));
+    }
+
+    public function terms_conditions($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.termianos', compact('locale','destino','destino_inicio_idiomas'));
+    }
+
+    public function contact_us($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.contact', compact('locale','destino','destino_inicio_idiomas'));
+    }
+    public function partner($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.partner', compact('locale','destino','destino_inicio_idiomas'));
+    }
+    public function employment($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.employment', compact('locale','destino','destino_inicio_idiomas'));
+    }
+
+
     public function lang($locale){
         Session::put('locale', $locale);
         if ($locale=='en') {

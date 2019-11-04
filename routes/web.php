@@ -150,21 +150,39 @@ Route::patch('/admin/lugar-recojo/{id}/{idioma}/{arreglo}/update',['uses'=>'Admi
 
 //Page
 //if (App::isLocale('en')){
-    Route::get('/', [
-        'uses' => 'Page\HomepageController@index',
-        'as' => 'home_path',
-    ]);
-    Route::get('/{idioma}', [
-        'uses' => 'Page\HomepageController@index2',
-        'as' => 'home2_path',
-    ]);
-    Route::get('/{locale}/{title}', [
-        'uses' => 'Page\HomepageController@destination',
-        'as' => 'destination_path',
-    ]);
+Route::get('/', [
+    'uses' => 'Page\HomepageController@index',
+    'as' => 'home_path',
+]);
+Route::get('/{locale}/booking', [
+    'uses' => 'Page\HomepageController@booking',
+    'as' => 'booking_path',
+]);
+Route::get('/{locale}/terms-conditions', [
+    'uses' => 'Page\HomepageController@terms_conditions',
+    'as' => 'terms_conditions_path',
+]);
+Route::get('/{locale}/contact-us', [
+    'uses' => 'Page\HomepageController@contact_us',
+    'as' => 'contact_us_path',
+]);
+Route::get('/{locale}/partner', [
+    'uses' => 'Page\HomepageController@partner',
+    'as' => 'partner_path',
+]);
+Route::get('/{locale}/employment', [
+    'uses' => 'Page\HomepageController@employment',
+    'as' => 'employment_path',
+]);
 
-
-
+Route::get('/{idioma}', [
+    'uses' => 'Page\HomepageController@index2',
+    'as' => 'home2_path',
+]);
+Route::get('/{locale}/{title}', [
+    'uses' => 'Page\HomepageController@destination',
+    'as' => 'destination_path',
+]);
 
 
 
@@ -200,5 +218,6 @@ Route::post('/send_email/', [
     'uses' => 'Page\HomepageController@send_email',
     'as' => 'send_email_path',
 ]);
+
 
 
