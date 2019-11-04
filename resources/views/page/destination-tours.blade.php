@@ -147,14 +147,17 @@
 
                     <div class="col-sm-8">
                         <div class="box-green text-center">
-                            @foreach ($tour->lugar_recojo->traducciones->where('idioma', $locale) as $lugar_recojo_idioma)
+                            @foreach ($tour->lugar_recojo->traducciones->where('idioma', strtoupper($locale)) as $lugar_recojo_idioma)
                                 @foreach ($lugar_recojo->where('id', $lugar_recojo_idioma->lugar_recojo_relacion_id) as $l_recojo)
                                     <div class="bg-success p-1 text-center text-white"><span class="">{{$l_recojo->titulo}}</span></div>
-                                    @php echo $l_recojo->iframe @endphp
+                                    {!! $tour->lugar_recojo->iframe !!}
                                 @endforeach
                             @endforeach
+
                         </div>
                     </div>
+
+
 
             </div>
 
