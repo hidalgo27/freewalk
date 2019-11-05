@@ -108,11 +108,5 @@ $(document).ready(function () {
     @elseif (Session::has('error'))
         toastr.error('{!! Session::get('error') !!}','MENSAJE DEL SISTEMA',{"progressBar":true,"closeButton":true})
     @endif
-    tinymce.init({
-        selector: 'textarea',  // change this value according to your HTML
-        plugin: 'a_tinymce_plugin',
-        a_plugin_option: true,
-        a_configuration_option: 400
-        });
 </script>
 @endsection
