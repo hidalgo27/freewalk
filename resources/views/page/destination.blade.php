@@ -116,7 +116,7 @@
                                     <a href="#title-tour" class="mb-2 mb-sm-0  btn btn-free px-5"><i class="fa fa-list-ul" aria-hidden="true"></i> Itinerary</a>
 
 
-                                    <a href="#title-aside" class="mb-2 mb-sm-0  btn btn-free px-5 d-inline-block d-sm-none"><i class="fa fa-calendar" aria-hidden="true"></i> Book Now</a>
+                                    <a href="#title-aside" class="mb-2 mb-sm-0  btn btn-free px-5 d-inline-block d-sm-none"><i class="fa fa-calendar" aria-hidden="true"></i> @lang('home.book_now')</a>
                                     <a target="_blank" href="#faqs" class="mb-2 mb-sm-0  btn btn-free px-5 "><i class="fa fa-question-circle-o" aria-hidden="true"></i> FAQs</a>
 
 
@@ -217,8 +217,8 @@
             <section class="section03 maxw2" id="title-tour">
                 <article>
                     <div class="container py-4">
-                        <h2 class="text-center" style="font-size: 1.5em;">Read Detailed Itinerary of each tour:</h2>
-                        <p class="text-success text-center">(btw you can only book one, the routes are similar for all of them)</p>
+                        <h2 class="text-center" style="font-size: 1.5em;">@lang('home.read_detailed'):</h2>
+                        <p class="text-success text-center">@lang('home.read_detailed_p')</p>
                         <div class="row">
 
                             @foreach ($destino_grupos->destino->tours as $tours)
@@ -286,7 +286,7 @@
             <section class="section04">
                 <article>
                     <div class="container">
-                        <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">Check our 100% Real Reviews for our Lima Free Tours</h3>
+                        <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">@lang('home.check_lima_free_tours')</h3>
                         <div class="row">
                             <section class="carrousel container pb-4">
                                 <div class="row testimonial">
@@ -506,7 +506,7 @@
                             <div class="col-sm-6">
                                 <div class="boxtext bg-white">
                                     <div class="container pt-2">
-                                        <h5 class="text-center" style="font-size: 1.2em;">Pictures of our Walkers & Guides on Action!</h5>
+                                        <h5 class="text-center" style="font-size: 1.2em;">@lang('home.pictures_of')</h5>
                                         <div class="row">
                                             <div class="" id="slider">
                                                 <div id="myCarousel" class="carousel slide">
@@ -578,10 +578,10 @@
                     <div class="container px-1">
                         <div class="bg-dark1">
                             <div class="bot py-3 text-center  d-none d-sm-block">
-                                <a role="button" href="#book" class="btn btn-lg px-5">Book Now</a>
+                                <a role="button" href="#book" class="btn btn-lg px-5">@lang('home.book_now')</a>
                             </div>
                             <div class="bot py-3 text-center  d-sm-none d-block">
-                                <a role="button" href="#title-aside" class="btn btn-lg px-5">Book Now</a>
+                                <a role="button" href="#title-aside" class="btn btn-lg px-5">@lang('home.book_now')</a>
                             </div>
                         </div>
 
@@ -590,7 +590,7 @@
             </section>
     <section class="mp-3 section01 pt-3">
         <article class="maxw3">
-            <h5 class="text-center h5 bg-white p-2 shadow mb-0 mx-1" style="font-size: 1.2em;">A Detailed Description of Attractions to Be Seen on the Tour!</h5>
+            <h5 class="text-center h5 bg-white p-2 shadow mb-0 mx-1" style="font-size: 1.2em;">@lang('home.a_detailed_description')</h5>
             <div class="container">
                 <div class="row">
 
@@ -639,10 +639,10 @@
                     <div class="container px-1">
                         <div class="bg-dark1">
                             <div class="bot py-3 text-center  d-none d-sm-block">
-                                <a role="button" href="#book" class="btn btn-lg px-5">Book Now</a>
+                                <a role="button" href="#book" class="btn btn-lg px-5">@lang('home.book_now')</a>
                             </div>
                             <div class="bot py-3 text-center  d-sm-none d-block">
-                                <a role="button" href="#title-aside" class="btn btn-lg px-5">Book Now</a>
+                                <a role="button" href="#title-aside" class="btn btn-lg px-5">@lang('home.book_now')</a>
                             </div>
                         </div>
 
