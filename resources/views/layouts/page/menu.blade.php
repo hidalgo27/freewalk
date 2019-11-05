@@ -11,8 +11,13 @@
                                 @foreach($destinos->tours as $tours)
                                     <li><a href='{{route('destination_tour_path', [strtolower($locale), $destinos_inicios->url, strtolower(str_replace(' ','-', $tours->url ))])}}'>{{$tours->titulo}}</a></li>
                                 @endforeach
+{{--                                @if ($destinos_inicios->url == 'lima')--}}
+
+{{--                                    <li><a href="{{route('parks_lima_path', strtolower($locale))}}"><b>Parks in Lima</b></a></li>--}}
+{{--                                @endif--}}
                             </ul>
                         </li>
+
                         @endif
                     @else
                         @if(strtolower($destinos->idioma) == strtolower($locale))

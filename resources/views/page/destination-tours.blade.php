@@ -145,7 +145,7 @@
 
                 </div>
 
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         <div class="box-green text-center">
                             @foreach ($tour->lugar_recojo->traducciones->where('idioma', strtoupper($locale)) as $lugar_recojo_idioma)
                                 @foreach ($lugar_recojo->where('id', $lugar_recojo_idioma->lugar_recojo_relacion_id) as $l_recojo)
@@ -157,6 +157,18 @@
                         </div>
                     </div>
 
+                <div class="col-sm-4">
+                    <div class="box-green text-center">
+                        @foreach ($tour->lugar_recojo->traducciones->where('idioma', strtoupper($locale)) as $lugar_recojo_idioma2)
+                            @foreach ($lugar_recojo->where('id', $lugar_recojo_idioma2->lugar_recojo_relacion_id) as $l_recojo2)
+                                <div class="bg-success p-1 text-center text-white"><span class="">{{$l_recojo2->referencia}}</span></div>
+                                @if (Storage::disk('lugar_recojo')->has($tour->lugar_recojo->referencia_imagen))
+                                    <img src="{{ route('admin.lugar_recojo.get_imagen.path',$l_recojo2->referencia_imagen) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </div>
+                </div>
 
 
             </div>
@@ -172,9 +184,13 @@
             <div class="row py-4">
                 <div class="col-sm-5 d-flex">
                     <div class="box-map mb-2">
-                        @if (Storage::disk('lugar_recojo')->has($tour->lugar_recojo->referencia_imagen))
-                            <img src="{{ route('admin.lugar_recojo.get_imagen.path',$tour->lugar_recojo->referencia_imagen) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
-                        @endif
+                        @foreach ($tour->lugar_recojo->traducciones->where('idioma', strtoupper($locale)) as $lugar_recojo_idioma3)
+                            @foreach ($lugar_recojo->where('id', $lugar_recojo_idioma3->lugar_recojo_relacion_id) as $l_recojo3)
+                                @if (Storage::disk('lugar_recojo')->has($l_recojo3->referencia_imagen_mapa))
+                                    <img src="{{ route('admin.lugar_recojo.get_imagen.path',$l_recojo3->referencia_imagen_mapa) }}" alt="our meeting place for lima city free walking tours leaving from miraflores" class="img-fluid">
+                                @endif
+                            @endforeach
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-sm-7 d-flex">

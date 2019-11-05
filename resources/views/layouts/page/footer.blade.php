@@ -39,11 +39,11 @@
 		<div class="row">
 			<div class="col text-center py-4">
 				<ul class="list-unstyled list-inline">
-					  <li class="list-inline-item text-white h5"><a href="/booking/" target="_blank">Booking</a></li>
-					  <li class="list-inline-item text-white h5"> <a href="/terms-conditions" target="_blank">Conditions</a></li>
-					  <li class="list-inline-item text-white h5"><a href="/contact-us" target="_blank">Contact us</a></li>
-					  <li class="list-inline-item text-white h5"><a href="/partners" target="_blank">Friends</a></li>
-					  <li class="list-inline-item text-white h5"><a href="/job-tour-guide-marketing-tourism-industry" target="_blank">Employment</a></li>
+					  <li class="list-inline-item text-white h5"><a href="{{route('booking_path', $locale)}}">Booking</a></li>
+					  <li class="list-inline-item text-white h5"> <a href="{{route('terms_conditions_path', $locale)}}">Conditions</a></li>
+					  <li class="list-inline-item text-white h5"><a href="{{route('contact_us_path', $locale)}}">Contact us</a></li>
+					  <li class="list-inline-item text-white h5"><a href="{{route('partner_path', $locale)}}">Friends</a></li>
+					  <li class="list-inline-item text-white h5"><a href="{{route('employment_path', $locale)}}">Employment</a></li>
 				</ul>
 			</div>
 		</div>
