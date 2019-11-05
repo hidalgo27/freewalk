@@ -8,11 +8,11 @@
             <div id="datepicker"></div>
             <input type="hidden" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
             <div class="form-group">
-                <p>Dates: <input class="form-control form-control-sm" type="text" id="datepicker2" name="txt_date"></p>
+                <p>@lang('home.dates'): <input class="form-control form-control-sm" type="text" id="datepicker2" name="txt_date"></p>
             </div>
 
             <div class="form-group">
-                <input class="form-control form-control-sm" name="txt_name" type="text" placeholder="Your Name:" required data-error="Please enter your name">
+                <input class="form-control form-control-sm" name="txt_name" type="text" placeholder="@lang('home.your_name')" required data-error="Please enter your name">
             </div>
             <div class="form-group">
                 <input class="form-control form-control-sm" name="txt_email" type="text" placeholder="write well your email" required data-error="Please enter your email">

@@ -154,45 +154,50 @@ Route::get('/', [
     'uses' => 'Page\HomepageController@index',
     'as' => 'home_path',
 ]);
-Route::get('/{locale}/booking', [
+Route::get('/{locale}/booking/', [
     'uses' => 'Page\HomepageController@booking',
     'as' => 'booking_path',
 ]);
-Route::get('/{locale}/terms-conditions', [
+Route::get('/{locale}/terms-conditions/', [
     'uses' => 'Page\HomepageController@terms_conditions',
     'as' => 'terms_conditions_path',
 ]);
-Route::get('/{locale}/contact-us', [
+Route::get('/{locale}/contact-us/', [
     'uses' => 'Page\HomepageController@contact_us',
     'as' => 'contact_us_path',
 ]);
-Route::get('/{locale}/partner', [
+Route::get('/{locale}/partner/', [
     'uses' => 'Page\HomepageController@partner',
     'as' => 'partner_path',
 ]);
-Route::get('/{locale}/employment', [
+Route::get('/{locale}/employment/', [
     'uses' => 'Page\HomepageController@employment',
     'as' => 'employment_path',
 ]);
 
-Route::get('/{idioma}', [
+Route::get('/{locale}/parks-in-lima', [
+    'uses' => 'Page\HomepageController@parks_lima',
+    'as' => 'parks_lima_path',
+]);
+
+Route::get('/{idioma}/', [
     'uses' => 'Page\HomepageController@index2',
     'as' => 'home2_path',
 ]);
-Route::get('/{locale}/{title}', [
+Route::get('/{locale}/{title}/', [
     'uses' => 'Page\HomepageController@destination',
     'as' => 'destination_path',
 ]);
 
 
 
-Route::get('/destination-show', [
+Route::get('/destination-show/', [
     'uses' => 'Page\HomepageController@destination_show',
     'as' => 'destination_show_path',
 ]);
 
 
-Route::get('/{lang}/{destino}/{title}', [
+Route::get('/{lang}/{destino}/{title}/', [
     'uses' => 'Page\HomepageController@destination_tour',
     'as' => 'destination_tour_path',
 ]);

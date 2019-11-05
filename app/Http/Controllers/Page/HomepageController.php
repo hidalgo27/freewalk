@@ -197,6 +197,13 @@ class HomepageController extends Controller
         return view('page.employment', compact('locale','destino','destino_inicio_idiomas'));
     }
 
+    public function parks_lima($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.parks', compact('locale','destino','destino_inicio_idiomas'));
+    }
+
 
     public function lang($locale){
         Session::put('locale', $locale);
