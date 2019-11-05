@@ -70,7 +70,7 @@
                             <a target="_blank" href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" class="d-none d-sm-inline-block  btn btn-free"><i class="fa fa-whatsapp" aria-hidden="true"></i> +51 984479073</a>
                             <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" class="mb-2 d-inline-block d-sm-none  btn btn-free"><i class="fa fa-whatsapp" aria-hidden="true"></i> +51 984479073</a>
 
-                            <a href="#title-book" class="mb-2 mb-sm-0  btn btn-free px-5 d-inline-block d-sm-none"><i class="fa fa-calendar" aria-hidden="true"></i> Book Now</a>
+                            <a href="#title-book" class="mb-2 mb-sm-0  btn btn-free px-5 d-inline-block d-sm-none"><i class="fa fa-calendar" aria-hidden="true"></i> @lang('home.book_now')</a>
 
                         </div>
                     </article>
@@ -139,7 +139,7 @@
 
                 <div class="col-sm-4">
                     <div class="box-green text-center">
-                        <div class="bg-success p-1 text-center text-white"><span class="">Look for our Operator Logo</span></div>
+                        <div class="bg-success p-1 text-center text-white"><span class="">@lang('home.look_for_our')</span></div>
                         <img src="{{asset('images/lima/logo-lima.jpg')}}" class="img-fluid" alt="free tour lima logo">
                     </div>
 
@@ -224,10 +224,10 @@
     <article>
         <div class="container">
             <div class="bot py-3 text-center  d-none d-sm-block">
-                <a role="button" href="#book" class="btn btn-lg px-5">Book Now</a>
+                <a role="button" href="#book" class="btn btn-lg px-5">@lang('home.book_now')</a>
             </div>
             <div class="bot py-3 text-center  d-sm-none d-block">
-                <a role="button" href="#title-book" class="btn btn-lg px-5">Book Now</a>
+                <a role="button" href="#title-book" class="btn btn-lg px-5">@lang('home.book_now')</a>
             </div>
         </div>
     </article>
