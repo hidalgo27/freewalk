@@ -20,6 +20,7 @@ class CreateDestinoTable extends Migration
             $table->string('nombre')->comment('nombre del destino');
             $table->string('idioma')->comment('Idioma del contenido');
             $table->integer('estado')->comment('0:no mostrar, 1:mostrar');
+            $table->string('email')->nullable(true)->comment('Email para enviar el correo peronsalizado');
             $table->string('seo_titulo')->nullable(true)->comment('titulo para seo');
             $table->longText('seo_descripcion')->nullable(true)->comment('descripcion para seo');
             $table->string('seo_canonical')->nullable(true)->comment('canonical para seo');
