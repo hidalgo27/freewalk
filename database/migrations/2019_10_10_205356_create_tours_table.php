@@ -21,7 +21,7 @@ class CreateToursTable extends Migration
             $table->longText('itinerario')->comment('Itinerario del tour');
             $table->integer('estado');
             $table->string('idioma')->comment('Idioma del contenido');
-            $table->string('email')->nullable(true)->comment('Email para enviar el correo peronsalizado');
+            $table->longText('body_email')->nullable(true)->comment('Email para enviar el correo peronsalizado');
             $table->string('seo_titulo')->nullable(true)->comment('titulo para seo');
             $table->longText('seo_descripcion')->nullable(true)->comment('descripcion para seo');
             $table->string('seo_canonical')->nullable(true)->comment('canonical para seo');

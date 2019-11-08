@@ -19,6 +19,10 @@
         <td>{{$size}}</td>
     </tr>
     <tr>
+        <th>Starting Time:</th>
+        <th>{{$tour}}</th>
+    </tr>
+    <tr>
         <th colspan="2">Message</th>
     </tr>
     <tr>

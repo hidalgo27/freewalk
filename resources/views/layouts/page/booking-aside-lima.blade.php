@@ -7,6 +7,7 @@
             @csrf
             <div id="datepicker"></div>
             <input type="hidden" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
+            <textarea name="txta_body_mail" class="d-none">{{$destino_grupos->body_email}}</textarea>
             <div class="form-group">
                 <p>@lang('home.dates'): <input class="form-control form-control-sm" type="text" id="datepicker2" name="txt_date"></p>
             </div>

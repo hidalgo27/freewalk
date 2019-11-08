@@ -235,9 +235,10 @@ class HomepageController extends Controller
 
     public function send_email(Request $request){
 
-        $from = 'hidalgochpnce@gmail.com';
+        $from = 'info@freewalkingtoursperu.com';
 
         $text_grupo_title = $request->input('text_grupo_title');
+        $txta_body_mail = $request->input('txta_body_mail');
         $date = $request->input('txt_date');
         $name = $request->input('txt_name');
         $email = $request->input('txt_email');
@@ -255,6 +256,7 @@ class HomepageController extends Controller
 //            });
             Mail::send(['html' => 'notifications.page.destinations-form-client'], [
                 'text_grupo_title' => $text_grupo_title,
+                'txta_body_mail' => $txta_body_mail,
                 'name' => $name,
                 'email' => $email,
                 'date' => $date,
