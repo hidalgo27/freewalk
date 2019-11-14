@@ -51,7 +51,7 @@
                                             <p class="text-justify">{!! $destinos_inicios->detalle !!}</p>
                                             <span class="text-right d-block">
                                                 @php $locale = strtolower($locale) @endphp
-                                                <a class="btn btn-warning btn-free btn-lg" href="{{ route('destination_path', [$locale, $destino_grupo->url]) }}" role="button">I´m interested!</a>
+                                                <a class="btn btn-warning btn-free btn-lg" href="{{ route('destination_path', [$locale, $destino_grupo->url]) }}" role="button">@lang('home.im_interested')</a>
                                             </span>
                                         </div>
                                     </div>

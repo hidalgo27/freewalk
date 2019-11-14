@@ -10,7 +10,7 @@
 {{--                {{$locale}} - {{$destino_grupo_idiomas->idioma}}--}}
 
                 @if(strtolower($destino_grupo_idiomas->idioma) !== strtolower($locale))
-                    <li><a class="flag" href="{{route('lang_agrupados_path', [$destino_grupo_idiomas->destino_grupo_relacion_id, $destino_grupo_idiomas->idioma])}}"><img src="{{asset('images/'.strtolower($destino_grupo_idiomas->idioma).'.png')}}" alt="flag spanish"></a></li>
+                    <li><a class="flag" href="{{route('lang_agrupados_path', [$destino_grupo_idiomas->destino_grupo_relacion_id, $destino_grupo_idiomas->idioma])}}"><img src="{{asset('images/'.strtolower($destino_grupo_idiomas->idioma).'.png')}}" class="mx-1" alt="flag spanish"></a></li>
                 @endif
 {{--                @if ($destino_grupo_idiomas->idioma == 'en')--}}
 {{--                    <li><a class="flag" href="{{route('lang_agrupados_path', ['2', 'es', 'en'])}}"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>--}}

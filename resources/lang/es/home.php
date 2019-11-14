@@ -27,5 +27,20 @@ return [
 
 
     'your_name' => 'Su Nombre:',
-    'dates' => 'Fecha'
+    'write_email'=> 'Escriba su nombre:',
+    'dates' => 'Fecha',
+    'size_group'=>'Tamaño de grupo',
+    'free_departure'=>'Elija el Horario del Free Tour',
+    'how_find'=>'¿Cómo nos encontro?',
+    'any_message'=>'Algun Mensaje?',
+    'book_now'=>'Reserva Ya',
+    'book_now_tour'=>'Reserva Este Tour',
+    'im_interested'=>'Estoy interesado',
+    'why_reserve'=>'¿Por que reservar con nosotros?',
+    'text_why'=>
+     '<li>100% Guías Indígenas!</li>
+     <li>Es 100% Gratis Reservar!</li>
+     <li>Lo reservas en menos de 1min!</li>
+     <li>Confirmación Instantánea!</li>'
+
 ];

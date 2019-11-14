@@ -16,12 +16,12 @@
                 <input class="form-control form-control-sm" name="txt_name" type="text" placeholder="@lang('home.your_name')" required data-error="Please enter your name">
             </div>
             <div class="form-group">
-                <input class="form-control form-control-sm" name="txt_email" type="text" placeholder="write well your email" required data-error="Please enter your email">
+                <input class="form-control form-control-sm" name="txt_email" type="text" placeholder="@lang('home.write_email')" required data-error="Please enter your email">
             </div>
 
             <div class="form-group">
                 <select class="form-control form-control-sm" id="lname1" name="slc_size">
-                    <option value="" disabled selected>Size of Group</option>
+                    <option value="" disabled selected>@lang('home.size_group')</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -39,7 +39,7 @@
             @if ($destino_grupos->destino->tours->count() > 0)
                 <div class="form-group">
                     <select class="form-control form-control-sm" id="nombretour" name="slc_tour">
-                        <option value="" disabled selected>Choose your free tour departure</option>
+                        <option value="" disabled selected>@lang('home.free_departure')</option>
                         @foreach($destino_grupos->destino->tours as $tours)
                             <option value="{{$tours->titulo}}">{{$tours->titulo}}</option>
                         @endforeach
@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <select class="form-control form-control-sm" id="nombretour" name="slc_referencia">
-                    <option value="" disabled selected>How did you find out about us?</option>
+                    <option value="" disabled selected>@lang('home.how_find')</option>
                     <option value="google-organic">Google Organic Result</option>
                     <option value="google-ads">Google Ads</option>
                     <option value="blogs">Blogs</option>
@@ -63,12 +63,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea class="form-control form-control-sm" name="txta_comment" id="comment" rows="1" placeholder="Any message?"></textarea>
+                <textarea class="form-control form-control-sm" name="txta_comment" id="comment" rows="1" placeholder="@lang('home.any_message')"></textarea>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-send btn-lg px-5 ">Book Now</button>
+                <button type="submit" class="btn btn-send btn-lg px-5 ">@lang('home.book_now')</button>
                 <!-- <small class="text-danger d-block">In Lima: No Free Tours on Sundays</small> -->
-                <small class="text-danger d-block">For Sunday Free Tour in Lima <a href="https://www.freewalkingtoursperu.com/lima/sunday-walks-in-lima" target="_blank">click here</a></small>
+                
             </div>
 
         </form>
