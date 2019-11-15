@@ -38,13 +38,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-center py-4">
+				@if($locale == 'en' OR $locale == 'EN')
 				<ul class="list-unstyled list-inline">
 					  <li class="list-inline-item text-white h5"><a href="{{route('booking_path', $locale)}}">Booking</a></li>
-					  <li class="list-inline-item text-white h5"> <a href="{{route('terms_conditions_path', $locale)}}">Conditions</a></li>
+					  <li class="list-inline-item text-white h5"> <a href="{{route('terms_conditions_path', $locale)}}/">Conditions</a></li>
 					  <li class="list-inline-item text-white h5"><a href="{{route('contact_us_path', $locale)}}">Contact us</a></li>
 					  <li class="list-inline-item text-white h5"><a href="{{route('partner_path', $locale)}}">Friends</a></li>
 					  <li class="list-inline-item text-white h5"><a href="{{route('employment_path', $locale)}}">Employment</a></li>
 				</ul>
+				@endif
+				@if($locale == 'es' OR $locale == 'ES')
+				<ul class="list-unstyled list-inline">
+					  <li class="list-inline-item text-white h5"><a href="{{route('booking_path', $locale)}}">Booking</a></li>
+					  <li class="list-inline-item text-white h5"> <a href="{{route('terms_conditions_es_path', $locale)}}/">Terminos</a></li>
+					  <li class="list-inline-item text-white h5"><a href="{{route('contact_us_path', $locale)}}">Contact us</a></li>
+					  <li class="list-inline-item text-white h5"><a href="{{route('partner_path', $locale)}}">Friends</a></li>
+					  <li class="list-inline-item text-white h5"><a href="{{route('employment_path', $locale)}}">Employment</a></li>
+				</ul>
+				@endif
 			</div>
 		</div>
 	</div>

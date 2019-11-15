@@ -162,6 +162,12 @@ Route::get('/{locale}/terms-conditions/', [
     'uses' => 'Page\HomepageController@terms_conditions',
     'as' => 'terms_conditions_path',
 ]);
+
+Route::get('/{locale}/terminos-y-condiciones/', [
+    'uses' => 'Page\HomepageController@terms_conditions_es',
+    'as' => 'terms_conditions_es_path',
+]);
+
 Route::get('/{locale}/contact-us/', [
     'uses' => 'Page\HomepageController@contact_us',
     'as' => 'contact_us_path',
@@ -188,8 +194,6 @@ Route::get('/{locale}/{title}/', [
     'uses' => 'Page\HomepageController@destination',
     'as' => 'destination_path',
 ]);
-
-
 
 Route::get('/destination-show/', [
     'uses' => 'Page\HomepageController@destination_show',

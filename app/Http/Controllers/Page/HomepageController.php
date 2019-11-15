@@ -177,6 +177,12 @@ class HomepageController extends Controller
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.termianos', compact('locale','destino','destino_inicio_idiomas'));
     }
+    public function terms_conditions_es($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.terminos', compact('locale','destino','destino_inicio_idiomas'));
+    }
 
     public function contact_us($locale){
         $locale = App::getLocale();
