@@ -4,13 +4,8 @@
     <list default="true" id="b2058fc1-4719-4d89-afe9-00195738e4fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_10_202720_create_destino_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_10_202720_create_destino_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_10_203643_create_destinos_grupo_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_10_203643_create_destinos_grupo_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_10_205356_create_tours_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_10_205356_create_tours_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-lima.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-lima.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-tours.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/booking-aside-tours.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-client.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notifications/page/destinations-form-client.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/home.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -203,6 +198,7 @@
       <workItem from="1572889601209" duration="5559000" />
       <workItem from="1572977792836" duration="6677000" />
       <workItem from="1573062509337" duration="1489000" />
+      <workItem from="1573778217392" duration="870000" />
     </task>
     <servers />
   </component>

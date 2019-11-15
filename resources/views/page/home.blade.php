@@ -1,4 +1,5 @@
 @extends('layouts.page.app')
+    @section('hreflang', 'Page Title')
     @section('content')
 @include('layouts.page.nav-home')
         <section>

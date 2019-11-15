@@ -11,6 +11,8 @@
     <!--     <meta content="Free Walking Tour Lima, Arequipa, Cusco, Miraflores, Barranco, free tour, historical centre tours" name="keywords" /> -->
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
+
+    @yield('hreflang')
 {{--    {!! Twitter::generate() !!}--}}
 {{--    {!! JsonLd::generate() !!}--}}
     <!-- OR -->

@@ -35,8 +35,6 @@ class HomepageController extends Controller
 
         $inicio = Inicio::where('idioma', $locale)->first();
 
-
-
         //SEO
         SEOMeta::setTitle($inicio->seo_titulo);
         SEOMeta::setDescription($inicio->seo_descripcion);
