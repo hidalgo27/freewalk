@@ -96,7 +96,8 @@
     });
 
 
-    $(function() {
+
+   $(function() {
         $("#datepicker2").datepicker({ dateFormat: "dd/mm/yy" }).val();
     });
 
@@ -112,6 +113,8 @@
     $(function() {
         $("#datepicker4").datepicker({ dateFormat: "dd/mm/yy" }).val();
     });
+
+   
 
 
 

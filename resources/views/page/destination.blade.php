@@ -108,15 +108,15 @@
                                 <div class="text-center telf my-4">
 
 
-                                    <a target="_blank" href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" class="d-none d-sm-inline-block  btn btn-free"><i class="fa fa-whatsapp" aria-hidden="true"></i> +51 958745640</a>
-                                    <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" class="mb-2 d-inline-block d-sm-none  btn btn-free"><i class="fa fa-whatsapp" aria-hidden="true"></i> +51 958745640</a>
-                                    <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" class="mb-2 d-inline-block d-sm-none  btn btn-free"><i class="fa fa-whatsapp" aria-hidden="true"></i> +51 984479073</a>
-                                    <a target="_blank" href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" class="d-none d-sm-inline-block  btn btn-free"><i class="fa fa-whatsapp" aria-hidden="true"></i> +51 984479073</a>
+                                    <a target="_blank" href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" class="d-none d-sm-inline-block  btn btn-free"><i class="fab fa-whatsapp" aria-hidden="true"></i> +51 958745640</a>
+                                    <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" class="mb-2 d-inline-block d-sm-none  btn btn-free"><i class="fab fa-whatsapp" aria-hidden="true"></i> +51 958745640</a>
+                                    <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" class="mb-2 d-inline-block d-sm-none  btn btn-free"><i class="fab fa-whatsapp" aria-hidden="true"></i> +51 984479073</a>
+                                    <a target="_blank" href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" class="d-none d-sm-inline-block  btn btn-free"><i class="fab fa-whatsapp" aria-hidden="true"></i> +51 984479073</a>
                                     <a href="#title-tour" class="mb-2 mb-sm-0  btn btn-free px-5"><i class="fa fa-list-ul" aria-hidden="true"></i> Itinerary</a>
 
 
-                                    <a href="#title-aside" class="mb-2 mb-sm-0  btn btn-free px-5 d-inline-block d-sm-none"><i class="fa fa-calendar" aria-hidden="true"></i> @lang('home.book_now')</a>
-                                    <a target="_blank" href="#faqs" class="mb-2 mb-sm-0  btn btn-free px-5 "><i class="fa fa-question-circle-o" aria-hidden="true"></i> FAQs</a>
+                                    <a href="#title-aside" class="mb-2 mb-sm-0  btn btn-free px-5 d-inline-block d-sm-none"><i class="fab fa-calendar" aria-hidden="true"></i> @lang('home.book_now')</a>
+                                    <a target="_blank" href="#faqs" class="mb-2 mb-sm-0  btn btn-free px-5 "><i class="far fa-question-circle"></i> FAQs</a>
 
 
                                 </div>
@@ -306,7 +306,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>Pepe Lucho was well informed and hilarious. He knew how to keep the crowd's attention. The tour covers the historical city centre (Lima downtown) and even visits one of the Churches and shows the changing of guard. Thoroughly recommended.May be easier to get an uber downtown from Baranco/Miraflores - shouldn't be more than S/20.Pepe Lucho usually ends with a recommendation for lunch, which is fantastic value for money. Would strongly recommend the tour.</p>
                                                     </div>
                                                 </div>
@@ -329,7 +329,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>A very wel organized tour, with the most important sights covered, Pepe Lucha is a funny, up-beat and super-nice guide who knows a lot, is akways fun and happy and still knows how to keep a big group in thisustling city together. An ansolute recommandation: the restaurant he recommended at the end of the tour to have lunch. Many locals, very good price abd excellent quality - try the ceviche! Ps: at the restaurant he made personally sure, every guest that was with him had wifi access and got the password. HIGHLY RECOMMENDED! Try to book with Pepe Lucha!</p>
                                                     </div>
                                                 </div>
@@ -352,7 +352,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>We only have one day to see Lima and this is the best way to do it. We met our guide, Pepe Lucho at Miraflores and he guided us with the local bus ride to the city centre. It was a good local experience (try it if you can!). Pepe is a funny guy and knows the history and facts about the city really well. He also guided us to what to eat for lunch after the tour. Really enjoyed and recommend the tour!</p>
                                                     </div>
                                                 </div>
@@ -375,7 +375,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>Perfect tour with nice guide! Great and interesting tour with Richard, who could speak fluently English and Spanish as well! He explained every place and the history of Lima in a good way :)) I was happy with him and recommend his tour to anyone who wants to explore the city! Cheers!</p>
                                                     </div>
                                                 </div>
@@ -398,7 +398,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>Had Elvis as our tour guide and had a speaker with easy to understand English. He gave an excellent overview of Lima city center along with historical and political context. He gave us recommendations on what to see next. Remember that this is not a private or paid tour, so you won’t see specifics but for what it is, it’s a great overview! If you are looking for something more customized this may not be the tour for you!</p>
                                                     </div>
                                                 </div>
@@ -421,7 +421,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>Today we chose to do the free walking tour of Lima. We met our guide (Elvis) in Miraflores near our hotel, he showed us how to use the public bus system and he then showed us the historic part of Lima. Lots of interesting background information. And he finished the tour by showing us a great (and very cheap - S 12) lunch spot (Cordon Blue). A great way to get a quick introduction to Lima and Peru!</p>
                                                     </div>
                                                 </div>
@@ -444,7 +444,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>I stumbled on to this walking tour through a google search. It was well organized. Elvis, the tour guide was knowledgeable and funny. He gave us an extensive city tour with so many historical points. The tour was well paced with short breaks. Couldn’t have found a tour that would have been better than this!</p>
                                                     </div>
                                                 </div>
@@ -467,7 +467,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </span>
+                                                        <span class="star5 py-2 d-block">My rating: </span>
                                                         <p>Our guide Pepe Lucho was fantastic! Elvis helped us get from Miraflores on the Metropolitan Bus (super efficient and cheap) to the centre where we met Pepe Lucho, who took the English tour. He was very knowledgeable and answered all tricky questions. He made the tour fun and interesting, and dropped us off at a decent, cheap restaurant at the end. He gave us instructions on how to get back to Miraflores on our own. Very good way to see the centre and learn a bit about the history of Lima and Peru!</p>
                                                     </div>
                                                 </div>

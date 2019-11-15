@@ -193,14 +193,14 @@ p,li{font-size: .8rem; color: #595858;letter-spacing: .5px;}
 }
 .ckeckok li::before {
     content: '\f058';
-    font-family: 'FontAwesome';
+    font-family: 'Font Awesome 5 Free';
     float: left;
     margin-left: -1.3em;
-    color:
-        #242424;
+    color: #242424;
     font-size: 20px;
     position: absolute;
     top: -4px;
+    font-weight: 600;
 }
 
 .lisok li::before {
@@ -903,16 +903,13 @@ ul.resp-tabs-list{
 
 .star5::after
 {
-    content: " \f005 \f005 \f005 \f005 \f006 ";
-    font-family: 'FontAwesome';
-    color: #e7711b;
+content: "\f005 \f005 \f005 \f005 \f005";
+font-family: "Font Awesome 5 Free";
+color:
+#299729;
+font-weight: 600;
 }
-.star5::after
-{
-    content: " \f005 \f005 \f005 \f005 \f005 ";
-    font-family: 'FontAwesome';
-    color: #e7711b;
-}
+
 .testimonial span
 {
     font-size: .9rem;

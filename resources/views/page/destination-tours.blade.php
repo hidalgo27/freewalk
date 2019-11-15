@@ -29,7 +29,7 @@
         @endforeach
             @foreach ($tour->imagenes->where('estado','0') as $foto)
             @if (Storage::disk('tours')->has($foto->imagen))
-                <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tours in peru">
+                <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="{{$foto->titulo}}">
             @endif
         @endforeach
     </picture>
@@ -111,7 +111,7 @@
                             <div class="tit-carrusel" align="center">
                                 <p class="mb-1">{{$foto->titulo}}</p>
                             </div>
-                            <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" alt="Lima sightseeing tour on Local Transportation System, metropolitano">
+                            <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" alt="{{$foto->titulo}}">
                         </div>
 
                         @endif
