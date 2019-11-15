@@ -27,5 +27,19 @@ return [
 
 
     'your_name' => 'Your Name:',
+    'write_email'=> 'Write well your email',
     'dates' => 'Date',
+    'size_group'=>'Size of Group',
+    'free_departure'=>'Choose your free tour departure',
+    'how_find'=>'How did you find out about us?',
+    'any_message'=>'Any Message?',
+    'book_now'=>'Book Now',
+    'book_now_tour'=>'Book This Tour',
+    'im_interested'=>'Im interested',
+    'why_reserve'=>'Why to reserve with us?',
+    'text_why'=>
+    ' <li>100% Indigenous Team</li>
+      <li>It´s Free to Book!</li>
+      <li>You help Local People!</li>
+      <li>Instant Confirmation!</li>'
 ];

@@ -98,13 +98,9 @@
     });
 
 
-
-
     $(function() {
         $("#datepicker2").datepicker({ dateFormat: "dd/mm/yy" }).val();
     });
-
-
 
 
     $(function() {

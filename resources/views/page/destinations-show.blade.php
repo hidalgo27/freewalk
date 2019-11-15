@@ -9,7 +9,8 @@
 
         <!-- end slider -->
 
-        <!-- contenido -->
+        <!-- contenidos -->
+
 
         <section class="section01" id="book">
 

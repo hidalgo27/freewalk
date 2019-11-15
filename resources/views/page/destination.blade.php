@@ -56,16 +56,15 @@
                                     <div class="col-sm-4">
                                         <div class="bg-white shadow my-2 rounded">
                                             <h6 class="text-center pt-2">
-                                                Why to reserve with us?
+                                               @lang('home.why_reserve') 
                                             </h6>
                                             <hr class="my-2">
                                             <div class="row">
                                                 <div class="col-7">
                                                     <ul class="liswhy pl-3 list-unstyled">
-                                                        <li>100% Indigenous Team</li>
-                                                        <li>It´s Free to Book!</li>
-                                                        <li>You help Local People!</li>
-                                                        <li>Instant Confirmation!</li>
+                                                        @lang('home.text_why')
+
+                                                       
                                                     </ul>
                                                 </div>
                                                 <div class="col-4">
