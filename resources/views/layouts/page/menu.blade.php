@@ -5,7 +5,7 @@
                     @foreach($destinos->destinos_grupo as $destinos_inicios)
                     @if ($destinos->tours->count() > 0)
                         @if(strtolower($destinos->idioma) == strtolower($locale))
-                        <li class="has-sub"><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'>{{ucwords(strtolower($destinos->nombre))}}</a>
+                        <li class="has-sub"><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}/'>{{ucwords(strtolower($destinos->nombre))}}</a>
                             <ul class='lista-submenu-nav'>
                                 <li><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'><strong>Details of Free Tour {{ucwords(strtolower($destinos->nombre))}} here!</strong></a></li>
                                 @foreach($destinos->tours as $tours)
@@ -21,7 +21,7 @@
                         @endif
                     @else
                         @if(strtolower($destinos->idioma) == strtolower($locale))
-                            <li><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'>{{ucwords(strtolower($destinos->nombre))}}</a></li>
+                            <li><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}/'>{{ucwords(strtolower($destinos->nombre))}}</a></li>
                         @endif
                     @endif
                     @endforeach

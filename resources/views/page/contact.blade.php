@@ -64,14 +64,14 @@
                                     <h2 class="text-center">Phones and WhatsApp</h2>
                                     <p style="text-align: justify;">Contact us at the following numbers; we speak Spanish and English. We also ask you to view the Frequently Asked Questions for Free Walking Tours for each city: <a href="https://www.freewalkingtoursperu.com/cusco/" target="_blank">Cusco</a>, <a href="https://www.freewalkingtoursperu.com/lima/" target="_blank">Lima</a> y <a href="https://www.freewalkingtoursperu.com/arequipa/" target="_blank">Arequipa</a></p>
                                     <p><b>Cusco:</b><br>
-                                        <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
-                                        <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
+                                        <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
+                                        <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
                                     <p><b>Lima:</b><br>
-                                        <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
-                                        <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
+                                        <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
+                                        <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
                                     <p><b>Arequipa:</b><br>
-                                        <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
-                                        <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
+                                        <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
+                                        <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
                                     <p><b>Opening hours to call:</b><br>
                                         Mon thru Sat from 6am to 10am<br>
 
