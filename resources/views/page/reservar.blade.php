@@ -8,7 +8,7 @@
             <div class="container">
               <a class="navbar-brand" href="/"><img src="{{asset('images/logo-freewalks.png')}}" alt="peru"></a>
               <div class="collapse navbar-collapse" id="cssmenu">
-                    @include('layouts.page.nav-home-others')
+                    @include('layouts.page.nav-home-others-es')
               </div>
               <ul class="navbar-nav p-2">
                     <li><a class="flag" href="/en/booking" rel="alternate" hreflang="es"><img src="{{asset('images/en.png')}}" alt="flag spanish"></a></li>

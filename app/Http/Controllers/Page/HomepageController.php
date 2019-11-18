@@ -183,7 +183,7 @@ class HomepageController extends Controller
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
-        return view('page.termianos', compact('locale','destino','destino_inicio_idiomas'));
+        return view('page.terms', compact('locale','destino','destino_inicio_idiomas'));
     }
     public function terms_conditions_es($locale){
         $locale = App::getLocale();
