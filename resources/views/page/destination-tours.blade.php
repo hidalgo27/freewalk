@@ -128,7 +128,7 @@
 <section class="col">
     <div class="d-sm-none d-block" id="title-book">
 <!--        --><?php //include ('../includes/booking-aside-lima-sm.php') ?>
-        @include('layouts.page.booking-aside-tours')
+        @include('layouts.page.booking-aside-tours-sm')
     </div>
 
 </section>
@@ -291,6 +291,15 @@
                 $('#datepicker2').datepicker("setDate", $(this).datepicker("getDate"));
             }
         });
+
+        $(function() {
+              $('#datepicker3').datepicker({
+                onSelect: function(dateText) {
+             $('#datepicker4').datepicker("setDate", $(this).datepicker("getDate"));
+                }
+              });
+            });
+        
 
         $(document).ready(function() {
             var owl = $('.owl-carousel');

@@ -6,8 +6,8 @@
         <form method="post" id="reg-form" class="px-0 m-3 ">
             @csrf
             <div id="datepicker3"></div>
-            <input type="hidden" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
-            <textarea name="txta_body_mail" class="d-none">{{$destino_grupos->body_email}}</textarea>
+            <input type="hidden" name="text_grupo_title" value="{{$tour->titulo}}">
+            <textarea name="txta_body_mail" class="d-none">{{$tour->body_email}}</textarea>
             <div class="form-group">
                 <p>@lang('home.dates'): <input class="form-control form-control-sm" type="text" id="datepicker4" name="txt_date"></p>
             </div>
@@ -36,16 +36,16 @@
             </div>
 
 
-            @if ($destino_grupos->destino->tours->count() > 0)
-                <div class="form-group">
-                    <select class="form-control form-control-sm" id="nombretour" name="slc_tour">
-                        <option value="" disabled selected>@lang('home.free_departure')</option>
-                        @foreach($destino_grupos->destino->tours as $tours)
-                            <option value="{{$tours->titulo}}">{{$tours->titulo}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            @endif
+{{--            @if ($tour->count() > 0)--}}
+{{--                <div class="form-group">--}}
+{{--                    <select class="form-control form-control-sm" id="nombretour" name="slc_tour">--}}
+{{--                        <option value="" disabled selected>Choose your free tour departure</option>--}}
+{{--                        @foreach($tour as $tours)--}}
+{{--                            <option value="{{$tours->titulo}}">{{$tours->titulo}}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+{{--                </div>--}}
+{{--            @endif--}}
 
             <div class="form-group">
                 <select class="form-control form-control-sm" id="nombretour" name="slc_referencia">
@@ -66,9 +66,9 @@
                 <textarea class="form-control form-control-sm" name="txta_comment" id="comment" rows="1" placeholder="@lang('home.any_message')"></textarea>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-send btn-lg px-5 ">@lang('home.book_now')</button>
+                <button type="submit" class="btn btn-send btn-lg px-5 ">@lang('home.book_now_tour')</button>
                 <!-- <small class="text-danger d-block">In Lima: No Free Tours on Sundays</small> -->
-                
+               
             </div>
 
         </form>

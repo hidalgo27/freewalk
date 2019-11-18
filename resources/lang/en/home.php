@@ -20,6 +20,8 @@ return [
     'read_detailed' => 'Read Detailed Itinerary of each tour',
     'read_detailed_p' => '(btw you can only book one, the routes are similar for all of them)',
     'check_lima_free_tours' => 'Check our 100% Real Reviews for our Lima Free Tours',
+    'check_cusco_free_tours' => 'Check our 100% Real Reviews for our Cusco Free Tours',
+    'check_arequipa_free_tours' => 'Check our 100% Real Reviews for our Arequipa Free Tours',
     'pictures_of' => 'Pictures of our Walkers & Guides on Action!',
     'book_now' => 'Book Now',
     'a_detailed_description' => 'A Detailed Description of Attractions to Be Seen on the Tour!',

@@ -250,7 +250,7 @@
 
                     <section class="col" id="title-aside">
                         <div class="d-sm-none d-block">
-                            @include('layouts.page.booking-aside-lima')
+                            @include('layouts.page.booking-aside-lima-sm')
                         </div>
                     </section>
             <section class="section01 py-4">
@@ -260,7 +260,11 @@
                             <div class="col-sm-4">
                                 <div class="box-green text-center">
                                     <div class="bg-success p-1 text-center text-white"><span class="">Look for our Operator Logo</span></div>
+                                    @if(strtolower($destino_grupos->destino->nombre) == 'arequipa')
+                                      <img src="{{asset('images/arequipa/arequipa-meeting-point-at-chaqchao-choco-museo-for-free-walking-tours.jpg')}}" class="img-fluid" alt="free walking tour lima logo uniform">
+                                    @else
                                     <img src="{{asset('images/lima/logo-lima.jpg')}}" class="img-fluid" alt="free walking tour lima logo uniform">
+                                    @endif
                                 </div>
 
                             </div>
@@ -282,210 +286,612 @@
                 </article>
             </section>
 
-            <section class="section04">
+                                   @if(strtolower($destino_grupos->destino->nombre) == 'lima')
+
+                                         <section class="section04">
                 <article>
                     <div class="container">
                         <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">@lang('home.check_lima_free_tours')</h3>
                         <div class="row">
-                            <section class="carrousel container pb-4">
-                                <div class="row testimonial">
+                    <section class="carrousel container pb-4">
+                        <div class="row testimonial">
+                            <div class="owl-carousel owl-theme">
 
-                                    
-
-                                    <div class="owl-carousel owl-theme">
-
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great way to spend a morning!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/tripadvisor-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">Gooner </p>
-                                                                <p class="mb-1">England</p>
-                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>Pepe Lucho was well informed and hilarious. He knew how to keep the crowd's attention. The tour covers the historical city centre (Lima downtown) and even visits one of the Churches and shows the changing of guard. Thoroughly recommended.May be easier to get an uber downtown from Baranco/Miraflores - shouldn't be more than S/20.Pepe Lucho usually ends with a recommendation for lunch, which is fantastic value for money. Would strongly recommend the tour.</p>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great way to spend a morning!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/tripadvisor-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">Gooner </p>
+                                                        <p class="mb-1">England</p>
+                                                        <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r681129768-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
                                                     </div>
                                                 </div>
-
                                             </div>
-
-                                        </div>
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Do it - choose Pepe Luchaas guide, if you can!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/tripadvisor-review-2-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">Christina </p>
-                                                                <p class="mb-1">United States</p>
-                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>A very wel organized tour, with the most important sights covered, Pepe Lucha is a funny, up-beat and super-nice guide who knows a lot, is akways fun and happy and still knows how to keep a big group in thisustling city together. An ansolute recommandation: the restaurant he recommended at the end of the tour to have lunch. Many locals, very good price abd excellent quality - try the ceviche! Ps: at the restaurant he made personally sure, every guest that was with him had wifi access and got the password. HIGHLY RECOMMENDED! Try to book with Pepe Lucha!</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Amazing way to see and learn about Lima!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/tripadvisor-review-3-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">Traveeline </p>
-                                                                <p class="mb-1">Australia</p>
-                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>We only have one day to see Lima and this is the best way to do it. We met our guide, Pepe Lucho at Miraflores and he guided us with the local bus ride to the city centre. It was a good local experience (try it if you can!). Pepe is a funny guy and knows the history and facts about the city really well. He also guided us to what to eat for lunch after the tour. Really enjoyed and recommend the tour!</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank">Perfect tour with nice guide in Lima!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/facebook-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from facebook" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">David Nath </p>
-                                                                <p class="mb-1">Germany</p>
-                                                                <p class="mb-1">On <a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>Perfect tour with nice guide! Great and interesting tour with Richard, who could speak fluently English and Spanish as well! He explained every place and the history of Lima in a good way :)) I was happy with him and recommend his tour to anyone who wants to explore the city! Cheers!</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great free tour in Lima!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/tripadvisor-review-4-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">Granadindia </p>
-                                                                <p class="mb-1">India</p>
-                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>Had Elvis as our tour guide and had a speaker with easy to understand English. He gave an excellent overview of Lima city center along with historical and political context. He gave us recommendations on what to see next. Remember that this is not a private or paid tour, so you won’t see specifics but for what it is, it’s a great overview! If you are looking for something more customized this may not be the tour for you!</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Explore Lima with a great guide!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/tripadvisor-review-5-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">Stussycdn </p>
-                                                                <p class="mb-1">Canada</p>
-                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>Today we chose to do the free walking tour of Lima. We met our guide (Elvis) in Miraflores near our hotel, he showed us how to use the public bus system and he then showed us the historic part of Lima. Lots of interesting background information. And he finished the tour by showing us a great (and very cheap - S 12) lunch spot (Cordon Blue). A great way to get a quick introduction to Lima and Peru!</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Free walking tour- Lima!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/tripadvisor-review-6-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">Sheneka H </p>
-                                                                <p class="mb-1">New Zeland</p>
-                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>I stumbled on to this walking tour through a google search. It was well organized. Elvis, the tour guide was knowledgeable and funny. He gave us an extensive city tour with so many historical points. The tour was well paced with short breaks. Couldn’t have found a tour that would have been better than this!</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
-                                            <div class="block-test pb-1">
-                                                <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Easy way to see the city!</a></h4>
-                                                <div class="row">
-                                                    <div class="col-3 pr-1">
-                                                        <div class="mt-4">
-                                                            <img src="{{asset('images/lima/tripadvisor-review-7-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
-                                                            <div class="p-2">
-                                                                <p class="mb-1">Monet R </p>
-                                                                <p class="mb-1">Sweden</p>
-                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <span class="star5 py-2 d-block">My rating: </span>
-                                                        <p>Our guide Pepe Lucho was fantastic! Elvis helped us get from Miraflores on the Metropolitan Bus (super efficient and cheap) to the centre where we met Pepe Lucho, who took the English tour. He was very knowledgeable and answered all tricky questions. He made the tour fun and interesting, and dropped us off at a decent, cheap restaurant at the end. He gave us instructions on how to get back to Miraflores on our own. Very good way to see the centre and learn a bit about the history of Lima and Peru!</p>
-                                                    </div>
-                                                </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>Pepe Lucho was well informed and hilarious. He knew how to keep the crowd's attention. The tour covers the historical city centre (Lima downtown) and even visits one of the Churches and shows the changing of guard. Thoroughly recommended.May be easier to get an uber downtown from Baranco/Miraflores - shouldn't be more than S/20.Pepe Lucho usually ends with a recommendation for lunch, which is fantastic value for money. Would strongly recommend the tour.</p>
                                             </div>
                                         </div>
                                         
-
-
                                     </div>
+                                    
                                 </div>
-                            </section>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Do it - choose Pepe Luchaas guide, if you can!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/tripadvisor-review-2-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">Christina </p>
+                                                        <p class="mb-1">United States</p>
+                                                        <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r676233962-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>A very wel organized tour, with the most important sights covered, Pepe Lucha is a funny, up-beat and super-nice guide who knows a lot, is akways fun and happy and still knows how to keep a big group in thisustling city together. An ansolute recommandation: the restaurant he recommended at the end of the tour to have lunch. Many locals, very good price abd excellent quality - try the ceviche! Ps: at the restaurant he made personally sure, every guest that was with him had wifi access and got the password. HIGHLY RECOMMENDED! Try to book with Pepe Lucha!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Amazing way to see and learn about Lima!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/tripadvisor-review-3-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">Traveeline </p>
+                                                        <p class="mb-1">Australia</p>
+                                                        <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r675528027-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>We only have one day to see Lima and this is the best way to do it. We met our guide, Pepe Lucho at Miraflores and he guided us with the local bus ride to the city centre. It was a good local experience (try it if you can!). Pepe is a funny guy and knows the history and facts about the city really well. He also guided us to what to eat for lunch after the tour. Really enjoyed and recommend the tour!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank">Perfect tour with nice guide in Lima!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/facebook-review-1-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from facebook" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">David Nath </p>
+                                                        <p class="mb-1">Germany</p>
+                                                        <p class="mb-1">On <a href="https://www.facebook.com/pg/limafreewalkingtour/reviews/?ref=page_internal" target="_blank"><i class="fab fa-facebook-square 3x" aria-hidden="true"></i></a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>Perfect tour with nice guide! Great and interesting tour with Richard, who could speak fluently English and Spanish as well! He explained every place and the history of Lima in a good way :)) I was happy with him and recommend his tour to anyone who wants to explore the city! Cheers!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Great free tour in Lima!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/tripadvisor-review-4-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">Granadindia </p>
+                                                        <p class="mb-1">India</p>
+                                                        <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>Had Elvis as our tour guide and had a speaker with easy to understand English. He gave an excellent overview of Lima city center along with historical and political context. He gave us recommendations on what to see next. Remember that this is not a private or paid tour, so you won’t see specifics but for what it is, it’s a great overview! If you are looking for something more customized this may not be the tour for you!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Explore Lima with a great guide!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/tripadvisor-review-5-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">Stussycdn </p>
+                                                        <p class="mb-1">Canada</p>
+                                                        <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r665543838-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>Today we chose to do the free walking tour of Lima. We met our guide (Elvis) in Miraflores near our hotel, he showed us how to use the public bus system and he then showed us the historic part of Lima. Lots of interesting background information. And he finished the tour by showing us a great (and very cheap - S 12) lunch spot (Cordon Blue). A great way to get a quick introduction to Lima and Peru!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Free walking tour- Lima!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/tripadvisor-review-6-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">Sheneka H </p>
+                                                        <p class="mb-1">New Zeland</p>
+                                                        <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>I stumbled on to this walking tour through a google search. It was well organized. Elvis, the tour guide was knowledgeable and funny. He gave us an extensive city tour with so many historical points. The tour was well paced with short breaks. Couldn’t have found a tour that would have been better than this!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank">Easy way to see the city!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                <div class="mt-4">
+                                                    <img src="{{asset('images/lima/tripadvisor-review-7-about-free-walking-tour-lima.jpg')}}" alt="review for Lima free tour from tripadvisor" class="img-thumbnail">
+                                                    <div class="p-2">
+                                                        <p class="mb-1">Monet R </p>
+                                                        <p class="mb-1">Sweden</p>
+                                                        <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294316-d14918493-r661892647-Inkan_Milky_Way_Tours_Lima-Lima_Lima_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating: </span>
+                                                <p>Our guide Pepe Lucho was fantastic! Elvis helped us get from Miraflores on the Metropolitan Bus (super efficient and cheap) to the centre where we met Pepe Lucho, who took the English tour. He was very knowledgeable and answered all tricky questions. He made the tour fun and interesting, and dropped us off at a decent, cheap restaurant at the end. He gave us instructions on how to get back to Miraflores on our own. Very good way to see the centre and learn a bit about the history of Lima and Peru!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                           
+                                
+                                
+                            </div>
                         </div>
+                    </section>
+                </div>
                     </div>
                 </article>
             </section>
+                                    
+                                    @endif
+                                    @if(strtolower($destino_grupos->destino->nombre) == 'cusco')
+                                              <section class="section04">
+                <article>
+                    <div class="container">
+                        <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">@lang('home.check_cusco_free_tours')</h3>
+                        <div class="row">
+                        <section class="carrousel container pb-4">
+                            <div class="row testimonial">
+                              <div class="owl-carousel owl-theme">
+                                
+                               <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank">Great Free Walking Tour in Cusco!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/facebook-review-1-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from facebook" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">Megan Adam</p>
+                                                                <p class="mb-1">United States</p>
+                                                                <p class="mb-1">On <a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank"><i class="fab fa-facebook-square 3x" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>Great walking tour. Easy to find. Our guide Elvis was very knowledgeable. Even though our group was not too big, he had a microphone so it was easy to hear him. At the end he brought us to a shop where we tried local fruit. Highly recommended for those visiting Cusco!!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank">Educational and Fascinating free walking tour!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/facebook-review-2-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from facebook" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">Lisa Holden</p>
+                                                                <p class="mb-1">New Zeland</p>
+                                                                <p class="mb-1">On <a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank" ><i class="fab fa-facebook-square 3x" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>We enjoyed an educational and fascinating walking tour today with Roger who was very knowledgeable and interested in his town of Cusco, he answered all the questions professionally, he also recommended the best hings to do at the end of the tour, Notde that this tour won´t take you to bars!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r681945295-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank">Historical - cultural Tour of Cusco!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/tripadvisor-review-1-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from tripadvisor" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">AndyTsoi</p>
+                                                                <p class="mb-1">United Kingdom</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r681945295-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>A really informative and personable guide Angie, Cusco native , took us for really amazing tour of the city! The market where we learned about the traditions and local food ,tried local fruit , learned all we needed to know about coca leaves for attitude sickness, botanical garden with colorful explanation of SanPedro ceremony!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                             
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank">Free Cusco Walking Tour with Real Tour Guides!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/facebook-review-3-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from facebook" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">Franziska Klever </p>
+                                                                <p class="mb-1">Germany</p>
+                                                                <p class="mb-1">On <a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank" ><i class="fab fa-facebook-square 3x" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>We did our free walking tour with Richard, who was very keen to show us the history of the city, it was so interesting and we got to know a lot about the Inkas and Cusco itself. I would highly recommended to go with Richard and his crew! Thanks again!!! Cheers from Germany!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                             
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank">Good Experience in Cusco!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/facebook-review-4-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from facebook" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">Léa-Tuc Menager </p>
+                                                                <p class="mb-1">France</p>
+                                                                <p class="mb-1">On <a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank" ><i class="fab fa-facebook-square 3x" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>We took the afternoon free historical tour, our guide was really friendly, spoke good english and knew à lot about the city ! I highly recommended, especiallay to all those visitors trying to experience this city by the first time, definetely a great orientation tour in Cuzco centre!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                               <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r680576006-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank">Fantastic free tour!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/tripadvisor-review-2-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from tripadvisor" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">DepartureF </p>
+                                                                <p class="mb-1">England</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r680576006-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank" ><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>The tour guide was excellent, very knowledgeable. Tour was very interesting highly recommend. The highlight was certainly the very interesting facts about Peruvian history, including the fact that there was 15 Incas, 40 Vice-Royce, and 61 Peruvian Presidents!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r680227705-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank">Amazing first day activity!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/tripadvisor-review-3-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from tripadvisor" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">Jamie C </p>
+                                                                <p class="mb-1">Australia</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r680227705-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank" ><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>We went on a free walking tour with Richard. We just landed Cusco 3 hours prior and the tour not only freshened us up, but also gave us an informative and great impression of the city. Richard is very attentive and chill, I certainly recommend everyone to do this on their first day!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r679988444-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank">Great walking tour!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/tripadvisor-review-4-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from tripadvisor" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">Dipal S </p>
+                                                                <p class="mb-1">India</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r679988444-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank" ><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>We did the 10am walking tour around cusco with Cesar (guide). It was a great tour explaining the sites around cusco as well as inca culture. The tour lasted nearly 3hrs. In addition our guide has lots of advise about cusco (restaurants, other sites) which was very helpful. Would highly recommend!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                    <div class="block-test pb-1">
+                                        <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r679522662-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank">Perfect intro to Cusco!</a></h4>
+                                        <div class="row">
+                                            <div class="col-3 pr-1">
+                                                        <div class="mt-4">
+                                                            <img src="{{asset('images/cusco/tripadvisor-review-5-about-free-walking-tour-cusco.jpg')}}" alt="review for Cusco free tour from tripadvisor" class="img-thumbnail">
+                                                             <div class="p-2">
+                                                                <p class="mb-1">Conor G </p>
+                                                                <p class="mb-1">Canada</p>
+                                                                <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294314-d7238744-r679522662-Inkan_Milky_Way_Tours_Cusco-Cusco_Cusco_Region.html" target="_blank" ><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                             </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-9">
+                                                <span class="star5 py-2 d-block">My rating:  </span>
+                                                <p>Our guide Cesar, was very informative and spoke excellent English. This tour was a great intro to Cusco, Incan history and Cusco recommendations. We have some great tips for the rest of our trip in the Cusco area (Old historical city centre) Thanks!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                           
+                                
+
+                              </div>
+                            </div>
+            </section>
+            </div>
+                    </div>
+                </article>
+            </section>
+               @endif
+                  @if(strtolower($destino_grupos->destino->nombre) == 'arequipa')
+                                             <section class="section04">
+                <article>
+                    <div class="container">
+                        <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">@lang('home.check_arequipa_free_tours')</h3>
+                        <div class="row">
+                <section class="carrousel container pb-4">
+                    <div class="row testimonial">
+                        <div class="owl-carousel owl-theme">
+
+                            <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                <div class="block-test pb-1">
+                                    <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/arequipafreewalkingtour/reviews/?ref=page_internal" target="_blank">Excellent Arequipa tour with Angela today!</a></h4>
+                                    <div class="row">
+                                        <div class="col-3 pr-1">
+                                            <div class="mt-4">
+                                                <img src="{{asset('images/arequipa/facebook-review-1-about-free-walking-tour-arequipa.jpg')}}" alt="review for Arequipa free tour from tripadvisor" class="img-thumbnail">
+                                                <div class="p-2">
+                                                    <p class="mb-1">Backtomars </p>
+                                                    <p class="mb-1">France</p>
+                                                    <p class="mb-1">On <a href="https://www.facebook.com/pg/arequipafreewalkingtour/reviews/?ref=page_internal" target="_blank"><i class="fab fa-facebook-square 3x" aria-hidden="true"></i></a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <span class="star5 py-2 d-block">My rating:  </span>
+                                            <p>Thank you so much! I first started another tour but the guide got there late, I didn't like his energy & they let me out of the church because I was wearing short pants... (Well, let know before the tour or just skip it) So I escape & joined Angela's. She took us straight to some very nice & quiet areas. The tour was neither too long nor too short, very interesting mixing cultural, historical, architectural, artistic as well as cultural infos. It was great to listen to her count detailled storie, I just had an absolutely lovely time. I don't usually do tours but that one was really really good!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                <div class="block-test pb-1">
+                                    <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r670012970-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank">A Nice Well Tour!</a></h4>
+                                    <div class="row">
+                                        <div class="col-3 pr-1">
+                                            <div class="mt-4">
+                                                <img src="{{asset('images/arequipa/tripadvisor-review-1-about-free-walking-tour-arequipa.jpg')}}" alt="review for arequipa free tour from tripadvisor" class="img-thumbnail">
+                                                <div class="p-2">
+                                                    <p class="mb-1">Andrei </p>
+                                                    <p class="mb-1">Brazil</p>
+                                                    <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r670012970-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <span class="star5 py-2 d-block">My rating:  </span>
+                                            <p>I  did the spanish tour with Edgar, and it was about two hours walking around downtown Arequipa. We visited a couple of casonas and churchs, where Edgar explained about the architecture style and history of Arequipa. He also explained about Arequipa's cuisine, the volcanos and clothes stores which sells Alpacas!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                <div class="block-test pb-1">
+                                    <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r623361317-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank">Interesting tour!</a></h4>
+                                    <div class="row">
+                                        <div class="col-3 pr-1">
+                                            <div class="mt-4">
+                                                <img src="{{asset('images/arequipa/tripadvisor-review-2-about-free-walking-tour-arequipa.jpg')}}" alt="review for arequipa free tour from tripadvisor" class="img-thumbnail">
+                                                <div class="p-2">
+                                                    <p class="mb-1">Beatriz </p>
+                                                    <p class="mb-1">Gibraltar</p>
+                                                    <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r623361317-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <span class="star5 py-2 d-block">My rating:  </span>
+                                            <p>We went on this tour on our last day in arequipa. Our tour guide was Angela, a very nice girl who introduced us to the history and facts about Arequipa. The tour was very interesting and not boring at all. We really enjoyed the two hours! Not only we could discover some spots in the city we would not have found out otherwise but we could also receive information about places we had already been.The guide suggested places and gave us tips about the city. Totally recommend it if you have some time!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                <div class="block-test pb-1">
+                                    <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r618664626-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank">Interesting & informative!</a></h4>
+                                    <div class="row">
+                                        <div class="col-3 pr-1">
+                                            <div class="mt-4">
+                                                <img src="{{asset('images/arequipa/tripadvisor-review-3-about-free-walking-tour-arequipa.jpg')}}" alt="review for arequipa free tour from tripadvisor" class="img-thumbnail">
+                                                <div class="p-2">
+                                                    <p class="mb-1">Anupriya </p>
+                                                    <p class="mb-1">India</p>
+                                                    <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r618664626-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <span class="star5 py-2 d-block">My rating:  </span>
+                                            <p>My biggest mistake on this tour was that I did it on my last day in Arequipa & hence I couldnt really make the most of it Our guide was super entertaining & funny and well versed with the history & politics of the place. He gave us lots & lots of tips. I was short on time so I couldnt really make use of his tips well. I think the only thing to improve is eating tips - he didnt tell us any particular place we should definitely try.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                <div class="block-test pb-1">
+                                    <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r616055537-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank">Funny guide & great way to see Arequipa!</a></h4>
+                                    <div class="row">
+                                        <div class="col-3 pr-1">
+                                            <div class="mt-4">
+                                                <img src="{{asset('images/arequipa/tripadvisor-review-4-about-free-walking-tour-arequipa.jpg')}}" alt="review for arequipa free tour from tripadvisor" class="img-thumbnail">
+                                                <div class="p-2">
+                                                    <p class="mb-1">Christie </p>
+                                                    <p class="mb-1">United States</p>
+                                                    <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r616055537-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <span class="star5 py-2 d-block">My rating:  </span>
+                                            <p>Had a really great tour guide, he spoke great English and was very funny! We learnt heaps about Arequipa and got to see lots of things that we definitely would not have seen without the tour. He was super helpful and gave loads of recommendations throughout the tour. Would definitely recommend!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                <div class="block-test pb-1">
+                                    <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r600932110-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank">Arequipa Free downtown walking tour!</a></h4>
+                                    <div class="row">
+                                        <div class="col-3 pr-1">
+                                            <div class="mt-4">
+                                                <img src="{{asset('images/arequipa/tripadvisor-review-5-about-free-walking-tour-arequipa.jpg')}}" alt="review for arequipa free tour from tripadvisor" class="img-thumbnail">
+                                                <div class="p-2">
+                                                    <p class="mb-1">Celine </p>
+                                                    <p class="mb-1">France</p>
+                                                    <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r600932110-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <span class="star5 py-2 d-block">My rating:  </span>
+                                            <p>Excellent tour, very interesting with a very passionate and funny guide. All in English. Do it as soon as you arrive to get a lot of information about the city culture, history, food, places to visit. Thank you to the guides who do an amazing job! Don't hesitate to tip generously, it's worth any professional visit!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
+                                <div class="block-test pb-1">
+                                    <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r586151485-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank">Fun for our Teenagers!</a></h4>
+                                    <div class="row">
+                                        <div class="col-3 pr-1">
+                                            <div class="mt-4">
+                                                <img src="{{asset('images/arequipa/tripadvisor-review-6-about-free-walking-tour-arequipa.jpg')}}" alt="review for arequipa free tour from tripadvisor" class="img-thumbnail">
+                                                <div class="p-2">
+                                                    <p class="mb-1">Christymmd </p>
+                                                    <p class="mb-1">Scotland</p>
+                                                    <p class="mb-1">On <a href="https://www.tripadvisor.com.pe/ShowUserReviews-g294313-d6023591-r586151485-Free_Tour_Downtown_Arequipa-Arequipa_Arequipa_Region.html" target="_blank"><i class="fab fa-tripadvisor fa-lg" aria-hidden="true"></i></a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <span class="star5 py-2 d-block">My rating:  </span>
+                                            <p>We took the 3 pm tour and had a great time visiting interesting places in Arequipa and learning about the culture and history. Our guide was energetic, passionate, and obviously loves his country. We ended up returning for dinner to the restaurant where the tour began- Gringo Wasi, which was a lot of fun. We wished we'd had more time in Arequipa to revisit some of the other recommended places.!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+                    </div>
+                </article>
+            </section>
+                                    @endif
+          
             <section class="section01">
                 <article>
                     <div class="container p-4">
