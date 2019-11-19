@@ -11,7 +11,7 @@
 
                 {{--                {{$destino_grupo_idiomas->id}} - {{$destino_grupo_idiomas->idioma}}--}}
                 @if(strtolower($tours_tr->idioma) !== strtolower($locale))
-                    <li><a class="flag" href="{{route('lang_tours_path', [$tours_tr->url, $tours_tr->idioma, $destino_url])}}"><img src="{{asset('images/'.strtolower($tours_tr->idioma).'.png')}}" alt="flag spanish"></a></li>
+                    <li><a class="flag" href="{{route('lang_tours_path', [$tours_tr->url, strtolower($tours_tr->idioma), $destino_url])}}"><img src="{{asset('images/'.strtolower($tours_tr->idioma).'.png')}}" alt="flag spanish"></a></li>
                 @endif
 
                 {{--                @if ($destino_grupo_idiomas->idioma == 'en')--}}
