@@ -37,7 +37,7 @@ return [
     'any_message'=>'Any Message?',
     'book_now'=>'Book Now',
     'book_now_tour'=>'Book This Tour',
-    'im_interested'=>'Im interested',
+    'interested'=>'Im interested',
     'why_reserve'=>'Why to reserve with us?',
     'text_why'=>
     ' <li>100% Indigenous Team</li>

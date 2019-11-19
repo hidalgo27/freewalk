@@ -27,7 +27,6 @@ return [
     'a_detailed_description' => 'Descripción detallada de Atractivos que veremos!',
     'look_for_our' => 'Busca por el Uniforme de nuestro Operador',
 
-
     'your_name' => 'Su Nombre:',
     'write_email'=> 'Escriba su nombre:',
     'dates' => 'Fecha',
@@ -37,7 +36,7 @@ return [
     'any_message'=>'Algun Mensaje?',
     'book_now'=>'Reserva Ya',
     'book_now_tour'=>'Reserva Este Tour',
-    'im_interested'=>'Estoy interesado',
+    'interested'=>'Estoy interesado',
     'why_reserve'=>'¿Por que reservar con nosotros?',
     'text_why'=>
      '<li>100% Guías Indígenas!</li>
