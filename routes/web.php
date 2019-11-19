@@ -158,22 +158,46 @@ Route::get('/{locale}/booking/', [
     'uses' => 'Page\HomepageController@booking',
     'as' => 'booking_path',
 ]);
+
+Route::get('/{locale}/reservar/', [
+    'uses' => 'Page\HomepageController@reservar',
+    'as' => 'booking_path_es',
+]);
+
 Route::get('/{locale}/terms-conditions/', [
     'uses' => 'Page\HomepageController@terms_conditions',
     'as' => 'terms_conditions_path',
 ]);
+
+Route::get('/{locale}/terminos-condiciones/', [
+    'uses' => 'Page\HomepageController@terms_conditions_es',
+    'as' => 'terms_conditions_es_path',
+]);
+
 Route::get('/{locale}/contact-us/', [
     'uses' => 'Page\HomepageController@contact_us',
     'as' => 'contact_us_path',
 ]);
+
+Route::get('/{locale}/contactanos/', [
+    'uses' => 'Page\HomepageController@contactanos',
+    'as' => 'contact_us_path_es',
+]);
+
 Route::get('/{locale}/partner/', [
     'uses' => 'Page\HomepageController@partner',
     'as' => 'partner_path',
 ]);
-Route::get('/{locale}/employment/', [
+Route::get('/{locale}/job-tour-guide-marketing-tourism-industry/', [
     'uses' => 'Page\HomepageController@employment',
     'as' => 'employment_path',
 ]);
+
+Route::get('/{locale}/trabajar-como-guia-turistico-marketing-turismo/', [
+    'uses' => 'Page\HomepageController@trabaja',
+    'as' => 'employment_path_es',
+]);
+
 
 Route::get('/{locale}/parks-in-lima', [
     'uses' => 'Page\HomepageController@parks_lima',
@@ -188,8 +212,6 @@ Route::get('/{locale}/{title}/', [
     'uses' => 'Page\HomepageController@destination',
     'as' => 'destination_path',
 ]);
-
-
 
 Route::get('/destination-show/', [
     'uses' => 'Page\HomepageController@destination_show',

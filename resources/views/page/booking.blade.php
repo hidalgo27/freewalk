@@ -1,6 +1,19 @@
 @extends('layouts.page.app')
 @section('content')
-    @include('layouts.page.nav-home')
+    
+<section>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light pb-0 bg-free">
+            <div class="container">
+              <a class="navbar-brand" href="/"><img src="{{asset('images/logo-freewalks.png')}}" alt="peru"></a>
+              <div class="collapse navbar-collapse" id="cssmenu">
+                    @include('layouts.page.nav-home-others')
+              </div>
+              <ul class="navbar-nav p-2">
+                    <li><a class="flag" href="/es/reservar" rel="alternate" hreflang="es"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+                </ul>
+            </div>
+        </nav>    
+</section>
 
     <!-- slider -->
     <section>
@@ -230,44 +243,44 @@
             </div>
             <div class="col-sm-5">
                 <aside class="px-3">
-                    <h4 class="text-center"><span class="h4"><i class="fa fa-mobile" aria-hidden="true"></i></span> Llámenos o Whatsappeanos! </h4>
+                    <h4 class="text-center"><span class="h4"><i class="c"></i></span>  Contact Numbers - Not for Booking! </h4>
                     <div style="text-align: center;">
                         <p><b>Cusco:</b><br>
-                            <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
-                            <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
+                            <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
+                            <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
                         <p><b>Lima:</b><br>
-                            <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
-                            <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
+                            <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
+                            <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
                         <p><b>Arequipa:</b><br>
-                            <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
-                            <i class="fa fa-mobile" aria-hidden="true"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
+                            <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51958745640&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)958 745 640</a><br>
+                            <i class="fas fa-mobile-alt"></i> <a href="https://api.whatsapp.com/send?phone=51984479073&text=Hello,%20Can%20you%20help%20me%20pls?" target="_blank">(+51)984 479 073</a></p>
                     </div>
-                    <h4 class="text-center"><span class="h4"><i class="fa fa-map-marker" aria-hidden="true"></i></span> Double Check your Meeting Places below for each city</h4>
+                    <h4 class="text-center"><span class="h4"><i class="fas fa-map-marker-alt"></i></span> Double Check your Meeting Places below for each city</h4>
 
-
+            
                     <div class="row">
                         <div class="col-sm-6">
                             <h6 class="text-center my-1"><b>Lima 10am | Pick-up Place</b></h6>
-                            <a data-fancybox="gallery" href="../img/lima/free-walking-tour-lima-english-meeting-point-leaves-from-miraflores.jpg">
-                                <img src="../img/lima/free-walking-tour-lima-english-meeting-point-leaves-from-miraflores.jpg" class="img-thumbnail">
+                            <a data-fancybox="gallery" href="{{asset('images/lima/free-walking-tour-lima-english-meeting-point-leaves-from-miraflores.jpg')}}">
+                                <img src="{{asset('images/lima/free-walking-tour-lima-english-meeting-point-leaves-from-miraflores.jpg')}}" class="img-thumbnail">
                             </a>
                         </div>
                         <div class="col-sm-6">
                             <h6 class="text-center my-1"><b>Lima 11 am & 3pm</b></h6>
-                            <a data-fancybox="gallery" href="../img/lima/free-walking-tour-lima-english-meeting-pint-starts-in-lima-centre.jpg">
-                                <img src="../img/lima/free-walking-tour-lima-english-meeting-pint-starts-in-lima-centre.jpg" class="img-thumbnail">
+                            <a data-fancybox="gallery" href="{{asset('images/lima/free-walking-tour-lima-english-meeting-pint-starts-in-lima-centre.jpg')}}">
+                                <img src="{{asset('images/lima/free-walking-tour-lima-english-meeting-pint-starts-in-lima-centre.jpg')}}" class="img-thumbnail">
                             </a>
                         </div>
                         <div class="col-sm-6">
                             <h6 class="text-center my-1"><b>Arequipa</b></h6>
-                            <a data-fancybox="gallery" href="../img/arequipa/free-walking-tour-arequipa-meeting-point.jpg">
-                                <img src="../img/arequipa/free-walking-tour-arequipa-meeting-point.jpg" class="img-thumbnail">
+                            <a data-fancybox="gallery" href="{{asset('images/arequipa/free-walking-tour-arequipa-meeting-point.jpg')}}">
+                                <img src="{{asset('images/arequipa/free-walking-tour-arequipa-meeting-point.jpg')}}" class="img-thumbnail">
                             </a>
                         </div>
                         <div class="col-sm-6">
                             <h6 class="text-center my-1"><b>Cusco</b></h6>
-                            <a data-fancybox="gallery" href="../img/cusco/meeting-point-map-free-walking-tour-cusco.jpg">
-                                <img src="../img/cusco/meeting-point-map-free-walking-tour-cusco.jpg" class="img-thumbnail">
+                            <a data-fancybox="gallery" href="{{asset('images/cusco/meeting-point-map-free-walking-tour-cusco.jpg')}}">
+                                <img src="{{asset('images/cusco/meeting-point-map-free-walking-tour-cusco.jpg')}}" class="img-thumbnail">
                             </a>
                         </div>
                     </div>

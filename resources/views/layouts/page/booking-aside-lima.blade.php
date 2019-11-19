@@ -5,11 +5,11 @@
 
         <form method="post" id="reg-form" class="px-0 m-3 ">
             @csrf
-            <div id="datepicker"></div>
+            <div id="datepicker3"></div>
             <input type="hidden" name="text_grupo_title" value="{{$destino_grupos->titulo}}">
             <textarea name="txta_body_mail" class="d-none">{{$destino_grupos->body_email}}</textarea>
             <div class="form-group">
-                <p>@lang('home.dates'): <input class="form-control form-control-sm" type="text" id="datepicker2" name="txt_date"></p>
+                <p>@lang('home.dates'): <input class="form-control form-control-sm" type="text" id="datepicker4" name="txt_date"></p>
             </div>
 
             <div class="form-group">

@@ -29,7 +29,7 @@
         @endforeach
             @foreach ($tour->imagenes->where('estado','0') as $foto)
             @if (Storage::disk('tours')->has($foto->imagen))
-                <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tours in peru">
+                <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" class="w-100" alt="{{$foto->titulo}}">
             @endif
         @endforeach
     </picture>
@@ -111,7 +111,7 @@
                             <div class="tit-carrusel" align="center">
                                 <p class="mb-1">{{$foto->titulo}}</p>
                             </div>
-                            <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" alt="Lima sightseeing tour on Local Transportation System, metropolitano">
+                            <img src="{{ route('admin.tour.get_imagen.path',$foto->imagen) }}" alt="{{$foto->titulo}}">
                         </div>
 
                         @endif
@@ -128,7 +128,7 @@
 <section class="col">
     <div class="d-sm-none d-block" id="title-book">
 <!--        --><?php //include ('../includes/booking-aside-lima-sm.php') ?>
-        @include('layouts.page.booking-aside-tours')
+        @include('layouts.page.booking-aside-tours-sm')
     </div>
 
 </section>
@@ -291,6 +291,15 @@
                 $('#datepicker2').datepicker("setDate", $(this).datepicker("getDate"));
             }
         });
+
+        $(function() {
+              $('#datepicker3').datepicker({
+                onSelect: function(dateText) {
+             $('#datepicker4').datepicker("setDate", $(this).datepicker("getDate"));
+                }
+              });
+            });
+        
 
         $(document).ready(function() {
             var owl = $('.owl-carousel');
