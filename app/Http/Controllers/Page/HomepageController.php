@@ -163,6 +163,8 @@ class HomepageController extends Controller
 
 
     public function booking($locale){
+        Session::put('locale', 'es');
+
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
@@ -170,6 +172,7 @@ class HomepageController extends Controller
     }
 
         public function reservar($locale){
+            Session::put('locale', 'en');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');

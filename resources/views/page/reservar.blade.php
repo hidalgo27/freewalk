@@ -11,7 +11,7 @@
                     @include('layouts.page.nav-home-others-es')
               </div>
               <ul class="navbar-nav p-2">
-                    <li><a class="flag" href="/en/booking" rel="alternate" hreflang="es"><img src="{{asset('images/en.png')}}" alt="flag spanish"></a></li>
+                    <li><a class="flag" href="{{route('booking_path', 'en')}}" rel="alternate" hreflang="es"><img src="{{asset('images/en.png')}}" alt="flag spanish"></a></li>
                 </ul>
             </div>
         </nav>    

@@ -293,18 +293,9 @@
                     <div class="container">
                         <h3 class="text-center h3 text-white pt-4 mb-0" style="font-size: 1.5em;">@lang('home.check_lima_free_tours')</h3>
                         <div class="row">
-<<<<<<< HEAD
-                            <section class="carrousel container pb-4">
-                                <div class="row testimonial">
-
-                                    @if ($destino_grupos->destino->url == 'lima' AND $locale == 'EN')
-
-                                    <div class="owl-carousel owl-theme">
-=======
                     <section class="carrousel container pb-4">
                         <div class="row testimonial">
                             <div class="owl-carousel owl-theme">
->>>>>>> origin/master
 
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -696,10 +687,6 @@
                                                 <p>We did the 10am walking tour around cusco with Cesar (guide). It was a great tour explaining the sites around cusco as well as inca culture. The tour lasted nearly 3hrs. In addition our guide has lots of advise about cusco (restaurants, other sites) which was very helpful. Would highly recommend!</p>
                                             </div>
                                         </div>
-<<<<<<< HEAD
-
-                                    @endif
-=======
                                         
                                     </div>
                                     
@@ -729,7 +716,6 @@
                                 </div>
                            
                                 
->>>>>>> origin/master
 
                               </div>
                             </div>
