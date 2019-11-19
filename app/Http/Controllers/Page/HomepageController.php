@@ -175,7 +175,7 @@ class HomepageController extends Controller
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.reservar', compact('locale','destino','destino_inicio_idiomas'));
     }
-    
+
 
     public function terms_conditions($locale){
         $locale = App::getLocale();
