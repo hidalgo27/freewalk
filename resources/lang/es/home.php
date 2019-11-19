@@ -19,12 +19,13 @@ return [
 
     'read_detailed' => 'Lea al detalle el Itinerario de cada free tour',
     'read_detailed_p' => '(Solamente puede reservar un tour a pie, porque todos tienen un itinerario similar)',
-    'check_lima_free_tours' => 'Lee nuestros comentarios 100% Reales',
+    'check_lima_free_tours' => 'Lee nuestros comentarios 100% Reales Lima',
+    'check_cusco_free_tours' => 'Lee nuestros comentarios 100% Reales Cusco',
+    'check_arequipa_free_tours' => 'Lee nuestros comentarios 100% Reales Arequipa',
     'pictures_of' => 'Caminantes y Guías en Acción!',
     'book_now' => 'Reserve Ya!',
     'a_detailed_description' => 'Descripción detallada de Atractivos que veremos!',
     'look_for_our' => 'Busca por el Uniforme de nuestro Operador',
-
 
     'your_name' => 'Su Nombre:',
     'write_email'=> 'Escriba su nombre:',
@@ -35,7 +36,7 @@ return [
     'any_message'=>'Algun Mensaje?',
     'book_now'=>'Reserva Ya',
     'book_now_tour'=>'Reserva Este Tour',
-    'im_interested'=>'Estoy interesado',
+    'interested'=>'Estoy interesado',
     'why_reserve'=>'¿Por que reservar con nosotros?',
     'text_why'=>
      '<li>100% Guías Indígenas!</li>

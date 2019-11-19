@@ -1,6 +1,19 @@
 @extends('layouts.page.app')
 @section('content')
-    @include('layouts.page.nav-home')
+
+    <section>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light pb-0 bg-free">
+            <div class="container">
+              <a class="navbar-brand" href="/"><img src="{{asset('images/logo-freewalks.png')}}" alt="peru"></a>
+              <div class="collapse navbar-collapse" id="cssmenu">
+                    @include('layouts.page.nav-home-others-es')
+              </div>
+              <ul class="navbar-nav p-2">
+                    <li><a class="flag" href="/es/reservar" rel="alternate" hreflang="es"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+                </ul>
+            </div>
+        </nav>    
+  </section>
 
     <!-- slider -->
     <section>
@@ -11,7 +24,7 @@
     </section>
 
     <section class="section01">
-        <div class="fonc"><h1 class="text-center h2 py-sm-4 py-2 fondx text-uppercase">Terms & Conditions</h1></div>
+        <div class="fonc"><h1 class="text-center h2 py-sm-4 py-2 fondx text-uppercase">TERMINOS Y CONDICIONES</h1></div>
         <div class="container">
             <div class="main pb-3">
                 <article class="text-justify p-3 mb-sm-5" >
@@ -20,30 +33,30 @@
                             <div class="bg-light rounded border shadow px-3">
                                 <h3 class="px-3 my-2 text-center">FREE TOURS</h3>
                                 <ul class="pl-3 ckeckok list-unstyled pl-sm-5">
-                                    <li>FreeWalkingToursPeru.com reserves the right of admission to any tourist to participate in our free walking tours if deemed necessary to safeguard the safety of our attendees and the quality of our tours.</li>
-                                    <li>We can always cancel the free tour, if we don´t have enough attendees, weather issues, protests, and festivities; On the other hand, you don't have to worry about this because 95% of the time we have the minimum number of attendees required.</li>
-                                    <li>FreeWalkingToursPeru.com, does not take any responsibility for any damage or loss of belongings of the attendees during the free tour.</li>
-                                    <li>All our free tours are operated thanks to the economic contribution of attendees as it is worldwide, generous donations are appreciated and valued as long as the tour is enjoyable, therefore nowhere on this website do we advertise our walks as if they were 100% free, instead we clearly mention that our walks are based on tips.</li>
-                                    <li>The itineraries of our free tours are referential or flexible, which means that they can change because of weather conditions, strikes, festivities, and tour guide preferences.</li>
-                                    <li>If you are taking part in our free tour you should enjoy the tipping culture otherwise we recommend you to book any paid tour.</li>
-                                    <li>All tourists who usually are partial to leaving free tours without giving any donation are kindly asked to join other companies.</li>
-                                    <li>Our free tours are enjoyable, historical, cultural, informative and even educational, but at no time do we want them to be taken as “entertainment tours”, because we have guides (we don´t have an entertainment staff).</li>
-                                    <li>Wheelchair or users of crutches and parents with children, check FAQs according to the city where you will tour: Cusco, Lima or Arequipa</li>
-                                </ul>
+                          <li>FreeWalkingToursPeru.com se reserva el derecho de admisión de cualquier turista a participar en nuestros free tours a pie si se considera necesario para salvaguardar la seguridad y la calidad del servicio.</li>
+                          <li>Siempre podemos hacer la cancelación del free tour, sino tenemos suficientes participantes, cuestiones climáticas, protestas o festividades, pero al 95% siempre tenemos asistentes!</li>
+                          <li>FreeWalkingToursPeru.com, no acepta ninguna responsabilidad por cualquier daño o perdida de pertenecías de los asistentes durante el desarrollo del free tour.</li>
+                          <li>Todos nuestros free tours a nivel nacional se operan gracias al aporte económico de cada turista como lo es a nivel mundial, se aprecia y valora aportes económicos decentes siempre y cuando que el servicio sea de buena calidad, razón por la cual en ninguna parte de esta web decimos que tu Free Tour será 100% Gratis, sino más bien tiene un costo al final del tour.</li>
+                          <li>Los Itinerarios de nuestros tours libres son referenciales y/o flexibles de acuerdo a condiciones climáticas, huelgas, festividades y preferencias del Guía.</li>
+                          <li>Cualquier asistente que participe de nuestro free tour tiene que tener una cultura de dejar donación, caso contrario no están permitidos.</li>
+                          <li>Todos los turistas que están acostumbrados a escaparse de los free tours sin dejar ninguna Donación, No están permitidos a participar de nuestros free tours.</li>
+                          <li>Nuestros free tours son participativos, amenos, históricos, culturales, informativos e incluso educativos, pero por ningún momento queremos que se tomen como “tours de entretenimiento”, porque contamos con Guías (No con personas especializadas en entretenimiento).</li>
+                          <li>No tomamos ninguna responsabilidad por la experiencia de los Niños, porque nuestros free tours están diseñados para adultos, sin embargo siempre puedes asistir con tus hijos a nuestros tours, tu Guía hará los mejor realizar un buen servicio. Tienes nuestra palabra!</li>
+                        </ul>
                             </div>
                         </div>
                         <div class="col-sm-5 mt-3 mt-sm-1">
                             <div class="bg-light rounded border shadow px-3">
-                                <h3 class="px-3 my-2 text-center">PAID TOURS</h3>
+                                <h3 class="px-3 my-2 text-center">TOURS PAGADOS</h3>
                                 <ul class="pl-3 ckeckok list-unstyled pl-sm-5">
-                                    <li>If you book paid tours, we will do our best to follow the tour route, However, Peru is very unstable politically; that is why most strikes are not announced beforehand and occur very suddenly, these events can also change our paid tour itineraries.</li>
-                                    <li>As in the free tours, also in the paid tours, the company does not take any responsibility for loss or damage to your belongings, especially lost luggage in hotels or when taking national or international flights.</li>
-                                    <li>For 100% tour booking confirmation, a 50% payment is required before taking the tour, and the rest will be paid once the tourist arrives in the city where the tour will take place.</li>
-                                    <li>If you contact us for a tour a few hours in advance, we do not guarantee to provide you with our Official Guides because most of them are assigned with a program many weeks in advance. Nonetheless, we will always do our best to help you, please do your best to contact us in advance.</li>
-                                    <li>Wheelchair users should contact us beforehand so that we can also assign you someone to help you.</li>
-                                    <li>Parents with children, please kindly let us know you have kids so that we can organize for you the correct child friendly tour and hire the proper tour guide.</li>
+                          <li>Si reservas tours pagados, haremos lo mejor para realizar la ruta del producto, sin embargo El Perú, es un País muy inestable políticamente por eso hay muchas huelgas que No son anunciadas y ocurren muy repentinamente, estos eventos pueden hacer que también cambien los itinerarios de los tours pagados.</li>
+                          <li>Asi como en los free tours, también en los tours pagados la compañía no toma ninguna responsabilidad por perdida o daños a tus pertenencias, sobre todo perdida de equipajes en hoteles o al momento de tomar vuelos nacionales o internacionales.</li>
+                          <li>Para que la reserva este 100% confirmada se requiere de un pago del 50% y el resto se pagara una vez que el turista llegue a la ciudad donde el tour se realizará.</li>
+                          <li>Si nos contactas para un tour con unas horas de anticipación, no garantizamos ayudarlo porque nuestros Guías oficiales ya tienen un programa con mucha anticipación y por eso en muchos casos no se puede contratar un Guía calificado a la última hora.</li>
+                          <li>Si usas sillas de rueda, contáctanos con anticipación para que podamos incluso asignarte una persona para que te ayude.</li>
+                          <li>Si tienes niños comunícate con anticipación para poder organizarle un tour amigable incluso para sus hijos menores y también asignarles el guía correcto.</li>
 
-                                </ul>
+                        </ul>
                             </div>
                         </div>
 

@@ -21,7 +21,7 @@
                         @endif
                     @else
                         @if(strtolower($destinos->idioma) == strtolower($locale))
-                            <li><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}'>{{ucwords(strtolower($destinos->nombre))}}</a></li>
+                            <li><a href='{{route('destination_path', [strtolower($locale), $destinos_inicios->url])}}/'>{{ucwords(strtolower($destinos->nombre))}}</a></li>
                         @endif
                     @endif
                     @endforeach

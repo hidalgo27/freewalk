@@ -1,14 +1,20 @@
 @extends('layouts.page.app')
 @section('content')
-    @include('layouts.page.nav-home')
 
-    <!-- slider -->
+    
     <section>
-        <picture>
-            <source media="(max-width: 550px)" srcset="../img/free-walking-tours-peru-mobile.jpg">
-            <img src="{{asset('images/free-walking-tours-peru.jpg')}}" class="w-100" alt="free walking tours in peru">
-        </picture>
-    </section>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light pb-0 bg-free">
+            <div class="container">
+              <a class="navbar-brand" href="/"><img src="{{asset('images/logo-freewalks.png')}}" alt="peru"></a>
+              <div class="collapse navbar-collapse" id="cssmenu">
+                    @include('layouts.page.nav-home-others-es')
+              </div>
+              <ul class="navbar-nav p-2">
+                    <li><a class="flag" href="/es/trabajar-como-guia-turistico-marketing-turismo" rel="alternate" hreflang="es"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+                </ul>
+            </div>
+        </nav>    
+   </section>
 
     <section>
         <div class="fonc"><h1 class="text-center h2 py-sm-4 py-2 fondx text-uppercase">Guide, Work and Market with us!</h1></div>

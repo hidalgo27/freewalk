@@ -35,8 +35,6 @@ class HomepageController extends Controller
 
         $inicio = Inicio::where('idioma', $locale)->first();
 
-
-
         //SEO
         SEOMeta::setTitle($inicio->seo_titulo);
         SEOMeta::setDescription($inicio->seo_descripcion);
@@ -171,11 +169,19 @@ class HomepageController extends Controller
         return view('page.booking', compact('locale','destino','destino_inicio_idiomas'));
     }
 
+        public function reservar($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.reservar', compact('locale','destino','destino_inicio_idiomas'));
+    }
+    
+
     public function terms_conditions($locale){
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
-        return view('page.termianos', compact('locale','destino','destino_inicio_idiomas'));
+        return view('page.terms', compact('locale','destino','destino_inicio_idiomas'));
     }
     public function terms_conditions_es($locale){
         $locale = App::getLocale();
@@ -190,6 +196,12 @@ class HomepageController extends Controller
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.contact', compact('locale','destino','destino_inicio_idiomas'));
     }
+        public function contactanos($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.contactanos', compact('locale','destino','destino_inicio_idiomas'));
+    }
     public function partner($locale){
         $locale = App::getLocale();
         $destino = Destino::all();
@@ -201,6 +213,13 @@ class HomepageController extends Controller
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.employment', compact('locale','destino','destino_inicio_idiomas'));
+    }
+
+    public function trabaja($locale){
+        $locale = App::getLocale();
+        $destino = Destino::all();
+        $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
+        return view('page.trabaja', compact('locale','destino','destino_inicio_idiomas'));
     }
 
     public function parks_lima($locale){

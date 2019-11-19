@@ -19159,13 +19159,14 @@ li {
 
 .ckeckok li::before {
   content: "\F058";
-  font-family: "FontAwesome";
+  font-family: "Font Awesome 5 Free";
   float: left;
   margin-left: -1.3em;
   color: #242424;
   font-size: 20px;
   position: absolute;
   top: -4px;
+  font-weight: 600;
 }
 
 .lisok li::before {
@@ -19928,15 +19929,10 @@ ul.resp-tabs-list {
 }
 
 .star5::after {
-  content: " \F005\F005\F005\F005\F006";
-  font-family: "FontAwesome";
-  color: #e7711b;
-}
-
-.star5::after {
-  content: " \F005\F005\F005\F005\F005";
-  font-family: "FontAwesome";
-  color: #e7711b;
+  content: "\F005\F005\F005\F005\F005";
+  font-family: "Font Awesome 5 Free";
+  color: #299729;
+  font-weight: 600;
 }
 
 .testimonial span {
