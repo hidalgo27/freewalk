@@ -290,7 +290,7 @@
                             <section class="carrousel container pb-4">
                                 <div class="row testimonial">
 
-                                    
+                                    @if ($destino_grupos->destino->url == 'lima' AND $locale == 'EN')
 
                                     <div class="owl-carousel owl-theme">
 
@@ -476,7 +476,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
+                                    @endif
 
 
                                     </div>
