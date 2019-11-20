@@ -164,29 +164,28 @@ class HomepageController extends Controller
 
     public function booking($locale){
         Session::put('locale', 'es');
-
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.booking', compact('locale','destino','destino_inicio_idiomas'));
     }
-
         public function reservar($locale){
-            Session::put('locale', 'en');
+        Session::put('locale', 'en');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.reservar', compact('locale','destino','destino_inicio_idiomas'));
     }
 
-
     public function terms_conditions($locale){
+        Session::put('locale', 'es');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.terms', compact('locale','destino','destino_inicio_idiomas'));
     }
     public function terms_conditions_es($locale){
+        Session::put('locale', 'en');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
@@ -194,24 +193,28 @@ class HomepageController extends Controller
     }
 
     public function contact_us($locale){
+        Session::put('locale', 'es');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.contact', compact('locale','destino','destino_inicio_idiomas'));
     }
         public function contactanos($locale){
+            Session::put('locale', 'en');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.contactanos', compact('locale','destino','destino_inicio_idiomas'));
     }
     public function partner($locale){
+        Session::put('locale', 'es');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
         return view('page.partner', compact('locale','destino','destino_inicio_idiomas'));
     }
     public function employment($locale){
+        Session::put('locale', 'es');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');
@@ -219,6 +222,7 @@ class HomepageController extends Controller
     }
 
     public function trabaja($locale){
+        Session::put('locale', 'en');
         $locale = App::getLocale();
         $destino = Destino::all();
         $destino_inicio_idiomas = DestinoInicioIdioma::all()->unique('idioma');

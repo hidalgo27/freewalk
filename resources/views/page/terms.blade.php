@@ -9,7 +9,7 @@
                     @include('layouts.page.nav-home-others')
               </div>
               <ul class="navbar-nav p-2">
-                    <li><a class="flag" href="/es/terminos-condiciones" rel="alternate" hreflang="es"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+                    <li><a class="flag" href="{{route('terms_conditions_es_path', 'es')}}" rel="alternate" hreflang="es"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
                 </ul>
             </div>
         </nav>    
