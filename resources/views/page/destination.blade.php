@@ -1,27 +1,16 @@
 @extends('layouts.page.app')
+@section('hreflang')
+    @foreach($destino_grupo_idioma as $destino_grupo_idiomas_ref)
+
+        @if(strtolower($destino_grupo_idiomas_ref->idioma) !== strtolower($locale))
+            <link rel="alternate" hreflang="{{strtolower($destino_grupo_idiomas_ref->idioma)}}" href="{{route('lang_agrupados_path', [$destino_grupo_idiomas_ref->destino_grupo_relacion_id, strtolower($destino_grupo_idiomas_ref->idioma)])}}" />
+        @endif
+
+    @endforeach
+@endsection
     @section('content')
 
-
-
-{{--            @if (App::isLocale('en'))--}}
-{{--                --}}
-{{--            @endif--}}
-
-
-
-            @include('layouts.page.nav-home-agrupados')
-
-{{--            @foreach ($destino_grupos->imagenes->where('estado','0') as $foto)--}}
-{{--                @if (Storage::disk('destino_grupo')->has($foto->imagen))--}}
-{{--                    <section>--}}
-{{--                        <picture>--}}
-{{--                            <source media="(max-width: 550px)" srcset="{{asset('images/lima/free-walking-tours-lima-central-mobile.jpg')}}">--}}
-{{--                            <img src="{{route('admin.destino_grupo.get_imagen.path',$foto->imagen) }}" class="w-100" alt="free walking tour lima, full english">--}}
-{{--                        </picture>--}}
-{{--                    </section>--}}
-
-{{--                @endif--}}
-{{--            @endforeach--}}
+        @include('layouts.page.nav-home-agrupados')
 
 <section>
     <picture>
@@ -56,7 +45,7 @@
                                     <div class="col-sm-4">
                                         <div class="bg-white shadow my-2 rounded">
                                             <h6 class="text-center pt-2">
-                                               @lang('home.why_reserve') 
+                                               @lang('home.why_reserve')
                                             </h6>
                                             <hr class="my-2">
                                             <div class="row">
@@ -64,7 +53,7 @@
                                                     <ul class="liswhy pl-3 list-unstyled">
                                                         @lang('home.text_why')
 
-                                                       
+
                                                     </ul>
                                                 </div>
                                                 <div class="col-4">
@@ -316,9 +305,9 @@
                                                 <p>Pepe Lucho was well informed and hilarious. He knew how to keep the crowd's attention. The tour covers the historical city centre (Lima downtown) and even visits one of the Churches and shows the changing of guard. Thoroughly recommended.May be easier to get an uber downtown from Baranco/Miraflores - shouldn't be more than S/20.Pepe Lucho usually ends with a recommendation for lunch, which is fantastic value for money. Would strongly recommend the tour.</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -339,9 +328,9 @@
                                                 <p>A very wel organized tour, with the most important sights covered, Pepe Lucha is a funny, up-beat and super-nice guide who knows a lot, is akways fun and happy and still knows how to keep a big group in thisustling city together. An ansolute recommandation: the restaurant he recommended at the end of the tour to have lunch. Many locals, very good price abd excellent quality - try the ceviche! Ps: at the restaurant he made personally sure, every guest that was with him had wifi access and got the password. HIGHLY RECOMMENDED! Try to book with Pepe Lucha!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -362,9 +351,9 @@
                                                 <p>We only have one day to see Lima and this is the best way to do it. We met our guide, Pepe Lucho at Miraflores and he guided us with the local bus ride to the city centre. It was a good local experience (try it if you can!). Pepe is a funny guy and knows the history and facts about the city really well. He also guided us to what to eat for lunch after the tour. Really enjoyed and recommend the tour!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -385,9 +374,9 @@
                                                 <p>Perfect tour with nice guide! Great and interesting tour with Richard, who could speak fluently English and Spanish as well! He explained every place and the history of Lima in a good way :)) I was happy with him and recommend his tour to anyone who wants to explore the city! Cheers!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -408,9 +397,9 @@
                                                 <p>Had Elvis as our tour guide and had a speaker with easy to understand English. He gave an excellent overview of Lima city center along with historical and political context. He gave us recommendations on what to see next. Remember that this is not a private or paid tour, so you won’t see specifics but for what it is, it’s a great overview! If you are looking for something more customized this may not be the tour for you!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -431,9 +420,9 @@
                                                 <p>Today we chose to do the free walking tour of Lima. We met our guide (Elvis) in Miraflores near our hotel, he showed us how to use the public bus system and he then showed us the historic part of Lima. Lots of interesting background information. And he finished the tour by showing us a great (and very cheap - S 12) lunch spot (Cordon Blue). A great way to get a quick introduction to Lima and Peru!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -454,9 +443,9 @@
                                                 <p>I stumbled on to this walking tour through a google search. It was well organized. Elvis, the tour guide was knowledgeable and funny. He gave us an extensive city tour with so many historical points. The tour was well paced with short breaks. Couldn’t have found a tour that would have been better than this!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -478,9 +467,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                           
-                                
-                                
+                                </div>
+
+
                             </div>
                         </div>
                     </section>
@@ -488,7 +477,7 @@
                     </div>
                 </article>
             </section>
-                                    
+
                                     @endif
                                     @if(strtolower($destino_grupos->destino->nombre) == 'cusco')
                                               <section class="section04">
@@ -499,7 +488,7 @@
                         <section class="carrousel container pb-4">
                             <div class="row testimonial">
                               <div class="owl-carousel owl-theme">
-                                
+
                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
                                         <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank">Great Free Walking Tour in Cusco!</a></h4>
@@ -519,9 +508,9 @@
                                                 <p>Great walking tour. Easy to find. Our guide Elvis was very knowledgeable. Even though our group was not too big, he had a microphone so it was easy to hear him. At the end he brought us to a shop where we tried local fruit. Highly recommended for those visiting Cusco!!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
@@ -543,9 +532,9 @@
                                                 <p>We enjoyed an educational and fascinating walking tour today with Roger who was very knowledgeable and interested in his town of Cusco, he answered all the questions professionally, he also recommended the best hings to do at the end of the tour, Notde that this tour won´t take you to bars!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
@@ -567,12 +556,12 @@
                                                 <p>A really informative and personable guide Angie, Cusco native , took us for really amazing tour of the city! The market where we learned about the traditions and local food ,tried local fruit , learned all we needed to know about coca leaves for attitude sickness, botanical garden with colorful explanation of SanPedro ceremony!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
 
-                             
+
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
                                         <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank">Free Cusco Walking Tour with Real Tour Guides!</a></h4>
@@ -592,11 +581,11 @@
                                                 <p>We did our free walking tour with Richard, who was very keen to show us the history of the city, it was so interesting and we got to know a lot about the Inkas and Cusco itself. I would highly recommended to go with Richard and his crew! Thanks again!!! Cheers from Germany!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
-                             
+
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
                                         <h4 class="text-center" style="font-size: 1.2em;"><a href="https://www.facebook.com/pg/freewalkingtourscusco/reviews/?ref=page_internal" target="_blank">Good Experience in Cusco!</a></h4>
@@ -616,9 +605,9 @@
                                                 <p>We took the afternoon free historical tour, our guide was really friendly, spoke good english and knew à lot about the city ! I highly recommended, especiallay to all those visitors trying to experience this city by the first time, definetely a great orientation tour in Cuzco centre!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
 
                                <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
@@ -640,9 +629,9 @@
                                                 <p>The tour guide was excellent, very knowledgeable. Tour was very interesting highly recommend. The highlight was certainly the very interesting facts about Peruvian history, including the fact that there was 15 Incas, 40 Vice-Royce, and 61 Peruvian Presidents!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
@@ -664,9 +653,9 @@
                                                 <p>We went on a free walking tour with Richard. We just landed Cusco 3 hours prior and the tour not only freshened us up, but also gave us an informative and great impression of the city. Richard is very attentive and chill, I certainly recommend everyone to do this on their first day!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -687,9 +676,9 @@
                                                 <p>We did the 10am walking tour around cusco with Cesar (guide). It was a great tour explaining the sites around cusco as well as inca culture. The tour lasted nearly 3hrs. In addition our guide has lots of advise about cusco (restaurants, other sites) which was very helpful. Would highly recommend!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="item px-4 pt-2 m-3 rounded pb-0 bg-white">
                                     <div class="block-test pb-1">
@@ -710,12 +699,12 @@
                                                 <p>Our guide Cesar, was very informative and spoke excellent English. This tour was a great intro to Cusco, Incan history and Cusco recommendations. We have some great tips for the rest of our trip in the Cusco area (Old historical city centre) Thanks!</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
-                           
-                                
+
+
 
                               </div>
                             </div>
@@ -891,7 +880,7 @@
                 </article>
             </section>
                                     @endif
-          
+
             <section class="section01">
                 <article>
                     <div class="container p-4">

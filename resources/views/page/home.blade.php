@@ -1,6 +1,10 @@
 @extends('layouts.page.app')
     @section('hreflang')
-
+        @foreach($destino_inicio_idiomas as $destinos_inicio_idiomas_ref)
+            @if(strtolower($destinos_inicio_idiomas_ref->idioma) !== strtolower($locale))
+                <link rel="alternate" hreflang="{{$locale}}" href="{{ route('lang_path', strtolower($destinos_inicio_idiomas_ref->idioma)) }}" />
+            @endif
+        @endforeach
     @endsection
     @section('content')
 @include('layouts.page.nav-home')

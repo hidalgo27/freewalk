@@ -1,4 +1,11 @@
 @extends('layouts.page.app')
+@section('hreflang')
+    @foreach($tour_tr as $tours_tr_ref)
+        @if(strtolower($tours_tr_ref->idioma) !== strtolower($locale))
+            <link rel="alternate" hreflang="{{strtolower($locale)}}" href="{{route('lang_tours_path', [$tours_tr_ref->url, strtolower($tours_tr_ref->idioma), $destino_url])}}" />
+        @endif
+    @endforeach
+@endsection
 @section('content')
 
 {{--@foreach($tour as $tours)--}}
@@ -299,7 +306,7 @@
                 }
               });
             });
-        
+
 
         $(document).ready(function() {
             var owl = $('.owl-carousel');
