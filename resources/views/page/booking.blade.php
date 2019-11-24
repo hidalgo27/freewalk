@@ -9,7 +9,7 @@
                     @include('layouts.page.nav-home-others')
               </div>
               <ul class="navbar-nav p-2">
-                    <li><a class="flag" href="/es/reservar" rel="alternate" hreflang="es"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
+                    <li><a class="flag" href="{{route('booking_path_es', 'es')}}" rel="alternate" hreflang="es"><img src="{{asset('images/es.png')}}" alt="flag spanish"></a></li>
                 </ul>
             </div>
         </nav>    

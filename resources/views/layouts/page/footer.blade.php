@@ -51,7 +51,7 @@
 				@if($locale == 'es' OR $locale == 'ES')
 				<ul class="list-unstyled list-inline">
 					  <li class="list-inline-item text-white h5"><a href="{{route('booking_path_es', $locale)}}">Reservar</a></li>
-					  <li class="list-inline-item text-white h5"> <a href="{{route('terms_conditions_es_path', $locale)}}/">Terminos</a></li>
+					  <li class="list-inline-item text-white h5"> <a href="{{route('terms_conditions_es_path', $locale)}}">Terminos</a></li>
 					  <li class="list-inline-item text-white h5"><a href="{{route('contact_us_path_es', $locale)}}">Contactanos</a></li>
 					  <li class="list-inline-item text-white h5"><a href="{{route('partner_path', $locale)}}">Amigos</a></li>
 					  <li class="list-inline-item text-white h5"><a href="{{route('employment_path_es', $locale)}}">Trabaja</a></li>

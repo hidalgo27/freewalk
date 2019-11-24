@@ -19545,7 +19545,7 @@ li {
 
 #cssmenu ul ul li a {
   padding: 11px 20px;
-  width: 280px;
+  width: 410px;
   font-size: 12px;
   background: #fff;
   text-decoration: none;
@@ -20288,6 +20288,38 @@ h2.resp-accordion:first-child {
   #wrapper {
     margin-top: 90px;
   }
+}
+
+.socials {
+  border-radius: 50%;
+  border: 1px solid #c6c6c6;
+  width: 50px;
+  height: 50px;
+  padding-top: 8px;
+  background-color: #fc0;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.socials .fab,
+.socials .far {
+  color: black;
+  font-size: 1.7em;
+  margin-top: 4px;
+}
+
+.socials:hover {
+  background-color: #000;
+}
+
+.aside-boxs a {
+  text-decoration: initial;
+  color: #5a5858;
+}
+
+.socials:hover .fab,
+.socials:hover .far {
+  color: #fff;
 }
 
 /*
